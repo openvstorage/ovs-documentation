@@ -3,6 +3,6 @@ This section is intended for (End-) Users who want to implement and manage Open 
 
 Open vStorage has a large community which is more than happy to provide
 advice and help when you are having issues. The community is free to
-join, but keep in mid that communities only work if you give back from
+join, but keep in mind that communities only work if you give back from
 time to time. You can find the Open vStorage community
 [here](https://groups.google.com/forum/#!forum/open-vstorage).
