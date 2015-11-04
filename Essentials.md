@@ -57,8 +57,8 @@ Datastore1).
 How to change this default behavior can be seen in the screenshots below
 for the vSphere Client and the vSphere Web Client.
 
-![](images/swapfile\_vsphere\_client.png)
-![](images/swapfile\_vsphere\_web.png)
+![](Images/swapfile\_vsphere\_client.png)
+![](Images/swapfile\_vsphere\_web.png)
 
 ### OS for the VM Storage Router
 
