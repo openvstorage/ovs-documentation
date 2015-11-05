@@ -126,13 +126,12 @@ features of VMware. Please refer to the VMware best practices
 
 
 On each ESXi Host create an Open vStorage Storage Router. You can use
-the [DeployOvs.py]({{< relref "ESXi Installation.md" >}}#usedeployscript) script (download it
+the [DeployOvs.py](#usedeployscript) script (download it
 [here](https://github.com/openvstorage/openvstorage/blob/master/scripts/deployment/deployOvs.py)) to
 create the Virtual Storage Router or you can create the Open vStorage VM
-[manually]({{< relref "ESXi Installation.md" >}}#rooter-manually).
+[manually](#rooter-manually).
 
-<a name="usedeployscript" class="internal-ref"></a>
-### Use the Open vStorage deploy script
+### <a name="usedeployscript"></a>Use the Open vStorage deploy script
 
 The deploy script will create a Virtual Machine with 3 disks and
 configure it as Open vStorage Storage Router. The first disk (OS) will
@@ -157,11 +156,11 @@ chmod +x deployOvs.py
     (raw device) map to the Storage Router.
 -   If more than 1 SATA disk is found, select one to (raw device) map to
     the Storage Router.
--   You can now go to the [Install Ubuntu]({{< relref "ESXi Installation.md" >}}#installubuntu) section.
+-   You can now go to the [Install Ubuntu](#installubuntu) section.
 
 Repeat the above steps for all ESXi Nodes in the Open vStorage Cluster.
-<a name="rooter-manually" class="internal-ref"></a>
-### Manually create the Open vStorage Storage Router
+
+### <a name="rooter-manually"></a>Manually create the Open vStorage Storage Router
 
 -   Open the vSphere Client and provide credentials when prompted.
 -   Create a VM with a *Custom* configuration.
@@ -202,8 +201,8 @@ cd /vmfs/devices/disks/
 
 * Map the SATA disk(s) and SSD (which are not part of the Datastore) to the ESXi Host so you can use them in the Storage Router.
 ```
-vmkfstools -z /vmfs/devices/disks/vml.<id of the SATA disk> /vmfs/volumes/datastore1/<name of the GSR>/hdd1.vmdk
-vmkfstools -z /vmfs/devices/disks/vml.<id of the SSD disk> /vmfs/volumes/datastore1/<name of the GSR>/ssd1.vmdk
+vmkfstools -z /vmfs/devices/disks/vml.<id of the SATA disk> /vmfs/volumes/datastore1/<name of the Storage Router>/hdd1.vmdk
+vmkfstools -z /vmfs/devices/disks/vml.<id of the SSD disk> /vmfs/volumes/datastore1/<name of the Storage Router>/ssd1.vmdk
 
 
 For example:
