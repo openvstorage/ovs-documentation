@@ -320,76 +320,25 @@ Repeat the above steps for all ESXi Nodes in the Open vStorage Cluster.
 Repeat the above steps for all ESXi Nodes in the Open vStorage Cluster.
 
 
-<a name="configureubuntu" class="internal-ref"></a>
-### Configure Ubuntu
-
--   Update the root password to allow direct root login via ssh. Login
-    and type
-
-~~~~ {.sourceCode .python}
-sudo su -
-passwd
-~~~~
-
--   Make sure that PermitRootLogin is set to yes (instead of
-    without-password) in /etc/ssh/sshd\_config and restart ssh by typing
-    *restart ssh*.
--   Decrease the swapiness of the OS:
-
-~~~~ {.sourceCode .python}
-echo 1 > /proc/sys/vm/swappiness
-echo "vm.swappiness=1" >> /etc/sysctl.conf
-~~~~
--   Update the VM dirty_background_bytes:
-
-~~~~ {.sourceCode .python}
-echo "134217728" > /proc/sys/vm/dirty_background_bytes
-echo "vm.dirty_background_bytes = 134217728" >> /etc/sysctl.conf
-~~~~
-
--   Configure an NTP Server and install ntpd:
-
-~~~~ {.sourceCode .python}
-sudo apt-get install ntp
-
-
-* Edit /etc/ntp.conf to add/remove NTP servers. By default these servers are configured:
-~~~~
-
-~~~~ {.sourceCode .python}
-# Use servers from the NTP Pool Project. Approved by Ubuntu Technical Board
-# on 2011-02-08 (LP: #104525). See http://www.pool.ntp.org/join.html for
-# more information.
-server 0.ubuntu.pool.ntp.org
-server 1.ubuntu.pool.ntp.org
-server 2.ubuntu.pool.ntp.org
-server 3.ubuntu.pool.ntp.org
-
-
-* After changing the config file you have to reload the ntpd:
-~~~~
-
-~~~~ {.sourceCode .python}
-sudo /etc/init.d/ntp reload
-~~~~
+{% include "configureubuntu.md" %}
 
 -   Add the same Storage IP address to the second NIC of each Storage
     Router. The IP address needs to be in the Storage network. To set
     the IP edit /etc/network/interfaces (adjust the IP and interface
     according to your setup).
 
-~~~~ {.sourceCode .python}
+```
 auto eth0
 iface eth0 inet static
         address 172.22.1.100
         netmask 255.255.255.0
         network 172.22.1.0
         broadcast 172.22.1.255
-~~~~
+```
 
 -   Restart the network
 -   You can now go to the [Install the Open vStorage
-    software]({{< relref "ESXi Installation.md" >}}#installopenvstorage) section.
+    software](#installopenvstorage) section.
 
 Repeat the above steps for all Storage Routers in the Open vStorage
 Cluster.
