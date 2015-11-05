@@ -1,4 +1,4 @@
-### Administration
+#### Administration
 
 The Administration section acts as the central location to manage and
 configure your Open vStorage Cluster.
@@ -12,7 +12,7 @@ Following actions are available for logged in users of the GUI:
 The About page displays the installed Open vStorage packages installed
 on every Node in the Open vStorage Cluster.
 
-![](..Images/aboutopenvstorage.png)
+![](../Images/aboutopenvstorage.png)
 
 
 Add the bottom you can find an overview of the important Open vStorage

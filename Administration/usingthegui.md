@@ -1,4 +1,4 @@
-### Administration
+## Using the GUI
 
 An Open vStorge Cluster can be managed through a single web based
 interface. The below section will explain how to access and manage an

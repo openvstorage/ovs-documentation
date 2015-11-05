@@ -22,4 +22,4 @@ packages you can skip to the [add vPool section](#addvpool).**
     disks icon ( ![](../Images/bullseye.png) ) of each ASD Node.
 -   You can now [create a vPool](#addvpool) which uses this Backend by
     selecting Open vStorage Backend as Backend Type.
--   Optionally you can create a new [preset](Administration/preset.md). Select the <i class="fa fa-flip-vertical fa-code-fork"></i>-icon on the Backend detail page to see the default policies or create a new one.
+-   Optionally you can create a new [preset](Administration/backends.md#presets). Select the <i class="fa fa-flip-vertical fa-code-fork"></i>-icon on the Backend detail page to see the default policies or create a new one.
