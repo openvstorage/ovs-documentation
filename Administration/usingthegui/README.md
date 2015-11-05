@@ -7,8 +7,8 @@ Open vStorage Cluster through this GUI.
 ### Log In
 
 The GUI to manage an Open vStorage can be found by navigating with an
-HTML5 compatible browsers to the IP address of any of the Grid Storage
-Routers (GSRs) in your cluster. In case you use HTTP instead of HTTPS,
+HTML5 compatible browsers to the IP address of any of the Storage
+Routers in your cluster. In case you use HTTP instead of HTTPS,
 the URL will be rewritten to use HTTPS. HTTPS is used to make sure all
 the communication between your pc and the Open vStorage Cluster is
 secure. When opening the GUI for the first time, you will be presented
@@ -16,7 +16,7 @@ with a message about the security certificate. Proceed anyway.
 
 -   You will see the following login screen:
 
-![](../Images/login.png)
+![](../../Images/login.png)
 
 
 -   Enter your credentials. The default administrator credentials are
@@ -33,7 +33,7 @@ The Open vStorage Dashboard is the default starting point when working
 with an Open vStorage Cluster. The Dashboard is a view on the health,
 performance and status of the Cluster. unsupported
 
-![](../Images/dashboard_small.png)
+![](../../Images/dashboard_small.png)
 
 
 Following panels, from left to right and top to bottom, can be found on
