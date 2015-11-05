@@ -21,7 +21,7 @@ Website](http://www.openvstorage.com) and the [Source
 Code](https://github.com/openvstorage).
 
 
-#### Hypervisor Management
+#### <a name="hmc"></a>Hypervisor Management
 
 The Hypervisor Management allows to register Hypervirsor Management
 Centers (HMC) such as VMware vCenter or an OpenStack Controller Node. To
