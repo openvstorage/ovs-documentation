@@ -410,9 +410,9 @@ you can start using Open vStorage.
 
 Once the Open vStorage software is installed on the Storage Router of
 the first Host, you can add more Storage Routers and additional ESXi
-Hosts. This requires an [OS to be installed]({{< relref "ESXi Installation.md" >}}#installubuntu) and
-[configured]( {{< relref "ESXi Installation.md" >}}#configureubuntu) and the [Open vStorage software must be
-installed]({{< relref "ESXi Installation.md" >}}#installopenvstorage) on these Storage Routers.
+Hosts. This requires an [OS to be installed](#installubuntu) and
+[configured]( #configureubuntu) and the [Open vStorage software must be
+installed](#installopenvstorage) on these Storage Routers.
 
 Execute in the shell of every Storage Router (concurrent installations of multiple nodes isn't supported):
 
