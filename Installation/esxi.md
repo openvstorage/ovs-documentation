@@ -163,26 +163,26 @@ Repeat the above steps for all ESXi Nodes in the Open vStorage Cluster.
 ### <a name="rooter-manually"></a>Manually create the Open vStorage Storage Router
 
 -   Open the vSphere Client and provide credentials when prompted.
--   Create a VM with a *Custom* configuration.
-    -   Enter a name for the Storage Router and click *Next*.
-    -   Select Datastore1 and click *Next*.
-    -   Select virtual Machine Version: 8 and click *Next*.
+-   Create a VM with a **Custom** configuration.
+    -   Enter a name for the Storage Router and click **Next**.
+    -   Select Datastore1 and click **Next**.
+    -   Select virtual Machine Version: 8 and click **Next**.
     -   Select Linux and the appropriate distro (Ubuntu-64 bit) from the
-        dropdown list and click *Next*.
+        dropdown list and click **Next**.
     -   Select 1 virtual socket, 4 cores per virtual socket and click
         *Next*.
-    -   Select 16GB RAM and click *Next*.
+    -   Select 16GB RAM and click **Next**.
     -   Select 2 NICs, VMXNET3 as adapter and add one to each Network
-        (Public and Storage). Click *Next*.
-    -   Select as SCSI controller LSI Logic SAS and click *Next*.
-    -   Select *Create a new virtual disk*, disk size 400GB and leave
-        the rest to default. Click *Next*.
-    -   Leave the rest to default and click *Next*.
-    -   Tick the "Edit the virtual machine before completion"-box and
-        select *Finish*.
+        (Public and Storage). Click **Next**.
+    -   Select as SCSI controller LSI Logic SAS and click **Next**.
+    -   Select **Create a new virtual disk**, disk size 400GB and leave
+        the rest to default. Click **Next**.
+    -   Leave the rest to default and click **Next**.
+    -   Tick the **Edit the virtual machine before completion**-box and
+        select **Finish**.
 -   Map the SATA disk and SSD to the Storage Router
     -   Login with Putty into the ESXi SSH Shell
-    -   Execute *esxcli storage vmfs extent list*. It returns the Device
+    -   Execute **esxcli storage vmfs extent list**. It returns the Device
         Name used for the Datastore
 
 ```
@@ -200,6 +200,7 @@ cd /vmfs/devices/disks/
 ```
 
 * Map the SATA disk(s) and SSD (which are not part of the Datastore) to the ESXi Host so you can use them in the Storage Router.
+
 ```
 vmkfstools -z /vmfs/devices/disks/vml.<id of the SATA disk> /vmfs/volumes/datastore1/<name of the Storage Router>/hdd1.vmdk
 vmkfstools -z /vmfs/devices/disks/vml.<id of the SSD disk> /vmfs/volumes/datastore1/<name of the Storage Router>/ssd1.vmdk
@@ -219,47 +220,47 @@ esxcli system settings advanced set -o /Power/UseCStates --int-value=1
 ```
 
 -   In the vSphere Client
-    -   Select the Open vStorage Storage Router and select *Edit
-        Settings*.
-    -   Add a new Hard disk by selecting *Add ...*, *Hard Disk*, *Use an
-        existing virtual disk* and select the SSD disk or PCI Flash Card
-        (ssd1.vmdk) from the Datastore1/\<name of the Storage Router\>.
-    -   Add a new Hard disk by selecting *Add ...*, *Hard Disk*, *Use an
-        existing virtual disk* and select the SATA disk (hdd1.vmdk) from
-        the Datastore1/\<name of the Storage Router\>. Do the same for
+    -   Select the Open vStorage Storage Router and select **Edit
+        Settings**.
+    -   Add a new Hard disk by selecting **Add ...**, **Hard Disk**, **Use an
+        existing virtual disk** and select the SSD disk or PCI Flash Card
+        (ssd1.vmdk) from the Datastore1/<name of the Storage Router>.
+    -   Add a new Hard disk by selecting **Add ...**, **Hard Disk**, **Use an
+        existing virtual disk** and select the SATA disk (hdd1.vmdk) from
+        the Datastore1/<name of the Storage Router>. Do the same for
         the other HDD disks.
     -   Select the CD/DVD drive and select the Ubuntu ISO from the
-        Datastore as Device Type. Don't forget to check the *Connect at
-        power on* checkbox.
-    -   Select the Options tab, select Boot Options and tick the *Force
-        BIOS setup*-checkbox.
-    -   Click *OK* to save the changes.
--   You can now go to the [Install Ubuntu]({{< relref "ESXi Installation.md" >}}#installubuntu) section.
+        Datastore as Device Type. Don't forget to check the **Connect at
+        power on** checkbox.
+    -   Select the Options tab, select Boot Options and tick the **Force
+        BIOS setup**-checkbox.
+    -   Click **OK** to save the changes.
+-   You can now go to the [Install Ubuntu](#installubuntu) section.
 
 Repeat the above steps for all ESXi Nodes in the Open vStorage Cluster.
 
-<a name="installubuntu" class="internal-ref"></a>
-### Install Ubuntu on each Storage Router in the Open vStorage Cluster
+
+### <a name="installubuntu"></a> Install Ubuntu on each Storage Router in the Open vStorage Cluster
 
 -   Boot the Open vStorage Storage Router.
 -   The Open vStorage Virtual Machine will boot into the BIOS Setup
     Utility. In the BIOS settings, go to the Boot tab.
 
-![](images/boottab.png)
+![](../Images/boottab.png)
 1px solid black!
 
 -   Select the *CD-ROM Drive* by pressing the *down key* twice. Move the
     *CD-ROM Drive* to the first position by pressing *+* twice.
 
-![](images/boottabcdrom.png)
+![](../Images/boottabcdrom.png)
 
--   Press *F10* to save and exit the Boot Utility. Select *Yes* to save
+-   Press **F10** to save and exit the Boot Utility. Select *Yes* to save
     the changes.
 
-![](images/boottabsave.png)
+![](../Images/boottabsave.png)
 
--   Next install Ubuntu, select your language and select *Install Ubuntu
-    Server*.
+-   Next install Ubuntu, select your language and select **Install Ubuntu
+    Server**.
 -   Confirm your language, select your location and configure your
     keyboard.
 -   Configure the network of the Storage Router. Select the NIC which is
@@ -273,47 +274,47 @@ Repeat the above steps for all ESXi Nodes in the Open vStorage Cluster.
 -   Select your timezone.
 -   Partition the disks by selecting *Manual*.
 
-![](images/select\_manual.png)
+![](../Images/select_manual.png)
 
 -   Clear all disks of the Storage Router (no partitions on any of the
     disks). The result should be as the screenshot below.
 
-![](images/sreenshot\_of\_disks.png)
+![](../Images/sreenshot_of_disks.png)
 
--   Select *Guided partitioning*. Select *Guided - use entire disk*.
+-   Select **Guided partitioning**. Select **Guided - use entire disk**.
 
-![](images/guided\_user\_entire\_disk.png)
+![](../mages/guided_user_entire_disk.png)
 
--   Select sda (marked with *VMware Virtual disk*) as disk to partition.
+-   Select sda (marked with **VMware Virtual disk**) as disk to partition.
 
-![](images/partition\_select\_sda.png)
+![](../Images/partition_select_sda.png)
 
 -   Write the changes to the disk.
 
-![](images/write\_changes\_to\_disk.png)
+![](../Images/write_changes_to_disk.png)
 
--   Leave the HTTP proxy information blank and select *No automatic
-    updates*.
+-   Leave the HTTP proxy information blank and select **No automatic
+    updates**.
 -   Install the Open SSH server.
 -   Install the GRUB boot loader. Select *No* when prompted to install
     it to the master boot record.
 
-![](images/bootloader\_select\_no.png)
+![](../Images/bootloader_select_no.png)
 
 -   Now you can explicitly specify /dev/sda as location for the GRUB
     boot loader. Otherwise it will try to install the GRUB boot loader
     on /dev/sdb, which will result in an error.
 
-![](images/bootloader\_dev\_sda.png)
+![](../Images/bootloader_dev_sda.png)
 
--   Finish the Ubuntu installation by selecting *\<Continue\>*.
+-   Finish the Ubuntu installation by selecting **<Continue>**.
 
-![](images/finish\_install.png)
+![](../Images/finish_install.png)
 
 -   The Open vStorage Storage Router will boot from the installed Ubuntu
     OS.
 -   In the vSphere GUI right-click the Open vStorage Storage Router,
-    select *CD/DVD drive* and uncheck the *Connect at power on*
+    select **CD/DVD drive** and uncheck the **Connect at power on**
     checkbox.
 
 Repeat the above steps for all ESXi Nodes in the Open vStorage Cluster.
@@ -357,8 +358,8 @@ The initialization script will ask a couple of questions:
 
 -   Enter the root credentials for the Storage Router.
 -   It will search for existing Open vStorage Clusters in the network.
-    In case it has found a Cluster, select the option *Don't join any of
-    these clusters.*.
+    In case it has found a Cluster, select the option **Don't join any of
+    these clusters.**.
 -   Enter a name for the Open vStorage Cluster.
 -   Select the Public IP address of the Storage Router.
 -   Select VMware as hypervisor. In case KVM is used as hypervisor, use
