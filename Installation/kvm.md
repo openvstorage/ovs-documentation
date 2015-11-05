@@ -17,9 +17,9 @@ Forum](https://groups.google.com/forum/#!forum/open-vstorage). **Only
 
 ### Prerequisites before starting this guide:
 -   Remove all partitions and remaining data on the physical disks. Execute for every disk other than the OS disk (replace x with the correct drive letter):
-'''
+```
 parted -s /dev/sdx mklabel gpt
-'''
+```
 -   Enable all C-states in the BIOS of the Hosts for optimal
     performance.
 
@@ -51,36 +51,36 @@ Open vStorage can be installed on various OS. Open vStorage has been tested with
 
 ##### Install KVM on all nodes
 -   Boot the server and install additional KVM packages.
-'''
+```
 sudo apt-get install kvm libvirt0 python-libvirt virtinst
-'''
+```
 ##### Configure Ubuntu
 -   Update the root password to allow direct root login via ssh. Login
     and type
-'''
+```
 sudo su -
 passwd
-'''
+```
 -   Make sure that PermitRootLogin is set to yes (instead of
     without-password) in /etc/ssh/sshd_config and restart ssh by typing
     **restart ssh**.
 -   Decrease the swapiness of the OS:
-'''
+```
 echo 1 > /proc/sys/vm/swappiness
 echo "vm.swappiness=1" >> /etc/sysctl.conf
-'''
+```
 -   Update the VM dirty_background_bytes:
-'''
+```
 echo "134217728" > /proc/sys/vm/dirty_background_bytes
 echo "vm.dirty_background_bytes = 134217728" >> /etc/sysctl.conf
-'''
+```
 -   Configure an NTP Server
 *   Install ntpd:
-'''
+```
 sudo apt-get install ntp
-'''
+```
 *   Edit /etc/ntp.conf to add/remove NTP servers. By default these servers are configured:
-'''
+```
 # Use servers from the NTP Pool Project. Approved by Ubuntu Technical Board
 # on 2011-02-08 (LP: #104525). See http://www.pool.ntp.org/join.html for
 # more information.
@@ -88,11 +88,11 @@ server 0.ubuntu.pool.ntp.org
 server 1.ubuntu.pool.ntp.org
 server 2.ubuntu.pool.ntp.org
 server 3.ubuntu.pool.ntp.org
-'''
+```
  * After changing the config file you have to reload the ntpd:
-'''
+```
 sudo /etc/init.d/ntp reload
-'''
+```
 -   You can now go to the [Install the Open vStorage software](#installovs) section.
 
 Repeat the above steps for all nodes in the Open vStorage Cluster.
@@ -121,18 +121,18 @@ Execute the next steps in the shell of all KVM Nodes:
 
 #### Ubuntu
 -   Add the repo to your sources
-'''
+```
 echo "deb http://apt.openvstorage.org chicago-community main" > /etc/apt/sources.list.d/ovsaptrepo.list
-'''
+```
 -  Install the Open vStorage HyperConverged or not:
 *   Install Open vStorage HyperConverged
-'''
+```
 apt-get update; apt-get install openvstorage-hc
-'''
+```
 *   Install the Open vStorage packages *without* the Open vStorage Backend packages
-'''
+```
 apt-get update; apt-get install  openvstorage
-'''
+```
 
 
 
@@ -144,13 +144,13 @@ apt-get update; apt-get install  openvstorage
 
 -   You are now ready to initialize the first Storage Router. Execute in
     the shell:
-'''
+```
 ovs setup
-'''
+```
 
 The initialization script will ask a couple of questions:
 
--   Enter the root credentials for the KVM Node.
+-   Enter the root credentials for the host.
 -   It will search for existing Open vStorage Clusters in the network.
     In case it has found a Cluster, select the option *Don't join any of
     these clusters.*.
@@ -165,12 +165,12 @@ The initialization script will ask a couple of questions:
 When the install is completed a message will be displayed and you can
 start using Open vStorage.
 
-'''
+```
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 +++ Setup complete. +++
 +++ Point your browser to http://<IP of the Storage Router> to start using Open vStorage +++
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-'''
+```
 
 ### Apply for a free license
 **This step is only required in case you installed the Open Storage
@@ -279,9 +279,9 @@ add more nodes to the cluster. This requires Ubuntu and KVM to be installed and 
 
 Execute in the KVM shell of every node (concurrent installations of multiple nodes isn't supported):
 
-'''
+```
 ovs setup
-'''
+```
 
 The initialization script will ask a couple of questions:
 
@@ -298,12 +298,12 @@ The initialization script will ask a couple of questions:
 When the install is completed a message will be displayed and you can
 now [extend the vPool](#extendvpool ) to this Storage Router.
 
-'''
+```
 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 +++ Setup complete. +++
 +++ Point your browser to https://<IP of the KVM> to start using Open vStorage +++
 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-'''
+```
 
 Repeat the above commands for all Storage Routers you want to add to the
 Open vStorage Cluster.
