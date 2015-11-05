@@ -54,8 +54,8 @@ ovs setup
 -   Go to the Storage Router detail page and select the Physical Disk Management tab. Assign a DB and scrub role to at least one SSD disk. Assign read and write roles to SSDs you want to use as cache.
 -   In case you want to run Open vStorage hyperconverged, create an Open
     vStorage Backend in the Backend section. Note that running Open
-    vStorage as hyperconverged solution will require you to [get a free
-    license](http://license.openvstorage.com).
+    vStorage as hyperconverged solution will require you to get a free
+    license (Administration > Licenses).
 -   To add more nodes execute in the KVM shell of every node (concurrent installations of multiple nodes isn't supported):
 ```
 ovs setup
@@ -108,8 +108,8 @@ ovs setup
 -   Go to the Storage Router detail page and select the Physical Disk Management tab. Assign a DB and scrub role to at least one SSD disk. Assign read and write roles to SSDs you want to use as cache.
 -   In case you want to run Open vStorage hyperconverged, create an Open
     vStorage Backend in the Backend section. Note that running Open
-    vStorage as hyperconverged solution will require you to [get a free
-    license](http://license.openvstorage.com). Next, create your first
+    vStorage as hyperconverged solution will require you to get a free
+    license (Administration > Licenses). Next, create your first
     vPool in the vPools section.
 -   Add the vPool as Datastore to ESXi. Enter as Server the *Storage* IP
     address of the Storage Router,as Folder /mnt/name of the vPool and
