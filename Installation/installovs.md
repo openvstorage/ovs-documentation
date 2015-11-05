@@ -1,4 +1,3 @@
-
 ### <a name="installovs"></a>Install the Open vStorage software on all Storage Routers
 
 There are 2 options to install Open vStorage. The first option is to

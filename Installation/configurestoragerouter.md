@@ -1,5 +1,5 @@
 ### Configure the Storage Router disks
--   Open the [Open vStorage GUI](Administration/usingthegui.md) on the public IP of
+-   Open the [Open vStorage GUI](Administration/usingthegui/) on the public IP of
     the Storage Router and enter with the default login and password:
     admin/admin.
 -   Select from the menu **Storage Routers** and select the newly installed Storage Router from the list.

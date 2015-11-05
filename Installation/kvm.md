@@ -126,13 +126,13 @@ The initialization script will ask a couple of questions:
     Select the Cluster created earlier.
 -   Select the Public IP address of the KVM Node.
 -   Select KVM as hypervisor. In case VMware is used as hypervisor, use
-    the [ESXi install documentation](/doc/ESXi%20Installation).
+    the [ESXi install documentation](esxi).
 -   Select the public IP address of the Storage Router.
 -   Enter the root password of the Storage Router to exchange the
     necessary SSH keys.
 
 When the install is completed a message will be displayed and you can
-now [extend the vPool](#extendvpool ) to this Storage Router.
+now [extend the vPool](#extendvpool) to this Storage Router.
 
 ```
 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
@@ -150,7 +150,7 @@ Open vStorage Cluster.
 -   Extend the vPool from the first node to additional nodes by going to
     the vPool detail page and selecting the nodes where you want the
     vPool to be available. Adding the vPool to another Storage Router
-    will ask for the size of the read and write cache and suse the same Storage IP as on the first one.
+    will ask for the size of the read and write cache and use the same Storage IP as on the first one.
 
 {% include "finalremarks.md" %}
 

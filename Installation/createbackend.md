@@ -4,7 +4,7 @@
 Backend packages (openvstorage-hc). In case you only installed the Open vStorage core
 packages you can skip to the [add vPool section](#addvpool).**
 
--   Open the [Open vStorage GUI](Administration/usingthegui.md) on the public IP of
+-   Open the [Open vStorage GUI](Administration/usingthegui/) on the public IP of
     the Storage Router and enter with the default login and password:
     admin/admin.
 -   Select from the menu **Backends** and click the **Add Backend** button.
@@ -22,4 +22,4 @@ packages you can skip to the [add vPool section](#addvpool).**
     disks icon ( ![](../Images/bullseye.png) ) of each ASD Node.
 -   You can now [create a vPool](#addvpool) which uses this Backend by
     selecting Open vStorage Backend as Backend Type.
--   Optionally you can create a new [preset](Administration/backends.md#presets). Select the <i class="fa fa-flip-vertical fa-code-fork"></i>-icon on the Backend detail page to see the default policies or create a new one.
+-   Optionally you can create a new [preset](Administration/usingthegui/backends.md#presets). Select the <i class="fa fa-flip-vertical fa-code-fork"></i>-icon on the Backend detail page to see the default policies or create a new one.
