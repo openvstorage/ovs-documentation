@@ -101,42 +101,7 @@ Repeat the above steps for all nodes in the Open vStorage Cluster.
 #### <a name="centos"></a>Install CentOS on all hosts
 
 
-
-### <a name="installovs"></a>Install the Open vStorage software on all Storage Routers
-
-There are 2 options to install Open vStorage. The first option is to
-install Open vStorage and the Open vStorage Backend packages. When you
-install the Open vStorage Backend packages you can use the disks inside
-the host as Tier 2 storage (hyperconverged). You will need a
-license to enable these packages. There is free license with
-restrictions available which can be requested from the License section
-under [Administration](Administration/administration.md). The second
-option is to only install the Open vStorage core packages. Without the
-Open vStorage Backend packages you will need to set up a separate Tier 2
-Storage Backend (Swift, Ceph, GlusterFS, ...). There is no license
-required when installing only the Open vStorage core packages.
-**All Open vStorage nodes should have the same packages (openvstorage-hc or openvstorage) installed.**
-
-Execute the next steps in the shell of all KVM Nodes:
-
-#### Ubuntu
--   Add the repo to your sources
-```
-echo "deb http://apt.openvstorage.org chicago-community main" > /etc/apt/sources.list.d/ovsaptrepo.list
-```
--  Install the Open vStorage HyperConverged or not:
-*   Install Open vStorage HyperConverged
-```
-apt-get update; apt-get install openvstorage-hc
-```
-*   Install the Open vStorage packages *without* the Open vStorage Backend packages
-```
-apt-get update; apt-get install  openvstorage
-```
-
-
-
-#### CentOS
+{% include "installovs.md" %}
 
 
 
@@ -172,51 +137,11 @@ start using Open vStorage.
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 ```
 
-### Apply for a free license
-**This step is only required in case you installed the Open Storage
-Backend packages (openvstorage-hc). Without a license you will not be able to create an Open vStorage Backend. In case you only installed the Open vStorage core
-packages you can skip to the [add vPool section](#addvpool).**
+{% include "applyforlicense.md" %}
 
-Apply for a free community license in the [Administration section](Administration/administration.md).  To apply for a license fill in the
-form with your name, company name, email address, telephone number and
-indicate that you accept the license agreement. You will receive a license key
-by email on the provided email address. Click *Add license* to activate the license. A community license is limited to 4 hosts, 16 ASDs and 49 vDisks. [Contact us](contactus) in case you need a larger license.
+{% include "configurestoragerouter.md" %}
 
-### Configure the Storage Router disks
--   Open the [Open vStorage GUI](Administration/usingthegui.md) on the public IP of
-    the Storage Router and enter with the default login and password:
-    admin/admin.
--   Select from the menu *Storage Routers* and select the newly installed Storage Router from the list.
--   Select the Physical Disk Management tab. On this tab you can assign roles to the different detected physical disks. To assign a role to a disk click the gear icon and select the role from the dropdown.
--   Assign a DB role to one of the SSDs. This will reserve 10% of the SSD for the distributed database. Each Storage Router should have one disk with a DB role. Note that this role can't be removed once set.
--   Assign a scrub role to one of the disks. The scrubber is the application which does the garbage collection of snapshot data which is out of the retention. This will reserve 300 GB of space. All storage Routers must have at least one disk with the scrubbing role. Note that this role can't be removed once set.
--   Assign the read or write role to the SSDs or PCIe flash cards you want to use as caching devices for the vPools. A Storage Router must have at least one disk with a read role assigned and one with the write role assigned. A disk can have both the read and write role assigned at the same time. The read and write role can only be removed in case no vPool is using them.
-
-### Create an Open vStorage Backend
-
-**This step is only required in case you installed the Open Storage
-Backend packages (openvstorage-hc). In case you only installed the Open vStorage core
-packages you can skip to the [add vPool section](#addvpool).**
-
--   Open the [Open vStorage GUI](Administration/usingthegui.md) on the public IP of
-    the Storage Router and enter with the default login and password:
-    admin/admin.
--   Select from the menu **Backends** and click the **Add Backend** button.
-![](../Images/addbackend.png)
--   Give the Backend a name and click **Finish**. Only the letters a-z,
-    numbers and dashes (not as first or last character) are allowed. A
-    minimum of 3 and a maximum of 50 characters has to be maintained.
--   Once the Backend is created in the model, the page will refresh and
-    the Backend Details page will be featured.
--   By default all nodes with a Storage Router are shown. Additional
-    nodes can be added by clicking the **Discover** button.
--   Select the Initialize all disks icon ( ![](../Images/heartbeat.png) ) of each ASD
-    Node in the list. The initialization might take a while.
--   Once all disks are *Available* (dark blue), select the Claim all
-    disks icon ( ![](../Images/bullseye.png) ) of each ASD Node.
--   You can now [create a vPool](#addvpool) which uses this Backend by
-    selecting Open vStorage Backend as Backend Type.
--   Optionally you can create a new [preset](Administration/preset.md). Select the <i class="fa fa-flip-vertical fa-code-fork"></i>-icon on the Backend detail page to see the default policies or create a new one.
+{% include "createbackend.md" %}
 
 ### <a name="addvpool"></a>Create the vPool
 
