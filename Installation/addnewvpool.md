@@ -24,11 +24,11 @@
         Please note that the file system or share must be mounted on
         each node.
     -   In case Open vStorage Backend is selected, you can select one of
-        previously created local [Backends](Administration/backends.md). Leave the **Use
+        previously created local [Backends](Administration/usingthegui/backends.md). Leave the **Use
         local Open vStorage Backend** checked and press **Next** to load
         the available Backends. Use this option in case you want to run
         Open vStorage hyperconverged (using the SATA disk inside the
-        Storage Router as Tier 2 storage). Select a Preset from  the dropdown. This Preset defines how data is stored on the backend (e.f. 3-way replication). You can add more Presets in the detail page of a [Backend](backends.md#presets). **Once the vPool is created the Preset can't be changed.**
+        Storage Router as Tier 2 storage). Select a Preset from  the dropdown. This Preset defines how data is stored on the backend (e.f. 3-way replication). You can add more Presets in the detail page of a [Backend](Administration/usingthegui/backends.md#presets). **Once the vPool is created the Preset can't be changed.**
 -   Select the Storage Router as Initial Storage Router. Click **Next** to continue.
 
 -   On the second tab
@@ -43,7 +43,7 @@
     -   Select the Write Buffer (the amount of data that can be in the DTL but not available in the Backend).
 
 -   On the fourth tab
-    -   In case you have a [Hypervisor Management Center](Administration/administration.md#hmc) (vCenter, OpenStack) configured, you can automatically configure the vPool on the hypervisor.
+    -   In case you have a [Hypervisor Management Center](Administration/usingthegui/administration.md#hmc) (vCenter, OpenStack) configured, you can automatically configure the vPool on the hypervisor.
     -   In case you don't have a Hypervisor Management Center configured, you will not be able to check the checkbox. Some manual actions might have to be taken to correctly configure the host to use the vPool.
 
 -   On the fifth tab

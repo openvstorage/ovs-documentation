@@ -108,14 +108,14 @@ There are 2 actions possible available on a node level
 Each disk (ASD) can be managed individually. Select the dropdown box to
 see the ASD details and possible actions. 
 
-![](../Images/asd_details.png)
+![](../../Images/asd_details.png)
 
 ##### Replace a broken disk
 
 When a disk is having issues it will be highlighted in orange. You can
-try to fix the issue by pressing the *Restart* button in the ASD details
+try to fix the issue by pressing the **Restart** button in the ASD details
 section of that disk. In case the disk is broken and labeled as Faulted,
-you can remove the disk from the Backend by clicking the *Remove* button
+you can remove the disk from the Backend by clicking the **Remove** button
 in the ASD details section. This will remove the disk from the Backend.
 You can now safely add a new disk. The new disk will be labeled as
 Unitialized (White). The next step is to initialize the disk and once it
@@ -124,11 +124,11 @@ becomes available claim the disk.
 #### <a name="presets"></a> Presets
 A backend has a list of presets assigned to it. A preset consists out of a set of policies and a compression method (optional). A policy defines how the VM data is stored across the ASDs. The easiest way is replication. In that case you only need to set the replication factor. A more advanced policy allows to define the amount of fragments an object is split in, the amount of parity fragments, the minimal amounts of fragments before a write is executed and the maximal amount of fragments per ASD node. Active policies, meaning that objects are using this policy will have a green font color. Available policies which can be used but currently have no object being stored with this policy will be shown in black. In case a policy can not be met, e.g. because there are not enough ASDs or nodes, the policy will be disabled (grey). In case no policy can be met, the backend will be become write-only.
 
-To add a new preset for a backend, click the *+ Add Preset* button. Give the new preset a name. By default you can select the replication factor of fragments stored on the backend. Selecting 1 means that a single broken disk will lead to dataloss.
+To add a new preset for a backend, click the **+ Add Preset** button. Give the new preset a name. By default you can select the replication factor of fragments stored on the backend. Selecting 1 means that a single broken disk will lead to data loss.
 
 In case you want to use erasure coding instead of replication, select the advanced settings. Select the checkbox to indicate you understand the risk of adding new policies and the select compression algorithm to use. You will need to add at least one policy. You can also sort the policies according to which policy is more preferred. In case the policy can be met, the top policy will be selected. In case the policy can not be met, the second one from the list gets selected and so forth.
 
-![](../Images/addpreset.png)
+![](../../Images/addpreset.png)
 
 
 

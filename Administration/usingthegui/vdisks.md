@@ -11,7 +11,7 @@ per hour. This snapshot schedule can not be changed for the moment.
 
 The vDisk overview lists all the vDisks in the Open vStorage Cluster.
 
-![](../Images/vdisk_overview.png)
+![](../../Images/vdisk_overview.png)
 
 
 For each vDisk following info is displayed:
@@ -73,11 +73,11 @@ At the bottom of the vDisk Details page all snapshots of the vDisk are
 listed.
 
 #### Management actions
-Under Management actions you can define the settings for the VDisk/
+Under Management actions you can define the settings for the VDisk:
 -   Distributed Transaction Log mode: Currently you can set the DTL to on or off.
 -   The Caching method: Cache on Read/Cache on Write.
 -   Deduped/non-deduped policy for vDisks. In case teh setting is set to deduped it can be changed to non-deduped. Changing a vDisk from non-deduped to deduped isn't supported. It is advised to limit to the size the non-deduped vDisk can take in the read cache.
 -   The SCO size: a collection of writes which gets stored on the Backend.
 -   Size of the Write Buffer: the amount of data that can be in the DTL but not available in the Backend.
 
-![](../Images/vdiskconfigsettings.png)
+![](../../Images/vdiskconfigsettings.png)

@@ -12,7 +12,7 @@ Following actions are available for logged in users of the GUI:
 The About page displays the installed Open vStorage packages installed
 on every Node in the Open vStorage Cluster.
 
-![](../Images/aboutopenvstorage.png)
+![](../../Images/aboutopenvstorage.png)
 
 
 Add the bottom you can find an overview of the important Open vStorage
@@ -25,7 +25,7 @@ Code](https://github.com/openvstorage).
 
 The Hypervisor Management allows to register Hypervirsor Management
 Centers (HMC) such as VMware vCenter or an OpenStack Controller Node. To
-add a HMC, click the *Add new Center* button and provide a friendly
+add a HMC, click the **Add new Center** button and provide a friendly
 name, type, administrator username, password and IP address.
 
 Once a HMC is added following details will be displayed:
@@ -50,8 +50,8 @@ each Host following info is displayed:
 In case a Hosts is highlighted in red, it means the Host is known by the
 Open vStorage framework but not linked to the HMC managing this Host.
 Click the Mgmt. Center value to edit and select the correct HMC from the
-list. *Hosts highlighted in red are not covered for automated
-fail-over.*
+list. **Hosts highlighted in red are not covered for automated
+fail-over.**
 
 #### User Management
 
@@ -133,7 +133,7 @@ in memory and uptime.
 
 Under Support you can manage the support options of your Open vStorage
 environment and download the log files. When asked by the Open vStorage
-Support Team , click the *download logfiles* link and mail the logfiles
+Support Team , click the **download logfiles** link and mail the logfiles
 of the Open vStorage nodes to the support team. Under the Call Home
 section you can enable or disable the heartbeats and whether or not
 Remote Access is enabled. Enabling Remote Access will set up a VPN
@@ -147,11 +147,11 @@ found at the bottom of the page under Heartbeat data.
 Under Licenses you get an overview of the licenses entered for the Open
 vStorage environment. To apply for a free community license fill in the
 form with your name, company name, email address, telephone number and
-indicate that you accept the license agreement. Click *Register* to send
-the request. ![](../Images/register.png)
+indicate that you accept the license agreement. Click **Register** to send
+the request. ![](../../Images/register.png)
  You will receive a license key
 by email on the provided email address. Click *Add license* to add a new
-or upgrade an existing license and unlock the [Backend](/Administration/backends.md)
+or upgrade an existing license and unlock the [Backend](backends.md)
 functionality. The free community license has a build-in restriction
 which allows it to be used on maximum 4 Storage Routers and in total 16
 (ASD) disks. You will be able to create 50 namespaces. Each vPool and
@@ -164,7 +164,7 @@ Under updates you can see if there are updates available for the different compo
 #### API
 
 Links to the API of Open vStorage. You can find more info
-[here](Administration/usingtheapi.md) on using the Open vStorage API.
+[here](Administration/usingtheapi/README.md) on using the Open vStorage API.
 
 #### Log out
 

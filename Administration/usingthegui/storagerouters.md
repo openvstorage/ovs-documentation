@@ -10,7 +10,7 @@ as datastore for vMachines. Each ESXi can only host a single Storage Router.
 
 The Storage Router overview lists all the Storage Routers in the Open vStorage Cluster.
 
-![](../Images/vsa_overview.png)
+![](../../Images/vsa_overview.png)
 
 
 For each Storage Router following info is displayed:
@@ -74,4 +74,4 @@ The Physical Disk Management tab will list all the physical disks (PCIe flash ca
 To assign a role to disk, click the gear icon and select the appropriate roles from the dropdown.
 The read and write role can only be removed in case no vPool is using them. The DB and Scrub role can not be removed once assigned to a disk.
 
-![](../Images/physicaldiskmanagement.png)
+![](../../Images/physicaldiskmanagement.png)

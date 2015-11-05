@@ -14,7 +14,7 @@ stored within Open vStorage.
 The vMachine overview lists all the vMachines in the Open vStorage
 Cluster.
 
-![](../Images/vmachine_overview.png)
+![](../../Images/vmachine_overview.png)
 
 
 For each vMachine following info is displayed:

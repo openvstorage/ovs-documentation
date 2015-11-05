@@ -84,7 +84,7 @@ The top navigation lists following sections:
     used to deploy vMachines.
 -   [vMachines](vmachines.md): the Virtual Machines with vDisks served by
     Open vStorage.
--   [vDisks](vdisks/md): the virtual disks served by Open vStorage.
+-   [vDisks](vdisks.md): the virtual disks served by Open vStorage.
 -   [vTemplates](vtemplates.md): the blueprints for a new vMachines.
 -   [Backends](backends.md): the Open vStorage Backends (only applicable
     when running hyperconverged).
