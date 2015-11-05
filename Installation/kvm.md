@@ -24,7 +24,7 @@ parted -s /dev/sdx mklabel gpt
     performance.
 
 ### Install the OS and KVM
-Open vStorage can be installed on various OS. Open vStorage has been tested with [Ubuntu](#ubuntu) and CentOS(#centos). The detailed steps for these Operating Systems can be found below.
+Open vStorage can be installed on various OS. Open vStorage has been tested with [Ubuntu](#ubuntu) and [CentOS](#centos). The detailed steps for these Operating Systems can be found below.
 
 #### <a name="ubuntu"></a> Ubuntu
 ##### Install Ubuntu on all hosts
