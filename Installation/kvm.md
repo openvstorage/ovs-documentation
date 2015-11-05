@@ -28,8 +28,7 @@ Open vStorage can be installed on various OS. Open vStorage has been tested with
 
 #### <a name="ubuntu"></a> Ubuntu
 ##### Install Ubuntu on all hosts
--   Download [Ubuntu server 14.04.2 64 bit
-    ISO](http://releases.ubuntu.com/14.04.2/ubuntu-14.04.2-server-amd64.iso).
+-   Download the [Ubuntu server 14.04.2 64 bit ISO](http://releases.ubuntu.com/14.04.2/ubuntu-14.04.2-server-amd64.iso).
 -   Install [Ubuntu server 14.04.2](http://releases.ubuntu.com/14.04.2/ubuntu-14.04.2-server-amd64.iso)
     on the host, select your language and select **Install Ubuntu
     Server**.
@@ -46,7 +45,7 @@ Open vStorage can be installed on various OS. Open vStorage has been tested with
     updates**.
 -   Install the Open SSH server and the Virtual Machine Host.
 -   Install the GRUB boot loader.
--   Finish the Ubuntu installation by selecting **<Continue\**.
+-   Finish the Ubuntu installation by selecting **<Continue>**.
 
 ![](../Images/finish_install.png)
 
