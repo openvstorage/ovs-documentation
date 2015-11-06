@@ -52,65 +52,65 @@ Below you can find an example network configuration. Adjust it to your
 situation.
 
 -   Open the vSphere Client, connect to the ESXi Host and provide
-    credentials when prompted. Select the *Configuration* tab.
+    credentials when prompted. Select the **Configuration** tab.
 
 ![](../Images/configurationtab.png)
 
--   Select *Networking* from the hardware section.
+-   Select **Networking** from the hardware section.
 
 ![](../Images/networking.png)
 
--   Select *Properties...* of vSwitch0.
+-   Select **Properties...** of vSwitch0.
 
 ![](../Images/properties.png)
 
--   Select VM Network and select *Edit...*
+-   Select VM Network and select **Edit...**
 
 ![](../Images/vmnetwork.png)
 
--   Set the Network Label to Public. Click *OK* to confirm.
+-   Set the Network Label to Public. Click **OK** to confirm.
 
 ![](../Images/vmnetworkproperties.png)
 
--   Click *Close* to save the changes to vSwitch0.
+-   Click **Close** to save the changes to vSwitch0.
 
 ![](../Images/vswitch0.png)
 
--   Create a second Virtual Switch. Select *Add Networking...*.
+-   Create a second Virtual Switch. Select **Add Networking...**.
 
 ![](../Images/addnetworking.png)
 
--   Select *Virtual Machine* as Connection Type and click *Next \>*.
+-   Select **Virtual Machine** as Connection Type and click **Next \>**.
 
 ![](../Images/connectiontype.png)
 
--   Unselect all NICs and click *Next \>*.
+-   Unselect all NICs and click **Next \>**.
 
 ![](../Images/no_nic.png)
 
--   Change the Network Label to *Storage* and click *Next \>*.
+-   Change the Network Label to **Storage** and click **Next \>**.
 
 ![](../Images/privateswitch.png)
 
--   Click *Finish* to create the Private Switch.
+-   Click **Finish** to create the Private Switch.
 
 ![](../Images/vswitch1.png)
 
--   Select *Properties...* of vSwitch1 and select *Add*.
+-   Select **Properties...** of vSwitch1 and select **Add**.
 
 ![](../Images/nic_add.png)
 
--   Select *VMkernel* as Connection Type and click *Next \>*.
--   Leave everything to default and click *Next \>*.
+-   Select **VMkernel** as Connection Type and click **Next \>**.
+-   Leave everything to default and click **Next \>**.
 
 ![](../Images/connection_settings.png)
 
 -   Select an IP address for the ESXi Host and define the Subnet Mask.
-    Click *Next \>*.
+    Click **Next \>**.
 
 ![](../Images/second_ip.png)
 
--   Click *Finish*.
+-   Click **Finish**.
 
 ![](../Images/second_nic_finish.png)
 
@@ -283,7 +283,7 @@ Repeat the above steps for all ESXi Nodes in the Open vStorage Cluster.
 
 -   Select **Guided partitioning**. Select **Guided - use entire disk**.
 
-![](../mages/guided_user_entire_disk.png)
+![](../Images/guided_user_entire_disk.png)
 
 -   Select sda (marked with **VMware Virtual disk**) as disk to partition.
 
