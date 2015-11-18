@@ -20,3 +20,4 @@
     * [Using the API](Administration/usingtheapi/README.md)
     * [Using the CLI](Administration/usingthecli/README.md)
 * [Architecture](Architcture/README.md)
+* [Troubleshooting](Troubleshooting/README.md)

@@ -58,6 +58,16 @@ The details for a Storage Router are:
 -   Read: The aggregated read speed of all vDisks served by the Storage Router.
 -   Write: The aggregated write speed of all vDisks served by the Storage Router.
 
+#### Storage Router Actions
+
+##### Edit Storage Router properties
+Click the edit button to update the Failure Domain and Backup Failure Domain. Open vStorage will always run a slave MetaDataServer in the same Failure Domain as configured for the Storage Router. In case a Backup Failure Domain is configured, an additional slave MetaDataServer will be configured in the backup Failure Domain.
+
+##### Refresh the Storage Router properties
+The refresh button will refresh the Storage Router properties.
+
+
+
 #### Storage Router Administration
 
 ##### vPools served by the Storage Router
