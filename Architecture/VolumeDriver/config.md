@@ -7,7 +7,7 @@ Some of the values can be dynamically changed (dynamic reconfigurable), other va
 
 | component | key | default value | dynamically reconfigurable | remarks |
 | --- | --- | -- | --- | --- |
- | volume_router | vrouter_local_io_sleep_before_retry_usecs | "100000" | yes | delay (microseconds) before rerrying a request that failed with a retryable error |
+| volume_router | vrouter_local_io_sleep_before_retry_usecs | "100000" | yes | delay (microseconds) before retrying a request that failed with a retryable error |
  | volume_router | vrouter_local_io_retries | "600" | yes | number of retry attempts for requests that failed with a retryable error |
  | volume_router | vrouter_check_local_volume_potential_period | "1" | yes | how often to recheck the local volume potential during migration |
  | volume_router | vrouter_volume_read_threshold | "0" | yes | number of remote read requests before auto-migrating a volume - 0 turns it off |
@@ -38,6 +38,10 @@ Some of the values can be dynamically changed (dynamic reconfigurable), other va
  | filesystem | fs_metadata_backend_mds_nodes | "[]" | yes | an array of MDS node configurations for the volume metadata, each containing host and port |
  | filesystem | fs_metadata_backend_mds_apply_relocations_to_slaves | "1" | yes | an bool indicating whether to apply relocations to slave MDS tables |
  | filesystem | fs_cache_dentries | "0" | no | whether to cache directory entries locally |
+ | filesystem | fs_dtl_config_mode | "Automatic" | no | Configuration mode : Automatic | Manual |
+ | filesystem | fs_dtl_host | "" | no | DTL host |
+ | filesystem | fs_dtl_port | "0" | no | DTL port |
+ | filesystem | fs_dtl_mode | "Asynchronous" | no | DTL mode : Asynchronous | Synchronous |
  | event_publisher | events_amqp_uris | "[]" | yes | array of URIs, each consisting of an "amqp_uri" entry for a node of the AMQP cluster events shall be sent to |
  | event_publisher | events_amqp_exchange | "" | yes | AMQP exchange events will be sent to |
  | event_publisher | events_amqp_routing_key | "" | yes | AMQP routing key used for sending events |
@@ -82,19 +86,29 @@ scocache_cleanup_trigger / clean_interval should be larger than the aggregated w
  | content_addressed_cache | read_cache_serialization_path | --- | no | Directory to store the serialization of the Read Cache |
  | content_addressed_cache | serialize_read_cache | "1" | no | Whether to serialize the readcache on exit or not |
  | content_addressed_cache | clustercache_mount_points | "[]" | no | An array of directories and sizes to be used as Read Cache mount points |
+ | distributed_lock_store | dls_type | "Backend" | no | Type of distributed lock store to use (default / currently only supported value: "Backend") |
+ | distributed_lock_store | dls_arakoon_timeout_ms | "60000" | yes | Arakoon client timeout in milliseconds for the distributed lock store |
+ | distributed_lock_store | dls_arakoon_cluster_id | "" | no | Arakoon cluster identifier for the distributed lock store |
+ | distributed_lock_store | dls_arakoon_cluster_nodes | "[]" | yes | an array of arakoon cluster node configurations for the distributed lock store, each containing node_id, host and port |
  | backend_connection_manager | backend_connection_pool_capacity | "64" | yes | Capacity of the connection pool maintained by the BackendConnectionManager |
  | backend_connection_manager | backend_type | "LOCAL" | no | Type of backend connection one of ALBA, LOCAL, or S3, the other parameters in this section are only used when their correct backendtype is set |
  | backend_connection_manager | local_connection_path | --- | no | When backend_type is LOCAL: path to use as LOCAL backend, otherwise ignored |
  | backend_connection_manager | s3_connection_host | "s3.amazonaws.com" | no | When backend_type is S3: the S3 host to connect to, otherwise ignored |
  | backend_connection_manager | s3_connection_port | "80" | no | When backend_type is S3: the S3 port to connect to, otherwise ignored |
- | backend_connection_manager | s3_connection_username | "wim.leus@openvstorage.com" | no | When backend_type is S3: the S3 username, otherwise ignored |
+ | backend_connection_manager | s3_connection_username | "" | no | When backend_type is S3: the S3 username, otherwise ignored |
  | backend_connection_manager | s3_connection_password | "" | no | When backend_type is S3: the S3 password |
  | backend_connection_manager | s3_connection_verbose_logging | "1" | no | When backend_type is S3: whether to do verbose logging |
  | backend_connection_manager | s3_connection_use_ssl | "0" | no | When backend_type is S3: whether to use SSL to encrypt the connection |
- | backend_connection_manager | s3_connection_ssl_verify_host | "1" | no | When backend_type is S3: whether to verify the SSL certificate's ssubject against the host |
+ | backend_connection_manager | s3_connection_ssl_verify_host | "1" | no | When backend_type is S3: whether to verify the SSL certificate's subject against the host |
  | backend_connection_manager | s3_connection_ssl_cert_file | "" | no | When backend_type is S3: path to a file holding the SSL certificate |
  | backend_connection_manager | s3_connection_flavour | "S3" | no | S3 backend flavour: S3 (default), GCS, WALRUS or SWIFT |
  | backend_connection_manager | alba_connection_host | "127.0.0.1" | no | When backend_type is ALBA: the ALBA host to connect to, otherwise ignored |
  | backend_connection_manager | alba_connection_port | "56789" | no | When the backend_type is ALBA: The ALBA port to connect to, otherwise ignored |
- | backend_connection_manager | alba_connection_timeout | "5" | no | The timout for the ALBA proxy, in seconds |
- | backend_connection_manager | alba_connection_preset | "" | no | When backend_type is ALBA: the ALBA preset to use for new namespaces | 
+ | backend_connection_manager | alba_connection_timeout | "5" | no | The timeout for the ALBA proxy, in seconds |
+ | backend_connection_manager | alba_connection_preset | "" | no | When backend_type is ALBA: the ALBA preset to use for new namespaces |
+
+
+ <!--
+ http://10.100.129.100:8080/view/voldrv/job/volumedriver-release-ubuntu-14.04/13/consoleFull
+search for "ConfigurationTest.print_confluence_table"
+-->
