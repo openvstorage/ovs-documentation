@@ -1,8 +1,31 @@
-## Install Open vStorage on KVM
+## Install Open vStorage and integrate it with OpenStack
 
 ### Introduction
-This section provides a detailed step-by-step guide on how to setup Open
-vStorage on 3 or more nodes running the KVM hypervisor. In case you want to install OpenvStorage in combination with Openstack following the [OpenStack installation guide](openstack.md) At the end of
+This section provides a detailed step-by-step guide on how to setup Open vStorage together with OpenStack.
+
+### Architecture Overview
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+3 or more nodes running the KVM hypervisor. In case you want to install OpenvStorage in combination with Openstack following the [OpenStack installation guide](openstack.md) At the end of
 the guide you will be ready to deploy a Virtual Machine on the Open
 vStorage Cluster. When you encounter issues or are stuck somewhere, do
 not hesitate to ask for help in the public [Open vStorage

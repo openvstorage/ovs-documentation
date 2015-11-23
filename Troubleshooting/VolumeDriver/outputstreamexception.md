@@ -4,7 +4,7 @@
 
 If you fail to create new volumes with the following error messages in the cinder and volumedriver logs, your root partition might have filled up and caused the alba proxy to exit. (Naturally it's also possible that different root causes made the alba proxy die)
 
-Error message in the cinder-scheduler.log
+Error message in the cinder-scheduler.log on the controller
 
 ```
 root@ctl01:/var/log/cinder# less cinder-scheduler.log
@@ -19,7 +19,7 @@ output = check_output(\'truncate -s {0}G "{1}"\'.format(size, location), shell=T
 cmd, output=output)\n', u'CalledProcessError: Command \'truncate -s 30G "/mnt/tcp-vpool1/kaboom.raw"\' returned non-zero exit status 1\n']
 ```
 
-Error message in the tcp-vpool1.log (volumedriver)
+Error message in the tcp-vpool1.log (volumedriver) on the compute node
 ```
 root@tcpcmp01:/var/log/ovs/volumedriver# less tcp-vpool1.log | grep kaboom
 2015-09-28 16:01:39:970797 +0200 CEST -- error -- FileSystem -- do_mknod: Failed to create object Volume-f1560536-1b12-4aa0-b5be-d8129f387e23 @ "/kaboom.raw", mode 0644, uid 116, gid 121: invalid outputstream -- [0x00007f6c6affd700]
