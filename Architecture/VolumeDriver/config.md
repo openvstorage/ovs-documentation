@@ -1,6 +1,6 @@
 #### VolumeDriver Config file
-The VolumeDriver gets configured per vPool. To change the config file, edit the json located at */opt/openvstorage/config/storagedriver/storagedriver/<vpool>.json*
-Some of the values can be dynamically changed (dynamic reconfigurable), other values require a restart. To make sure the static values get applied execute ** service ovs-volumedriver-<vpool> restart**
+The VolumeDriver gets configured per vPool. To change the config file, edit the json located at */opt/openvstorage/config/storagedriver/storagedriver/vpool_name.json*
+Some of the values can be dynamically changed (dynamic reconfigurable), other values require a restart. To make sure the static values get applied execute ** service ovs-volumedriver-vpool_name restart**
 
 > **Note:**
 > Modifying the config files incorrectly might result in data loss.
