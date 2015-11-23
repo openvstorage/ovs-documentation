@@ -66,9 +66,7 @@ Some of the values can be dynamically changed (dynamic reconfigurable), other va
  | volume_manager | foc_throttle_usecs | "1000" | yes | Timeout when throttling the Failover Cache |
  | volume_manager | foc_queue_depth | "1024" | yes | Size of the queue of entries in the Failover Cache |
  | volume_manager | foc_write_trigger | "8" | yes | Trigger to start writing entries in the foc queue to the backend |
- | volume_manager | clean_interval | --- | yes | Interval between runs of scocache cleanups, in seconds.
-Should be small when running on ramdisk, larger when running on sata.
-scocache_cleanup_trigger / clean_interval should be larger than the aggregated write speed to the scocache. |
+ | volume_manager | clean_interval | --- | yes | Interval between runs of scocache cleanups, in seconds. Should be small when running on ramdisk, larger when running on sata. scocache_cleanup_trigger / clean_interval should be larger than the aggregated write speed to the scocache. |
  | volume_manager | sap_persist_interval | "300" | yes | Interval between writing SAP data, in seconds |
  | volume_manager | failovercache_check_interval_in_seconds | "300" | yes | Interval between checks of the failovercache state on the volumes |
  | volume_manager | read_cache_default_behaviour | "CacheOnRead" | yes | Default read cache behaviour, should be CacheOnWrite, CacheOnRead or NoCache |
