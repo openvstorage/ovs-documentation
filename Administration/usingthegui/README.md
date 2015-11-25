@@ -88,5 +88,5 @@ The top navigation lists following sections:
 -   [vTemplates](vtemplates.md): the blueprints for a new vMachines.
 -   [Backends](backends.md): the Open vStorage Backends (only applicable
     when running hyperconverged).
--   [Administration](administration.md)
+-   [Administration](administration.md): the administration section.
 
