@@ -1,6 +1,6 @@
 ## Using the CLI
 
-* [ovs](ovs)
-* [volumedriver_fs](volumedriver_fs)
-* [ganesha-cf](ganesha-cf)
-* [alba](alba)
+* [ovs](ovs.md)
+* [volumedriver_fs](volumedriver_fs.md)
+* [ganesha-cf](ganesha-cf.md)
+* [alba](alba.md)
