@@ -1,14 +1,14 @@
 #### The Open vStorage Interface
 
-##### The Virtual Machine Storage Backend
+##### VM-Centric Virtual File System
 Virtual File System optimized for Virtual Machines. Split volumes and non volumes
 
 
 ##### The Virtual NAS
 Scalable Nas for end users
 
-##### The block interface
+##### Block interface
 iSCSI
 
 
-##### The distributed DB interface
+##### Distributed DB interface
