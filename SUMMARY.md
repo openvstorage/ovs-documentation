@@ -28,7 +28,7 @@
     * [Framework](Architecture/Framework/README.md)
     * [VolumeDriver](Architecture/VolumeDriver/README.md)
         * [Interfaces](Architecture/VolumeDriver/Interfaces/README.md)
-        * [Distributed block layer](Architecture/VolumeDriver/Blocklayer/README.md)
+        * [Distributed Block Layer](Architecture/VolumeDriver/Blocklayer/README.md)
         * [VolumeDriver Config](Architecture/VolumeDriver/config.md)
         * [VolumeDriver Events](Architecture/VolumeDriver/events.md)
     * [ALBA](Architecture/ALBA/README.md)

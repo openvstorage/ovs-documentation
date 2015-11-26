@@ -1,7 +1,5 @@
 <a name="writebuffer"></a>
 ##### Write Buffer
 The write buffer is located on the devices of a [Storage Router](../../Administration/Usingthegui/storagerouters.md#physicaldiskmgmt) which are configured with the Write role. Typically this role is assigned to fast PCI-e flash cards or high endurance SSDs.
-When a new 4K write is executed on a vDisk, the write gets added to a log file which is located in one of the write buffer mountpoints (the scocache_mount_points in the [VolumeDriver config file](config.md)). This log file is called a Storage Container Object (SCO). Once enough writes are received, the SCO is closed and marked to be stored on the backend. The size of the write buffer can be configured per vDisk ( with a vPool default) and should be at least twice the SCO size so a SCO being filled and a SCO in transit can be accommodated.
+When a new 4K write is executed on a vDisk, the write gets added to a log file which is located in one of the write buffer mount points (the scocache_mount_points in the [VolumeDriver config file](config.md)). This log file is called a Storage Container Object (SCO). Once enough writes are received, the SCO is closed and marked to be stored on the backend. The size of the write buffer can be configured per vDisk (with a vPool default) and should be at least twice the SCO size so a SCO being filled and a SCO in transit can be accommodated.
 In case multiple SSDs are configured with the Write role, the new SCOs will be distributed in a round-robin fashion across the different devices to spread the write load.
-
-

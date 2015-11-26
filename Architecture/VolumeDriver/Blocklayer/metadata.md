@@ -2,5 +2,5 @@
 ##### The metadata
 
 2 types of metadata
-* filesystem metadata
-* volume metadata
+* File System metadata
+* Volume metadata
