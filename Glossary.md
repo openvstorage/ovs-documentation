@@ -1,6 +1,5 @@
 # ALBA
 
-
 # Open vStorage Interfaces
 
 # Distributed Block Layer
