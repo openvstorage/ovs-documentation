@@ -6,6 +6,14 @@
 
 # Distributed Storage Layer
 
+# Distributed Transaction Log
+
+# SCO
+
+# Storage Router
+
+# TLOG
+
 # VolumeDriver
 
 # Write Buffer
