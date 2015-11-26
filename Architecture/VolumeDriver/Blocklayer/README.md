@@ -1,7 +1,13 @@
 
+<<<<<<< HEAD
 #### The Distributed Block Layer
 
 The Distributed Block Layer is the core of the Open vStorage solution. It is the layer between the [Virtual File System Layer](../VirtualFileSystem/README.md) and the [Distributed Storage Layer](../ALBA/README.md). It provides the [Read Cache](#readcache) functionality, the [Write Buffers](#writebuffer), the [Distributed Transaction Log](#DTL) and the [metadata](#metadata).
+=======
+#### Distributed Block Layer
+
+The Distributed Block Layer is the core of the Open vStorage solution. It sits between the different [interfaces](../Interfaces/README.md) and the [distributed storage layer](../ALBA/README.md). It provide the [read cache](#readcache) functionality, the [write buffers](#writebuffer), the [Distributed Transaction Log](#DTL) and the [metadata](#metadata).
+>>>>>>> 423ee7335f8ff854e85c8a6136dbf2ce3fa9d528
 
 Open vStorage is the first storage system in the world to combine both a Location Based Storage and Log Structured Storage approach:
 
@@ -15,3 +21,9 @@ Open vStorage combines the best of both worlds as it has great read and write pe
 {% include "DTL.md" %}
 
 {% include "readcache.md" %}
+<<<<<<< HEAD
+=======
+
+{% include "albaproxy.md" %}
+
+>>>>>>> 423ee7335f8ff854e85c8a6136dbf2ce3fa9d528
