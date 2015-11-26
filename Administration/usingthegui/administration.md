@@ -7,19 +7,6 @@ configure your Open vStorage Cluster.
 
 Following actions are available for logged in users of the GUI:
 
-##### About Open vStorage
-
-The About page displays the installed Open vStorage packages installed
-on every Node in the Open vStorage Cluster.
-
-![](../../Images/aboutopenvstorage.png)
-
-
-Add the bottom you can find an overview of the important Open vStorage
-related websites such as the [Project
-Website](http://www.openvstorage.com) and the [Source
-Code](https://github.com/openvstorage).
-
 #### <a name="hmc"></a>Hypervisor Management
 
 The Hypervisor Management allows to register Hypervirsor Management
@@ -146,23 +133,13 @@ Remote Access is enabled. Enabling Remote Access will set up a VPN
 tunnel between the central datacenter and the individual Open vStorage
 environment. This will allow the Open vStorage Support team to remotely
 log in and troubleshoot the issue. The content of the heartbeats can be
-found at the bottom of the page under Heartbeat data.
+found under Heartbeat data.
 
-#### Licenses
-
-Under Licenses you get an overview of the licenses entered for the Open
-vStorage environment. To apply for a free community license fill in the
-form with your name, company name, email address, telephone number and
-indicate that you accept the license agreement. Click **Register** to send
-the request. ![](../../Images/register.png)
- You will receive a license key
-by email on the provided email address. Click *Add license* to add a new
-or upgrade an existing license and unlock the [Backend](backends.md)
-functionality. The free community license has a build-in restriction
-which allows it to be used on maximum 4 Storage Routers and in total 16
-(ASD) disks. You will be able to create 50 namespaces. Each vPool and
-vDisk is considered to be a namespace. For example in a single vPool
-environment, you will be able to create 49 vDisks.
+Add the bottom you can find an overview of the installed Open vStorage packages installed
+on every Node and the important Open vStorage
+related websites such as the [Project
+Website](http://www.openvstorage.com) and the [Source
+Code](https://github.com/openvstorage).
 
 #### Updates
 Under updates you can see if there are updates available for the different components of Open vStorage. Click the button to update the different components.

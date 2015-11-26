@@ -380,7 +380,7 @@ you can start using Open vStorage.
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 ```
 
-{% include "applyforlicense.md" %}
+{% include "registration.md" %}
 
 {% include "configurestoragerouter.md" %}
 
