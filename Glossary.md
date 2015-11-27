@@ -28,6 +28,7 @@ Abbreviation of Storage Container Object.
 
 
 # TLOG
+Transaction Log
 
 # vDisk
 A virtual disk served by Open vStorage. vDisks can be part of a vMachine or stand-alone.

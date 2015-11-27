@@ -1,14 +1,17 @@
 #### The Open vStorage Interface
 
-##### VM-Centric Virtual File System
-Virtual File System optimized for Virtual Machines. Split volumes and non volumes
 
+![](OpenvStorageInterfaces.png)
+
+
+##### VM-Centric Virtual File System
+Virtual File System optimized for Virtual Machines. Splits volume related IO from non volume-related IO.
 
 ##### The Virtual NAS
-Scalable Nas for end users
+Scalable NAS for end users.
 
 ##### Block interface
-iSCSI
-
+iSCSI and iSER interface.
 
 ##### Distributed DB interface
+Under development.

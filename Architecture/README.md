@@ -1,7 +1,6 @@
 ## Architecture
 
 ### Introduction
-The Open vStorage architecture consists out of 3 big components:
-* [The Framework](Framework/README.md): the management interface (GUI, API) of the VolumeDriver. It provides the necessary logic to setup and maintain an Open vStorage Cluster.
-* [The VolumeDriver](VolumeDriver/README.md): this component exposes the [different interfaces](Volumedriver/Interfaces/README.md) such as the Virtual Machine Storage Backend, the Virtual NAS, the block interface and the distributed DB interface) and implements fast, [Distributed Block Layer](VolumeDriver/Blocklayer/README.md).
-* [ALBA](ALBA/README.md): this components is responsible for the distributed self healing storage layer. It connects to (local) disks and object storage solutions.
+Here we discuss the architecture of the core components of Open vStorage:
+* The [Volume Driver](VolumeDriver/README.md) exposes various [interfaces](Volumedriver/Interfaces/README.md), implements the [Distributed Block Layer](VolumeDriver/BlockLayer/README.md) and communicates to the Distributed Storage Layer, which can be Alba or other object storage systems
+* [ALBA](ALBA/README.md), implements a self healing Distributed Storage Layer.
