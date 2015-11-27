@@ -26,6 +26,7 @@
         * [alba](Administration/usingthecli/alba.md)
 * [Architecture](Architecture/README.md)
     * [Framework](Architecture/Framework/README.md)
+        * [Master and Extra Nodes](Architecture/Framework/masterextra.md)
     * [VolumeDriver](Architecture/VolumeDriver/README.md)
         * [Interfaces](Architecture/VolumeDriver/Interfaces/README.md)
         * [Distributed Block Layer](Architecture/VolumeDriver/Blocklayer/README.md)
