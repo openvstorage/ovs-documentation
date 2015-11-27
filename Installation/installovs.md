@@ -25,8 +25,29 @@ apt-get update; apt-get install openvstorage-hc
 ```
 apt-get update; apt-get install  openvstorage
 ```
-
+-   You can now [initialize the first Storage Router](#initialize).
 
 
 #### CentOS
+-   Add the Open vStorage RPM repo
+```
+echo '[openvstorage]
+name=OVS repo
+baseurl=http://yum.openvstorage.org/CentOS/7/x86_64/dists/eugene
+enabled=1
+gpgcheck=0' > /etc/yum.repos.d/ovs.repo
+```
+-   First install the dependencies
+```
+yum install --nogpgcheck --enablerepo=fc22 librbd1 librados2 gcc volumedriver-server -y
+```
+-   Install the Open vStorage packages
+```
+yum install --nogpgcheck openvstorage -y
+```
+- As root, disable SELinux
+```
+setenforce 0
+```
+-   You can now [initialize the first Storage Router](#initialize).
 

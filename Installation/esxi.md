@@ -345,7 +345,7 @@ Cluster.
 
 {% include "installovs.md" %}
 
-### Initialize the first Storage Router
+### <a name="initialize"></a>Initialize the first Storage Router
 
 -   You are now ready to initialize the first Storage Router. Execute in
     the Storage Router shell:

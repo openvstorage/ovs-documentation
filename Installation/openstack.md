@@ -89,7 +89,7 @@ Repeat the above steps for all nodes in the Open vStorage Cluster.
 
 
 
-### Initialize the first Storage Router
+### <a name="initialize"></a>Initialize the first Storage Router
 
 -   You are now ready to initialize the first Storage Router. Execute in
     the shell:
