@@ -1,6 +1,6 @@
-### VolumeDriver
+### Volume Driver
 
-* [The interfaces](Interfaces/README.md)
-* [The distributed blocklayer](Blocklayer/README.md)
-* [VolumeDriver Config](config.md)
-* [VolumeDriver Events](events.md)
+* [Interfaces](Interfaces/README.md)
+* [Distributed Block Layer](Blocklayer/README.md)
+* [Volume Driver Config](config.md)
+* [Volume Driver Events](events.md)
