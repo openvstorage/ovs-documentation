@@ -4,39 +4,14 @@
 This section provides a detailed step-by-step guide on how to setup Open vStorage together with OpenStack.
 
 ### Architecture Overview
+Open vStorage can be used as storage platform for OpenStack through the [Open vStorage Cinder Plugin](https://github.com/openvstorage/framework-cinder-plugin). This plugin allows Open vStorage to deliver block storage for Open Stack.
 
+In contrary to DevStack, where all OpenStack functionality runs on a single node, OpenStack has split up the functionality between different nodes. A typical setup will have 3 Controller nodes. On these Controller nodes Open vStorage should not be installed. Open vStorage should only be installed on the Nova nodes. The first 3 nodes will by default be setup as master Open vStorage nodes (GUI, API, databases, …) while additional nodes will be setup as extra nodes. For Open vStorage it is essential to also run the Cinder functionality (f.e. cinder-volume) on the Nova node.
 
+![](../Images/openstacksetup.png)
 
+The Compute nodes should have at least 1 SSD or PCI-flash card (min. 100GB). Per GB read cache on SSD/PCI-e flash, you will need to reserve 10 MB RAM of the Host for Open vStorage. In case you want to install Open vStorage Hyper-converged, at least 3 additional SATA disks are required for the Open vStorage Backend.
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-3 or more nodes running the KVM hypervisor. In case you want to install OpenvStorage in combination with Openstack following the [OpenStack installation guide](openstack.md) At the end of
-the guide you will be ready to deploy a Virtual Machine on the Open
-vStorage Cluster. When you encounter issues or are stuck somewhere, do
-not hesitate to ask for help in the public [Open vStorage
-Forum](https://groups.google.com/forum/#!forum/open-vstorage). **Only
-.raw disks are supported on KVM with Open vStorage.**
-
-### What do you need to install Open vStorage on multiple nodes?
--   At least 3 KVM compliant servers. For performance reasons at least 1
-    SSD or PCI-flash card (min. 100GB) is required.
--   In case you want to install Open vStorage Hyper-converged, at least 3 additional SATA disks are required for the Open vStorage Backend.
--   Per GB read cache on SSD/PCI-e flash, you will need to reserve 10 MB RAM of the Host for Open vStorage.
 
 ### Prerequisites before starting this guide:
 -   Remove all partitions and remaining data on the physical disks. Execute for every disk other than the OS disk (replace x with the correct drive letter):
@@ -46,44 +21,13 @@ parted -s /dev/sdx mklabel gpt
 -   Enable all C-states in the BIOS of the Hosts for optimal
     performance.
 
-### Install the OS and KVM
-Open vStorage can be installed on various OS. Open vStorage has been tested with [Ubuntu](#ubuntu) and [CentOS](#centos). The detailed steps for these Operating Systems can be found below.
+### Install OpenStack
+- Install Ubuntu server 14.04 or CentOS7 (See OS specific parameters to set [here](kvm.md))
+- Install OpenStack on the controller nodes.
+- Add the Compute and Block Storage service to the Compute nodes.
 
-#### <a name="ubuntu"></a> Ubuntu
-##### Install Ubuntu on all hosts
--   Download the [Ubuntu server 14.04.2 64 bit ISO](http://releases.ubuntu.com/14.04.2/ubuntu-14.04.2-server-amd64.iso).
--   Install [Ubuntu server 14.04.2](http://releases.ubuntu.com/14.04.2/ubuntu-14.04.2-server-amd64.iso)
-    on the host, select your language and select **Install Ubuntu
-    Server**.
--   Confirm your language, select your location and configure your
-    keyboard.
--   Configure the network of the node. Select the NIC which is connected
-    to the Public port group. Enter the IP address, netmask, gateway and
-    DNS servers. For the first 3 installed nodes, the GUI will be made available on the set IP address .
--   Set a hostname, create a new user (do not use ovs as username) and
-    enter a password. There is no need to encrypt the home directory.
--   Select your timezone and partition the disks of the server. Write
-    the changes to the disk.
--   Leave the HTTP proxy information blank and select **No automatic
-    updates**.
--   Install the Open SSH server and the Virtual Machine Host.
--   Install the GRUB boot loader.
--   Finish the Ubuntu installation by selecting **<Continue>**.
+* Please see the [OpenStack install instructions](http://docs.openstack.org/) for detailed steps.*
 
-![](../Images/finish_install.png)
-
-##### Install KVM on all nodes
--   Boot the server and install additional KVM packages.
-```
-sudo apt-get install kvm libvirt0 python-libvirt virtinst
-```
-
-{% include "configureubuntu.md" %}
--   You can now go to the [Install the Open vStorage software](#installovs) section.
-
-Repeat the above steps for all nodes in the Open vStorage Cluster.
-
-{% include "installcentos.md" %}
 
 {% include "installovs.md" %}
 
@@ -123,6 +67,10 @@ start using Open vStorage.
 
 {% include "registration.md" %}
 
+### Register a Hypervisor Managent Center
+In the Administration section, **select Hypervisor Mgmt.**. Click Add new Center and complete the form. Next indicate at the bottom which Nova nodes you want to be managed by the OpenStack Controller Node. Do not create a vPool before you have registered the Hypervisor Management Center and added the nodes.
+
+
 {% include "configurestoragerouter.md" %}
 
 {% include "createbackend.md" %}
@@ -132,9 +80,9 @@ start using Open vStorage.
 ### Add more nodes to the Open vStorage Cluster
 
 Once the Open vStorage software is installed on the first node, you can
-add more nodes to the cluster. This requires Ubuntu and KVM to be installed and configured on these nodes.
+add more nodes to the cluster. This requires the COmpute and Block Storage service to be added these nodes.
 
-Execute in the KVM shell of every node (concurrent installations of multiple nodes isn't supported):
+Execute in the shell of every Compute node (concurrent installations of multiple nodes isn't supported):
 
 ```
 ovs setup
@@ -142,7 +90,7 @@ ovs setup
 
 The initialization script will ask a couple of questions:
 
--   Enter the root credentials for the KVM Node.
+-   Enter the root credentials for the Compute Node.
 -   It will search for existing Open vStorage Clusters in the network.
     Select the Cluster created earlier.
 -   Select the Public IP address of the KVM Node.
