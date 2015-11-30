@@ -188,14 +188,12 @@ ps -ef | grep libvirtd
 
 -   Passwordless authentication is required for the stack user to allow
     the migrate workflow to complete.
-
+-   Execute on each node as root (set a password for use in next step)
 ```
-# on each node as root (set a password for use in next step)
 passwd stack
 ```
-
+- On each node towards all other nodes
 ```
-# on each node towards all other nodes
 su - stack
 ssh-keygen
 ssh-copy-id stack@<all_other_nodes>
