@@ -7,9 +7,11 @@ the host as Tier 2 storage (hyperconverged). The second
 option is to only install the Open vStorage core packages. Without the
 Open vStorage Backend packages you will need to set up a separate Tier 2
 Storage Backend (Swift, Ceph, GlusterFS, ...).
+
+
 **All Open vStorage nodes should have the same packages (openvstorage-hc or openvstorage) installed.**
 
-Execute the next steps in the shell of all KVM Nodes:
+Execute the next steps in the shell of all Compute nodes:
 
 #### Ubuntu
 -   Add the repo to your sources
