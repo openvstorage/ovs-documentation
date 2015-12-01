@@ -25,6 +25,7 @@
         * [volumedriver_fs](Administration/usingthecli/volumedriver_fs.md)
         * [ganesha-cf](Administration/usingthecli/ganesha-cf.md)
         * [alba](Administration/usingthecli/alba.md)
+    * [Upgrades](Administration/upgrade.md)
 * [Architecture](Architecture/README.md)
     * [Framework](Architecture/Framework/README.md)
         * [Master and Extra Nodes](Architecture/Framework/masterextra.md)
