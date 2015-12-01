@@ -6,6 +6,15 @@ The general configuration of Open vStorage gets done in a json file per node. To
 
 | component | key | default value | dynamically reconfigurable | remarks |
 | --- | --- | -- | --- | --- |
+| core | setupcompleted | true | NA | result post install |
+| core | cfgdir | "/opt/OpenvStorage/config" | NA | default location of the config files |
+| core | nodetype | "master" or "extra" | NA | type of node: master or slave |
+| core | audittrails / keep | "30" | NA | amount of time in days to keep audit logs |
+| core | ovsdb | "/opt/OpenvStorage/db" | NA | location of the Framework DB |
+| core | basedir | "/opt/OpenvStorage" | NA | basedir for Open vStorage |
+| core | storage / volatile | "memcache" | NA | cache DB for model |
+| core | storage / volatile | "arakoon" | NA | persistent DB for model |
+
 
 
 ```
@@ -18,7 +27,6 @@ The general configuration of Open vStorage gets done in a json file per node. To
             "keep": 30
         },
         "ovsdb": "/opt/OpenvStorage/db",
-        "registered": false,
         "basedir": "/opt/OpenvStorage",
         "storage": {
             "volatile": "memcache",
