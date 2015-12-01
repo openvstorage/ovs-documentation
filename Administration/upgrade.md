@@ -82,4 +82,3 @@ start ovs-watcher-framework
 ```
 
 **Do not forget to patch files you manually patched after the installation as they might have been overwritten by the package update.**
-
