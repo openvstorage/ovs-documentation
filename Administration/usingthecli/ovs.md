@@ -1,5 +1,5 @@
 ### ovs
-The [Open vStorage Framework](../../Architecture/Framework/README.md) can be managed through a command line interface from any of the master nodes. To execute a command run
+The [Open vStorage Framework](../../Internals/Framework/README.md) can be managed through a command line interface from any of the master nodes. To execute a command run
 
 ```
 ovs <command>

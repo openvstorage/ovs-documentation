@@ -1,5 +1,5 @@
 ### ALBA
-The [ALBA component](../../Architecture/ALBA/README.md) can be managed through a command line interface from any of the nodes. To execute a command run
+The [ALBA component](../../Internals/ALBA/README.md) can be managed through a command line interface from any of the nodes. To execute a command run
 
 ```
 alba <command>

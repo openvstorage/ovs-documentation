@@ -1,5 +1,5 @@
 ### volumedriver_fs
-The [Volume Driver File System](../../Architecture/VolumeDriver/README.md) can be managed through a command line interface from any of the nodes. To execute a command run
+The [Volume Driver File System](../../Internals/VolumeDriver/README.md) can be managed through a command line interface from any of the nodes. To execute a command run
 
 ```
 volumedriver_fs <command>

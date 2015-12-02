@@ -1,4 +1,11 @@
+# ABM
+Short for ALBA Manager.
+
 # ALBA
+ALternative BAckend
+
+# Arakoon
+[Arakoon](http://arakoon.org/) is a distributed key-value store that guarantees consistency above anything else. It is developed by the Open vStorage team.
 
 # ASD
 ALBA Storage Daemon. A small process which turns a SATA drive into a disk you can use in ALBA.
@@ -18,6 +25,17 @@ A copy of the outstanding data in the write buffer of a vDisks on another Storag
 
 # Metadata
 Open vStorage uses 2 types of metadata, volume metadata describing the volume and file system metadata describing the Virtual File System Layer
+
+# NameSpace Manager
+
+# NSM
+Short for NameSpace Manager
+
+# Object Registry
+
+# OSD
+An ASD or Seagate Kinetic Drive.
+
 
 # SCO
 Abbreviation of Storage Container Object.
