@@ -1,9 +1,14 @@
 ### API examples
+Below you can find some basic examples on how to use the Open vStorage API. There are examples for:
+* [OVS Client](ovsclient)
+* [Command line](commandline)
+* [Python](python)
 
 ** Note: Make sure to escape your Client Secret if necessary (adding backslashes before e.g. semi colons, at signs, dashes, ..)**
 
-#### OVS Client
-In the below examples we will retrieve the vDisks in an Open vStorage Cluster and display the details of the first vDisk.
+#### <a name="ovsclient"></a>OVS Client
+In the below example we will retrieve the vDisks in an Open vStorage Cluster and display the details of the first vDisk.
+
 Start OVS
 ```
 ovs
@@ -35,7 +40,7 @@ Out[4]:
 ...
 ```
 
-#### Command line
+#### <a name="commandline"></a>Command line
 In the below example we will retrieve the Storage Routers in an Open vStorage Cluster.
 ```
 IP=10.100.169.100
@@ -51,7 +56,7 @@ Result:
 ["122bae9d-4321-475c-a2bf-d39a3126ffbe"]
 ```
 
-#### Python
+#### <a name="python"></a>Python
 In the below example we will retrieve the Storage Routers in an Open vStorage Cluster.
 
 ```python
