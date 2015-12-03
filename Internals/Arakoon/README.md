@@ -66,20 +66,41 @@ The Arakoon config files for Open vStorage are stored under **/opt/OpenvStorage/
 The log files for the different Arakoon databases can be found under **/var/log/arakoon**.
 
 #### Basic Arakoon commands
-##### Start an Arakoon cluster
+##### List all Arakoon databases
+All Arakoon DBs are running as a service with as name ovs-arakoon-databasename.
+
 ```
-/opt/OpenvStorage/ovs/extensions/db/arakoon/ArakoonManagement.py --start --cluster <clustername>
+ovs monitor services
+
+...
+ovs-arakoon-ovs-bknd-poc01-abm start/running, process 16308
+ovs-arakoon-ovs-bknd-poc01-nsm_0 start/running, process 20064
+ovs-arakoon-ovsdb start/running, process 19901
+ovs-arakoon-voldrv start/running, process 20400
+...
+```
+In this case we have 4 Arakoon clusters running: ovsdb, voldrv, ovs-bknd-poc01-nsm_0 and ovs-bknd-poc01-abm.
+
+
+##### Start an Arakoon cluster
+To start the ovsdb cluster:
+
+```
+start ovs-arakoon-ovsdb
 ```
 
-##### Starting a specif node Node
-To start a specific node (nodename) from a cluster execute
+##### Retart an Arakoon cluster
+To restart the ovsdb cluster:
+
 ```
-/usr/bin/arakoon -daemonize -config /root/cfg/my_cluster.cfg --node nodename
+restart ovs-arakoon-ovsdb
 ```
+
 
 ##### Stop an Arakoon cluster
+To start the ovsdb cluster:
 ```
-/opt/OpenvStorage/ovs/extensions/db/arakoon/ArakoonManagement.py --stop --cluster <clustername>
+stop ovs-arakoon-ovsdb
 ```
 
 ##### Check if an Arakoon cluster has a master
@@ -98,22 +119,7 @@ cluster$> arakoon -config /opt/OpenvStorage/config/arakoon/ovsdb/ovsdb.cfg --get
 cluster$> arakoon -config /opt/OpenvStorage/config/arakoon/ovsdb/ovsdb.cfg --delete some_key
 cluster$> arakoon -config /opt/OpenvStorage/config/arakoon/ovsdb/ovsdb.cfg --get some_key
 Fatal error: exception Arakoon_exc.Exception(5, "some_key")
-$>
 ```
-
-
-##### Grow the cluster
-When you intend to grow your cluster, it might be interesting to clone the existing node prior to changing the cluster configuration. Once the cluster configuration is changed to two nodes, both nodes need to accept an update before it will be accepted. If the first node contains a lot of data, the second node must perform a large catchup operation (to make it in sync with the original node). To minimize the catchup window, you can clone the first node in the cluster before the configuration is changed. This way the catchup procedure is limited to the updates that were added since the moment of cloning.
-
-To add a clone, add a new node to the configuration file and start it this way:
-```
-/usr/bin/arakoon -config /root/cfg/my_cluster.cfg --node extranode -catchup-only
-```
-**Important: Make sure that the node (extranode) is added to the cluster parameter in the configuration file of each existing node.**
-
-When the cloning is finished, you can start the new node as a normal node. A cluster protects itself by not answering to nodes it does not know. This means adding a node means you need to restart the existing nodes one by one to load the updated config files.
-
-
 
 ##### Collapsing TLogs
 When the number of updates is higher than the number of additions, the collection of TLogs keeps on growing. You can however reduce the space needed on disk if you collapse old TLogs into a head database.
@@ -167,37 +173,16 @@ The backup of the database can be done by running the following command:
 arakoon --backup-db ricky 127.0.0.1 7080 /mnt/drv/2011-19-07/mybackup.db
 ```
 
-#### A simple example using the Arakoon Python Client
-The python API is best explained through a simple example. The code below creates a client, and sets a few values.
+#### A simple example using the OVS Python Client
+How to manage Arakoon through the  python API is best explained through a simple example. The code below creates a client and grows the cluster:
 
+Start the OVS client
 ```
-from arakoon import Arakoon
+ovs
+```
 
-def make_client ():
-    clusterId = 'ricky'
-    config = Arakoon.ArakoonClientConfig(
-        clusterId,
-        {
-        "arakoon_0":("127.0.0.1",4000),
-        "arakoon_1":("127.0.0.1",4001),
-        "arakoon_2":("127.0.0.1",4002)})
-    client = Arakoon.ArakoonClient(config)
-    return client
-
-if __name__ == '__main__':
-    c = make_client()
-    c.set('foo','bar')
-    print "foo='%s'" % c.get('foo')
-    c['bla_bla'] = 'whatever'
-    print "bla_bla='%s'" % (c['bla_bla'])
-    c.delete('foo')
-    try:
-        v = c['foo']
-    except KeyError:
-        print "foo is no longer there, since we deleted it"
-
-    del c['bla_bla']
-    print "have bla_bla?", 'bla_bla' in c
-
-    print "\nHave fun,\n"
+Extend the cluster with a new node (new_ip)
+```
+from ovs.extensions.db.arakoon.ArakoonInstaller import ArakoonInstaller
+ArakoonInstaller.extend_cluster(master_ip, new_ip, cluster_name, exclude_ports, base_dir)
 ```
