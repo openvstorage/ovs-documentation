@@ -1204,7 +1204,7 @@ Main actions:
 | Action |  Action/Link | Type | Input | Response |
 |--------|--------------|------|-------|----------|
 | Rollback a vDisk | rollback | POST | {"timestamp": \<timestamp\>} | GUID of a Celery task |
-| Update the parameters of a vDisk | set_config_params | POST | {"set_config_params" :{"dtl_mode": str in [sync, a_sync, no_sync],"sco_size": int in [4, 8, 16, 32, 64, 128],"dtl_target": str, ip,"dedupe_mode": str in [dedupe, non_dedupe],"write_buffer": int, min 128, max 10240,"cache_strategy": str in [none, on_read, on_write],"readcache_limit": int, min 1, max 10240, optional}} | GUID of a Celery task |
+| Update the parameters of a vDisk | set_config_params | POST | {"set_config_params" : {"dtl_mode": str in [sync, a_sync, no_sync],"sco_size": int in [4, 8, 16, 32, 64, 128],"dtl_target": str, ip,"dedupe_mode": str in [dedupe, non_dedupe],"write_buffer": int, min 128, max 10240,"cache_strategy": str in [none, on_read, on_write],"readcache_limit": int, min 1, max 10240, optional}} | GUID of a Celery task |
 
 
 ### vMachines
@@ -1461,70 +1461,3 @@ For each Task following info is provided:
 -   ready: Boolean indicating if the Task is finished.
 -   id: Celery id of the Task.
 
-### API examples
-
-In the below examples we will retrieve the Storage Routers in an Open
-vStorage Cluster.
-
-### Command line
-
-Make sure to escape your Client Secret if necessary (adding backslashes
-before e.g. semi colons, at signs, dashes, ..)
-
-```
-IP=10.100.169.100
-CLIENTSECRET=\@GXgYvjthI6P2VP1\{\|XV{\@\@qA\'\!ti\"Mivxrs\-IP+gVD+~K\?wKl+HwKN\/5eaasqq\;
-CLIENTID=8f3ceef2-8fe2-4c89-b867-b52608828bb6
-TOKEN=`curl -X POST -u $CLIENTID:$CLIENTSECRET -d "grant_type=client_credentials" -s -k https://$IP/api/oauth2/token/ | python -c 'import json,sys;d=json.load(sys.stdin);print d["access_token"]'`
-curl -X GET -H "Accept: application/json; version=1" -H "Authorization: Bearer $TOKEN" -k https://$IP/api/storagerouters/
-```
-
-Result:
-
-```
-["122bae9d-4321-475c-a2bf-d39a3126ffbe"]
-```
-
-### Python
-
-```python
-#!/usr/bin/python
-
-import sys
-import urllib2
-import urllib
-import json
-import base64
-
-ip = '10.100.169.100'
-client_id = '8f3ceef2-8fe2-4c89-b867-b52608828bb6'
-client_secret = '@GXgYvjthI6P2VP1{|XV{@@qA\'!ti"Mivxrs-IP+gVD+~K?wKl+HwKN/5eaasqq;'
-
-headers = {'Accept': 'application/json'}
-auth_url = 'https://{0}/api/oauth2/token/'.format(ip)
-base_url = 'https://{0}/api/'.format(ip)
-
-headers['Authorization'] = 'basic {0}'.format(base64.encodestring('{0}:{1}'.format(client_id, client_secret)).strip())
-request = urllib2.Request(auth_url, data=urllib.urlencode({'grant_type': 'client_credentials'}), headers=headers)
-response = urllib2.urlopen(request).read()
-
-token = json.loads(response)['access_token']
-
-headers['Authorization'] = 'Bearer {0}'.format(token)
-headers['Accept'] = 'application/json; version=*'
-
-request = urllib2.Request(base_url + 'storagerouters/', None, headers=headers)
-response = urllib2.urlopen(request).read()
-
-data = json.loads(response)
-
-print json.dumps(data, sort_keys=True, indent=4)
-```
-
-Result:
-
-```
-[
-    "122bae9d-4321-475c-a2bf-d39a3126ffbe"
-]
-```
