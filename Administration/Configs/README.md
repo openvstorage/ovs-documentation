@@ -1,6 +1,8 @@
 ### Open vStorage Config files
 
-Open vStorage can be configured through various config files. This section provides an overview of the different files.
+Open vStorage can be configured through various config files. This section provides an overview of these different files.
+* [alba](alba.md)
+* [arakoon](arakoon.md)
 * [ovs](ovs.md)
 * [vpool](vpool.md)
-* [alba](alba.md)
+

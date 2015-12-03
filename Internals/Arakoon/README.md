@@ -24,28 +24,11 @@ The master node manages all the updates for all the clients. Clients only talk t
 The diagram below shows 3 clients connected to an Arakoon cluster that consists of 3 Arakoon nodes.
 ![](../Images/ArakoonDeployment.png)
 
-### Arakoon Config files
-The Arakoon config files for Open vStorage are stored under **/opt/OpenvStorage/config/arakoon**.
-```
-root@cmp02:/opt/OpenvStorage/config/arakoon# ls -als
-total 0
-0 drwxrwxr-x 1 ovs ovs  98 Dec  2 11:40 .
-0 drwxr-xr-x 1 ovs ovs 228 Dec  2 11:23 ..
-0 drwxrwxr-x 1 ovs ovs 166 Dec  2 11:32 ovs-bknd-poc01-abm
-0 drwxrwxr-x 1 ovs ovs  48 Dec  2 11:32 ovs-bknd-poc01-nsm_0
-0 drwxrwxr-x 1 ovs ovs  18 Dec  1 17:29 ovsdb
-0 drwxr-xr-x 1 ovs ovs  20 Dec  2 11:40 voldrv
-```
-
-In the above case you can see ovsdb, voldrv and a ABM manager (for a backend named ovs-bknd-poc01) and a first NSM for that backend (ovs-bknd-poc01). There will be a ABM per created backend and multiple NSM databases. The amount of NSM databases scales automatically with every 50 created volumes in the cluster.
-
-Inside the directory of the DB you can find the cluster configuration file, a file .
-
+### Arakoon config files
+The Arakoon config files for Open vStorage are stored under **/opt/OpenvStorage/config/arakoon/database_name/**. See the [Config section](../../Administration/Configs/arakoon.md) for more details.
 
 ### Arakoon Log files
 The log files for the different Arakoon databases can be found under **/var/log/arakoon**.
-
-
 
 #### Basic Arakoon commands
 ##### Start an Arakoon cluster
@@ -53,13 +36,31 @@ The log files for the different Arakoon databases can be found under **/var/log/
 /opt/OpenvStorage/ovs/extensions/db/arakoon/ArakoonManagement.py --start --cluster <clustername>
 ```
 
+##### Starting a specif node Node
+To start a specific node (nodename) from a cluster execute
+```
+/usr/bin/arakoon -daemonize -config /root/cfg/my_cluster.cfg --node nodename
+```
+
 ##### Stop an Arakoon cluster
 ```
 /opt/OpenvStorage/ovs/extensions/db/arakoon/ArakoonManagement.py --stop --cluster <clustername>
 ```
 
+### Check if an Arakoon cluster has a master
+An Arakoon cluster always has one master node. Arakoon uses Multi-Paxos to decide which node becomes the master node. In the below code sample we will check if the ovsdb is functioning correctly and has a master node selected.
+```
+/usr/bin/arakoon --who-master -config /opt/OpenvStorage/config/arakoon/ovsdb/ovsdb.cfg
+```
+The result will be the id of the selected master node.
 
-### How to check if Arakoon is functioning
+### Grow the cluster
+When you intend to grow your cluster, it might be interesting to clone the existing node prior to changing the cluster configuration. Once the cluster configuration is changed to two nodes, both nodes need to accept an update before it will be accepted. If the first node contains a lot of data, the second node must perform a large catchup operation (to make it in sync with the original node). To minimize the catchup window, you can clone the first node in the cluster before the configuration is changed. This way the catchup procedure is limited to the updates that were added since the moment of cloning.
 
-'''
-'''
+To add a clone, add a new node to the configuration file and start it this way:
+```
+arakoon -config /root/cfg/my_cluster.cfg --node extranode -catchup-only
+```
+**Important: Make sure that the node (extranode) is added to the cluster parameter in the configuration file.**
+
+When the cloning is finished, you can start the new node as a normal node.
