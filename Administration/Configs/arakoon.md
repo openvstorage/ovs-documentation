@@ -66,11 +66,12 @@ log_level = info
 tlog_dir = /opt/OpenvStorage/db/arakoon/ovsdb/tlogs
 log_dir = /var/log/arakoon/ovsdb
 ```
-** Note: Modifying the config files incorrectly might result in a corrupt database and data loss.
 
 A typical Arakoon config file consists out of 2 parts
 * Global settings for the cluster
 * Settings per node of the cluster
+
+** Note: Modifying the config files incorrectly might result in a corrupt database and data loss.
 
 #### Global Settings
 The global section of the configuration file defines the Arakoon setup. These are the possible parameters:
