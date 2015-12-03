@@ -13,14 +13,14 @@ Arakoon aims to be easy to understand and use, whilst at the same time taking th
 ### Where is Arakoon used in Open vStorage?
 Arakoon is as database for various components of the Open vStorage cluster.
 * The [Framework](../Framework/README.md) model is stored in the DB named **ovsdb**. It stores the details or Storage Routers, vDisks, vMachine, vPools.
-* The [Volume Driver](../VolumeDriver/README.md) model is stored in the DB named **voldrv**. It stores the Volume Driver cluster config, the metadata of the File System (mapping from /path/to/file -> object ID (volumedriver or filedriver object) exposed by the Volume Driver, the Object Registry - the location of objects in the cluster (which VolumeDriver in the cluster runs ("owns") the file/volume), the family tree of a volume (clone-parent relation), replication , distributed locking and scrub management.
+* The [Volume Driver](../VolumeDriver/README.md) model is stored in the DB named **voldrv**. It stores the Volume Driver cluster config, the metadata of the File System (mapping from /path/to/file -> object ID (volumedriver or filedriver object) exposed by the Volume Driver, the Object Registry - the location of objects in the cluster (which VolumeDriver in the cluster runs "owns" the file/volume), the family tree of a volume (clone-parent relation), replication , distributed locking and scrub management.
 * The metadata of the [ALBA backend](../ALBA/README.md) are stored in a ABM DB and multiple NSM DBs. The NSM DBs (NameSpace Manager DBs) contain the meta of each stored fragment (ASD, manifest). A single NSM DB can contain data for different namespaces (volumes). The ABM DB (ALBA Manager) contains which NSM DB contains the metadata for which namespace/volume.
 
 ### An Arakoon deployment
 An Arakoon cluster consist of a small collection of nodes (typically 1,2,3 or 5 nodes) that contain the full range of key-value pairs, and clients that manipulate the key/value space. In principle, all nodes have the entire key/value space. There is one distinguished node called the master with which all clients communicate to perform updates. A client contacts any node to find out the master, and then just conversates with the master. If a master dies, a new one is elected automatically, and clients fail over to that master. A slave node is a node that is not master. A node that is not up-to-date cannot become master.
 
 The diagram below shows 3 clients connected to an Arakoon cluster that consists of 3 Arakoon nodes.
-![](../Images/ArakoonDeployment.png)
+![](../../Images/ArakoonDeployment.png)
 
 Update to the Arakoon database are consistent. An Arakoon client always looks up the master of a cluster and then sends a request to the master. The master node of a cluster has a queue of all client requests. The moment that a request is queued, the master node sends the request to all his slaves and writes the request in the Transaction Log (TLog). When the slaves receive a request, they store this also in their proper TLog and send an acknowledgement to the master.
 
