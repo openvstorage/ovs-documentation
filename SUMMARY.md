@@ -20,6 +20,7 @@
         * [Backends](Administration/usingthegui/backends.md)
         * [Administration](Administration/usingthegui/administration.md)
     * [Using the API](Administration/usingtheapi/README.md)
+        * [Api examples](Administration/usingtheapi/apiexamples.md)
     * [Using the CLI](Administration/usingthecli/README.md)
         * [alba](Administration/usingthecli/alba.md)
         * [arakoon](Administration/usingthecli/arakoon.md)
