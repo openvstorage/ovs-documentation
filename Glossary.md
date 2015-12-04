@@ -8,7 +8,7 @@ ALternative BAckend
 Arakoon is a distributed key-value store that guarantees consistency above anything else. It is developed by the Open vStorage team.
 
 # ASD
-ALBA Storage Daemon. A small process which turns a SATA drive into a disk you can use in ALBA.
+ALBA Storage Device. A process which turns a SATA drive into a disk you can use in ALBA.
 
 # Backend
 

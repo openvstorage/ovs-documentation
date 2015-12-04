@@ -45,5 +45,19 @@ The different option are:
 ```
 cat /opt/alba-asdmanager/config/config.json | grep node_id
 ```
+#### Rebalancing
+Alba slightly prefers emptier OSDs for fragments on new writes, and thus tries to achieve a good balance. This is not enough. For example, after replacing a defect drive in a well filled Alba, the new drive will be empty and way below the average fill rate. So the maintenance agents actively rebalance the drives.
+
+Currently the strategy is this. The drives are categorized to be in one of three buckets: **low**, **ok**, **high*.
+
+Then, a batch of random manifests are fetched. For each of the manifests, the rebalancer tries to find a move of the fragments on an OSD in **high** towards an OSD from **low**. In absence of such a move, a less ambitious move (**high** to **ok** or **ok** to **low**) is proposed for that manifest. The batch is sorted according to the possible moves, and only a small fraction of moves (the very best ones) is actually executed. Then the process is repeated until the fill rates are acceptable.
+
+The reasoning behind it is that it is rather cheap to fetch manifests and do some calculations, but it is expensive to move fragments and update the manifests accordingly. We really want a move to count. Also we want to avoid a combination of moving from **high** to **ok** and next from **ok** to **low** where a single move from **high** to **low** would have been possible.
+
+To stop the rebalancing process execute
+```
+root@cmp02:~# alba get-maintenance-config --config=/opt/OpenvStorage/config/arakoon/<backendname>-abm/<backendname>-abm.cfg  --disable-rebalance
+```
+
 
 
