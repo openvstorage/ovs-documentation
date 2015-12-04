@@ -67,7 +67,7 @@ The log files for the different Arakoon databases can be found under **/var/log/
 
 #### Basic Arakoon commands
 ##### List all Arakoon databases
-All Arakoon DBs are running as a service with as name ovs-arakoon-databasename.
+All Arakoon DBs are running as a service with as name ovs-arakoon-\<databasename\>.
 
 ```
 ovs monitor services
@@ -89,7 +89,7 @@ To start the ovsdb cluster:
 start ovs-arakoon-ovsdb
 ```
 
-##### Retart an Arakoon cluster
+##### Restart an Arakoon cluster
 To restart the ovsdb cluster:
 
 ```

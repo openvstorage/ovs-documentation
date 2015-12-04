@@ -5,7 +5,7 @@ Short for ALBA Manager.
 ALternative BAckend
 
 # Arakoon
-[Arakoon](http://arakoon.org/) is a distributed key-value store that guarantees consistency above anything else. It is developed by the Open vStorage team.
+Arakoon is a distributed key-value store that guarantees consistency above anything else. It is developed by the Open vStorage team.
 
 # ASD
 ALBA Storage Daemon. A small process which turns a SATA drive into a disk you can use in ALBA.
