@@ -34,7 +34,7 @@ Maintenance config now is { Maintenance_config.enable_auto_repair = true;
 ```
 
 The different option are:
-* --auto-repair-add-disabled-node=<node_id of the ASD node> : add a node to the list of nodes which should not be automatically rebuild.
+* --auto-repair-add-disabled-node=&lt;node_id of the ASD node&gt; : add a node to the list of nodes which should not be automatically rebuild.
 * --auto-repair-remove-disabled-node=\<node_id of the ASD node\> : remove a node to the list of nodes which should not be automatically rebuild.
 * --auto-repair-timeout-seconds=\<int\> : interval before the automated repair starts rebuilding data.
 * --disable-auto-repair :  diskable the self healing functionality.
@@ -49,7 +49,7 @@ cat /opt/alba-asdmanager/config/config.json | grep node_id
 #### Rebalancing
 Alba slightly prefers emptier OSDs for fragments on new writes, and thus tries to achieve a good balance. This is not enough. For example, after replacing a defect drive in a well filled Alba, the new drive will be empty and way below the average fill rate. So the maintenance agents actively rebalance the drives.
 
-Currently the strategy is this. The drives are categorized to be in one of three buckets: **low**, **ok**, **high*.
+Currently the strategy is this. The drives are categorized to be in one of three buckets: **low**, **ok**, **high**.
 
 Then, a batch of random manifests are fetched. For each of the manifests, the rebalancer tries to find a move of the fragments on an OSD in **high** towards an OSD from **low**. In absence of such a move, a less ambitious move (**high** to **ok** or **ok** to **low**) is proposed for that manifest. The batch is sorted according to the possible moves, and only a small fraction of moves (the very best ones) is actually executed. Then the process is repeated until the fill rates are acceptable.
 
