@@ -35,12 +35,12 @@ Maintenance config now is { Maintenance_config.enable_auto_repair = true;
 
 The different option are:
 * `--auto-repair-add-disabled-node=<node_id of the ASD node>` : add a node to the list of nodes which should not be automatically rebuild.
-* --auto-repair-remove-disabled-node=\<node_id of the ASD node\> : remove a node to the list of nodes which should not be automatically rebuild.
-* --auto-repair-timeout-seconds=\<int\> : interval before the automated repair starts rebuilding data.
-* --disable-auto-repair :  diskable the self healing functionality.
-* --disable-rebalance : disable the rebalancer.
-* --enable-auto-repair : enable the self healing functionality.
-* --enable-rebalance : enable the rebalancer.
+* `--auto-repair-remove-disabled-node=<node_id of the ASD node>` : remove a node to the list of nodes which should not be automatically rebuild.
+* `--auto-repair-timeout-seconds=<int>` : interval before the automated repair starts rebuilding data.
+* `--disable-auto-repair` :  diskable the self healing functionality.
+* `--disable-rebalance` : disable the rebalancer.
+* `--enable-auto-repair` : enable the self healing functionality.
+* `--enable-rebalance` : enable the rebalancer.
 
 The ASD node ID can be retrieved from the Backend Detail page in the GUI or by executing in the shell of the ASD node following command:
 ```

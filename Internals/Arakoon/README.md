@@ -67,7 +67,7 @@ The log files for the different Arakoon databases can be found under **/var/log/
 
 #### Basic Arakoon commands
 ##### List all Arakoon databases
-All Arakoon DBs are running as a service with as name ovs-arakoon-\<databasename\>.
+All Arakoon DBs are running as a service with as name `ovs-arakoon-<databasename>`.
 
 ```
 ovs monitor services
@@ -128,7 +128,7 @@ To collapse the TLogs:
 ```
 arakoon --collapse <tlog_dir> <n>
 ```
-Where the <tlog_dir> is defined in the Arakoon configuration file and <n> is the number of TLogs that must remain. For example when you have 40 TLog files in /tmp/Node_0 and you want to keep the five most recent TLogs, run this command:
+Where the `<tlog_dir>` is defined in the Arakoon configuration file and `<n>` is the number of TLogs that must remain. For example when you have 40 TLog files in /tmp/Node_0 and you want to keep the five most recent TLogs, run this command:
 ```
 arakoon --collapse /tmp/Node_0 5
 ```
