@@ -60,10 +60,10 @@ XXX.tlog: The transaction log files, contains the logs for all transactions exec
 XXX.tlx: A compressed transaction log file.
 
 ### Arakoon config files
-The Arakoon config files for Open vStorage are stored under **/opt/OpenvStorage/config/arakoon/database_name/**. See the [Config section](../../Administration/Configs/arakoon.md) for more details.
+The Arakoon config files for Open vStorage are stored under `/opt/OpenvStorage/config/arakoon/<database_name>/`. See the [Config section](../../Administration/Configs/arakoon.md) for more details.
 
 ### Arakoon Log files
-The log files for the different Arakoon databases can be found under **/var/log/arakoon**.
+The log files for the different Arakoon databases can be found under `/var/log/arakoon`.
 
 #### Basic Arakoon commands
 ##### List all Arakoon databases

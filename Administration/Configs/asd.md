@@ -20,3 +20,8 @@ The different fields are:
 * log_level: Configured log level.
 * port: Port on which the ASD is exposed.
 
+In case you update the json, kill the process and let upstart take care of the restart.
+
+
+**Note: Modifying the config files incorrectly might result in data loss.**
+
