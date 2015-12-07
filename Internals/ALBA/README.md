@@ -16,6 +16,8 @@ Unlike most alternatives, Alba is a consistent store. Since it is optimised for 
 
 #### Architecture
 
+![](../../Images/ALBA Architecture.png)
+
 ##### ALBA Proxy
 ALBA currently run a proxy service on the same host as the Volume Driver.
 
@@ -40,13 +42,10 @@ ASD’s follow the same strategy as the Kinetic drives, advertising themselves v
 
 OSDs (Object Storage Daemon) are generic abstraction over ASDs and Seagate Kinetic drives.
 
-![](../../Images/ALBA Architecture.png)
-
-
 ### Fragments & Objects
 Alba stores objects, grouped per namespace. These objects are divided into chunks which are encoded into fragments. The fragments are stored onto OSDs under a key.
 A manifest for the object is stored in the corresponding NSM. The manifest contains (amongst other things) the locations of all fragments
 that compose this object.
 
-ALBA divides the object in chunks to ensure data safety. By Spreading the fragments across multiple OSDs, a drive or even node failure can be survived. Objects should be dispersed with over disks with a certain number (k) data fragments, a certain number (m) of parity fragments, and a limit (x) on the number of disks from the same node that can be used for a specific object. An upload can be successful, even when not all (k + m) fragments are stored. There’s a minimum number of fragments (c ), with (k ≤ c ≤ k + m) that needs to have been stored, before an upload can be considered successful. The tuple (k, m, c, x) describes a **policy**.
+ALBA divides the object in chunks to ensure data safety. By Spreading the fragments across multiple OSDs, a drive or even node failure can be survived. Objects should be dispersed with over disks with a certain number (k) data fragments, a certain number (m) of parity fragments, and a limit (x) on the number of disks from the same node that can be used for a specific object. An upload can be successful, even when not all (k + m) fragments are stored. There’s a minimum number of fragments (c), with (k ≤ c ≤ k + m) that needs to have been stored, before an upload can be considered successful. The tuple (k, m, c, x) describes a **policy**.
 Objects can also be encrypted or compressed. The combination of one or more policies, the type of compression and the encryption key is a **preset**.

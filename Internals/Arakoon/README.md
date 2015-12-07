@@ -106,7 +106,7 @@ stop ovs-arakoon-ovsdb
 ##### Check if an Arakoon cluster has a master
 An Arakoon cluster always has one master node. Arakoon uses Multi-Paxos to decide which node becomes the master node. In the below code sample we will check if the ovsdb is functioning correctly and has a master node selected.
 ```
-/usr/bin/arakoon --who-master -config /opt/OpenvStorage/config/arakoon/ovsdb/ovsdb.cfg
+arakoon --who-master -config /opt/OpenvStorage/config/arakoon/ovsdb/ovsdb.cfg
 ```
 The result will be the id of the selected master node.
 
@@ -126,7 +126,7 @@ When the number of updates is higher than the number of additions, the collectio
 
 To collapse the TLogs:
 ```
-/usr/bin/arakoon --collapse <tlog_dir> <n>
+arakoon --collapse <tlog_dir> <n>
 ```
 Where the <tlog_dir> is defined in the Arakoon configuration file and <n> is the number of TLogs that must remain. For example when you have 40 TLog files in /tmp/Node_0 and you want to keep the five most recent TLogs, run this command:
 ```
@@ -135,7 +135,7 @@ arakoon --collapse /tmp/Node_0 5
 ##### Investigating TLogs
 It is not possible to read TLogs as stored on the file system. If you want human-readable output, you need a dump of the TLog.
 ```
-/usr/bin/arakoon --dump-tlog <path_to_tlog_file>
+arakoon --dump-tlog <path_to_tlog_file>
 ```
 For example:
 

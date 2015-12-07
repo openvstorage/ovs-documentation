@@ -13,6 +13,7 @@ The result is a json with configuration
 ```
 {"success":true,"result":{"enable_auto_repair":true,"auto_repair_timeout_seconds":900.0,"auto_repair_disabled_nodes":[],"enable_rebalance":true}}
 root@cmp02:~#
+```
 
 The different configuration fields:
 * enable_auto_repair: true or false. Indicates if a broken ASD gets automatically rebuilt on the remaining ASDs. Default is true.
@@ -41,7 +42,7 @@ The different option are:
 * --enable-auto-repair : enable the self healing functionality.
 * --enable-rebalance : enable the rebalancer.
 
-** Note: the ASD node ID can be retrieved from the Backend Detail page in the GUI or by executing in the shell of the ASD node following command:
+The ASD node ID can be retrieved from the Backend Detail page in the GUI or by executing in the shell of the ASD node following command:
 ```
 cat /opt/alba-asdmanager/config/config.json | grep node_id
 ```
