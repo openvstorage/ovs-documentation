@@ -34,7 +34,7 @@ Maintenance config now is { Maintenance_config.enable_auto_repair = true;
 ```
 
 The different option are:
-* --auto-repair-add-disabled-node=&lt;node_id of the ASD node&gt; : add a node to the list of nodes which should not be automatically rebuild.
+* --auto-repair-add-disabled-node\=\<node_id of the ASD node\> : add a node to the list of nodes which should not be automatically rebuild.
 * --auto-repair-remove-disabled-node=\<node_id of the ASD node\> : remove a node to the list of nodes which should not be automatically rebuild.
 * --auto-repair-timeout-seconds=\<int\> : interval before the automated repair starts rebuilding data.
 * --disable-auto-repair :  diskable the self healing functionality.
