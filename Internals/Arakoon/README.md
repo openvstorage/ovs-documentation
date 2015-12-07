@@ -186,3 +186,4 @@ Extend the cluster with a new node (new_ip)
 from ovs.extensions.db.arakoon.ArakoonInstaller import ArakoonInstaller
 ArakoonInstaller.extend_cluster(master_ip, new_ip, cluster_name, exclude_ports, base_dir)
 ```
+
