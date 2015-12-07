@@ -4,7 +4,7 @@ ALBA has built-in self healing functionality. In case an ASD is broken, fragment
 The self healing has some default parameters but these can be overridden through the ALBA CLI.
 
 ##### Retrieve the maintenance config
-Run the **alba get-maintenance-config** command with as option the config of the config file of the ABM Arakoon. (See [Arakoon config files](../../Administration/Configs/arakoon.md) for more information).
+Run the **alba get-maintenance-config** command with as option the config of the config file of the ABM Arakoon. (See [Arakoon config files](../../Administration/Configs/arakoon.md) for more information.)
 
 ```
 root@cmp02:~# alba get-maintenance-config --config=/opt/OpenvStorage/config/arakoon/<backendname>-abm/<backendname>-abm.cfg  --to-json
@@ -34,7 +34,7 @@ Maintenance config now is { Maintenance_config.enable_auto_repair = true;
 ```
 
 The different option are:
-* --auto-repair-add-disabled-node=\<node_id of the ASD node\> : add a node to the list of nodes which should not be automatically rebuild.
+* --auto-repair-add-disabled-node=<node_id of the ASD node> : add a node to the list of nodes which should not be automatically rebuild.
 * --auto-repair-remove-disabled-node=\<node_id of the ASD node\> : remove a node to the list of nodes which should not be automatically rebuild.
 * --auto-repair-timeout-seconds=\<int\> : interval before the automated repair starts rebuilding data.
 * --disable-auto-repair :  diskable the self healing functionality.
@@ -55,7 +55,7 @@ Then, a batch of random manifests are fetched. For each of the manifests, the re
 
 The reasoning behind it is that it is rather cheap to fetch manifests and do some calculations, but it is expensive to move fragments and update the manifests accordingly. We really want a move to count. Also we want to avoid a combination of moving from **high** to **ok** and next from **ok** to **low** where a single move from **high** to **low** would have been possible.
 
-To stop the rebalancing process execute
+To stop the rebalancing process execute:
 ```
 root@cmp02:~# alba get-maintenance-config --config=/opt/OpenvStorage/config/arakoon/<backendname>-abm/<backendname>-abm.cfg  --disable-rebalance
 ```
