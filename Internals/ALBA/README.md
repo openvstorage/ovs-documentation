@@ -22,8 +22,10 @@ Unlike most alternatives, Alba is a consistent store. Since it is optimised for 
 ALBA currently run a proxy service on the same host as the Volume Driver.
 
 Using proxy has some advantages:
-* We can easily add more protols to the backend (Swift, S3, ... ) without having to change the Volume Driver. On top we can add functionality to Object Storage solutions they don't offer out of the box (f.e. partial object retrieval, compression, encryption).
+* We can easily add more protocols to the backend (Swift, S3, ... ) without having to change the Volume Driver. On top we can add functionality to Object Storage solutions they don't offer out of the box (f.e. partial object retrieval, compression, encryption).
 * Each proxy has a local, on disk fragment cache. When fragments are retrieved from the OSDs they are normally added to this cache. Further (partial) reads might need them too. The fragments are in packed state (possibly compressed and encrypted). The cache currently uses a simple LRU victim selection algorithm.
+
+More info on the ALBA proxy can be found in [this section](albaproxy.md).
 
 ##### ALBA Manager
 An ALBA Manager (ABM) is an Arakoon cluster running with the albamgr plugin. It’s the entry point for all clients. It knows which disks belong to this alba instance. It knows which namespaces exist and on which nsm hosts they can be found.
@@ -49,3 +51,12 @@ that compose this object.
 
 ALBA divides the object in chunks to ensure data safety. By Spreading the fragments across multiple OSDs, a drive or even node failure can be survived. Objects should be dispersed with over disks with a certain number (k) data fragments, a certain number (m) of parity fragments, and a limit (x) on the number of disks from the same node that can be used for a specific object. An upload can be successful, even when not all (k + m) fragments are stored. There’s a minimum number of fragments (c), with (k ≤ c ≤ k + m) that needs to have been stored, before an upload can be considered successful. The tuple (k, m, c, x) describes a **policy**.
 Objects can also be encrypted or compressed. The combination of one or more policies, the type of compression and the encryption key is a **preset**.
+
+
+##### ALBA Config files
+The ALBA configuration file is located at `/opt/OpenvStorage/config/alba.json`. For the maintenance process the node specific config file is located at `/opt/OpenvStorage/config/arakoon/<backend_name>-abm/<backend_name>.json`.
+For the rebalancer the node specific config file is located at `/opt/OpenvStorage/config/arakoon/<backend_name>-abm/<backend_name>-rebalancer.json`. More info on the ALBA config files can be found [here](../../Administration/Configs/alba.md)
+
+
+#### ALBA Log files
+The log files for the ALBA maintenance process and the rebalancer can be found under `/var/log/upstart/ovs-alba-maintenance_<backend_name>.log` and `/var/log/upstart/ovs-alba-rebalancer_<backend_name>.log`.

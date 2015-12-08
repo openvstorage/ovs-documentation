@@ -1,5 +1,5 @@
 #### ALBA Config files
- The ALBA configuration file is located at `/opt/OpenvStorage/config/alba.json`.
+The ALBA configuration file is located at `/opt/OpenvStorage/config/alba.json`.
 
 ```
 {
