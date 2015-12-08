@@ -93,4 +93,10 @@ root@cmp02:~# alba proxy-list-objects '183a2397-453a-4377-9537-53d591cd2a37'  -h
 
 By default the first 100 objects will be returned. By passing additional arguments you can browse through all objects in the namespace.
 
+##### Upload an object to a namespace
+To upload an object to a namespace, execute in the shell
+```
+root@cmp02:~# alba proxy-list-objects '<namespace>' '</path/to/file>' '<key in ALBA>'  -h 127.0.0.1 -p 26203
+```
+
 More commands can be found in the [ALBA CLI documentation](../../Administration/usingthecli/alba.md).
