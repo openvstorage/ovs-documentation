@@ -32,6 +32,7 @@
         * [alba-asdmanager](Administration/Configs/alba-asdmanager.md)
         * [asd](Administration/Configs/asd.md)
         * [arakoon](Administration/Configs/arakoon.md)
+        * [locales](Administration/Configs/locales.md)
         * [ovs](Administration/Configs/ovs.md)
         * [vpool](Administration/Configs/vpool.md)
     * [Upgrades](Administration/upgrade.md)
