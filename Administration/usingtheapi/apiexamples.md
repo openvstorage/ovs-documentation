@@ -2,7 +2,7 @@
 Below you can find some basic examples on how to use the Open vStorage API. There are examples for:
 * [OVS Client](#ovsclient)
 * [Command line](#commandline)
-* [Python](#python)
+
 
 ** Note: Make sure to escape your Client Secret if necessary (adding backslashes before e.g. semi colons, at signs, dashes, ..)**
 

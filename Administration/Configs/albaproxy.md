@@ -5,7 +5,7 @@
 {
     "ips" : ["::1"], // optional
     "log_level": "debug",
-    "port": 10000,
+    "port":  26203,
     "albamgr_cfg_file": "/opt/OpenvStorage/config/storagedriver/storagedriver/poc01-vpool-ovs_alba.cfg",
     "manifest_cache_size" : 100000, // optional, default 100_000
     "fragment_cache_dir" : "/mnt/ssd1/poc01-vpool-ovs_write_fcache_1",

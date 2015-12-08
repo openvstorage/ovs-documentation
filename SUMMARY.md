@@ -40,6 +40,7 @@
 * [Open vStorage Internals](Internals/README.md)
     * [Architecture](Internals/Architecture/README.md)
     * [ALBA](Internals/ALBA/README.md)
+        * [Alba Proxy](Internals/ALBA/albaproxy.md)
         * [Self Healing](Internals/ALBA/selfhealing.md)
     * [ASD Manager](Internals/ASDManager/README.md)
         * [Basic Commands](Internals/ASDManager/basiccommands.md)
