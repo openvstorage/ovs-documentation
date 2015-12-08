@@ -30,6 +30,7 @@
     * [Configuration files](Administration/Configs/README.md)
         * [alba](Administration/Configs/alba.md)
         * [alba-asdmanager](Administration/Configs/alba-asdmanager.md)
+        * [alba proxy](Administration/Configs/albaproxy.md)
         * [asd](Administration/Configs/asd.md)
         * [arakoon](Administration/Configs/arakoon.md)
         * [locales](Administration/Configs/locales.md)
