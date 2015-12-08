@@ -272,7 +272,7 @@ Main actions:
 
 | Action | Action/Link | Type | Input | Response |
 |--------|-------------|------|-------|----------|
-| Get the update information | update/information | GET | NA | {"version": Satest available SDM version , "installed": Installed SDM version } |
+| Get the update information | update/information | GET | NA | {"version": Latest available SDM version , "installed": Installed SDM version } |
 | Execute an update | update/execute/started|running|done  | POST | NA | {"status": Status of the update } |
 | Restart the ASD services | update/restart_services | POST | NA | {"result": Services which were restarted} |
 
