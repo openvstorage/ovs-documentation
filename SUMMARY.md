@@ -54,7 +54,7 @@
         * [Volume Driver Python API](Internals/VolumeDriver/pythonapi.md)
         * [Volume Driver Events](Internals/VolumeDriver/events.md)
 * [Troubleshooting](Troubleshooting/README.md)
-    * [Known Issues]((Troubleshooting/knownissues.md))
+    * [Known Issues](Troubleshooting/knownissues.md)
     * [ALBA](Troubleshooting/ALBA/README.md)
     * [Arakoon](Troubleshooting/Arakoon/README.md)
     * [VolumeDriver](Troubleshooting/VolumeDriver/README.md)
