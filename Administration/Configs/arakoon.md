@@ -1,7 +1,7 @@
 #### Arakoon Config files
 There are different Arakoon config files used within an Open vStorage cluster as each [Arakoon cluster](../../Internals/Arakoon/README.md) has its own config file.
 
-The Arakoon config files for Open vStorage are stored under **/opt/OpenvStorage/config/arakoon/\<database_name\>/\<database_name\>.cfg**.
+The Arakoon config files for Open vStorage are stored under `/opt/OpenvStorage/config/arakoon/<database_name>/<database_name>.cfg`.
 ```
 root@cmp02:/opt/OpenvStorage/config/arakoon# ls -als
 total 0
