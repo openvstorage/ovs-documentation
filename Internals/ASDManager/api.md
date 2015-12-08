@@ -199,7 +199,6 @@ See for possible resource actions below.
 
 Main actions:
 
--   List: GET
 -   Resource: GET, POST
 
 | Action | Action/Link | Type | Input | Response |
@@ -261,7 +260,7 @@ Main actions:
 
 | Action | Action/Link | Type | Input | Response |
 |--------|-------------|------|-------|----------|
-| Add a disk as ASD | add | POST | { "disk": "<name of the disk to add>" } | Disk Object |
+| Add a disk as ASD by name| add | POST | NA | Disk Object |
 | Delete a Disks | delete | POST | NA | NA |
 | Restart an ASD | restart | POST | NA | NA |
 
@@ -273,9 +272,9 @@ Main actions:
 
 | Action | Action/Link | Type | Input | Response |
 |--------|-------------|------|-------|----------|
-| Get the udate information | update/information | GET | NA | {"version": <latest available SDM version>,'installed': <installed SDM version>} |
-| Execute an update | update/execute  | POST | NA | {"status": <Status of the update> } |
-| Restart the ASD services | update/restart_services | POST | NA | {"result": <services which were restarted>} |
+| Get the update information | update/information | GET | NA | {"version": Satest available SDM version , "installed": Installed SDM version } |
+| Execute an update | update/execute/started|running|done  | POST | NA | {"status": Status of the update } |
+| Restart the ASD services | update/restart_services | POST | NA | {"result": Services which were restarted} |
 
 ##### <a name="examples"></a>Some basic examples
 Start the OVS client
@@ -358,37 +357,4 @@ Out[6]:
  u'_link': u'/disks/ata-HGST_HUS724020ALA640_PN2134P5G6DHNX',
  u'_success': True,
  u'_version': 1}
-```
-
-#### <a name="python"></a>Python
-In the below example we will retrieve the ADSs of node.
-
-```python
-#!/usr/bin/python
-
-import sys
-import urllib2
-import urllib
-import json
-import base64
-
-ip = '10.100.169.100'
-client_id = 'root'
-client_secret = 'i4rRUSTyZbHmtowLMhWrAX0mzkMS9gWX'
-
-headers = {'Accept': 'application/json'}
-base_url = 'https://{0}/api/'.format(ip)
-
-headers['Authorization'] = 'basic {0}'.format(base64.encodestring('{0}:{1}'.format(client_id, client_secret)).strip())
-request = urllib2.Request(auth_url, data=urllib.urlencode({'grant_type': 'client_credentials'}), headers=headers)
-response = urllib2.urlopen(request).read()
-
-```
-
-Result:
-
-```
-[
-    "122bae9d-4321-475c-a2bf-d39a3126ffbe"
-]
 ```
