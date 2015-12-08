@@ -48,7 +48,7 @@ The different fields are:
 * albamgr_connection_pool_size : Amount of connections to the ABM. Default is 10.
 * nsm_host_connection_pool_size : Amount of connections to an NSM. Default is 10.
 * osd_connection_pool_size : Amount of connections to an OSD. Default is 10.
-* osd_timeout : OSD time-out for object uploads. Default is 30 seconds.
+* osd_timeout : Time-out for operations on the OSD (f.e. fragment upload). Default is 30 seconds.
 * tls_client : Configuration of the TLS client.
     * ca_cert : Certificate of the signing authority.
     * cert: public certificate of the peer, signed using this very ca_cert.
