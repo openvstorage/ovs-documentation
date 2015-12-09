@@ -1,8 +1,47 @@
 ### Architecture
 
 ### Introduction
-Here we discuss the architecture of of Open vStorage:
+Here we discuss the architecture of of Open vStorage and explain some concepts:
 
+### The Open vStorage Architecture
+Open vStorage consist out of different components which all are essential and have to work together. In the below graphic you can find a schematic of the Open vStorage architecture and the different components.
+
+![](../../Images/OVS Architecture.png)
+
+##### Storage Router
+The Storage Router is a host running the Open vStorage software. Next, it is important to note that there is a difference between KVM and VMware ESXi. In case of VMware, Open vStorage runs in a VM as a Virtual Storage Appliance (VSA). Basically in that case the Storage Router is the VSA. In case of KVM, Open VStorage runs 'bare metal' next to KVM in the kernel. The complete KVM host is in that case a Storage Router.
+
+The core Store Router technology consists out of 6 components:
+* The Object Router
+* The Volume Driver
+* The File Driver
+* The Distributed Transaction Log (DTL)
+* The ALBA Proxy
+* The SHared Memory server (SHM)
+
+##### The Object Router
+On ESXi the Open vStorage vPool the Storage Driver exposes a file system over NFSv3 to the ESXi host as VMware Datastore. When you create a VM or basically files in the Datastore, these files end up on the file system of the VSA of the host where the VM is created. Whenever a file is created, the Object Router detects this events and updates the file system metadata in [Arakoon](../Arakoon/README.md), the distributed key/value database used in Open vStorage. The complete file system get stored in this Arakoon cluster named Volume Driver. This means that as soon as teh distributed DB is updated, all Storage Router who serve that vPool will display these new files in their file system interface. This means the different hosts believe they are using shared storage, but in reality only the metadata of the vPool is shared between all hosts and not the actual data.
+Under normal circumstances a file, f.e. a disk of a Virtual Machine, can be seen by all hosts in the Open vStorage Cluster as it is a file on the vPool but the underlying, the internally that file is owned by a single host and can only be accessed by this single host. To keep track of which host is ‘owning’ the file and hence can access the data, the Object Router uses an Object Registry which is implemented on top of the same Distributed Volume Driver DB.
+
+For each write the Object Router will check if it is the owner of the file on the Datastore. In case the Object Router is the owner of the file it will hand off the data to underlying File or Volume Driver on the same Storage Router. Otherwise the Object Router will check in the Object Registry, stored in the distributed database, which Object Router owns the file and forwards the data to that Object Router. The same process is followed for read requests.
+
+##### The Volume Driver
+All the read and write requests for an actual volume (a flat-VMDK or raw file) are handled by the Volume Driver. This component is responsible for turning a Storage Backend into a block device. This is also the component which takes care of all the caching. Data which is no longer needed is sent to the backend to make room for new data in the cache. In case data is not in the cache but requested by the Virtual Machine, the Volume Driver will get the needed data from the backend. Note that a single volume is represented by a single namespace on the Storage Backend. It is important to see that only 1 Volume Driver will do the communication with the Storage Backend for a single volume.
+
+##### The File Driver
+The File Driver is responsible for all non volume files (vm config files, …). The File Driver stores the actual content of these files on the Storage Backend. Each small file is represented by a single file or key/value pair on the Storage Backend. In case a file is bigger than 1MB, it is split in smaller pieces to improve performance. All the non-volume files for a single Datastore end up in a single, shared bucket. It is important to see that only 1 File Driver will do the communication with the Storage Backend for a file in the Datastore.
+
+##### The Distributed Transaction Log
+The DTL is a process which ensures data of a volume in the write buffer isn’t lost when a host crashes. To achieve this incoming writes are also stored in the Distributed Transaction Log (DTL)on another host in the Open vStorage cluster. Hence the DTL contains the outstanding writes, we  call it transactions, of that volume.
+
+##### The ALBA Proxy
+The ALBA proxy sits between the [Storage Driver](../Storage Driver/README.md) and the [ALBA backend](README.md). It runs as a process on the Storage Router host and takes the data coming from the Volume & File Driver and stores it according to a policy on the different ASDs of the backend.
+
+#### Framework
+The Open vStorage Framework takes care of the communication between the different hosts in the Open vStorage cluster and the storage backends. The Framework allows to manage Open vStorage through an intuitive GUI and a complete REST API. It uses various components such as [Celery](https://github.com/celery/celery), [Django](https://github.com/django/django), [RabbitMQ](https://github.com/celery/librabbitmq), [Memcached](https://github.com/memcached/memcached) and many more. More info on Framework can be found [here](../Framework/README.md).
+
+#### Arakoon
+Arakoon is the distributed key-value store used in Open vStorage. More info on Arakoon can be found [here](../Arakoon/README.md).
 
 
 ### vDisks, vMachines, vPools and Backends
