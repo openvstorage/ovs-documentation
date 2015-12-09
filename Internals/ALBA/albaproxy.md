@@ -9,7 +9,8 @@ There is an ALBA Proxy configuration file per vPool. The config file is located 
 #### ALBA Proxy Log files
 The log files for the ALBA proxy can be found under `/var/log/upstart/ovs-albaproxy_<vpool_name>.log`.
 
-#### List all ALBA proxies
+#### Basic commands
+##### List all ALBA proxies
 All are running as a service with as name `ovs-albaproxy_<vpool_name>`.
 
 ```
@@ -100,3 +101,14 @@ root@cmp02:~# alba proxy-list-objects '<namespace>' '</path/to/file>' '<key in A
 ```
 
 More commands can be found in the [ALBA CLI documentation](../../Administration/usingthecli/alba.md).
+
+#### Use the OVS client to manage an ALBA proxy
+The OVS python client allow to manage an ALBA proxy. In the below example we retrieve the proxy version.
+```
+from ovs.extensions.plugins.albacli import AlbaCLI
+AlbaCLI.run('proxy-get-version', extra_params=['-h 127.0.0.1', '-p 2620
+```
+The output is the Proxy version:
+```
+'(0, 7, 3, "0.7.3-0-gd2ea678")'
+```
