@@ -12,7 +12,7 @@ The core Store Router technology consists out of 6 components:
 * The File Driver
 * The Distributed Transaction Log (DTL)
 * The ALBA Proxy
-* The SHared Memory server (SHM)
+* The Shared Memory server (SHM)
 
 ##### The Object Router
 On ESXi the Open vStorage vPool the Storage Driver exposes a file system over NFSv3 to the ESXi host as VMware Datastore. When you create a VM or basically files in the Datastore, these files end up on the file system of the VSA of the host where the VM is created. Whenever a file is created, the Object Router detects this events and updates the file system metadata in [Arakoon](../Arakoon/README.md), the distributed key/value database used in Open vStorage. The complete file system get stored in this Arakoon cluster named Volume Driver. This means that as soon as teh distributed DB is updated, all Storage Router who serve that vPool will display these new files in their file system interface. This means the different hosts believe they are using shared storage, but in reality only the metadata of the vPool is shared between all hosts and not the actual data.
@@ -31,6 +31,9 @@ The DTL is a process which ensures data of a volume in the write buffer isn’t 
 
 ##### The ALBA Proxy
 The ALBA proxy sits between the [Storage Driver](../Storage Driver/README.md) and the [ALBA backend](README.md). It runs as a process on the Storage Router host and takes the data coming from the Volume & File Driver and stores it according to a policy on the different ASDs of the backend.
+
+##### The Shared Memory server (SHM)
+On KVM, it is possible to use [QEMU](http://wiki.qemu.org/Main_Page) to deliver storage to Virtual Machines. In that case QEMU talks to a Shared Memory server to optimize the performance. More info on the shared memory implementation can be found [here](../StorageDriver/Blocklayer/shm.md)
 
 #### Framework
 The Open vStorage Framework takes care of the communication between the different hosts in the Open vStorage cluster and the storage backends. The Framework allows to manage Open vStorage through an intuitive GUI and a complete REST API. It uses various components such as [Celery](https://github.com/celery/celery), [Django](https://github.com/django/django), [RabbitMQ](https://github.com/celery/librabbitmq), [Memcached](https://github.com/memcached/memcached) and many more. More info on Framework can be found [here](../Framework/README.md).
