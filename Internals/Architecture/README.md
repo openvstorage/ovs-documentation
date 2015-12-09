@@ -1,8 +1,3 @@
-### Architecture
-
-### Introduction
-Here we discuss the architecture of of Open vStorage and explain some concepts:
-
 ### The Open vStorage Architecture
 Open vStorage consist out of different components which all are essential and have to work together. In the below graphic you can find a schematic of the Open vStorage architecture and the different components.
 
