@@ -1,7 +1,7 @@
 #### Master and Extra Nodes
 Within an Open vStorage cluster not all nodes are equal. You have master nodes and extra nodes. You need at least 3 master nodes but in large environments you can promote nodes which are configured as extra to become master. The difference between master and extra nodes and which services should be configured where.
 
-![](../Images/Open-vStorge-Services.png)
+![](../../Images/Open-vStorge-Services.png)
 
 ##### <a name="extra"></a>Extra Nodes
 Once you have 3 master nodes in your environment, each additional node will be by default configured as extra node. All nodes, extra nodes and master nodes, run 2 types of services:
