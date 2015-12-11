@@ -4,3 +4,9 @@ This section of the documentation describes how to use and manage an Open vStora
 - [Using the GUI](usingthegui/README.md)
 - [Using the API](usingtheapi/README.md)
 - [Using the CLI](usingthecli/README.md)
+
+To configure Open vStorage in detail, have a look at the different [config files](Configs/README.md).
+
+Under [services](Services/README.md) you get an overview of the different services which are running in an Open vStorage cluster.
+
+The team behind Open vStorage regularly releases new versions of the software. The necessary steps to update an environment can be found [here](upgrade.md).
