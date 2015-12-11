@@ -5,7 +5,7 @@ The interface is how a user or application (hypervisor, database, ...) can consu
 
 
 ##### VM-Centric Virtual File System
-The VM-Centric Virtual File System is exposed as NFS (VMware) or FUSE mountpoint (KVM) and is optimized to be used by Virtual Machines. The File System is for example configured to detected newly created disks of Virtual Machines and converts these files directly in block devices. All other files are labeled as non-volumes files and are treated differently. By making the split-up the file system becomes VM-centric and allows to define storage actions at a much higher level. As an example, instead of taking a snapshot across a whole LUN, the VM-Centric Virtual File System offers functionality to take VM based snapshots. The same goes fro replication, instead of replication a whole LUN, you define a replication policy per VM.
+The VM-Centric Virtual File System is exposed as NFS (VMware) or FUSE mountpoint (KVM) and is optimized to be used by Virtual Machines. The File System is for example configured to detected newly created disks of Virtual Machines and converts these files directly in block devices. All other files are labeled as non-volumes files and are treated differently. By making the split-up the file system becomes VM-centric and allows to define storage actions at a much higher level. As an example, instead of taking a snapshot across a whole LUN, the VM-Centric Virtual File System offers functionality to take VM based snapshots. The same goes for replication, instead of replication a whole LUN, you define a replication policy per VM.
 
 Next to offering advanced storage functionality it also offers best-in-class performance.
 
