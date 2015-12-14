@@ -1,8 +1,6 @@
 # Summary
 
 * [Open vStorage](Openvstorage/README.md)
-    * [Open vStorage](Openvstorage/openvstorage.md)
-    * [Vision](Openvstorage/vision.md)
 * [Installation](Installation/README.md)
     * [Essentials](Installation/essentials.md)
     * [Quick Install Guide](Installation/quickinstall.md)

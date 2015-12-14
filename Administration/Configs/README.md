@@ -5,7 +5,11 @@ Open vStorage can be configured through various config files. This section provi
 **Note: Modifying the config files incorrectly might result in data loss.**
 
 * [alba](alba.md)
+* [alba-asdmanager](alba-asdmanager.md)
+* [alba proxy](albaproxy.md)
 * [arakoon](arakoon.md)
+* [asd](asd.md)
+* [locales](locales.md)
 * [ovs](ovs.md)
 * [vpool](vpool.md)
 
