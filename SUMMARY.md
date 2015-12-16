@@ -7,6 +7,7 @@
     * [KVM](Installation/kvm.md)
     * [OpenStack](Installation/openstack.md)
     * [ESXi](Installation/esxi.md)
+    * [HyperScale](Installation/hyperscale.md)
     * [Unconfigure Open vStorage](Installation/unconfigure.md)
 * [Administration](Administration/README.md)
     * [Using the GUI](Administration/usingthegui/README.md)
