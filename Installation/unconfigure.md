@@ -1,7 +1,4 @@
-## Unconfigure Open vStorage
-
-
-### <a name="unconfigurecinder" </a> Manually unconfigure the Cinder changes
+### Manually unconfigure the Cinder changes
 - Revert the libvirtd changes on all Nova nodes in /etc/libvirt/libvirtd.conf,  /etc/libvirt/qemu.conf,  /etc/default/libvirt-bin and /etc/init/libvirt-bin.conf.
 - Restart libvirt-bin
 ```
