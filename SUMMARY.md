@@ -35,6 +35,7 @@
         * [locales](Administration/Configs/locales.md)
         * [ovs](Administration/Configs/ovs.md)
         * [vpool](Administration/Configs/vpool.md)
+    * [Shutdown and restart a cluster](Administration/shutdownrestart.md)
     * [Upgrades](Administration/upgrade.md)
 * [Open vStorage Internals](Internals/README.md)
     * [Architecture](Internals/Architecture/README.md)

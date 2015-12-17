@@ -18,7 +18,7 @@ The manual procedure consists out of 5 steps:
 * [Upgrade the Volume Driver](#upgradevoldrv)
 * [Upgrade Framework](#upgradeframework)
 
-##### Stopr the services
+##### Stop the services
 To stop all services execute
 * For the Framework
 ```
@@ -57,7 +57,7 @@ stop ovs-alba-rebalancer*
 ##### Upgrade the Volume Driver
 * On all nodes, install new Volume Driver packages through apt or yum.
 * On all nodes, for each running vPool execute restart ovs-volumedriver_vpoolname
-    * Find them with ls -al /etc/ovs-volumedriver*
+    * Find them with `ls -al /etc/ovs-volumedriver*`
 
 ##### Upgrade the Framework
 You simply can't upgrade this one without the GUI unless you manually touch /etc/ready_for_upgrade it will refuse to install.
