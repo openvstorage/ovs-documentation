@@ -8,9 +8,9 @@ Open vStorage is licensed under the [Modified Apache License](https://www.openvs
 
 
 ### Installation Guides
-* HyperConverged
+* HyperConverged:
     * [ESXi Installation](esxi.md)
     * [KVM Installation](kvm.md)
     * [OpenStack Installation](openstack.md)
-* [HyperScale](hyperscale.md)
-* [GeoScale](geoscale.md)
+* [HyperScale](hyperscale.md): install Open vStorage as converged solution
+* [GeoScale](geoscale.md): stretch an Open vStorage cluster across datacenters
