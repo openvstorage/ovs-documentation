@@ -1,15 +1,15 @@
 ## HyperScale
 
 ### Introduction
-In large setups you typically don't want to run Open vStorage hyperconverged (compute + storage inside the same server). Open vStorage is flexible enough to be installed as a converged setup. This mode is called HyperScale as it allows to scale compute and storage independent.
+It is possible to install Open vStorage across multiple datacenters. Open vStorage supports to stretch the vPool and the storage backend across multiple locations in case there is a low-latency link between the datacenters and enough bandwidth is available.
 
 ### Compute nodes
 * Install Open vStorage (apt-get install openvstorage-hc) as explained in the [KVM](kvm.md),[OpenStack](openstack.md) or [ESXi](esxi.md) section.
 
-### storage server:
+### Storage server:
 * The storage server must have an OS disk and at least 3 empty disks for the storage backend.
 * Setup the storage server with Ubuntu LTS 14.04.2. Make sure the storage server is in the same network as the compute host.
-*Execute following to setup the program that will manage the disks of the storage server:
+* Execute following to setup the program that will manage the disks of the storage server:
 ```
 echo "deb http://apt.openvstorage.org <version as installed on the compute hosts> main" > /etc/apt/sources.list.d/ovsaptrepo.list
 apt-get update
@@ -22,6 +22,8 @@ cat /opt/alba-asdmanager/config/config.json
 "password": "u9Q4pQ76e0VJVgxm6hasdfasdfdd",
 ...
 ```
+
+
 
 ### Add the ASD nodes to a backend
 * Login into the Open vStorage GUI and go to Backends.
