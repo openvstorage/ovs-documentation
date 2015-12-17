@@ -15,13 +15,13 @@ client.delete_snapshot(id,snapshot_name)
 ```
 * Shutdown the individual compute nodes by using the normal Linux commands such as `shutdown -h now`. Start with the extra nodes and power down the master nodes as last.
 
-**Note: The above procedure can be used to stop individual servers also.  Do make sure there are always more than half of the master servers online to keep the cluster online.**
+**Note: The above procedure can be used to stop individual servers also.  Do make sure there are always more than half of the master servers online.**
 
 
 
 #### Restart an environment
-* Restart the backend storage nodes if applicable.
-* Start all master compute nodes (by default the first 3 compute nodes) one by one.
+* Restart the backend storage nodes (if applicable).
+* Start all master compute nodes (by default the first 3 compute nodes) **one by one**.
 * Start all extra nodes.
 * Login with ssh into each node and check whether all services are running. To check the services execute:
 ```
@@ -32,11 +32,11 @@ service rabbitmq-server status
 rabbitmqctl cluster_status
 rabbitmqctl list_queues
 ```
-* In case there is an issue with one of the services, restart the service or check the log.
-* In case there isn't a service issue, move down the stack to verify if the vPool is functioning. To check execute
+* In case there is an issue with one of the services, restart the service or check the appropriate log.
+* In case there isn't a service issue, move down the stack to verify if the vPool is functioning. To check execute:
 ```
-truncate -s 10G /mnt/vpool/test.raw
-touch /mnt/vpool/myvm.xml
+truncate -s 10G /mnt/<vpool_name>/test.raw
+touch /mnt/<vpool_name>/myvm.xml
 ```
-* In case there are issues, check the  logs for the Volume Driver under `/var/log/ovs/volumedriver`, `/var/log/upstart/ovs-volumedriver_*` and `/var/log/upstart/ovs-volumerouter-consumer*`.
+* In case there are issues, check the Volume Driver logs under `/var/log/ovs/volumedriver`, `/var/log/upstart/ovs-volumedriver_*` and `/var/log/upstart/ovs-volumerouter-consumer*`.
 * In case you can't solve the issue based upon the log, please create a [bug](https://github.com/openvstorage/openvstorage/issues) and attach the error.
