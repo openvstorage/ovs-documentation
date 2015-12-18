@@ -3,8 +3,8 @@
 #### Shutdown an environment
 * Stop all Virtual Machines on the compute nodes.
 * Make sure the outstanding data is flushed to the backend. Start an OVS shell
-```
 
+```
 ips = [<ips of the Storage Routers you want to shutdown]
 ips = None
 
@@ -41,6 +41,7 @@ for ip in ips:
 		disk.storagedriver_client.delete_snapshot(str(disk.volume_id), snapshot_name)
 		print "[SUCCEEDED] Flush for volume '%s' has succeeded!" % (disk.name)
 ```
+
 * Shutdown the individual compute nodes by using the normal Linux commands such as `shutdown -h now`. Start with the extra nodes and power down the master nodes as last.
 
 **Note: The above procedure can be used to stop individual servers also.  Do make sure there are always more than half of the master servers online.**
