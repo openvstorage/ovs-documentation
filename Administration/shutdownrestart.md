@@ -5,8 +5,8 @@
 * Make sure the outstanding data is flushed to the backend. Start an OVS shell
 
 ```
-ips = [<ips of the Storage Routers you want to shutdown]
-ips = None
+#ips = [<ips of the Storage Routers you want to shutdown]
+ips = None #Restart this Storage Router
 
 #general packages
 import time
