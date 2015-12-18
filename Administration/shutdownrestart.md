@@ -4,14 +4,42 @@
 * Stop all Virtual Machines on the compute nodes.
 * Make sure the outstanding data is flushed to the backend. Start an OVS shell
 ```
-import volumedriver.storagerouter.storagerouterclient as src
-client = src.LocalStorageRouterClient("/opt/OpenvStorage/config/storagedriver/storagedriver/<vpool_name>.json")
-id = client.get_volume_id("/test_vm.raw")
-snapshot_name = "testing_snapshot"
-client.create_snapshot(id, snapshot_name)
-client.info_snapshot(id, snapshot_name).in_backend
-#If the last command is true, then the cache is flushed
-client.delete_snapshot(id,snapshot_name)
+
+ips = [<ips of the Storage Routers you want to shutdown]
+ips = None
+
+#general packages
+import time
+
+#ovs packages
+from ovs.dal.hybrids.vdisk import VDisk
+from ovs.extensions.generic.system import System
+from ovs.dal.lists.storagerouterlist import StorageRouterList
+
+#log output
+
+if ips is None:
+   ips = [System.get_my_storagerouter().ip]
+   print ips
+
+for ip in ips:
+	sr_info = StorageRouterList.get_by_ip(ip)
+    vdisks_by_guid = sr_info.vdisks_guids
+	print "[INFO] Fetched %s amount of disks on storagerouter '%s'" % (len(vdisks_by_guid), ip)
+
+	for vdisk_guid in vdisks_by_guid:
+		disk = VDisk(vdisk_guid)
+		snapshot_name = "flush_snapshot"
+
+		print "[INFO] Commencing flush to backend for volume '%s'..." % (disk.name)
+		disk.storagedriver_client.create_snapshot(str(disk.volume_id), snapshot_name)
+
+		while disk.storagedriver_client.info_snapshot(str(disk.volume_id), snapshot_name).in_backend == False:
+            print "[INFO] Sleeping 5 seconds until NON-disposable SCO's for volume '%s' are flushed..." % (disk.name)
+			time.sleep(5)
+
+		disk.storagedriver_client.delete_snapshot(str(disk.volume_id), snapshot_name)
+		print "[SUCCEEDED] Flush for volume '%s' has succeeded!" % (disk.name)
 ```
 * Shutdown the individual compute nodes by using the normal Linux commands such as `shutdown -h now`. Start with the extra nodes and power down the master nodes as last.
 
@@ -33,6 +61,7 @@ rabbitmqctl cluster_status
 rabbitmqctl list_queues
 ```
 * In case there is an issue with one of the services, restart the service or check the appropriate log.
+    * In case the RabbitMQ service isn't started, start the service on all nodes at the same time using `service rabbitmq-server start` (or similar on CentOS).
 * In case there isn't a service issue, move down the stack to verify if the vPool is functioning. To check execute:
 ```
 truncate -s 10G /mnt/<vpool_name>/test.raw

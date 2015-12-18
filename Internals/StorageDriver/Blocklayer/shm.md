@@ -1,5 +1,17 @@
-<a name="writebuffer"></a>
-##### Write Buffer
-The write buffer is located on the devices of a [Storage Router](../../Administration/Usingthegui/storagerouters.md#physicaldiskmgmt) which are configured with the Write role. Typically this role is assigned to fast PCI-e flash cards or high endurance SSDs.
-When a new 4K write is executed on a vDisk, the write gets added to a log file which is located in one of the write buffer mount points (the scocache_mount_points in the [Volume Driver config file](config.md)). This log file is called a Storage Container Object (SCO). Once enough writes are received, the SCO is closed and marked to be stored on the backend. The size of the write buffer can be configured per vDisk (with a vPool default) and should be at least twice the SCO size so a SCO being filled and a SCO in transit can be accommodated.
-In case multiple SSDs are configured with the Write role, the new SCOs will be distributed in a round-robin fashion across the different devices to spread the write load.
+<a name="shm"></a>
+##### Shared Memory Server
+A Shared Memory Client/Server implementation is used to give Open vStorage the best performance possible. With this implementation the client (QEMU, Blktab, ...) can write to a dedicated memory segment on the compute host which is shared with the Shared Memory Server in the Volume Driver.
+The segment is mapped as device under `/dev/shm` and has by default a size of 256 MB. The size can in the [vPool json](../../../Administration/Configs/vpool.md) under `shm_region_size`.  Next to this segment there are 4 shared memory message queues per volumes. These queues (read request, read reply, write request and write reply) are also shared between the client and the server . These queues are used to signal incoming requests and signal when the request is executed.
+
+The Shared Memory implementation can work synchronous or asynchronous if the client supports it. Processing the IO requests asynchronously generally leads to better performance.
+
+
+
+
+
+
+Details about the Open vStorage VolumeDriver Shared Memory Access C library can be found [here](https://github.com/openvstorage/volumedriver/blob/dev/doc/libovsvolumedriver.txt).
+The SHM API can be found under `/usr/lib/openvstorage/libovsvolumedriver.so`
+The header file can be found under `/usr/include/openvstorage/volumedriver.sh`.
+
+-->
