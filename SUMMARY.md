@@ -51,6 +51,7 @@
         * [Api](Internals/Arakoon/api.md)
     * [Framework](Internals/Framework/README.md)
         * [Master and Extra Nodes](Internals/Framework/masterextra.md)
+        * [The watchers](Internals/Framework/watchers.md)
     * [Storage Driver](Internals/StorageDriver/README.md)
         * [Interfaces](Internals/StorageDriver/Interfaces/README.md)
         * [Distributed Block Layer](Internals/StorageDriver/Blocklayer/README.md)
@@ -60,4 +61,5 @@
     * [Known Issues](Troubleshooting/knownissues.md)
     * [ALBA](Troubleshooting/ALBA/README.md)
     * [Arakoon](Troubleshooting/Arakoon/README.md)
+    * [Framework](Troubleshooting/Framework/README.md)
     * [VolumeDriver](Troubleshooting/VolumeDriver/README.md)

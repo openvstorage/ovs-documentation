@@ -1,6 +1,29 @@
 #### Self Healing
 ALBA has built-in self healing functionality. In case an ASD is broken, fragments on the ASD will be automatically reconstructed on remaining disks in the Backend.
 
+The self healing work consists out of several types of maintenance work:
+
+1. Message delivery (from albamgr to osds & nsm hosts)
+2. Check if available osds are claimed by another env
+3. Rebalancing data (when new nodes/disks are added)
+4. Repairing decommissioned disks
+5. Cleaning up obsolete fragments
+6. Garbage collecting fragments written by dead (or extremely slow) clients
+7. Repair by policy (upgrade objects written with a narrow policy to wider policies when applicable)
+8. Diverse work items (cleanup osds/namespaces, repair object for which a bad fragment was detected, rewrite a namespace, ...)
+
+
+This work can be executed by 1 or more maintenance agents.
+ALBA tries not to have 2 maintenance agents perform the same work.
+This requires a bit of coordination. Hence 2 concepts are introduced:
+- maintenance master
+- position (number) of the maintenance process (e.g. 7 of 9)
+
+Tasks 1 & 2 are only performed by the maintenance master.
+Task 4 is performed by all maintenance agents. They don't run into each others way due to how they select which objects to repair.
+Tasks 3, 5, 6 & 7 are divided amongst the several agents based on the namespace_id.
+Task 8 is divided amongst the several agents based on the work_id.
+
 The self healing has some default parameters but these can be overridden through the ALBA CLI.
 
 ##### Retrieve the maintenance config
