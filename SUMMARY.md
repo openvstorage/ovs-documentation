@@ -36,6 +36,7 @@
         * [locales](Administration/Configs/locales.md)
         * [ovs](Administration/Configs/ovs.md)
         * [vpool](Administration/Configs/vpool.md)
+    * [Create a vDisk on a vPool](Administration/createvdisk.md)
     * [Shutdown and restart a cluster](Administration/shutdownrestart.md)
     * [Upgrades](Administration/upgrade.md)
 * [Open vStorage Internals](Internals/README.md)
