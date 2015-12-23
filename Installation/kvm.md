@@ -150,6 +150,12 @@ Open vStorage Cluster.
     vPool to be available. Adding the vPool to another Storage Router
     will ask for the size of the read and write cache and use the same Storage IP as on the first one.
 
+### <a name="adduser"></a> Libvirt-qemu user settings
+The libvirt-qemu user need to be member of the ovs group on all nodes:
+```
+usermod -a -G ovs libvirt-qemu
+```
+
 {% include "finalremarks.md" %}
 
 
