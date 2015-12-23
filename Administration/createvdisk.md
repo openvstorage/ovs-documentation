@@ -2,22 +2,32 @@
 Open vStorage supports multiple ways to create vDisks.
 
 #### <a name="esxi"></a>ESXi
+You can create a vMachine with multiple vDisks straight from the vCenter or ESXi GUI. For more details, check the [VMware documentation](https://pubs.vmware.com/vsphere-51/index.jsp#com.vmware.vsphere.vm_admin.doc/GUID-7834894B-DD17-4D59-A9BF-A33D02478521.html). When selecting a Datastore for the disks of the VM, select the exposed vPool (NFS) as Datastore.
+Currently only a single vPool is supported
+
 
 #### <a name="kvm"></a>KVM
+To create a vDisk you can use with KVM/libvirt based upon an existing qcow2 file execute following:
+```
+qemu-img convert -O raw /path/to/disk.qcow2 /mnt/<vpool_name>/<vdisk_name>.raw
+virt-install --connect qemu:///system -n <vmachine_name> -r 512 --disk /mnt/<vpool_name>/<vdisk_name>.raw device=disk
+    --noautoconsole --graphics vnc,listen=0.0.0.0 --vcpus=1 --network network=default mac=RANDOM model=e1000 --import
+```
 
 #### <a name="qemu"></a>QEMU
 Open vStorage supports QEMU without libvirt. With this implementation IO bypasses the FUSE layer and removes the roundtrips from user to kernel space. Disks will pop up in the FUSE layer for ease of administration.
-Currently the block device interface only supports a single vPool.
+Currently the QEMU interface only supports a single vPool.
 
 **Prerequisites**
-* Direct QEMu support is only supported as of Volume Driver 5.4.
-* The QEMU interface is built on top of the Shared Memory Server inside the Volume Driver. By default the Shared memory Server is disabled. To enable it, update the vPool json (`/opt/OpenvStorage/config/storagedriver/storagedriver/<vpool_name>.json`) and add under `filesystem` an entry  `"fs_enable_shm_interface": true,`. After adding the entry, restart the Volume Driver for the vPool (`restart ovs-volumedriver_<vpool_name>`).
+
+* The QEMU interface is built on top of the Shared Memory Server inside the Volume Driver. This Shared Memory Server is only supported as of Volume Driver 5.4. By default the Shared memory Server is disabled. To enable it, update the vPool json (`/opt/OpenvStorage/config/storagedriver/storagedriver/<vpool_name>.json`) and add under `filesystem` an entry  `"fs_enable_shm_interface": true,`. After adding the entry, restart the Volume Driver for the vPool (`restart ovs-volumedriver_<vpool_name>`).
+* QEMU needs to be built from the source. You can download the source here.
 
 There are 2 ways to create a QEMU vDisk:
 ```
 qemu-image create openvstorage://volume 10G
 ```
-Alternatively
+Alternatively create the disk in FUSE and start a VM by using the Open vStorage block driver.
 ```
 truncate -s10G /mnt/<vpool_name>/volume
 qemu -drive file=openvstorage://volume,if=virtio,cache=none,format=raw ﻿...
