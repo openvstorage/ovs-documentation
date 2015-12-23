@@ -31,5 +31,9 @@ Open vStorage supports block devices as vDisks through [Blktap](http://wiki.xenp
 * The Block Device interface is built on top of the Shared Memory Server inside the Volume Driver. By default the Shared memory Server is disabled. To enable it, update the vPool json (`/opt/OpenvStorage/config/storagedriver/storagedriver/<vpool_name>.json`) and add under `filesystem` an entry  `"fs_enable_shm_interface": true,'. After adding the entry, restart the Volume Driver for the vPool (`restart ovs-volumedriver_<vpool_name>`).
 
 To create a block device:
-* Download and install the Blktab driver.
+* Download and install the kernel module and userspace utils for Fedora 22 or CentOS respectively. For Ubuntu, the kernel module can be installed:
+```
+sudo apt-get install blktap-dkms
+```
+* Load the kernel module by executing `sudo modprobe blktap`
 * Create the block device by executing `tap-ctl create -a openvstorage:<volume_name>`. Almost instantly a new device will pop up under `/dev`.
