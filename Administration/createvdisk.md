@@ -1,11 +1,11 @@
 ### Create a vDisk on a vPool
 Open vStorage supports multiple ways to create vDisks.
 
-#### ESXi
+#### <a name="esxi"></a>ESXi
 
-#### KVM
+#### <a name="kvm"></a>KVM
 
-#### QEMU
+#### <a name="qemu"></a>QEMU
 Open vStorage supports QEMU without libvirt. With this implementation IO bypasses the FUSE layer and removes the roundtrips from user to kernel space. Disks will pop up in the FUSE layer for ease of administration.
 Currently the block device interface only supports a single vPool.
 
@@ -23,7 +23,7 @@ truncate -s10G /mnt/<vpool_name>/volume
 qemu -drive file=openvstorage://volume,if=virtio,cache=none,format=raw ﻿...
 ```
 
-#### Block device
+#### <a name="block"></a>Block device
 Open vStorage supports block devices as vDisks through [Blktap](http://wiki.xenproject.org/wiki/Blktap). Currently the block device interface only supports a single vPool.
 
 **Prerequisites**
