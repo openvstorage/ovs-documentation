@@ -61,8 +61,17 @@ service rabbitmq-server status
 rabbitmqctl cluster_status
 rabbitmqctl list_queues
 ```
-* In case there is an issue with one of the services, restart the service or check the appropriate log.
-    * In case the RabbitMQ service isn't started, start the service on all nodes at the same time using `service rabbitmq-server start` (or similar on CentOS).
+* In case there is an issue with one of the services, these need to fixed in a certain sequence:
+    * First fix the issues with Nginx, Memcached and RabbitMQ by checking the relevant logs.
+        * In case the RabbitMQ service isn't started, start the service on all nodes at the same time using `service rabbitmq-server start` (or similar on CentOS).
+    * Next, address issues with the Arakoon databases by checking the log. A typical issue is the lack of a master.
+    ```
+    arakoon --who-master -config /opt/OpenvStorage/config/arakoon/<db_name>/<db_name>.cfg
+    ```
+    * In case there is an issue with Celery, go to the support page in the GUI and check if the node ID is displayed. If needed, restart the workers.
+    ```
+    restart ovs-workers
+    ```
 * In case there isn't a service issue, move down the stack to verify if the vPool is functioning. To check execute:
 ```
 truncate -s 10G /mnt/<vpool_name>/test.raw
