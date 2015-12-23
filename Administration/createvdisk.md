@@ -11,7 +11,7 @@ Currently the block device interface only supports a single vPool.
 
 **Prerequisites**
 * Direct QEMu support is only supported as of Volume Driver 5.4.
-* The QEMU interface is built on top of the Shared Memory Server inside the Volume Driver. By default the Shared memory Server is disabled. To enable it, update the vPool json (`/opt/OpenvStorage/config/storagedriver/storagedriver/<vpool_name>.json`) and add under `filesystem` an entry  `"fs_enable_shm_interface": true,'. After adding the entry, restart the Volume Driver for the vPool (`restart ovs-volumedriver_<vpool_name>`).
+* The QEMU interface is built on top of the Shared Memory Server inside the Volume Driver. By default the Shared memory Server is disabled. To enable it, update the vPool json (`/opt/OpenvStorage/config/storagedriver/storagedriver/<vpool_name>.json`) and add under `filesystem` an entry  `"fs_enable_shm_interface": true,`. After adding the entry, restart the Volume Driver for the vPool (`restart ovs-volumedriver_<vpool_name>`).
 
 There are 2 ways to create a QEMU vDisk:
 ```
@@ -28,7 +28,7 @@ Open vStorage supports block devices as vDisks through [Blktap](http://wiki.xenp
 
 **Prerequisites**
 * Blktap is only supported as of Volume Driver 5.4.
-* The Block Device interface is built on top of the Shared Memory Server inside the Volume Driver. By default the Shared memory Server is disabled. To enable it, update the vPool json (`/opt/OpenvStorage/config/storagedriver/storagedriver/<vpool_name>.json`) and add under `filesystem` an entry  `"fs_enable_shm_interface": true,'. After adding the entry, restart the Volume Driver for the vPool (`restart ovs-volumedriver_<vpool_name>`).
+* The Block Device interface is built on top of the Shared Memory Server inside the Volume Driver. By default the Shared memory Server is disabled. To enable it, update the vPool json (`/opt/OpenvStorage/config/storagedriver/storagedriver/<vpool_name>.json`) and add under `filesystem` an entry  `"fs_enable_shm_interface": true,`. After adding the entry, restart the Volume Driver for the vPool (`restart ovs-volumedriver_<vpool_name>`).
 
 To create a block device:
 * Download and install the kernel module and userspace utils for Fedora 22 or CentOS respectively. For Ubuntu, the kernel module can be installed:
