@@ -13,6 +13,9 @@ Open vStorage combines the best of both worlds as it has great read and write pe
 
 #### The different components of the Volume Driver
 
+![](../../../Images/blocklayer_components.png)
+
+
 {% include "writebuffer.md" %}
 
 {% include "DTL.md" %}

@@ -7,6 +7,6 @@ So that means there is window where data is vulnerable, when the SCO is being co
 For the DTL of volume you can select one of the following options as modus operandi.
 * No DTL: when this option is selected incoming data doesn't get stored in the DTL on another node. This option can be used when performance is key and some data loss is acceptable when the host or storage router goes down. VMs which are running batches or distributed applications (f.e. transcoding of files to another file) can use this option.
 * Asynchronous: when this option is selected the incoming writes are added to a queue on the host and replicated to the DTL on the other host once the queue reaches a certain size or if a certain time is exceeded. To ensure consistency, all outstanding data is synced to the DTL in case a sync is executed within the file system of the VM. Virtual machines running on KVM can use this option. This mode balances data safety and performance.
-![](../../Images/DTL - async.png)
+![](../../../Images/DTL - async.png)
 * Synchronous: when this option is selected, every write request gets synchronized to the DTL on the other host. This option should be selected when absolutely no data loss is acceptable (distributed NFS, HA iSCSI disks). Since this options synchronizes on every write, it is the slowest mode of the DTL. Note that in case the DTL can’t be reached (f.e. because the host is being rebooted), the incoming I/O isn’t blocked and doesn’t return an I/O error to the VM but an out-of-band event is generated to restart the DTL on another host.
-![](../../Images/DTL - sync.png)
+![](../../../Images/DTL - sync.png)
