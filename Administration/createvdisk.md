@@ -29,7 +29,7 @@ qemu-image create openvstorage://volume 10G
 ```
 Alternatively create the disk in FUSE and start a VM by using the Open vStorage block driver.
 ```
-truncate -s10G /mnt/<vpool_name>/volume
+truncate -s 10G /mnt/<vpool_name>/volume
 qemu -drive file=openvstorage://volume,if=virtio,cache=none,format=raw ﻿...
 ```
 
