@@ -4,6 +4,6 @@
 
 {% include "masterextra.md" %}
 
-{% include "wacthers.md" %}
+{% include "watchers.md" %}
 
 {% include "log.md" %}
