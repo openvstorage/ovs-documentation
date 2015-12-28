@@ -8,5 +8,5 @@ The Shared Memory Server implementation can work synchronous or asynchronous if 
 Currently the Shared Memory Server supports 2 interfaces: QEMU and block devices (Blktap).
 
 Details about the Open vStorage VolumeDriver Shared Memory Access C library can be found [here](https://github.com/openvstorage/volumedriver/blob/dev/doc/libovsvolumedriver.txt).
-The SHM API can be found under `/usr/lib/openvstorage/libovsvolumedriver.so`
+The SHM API can be found under `/usr/lib/openvstorage/libovsvolumedriver.so`.
 The header file can be found under `/usr/include/openvstorage/volumedriver.sh`.

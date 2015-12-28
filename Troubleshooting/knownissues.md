@@ -208,3 +208,9 @@ mysql -u root -p <password> -e "update volumes set host='<host you want to evacu
 ```
 
 Running Evacuate after updating the Cinder DB is now successful as the call to cinder-volume is routed to a host which is alive.
+
+#### SSD failure
+In case an SSD of a host fails, there might be some consequences based upon the role of the failed SSD:
+* Read role: performance loss can be expected.
+* DB, write role: shutdown the node and move all VMs from the host. The host will need to be replaced and once repaired added again.
+* Scrub: no impact on running VMs.
