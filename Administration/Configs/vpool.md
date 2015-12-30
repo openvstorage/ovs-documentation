@@ -109,6 +109,15 @@ Some of the values can be dynamically changed (dynamic reconfigurable), other va
  | scrub_manager | scrub_manager_wait_secs | "600" |  yes | Allows to configure how long the ScrubManager waits (in seconds) after scrub result application for the backend to be in sync before considering the scrub result application failed. |
  | shm_interface | shm_region_size | " 268435456" | no | Size of the shared memory segment (in bytes) employed by the shared memory server. |
 
+In case a dynamic property is changed, notify the Volume Driver of the update with the python api.
+
+```
+import volumedriver.storagerouter.storagerouterclient as src
+lclient = src.LocalStorageRouterClient("/opt/OpenvStorage/config/storagedriver/storagedriver/<vpool_name>.json")
+
+```
+** Note: update the json of all nodes of the vPool to make sure the vPool is consistent**
+
  <!--
  http://10.100.129.100:8080/view/voldrv/job/volumedriver-release-ubuntu-14.04/13/consoleFull
 search for "ConfigurationTest.print_confluence_table"
