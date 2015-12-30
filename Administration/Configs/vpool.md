@@ -114,7 +114,7 @@ In case a dynamic property is changed, notify the Volume Driver of the update wi
 ```
 import volumedriver.storagerouter.storagerouterclient as src
 lclient = src.LocalStorageRouterClient("/opt/OpenvStorage/config/storagedriver/storagedriver/<vpool_name>.json")
-
+lclient.update_configuration("/opt/OpenvStorage/config/storagedriver/storagedriver/<vpool_name>.json")
 ```
 ** Note: update the json of all nodes of the vPool to make sure the vPool is consistent**
 
