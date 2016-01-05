@@ -24,6 +24,13 @@ advised to have a 2 Node setup as it can lead to split brain situations.
     -   An enterprise SSD or PCI Flash card (min. 100GB) to hold the
         database and the caches.
     -   10 GB ethernet
+-   A typical setup for a hyperconverged cluster is one or more [Super Micro Fat Twins](https://www.supermicro.com/products/system/4U/F628/SYS-F628R3-RC1BPT_.cfm). Each node contains:
+    -   2 * Intel E5-2630/E5-2660
+    -   128-192 GB RAM
+    -   1 * Intel DC P3600 400GB PCIe Flash
+    -   2 * Intel DC S3500 800GB SSD
+    -   6 * 4TB SATA disks
+    -   Dual 10GbE
 
 ### Supported Hypervisors
 -   VMware ESXi 5.1 P01 (experimental, single vPool only)
