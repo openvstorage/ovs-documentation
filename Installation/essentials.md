@@ -14,7 +14,9 @@ advised to have a 2 Node setup as it can lead to split brain situations.
 
 ### Hardware requirements
 -   Minimal requirements
-    -   ESXi or KVM compatible hardware with 1 SATA disk for the OS and a disk for the cache (min. 100GB). In case you want to install Open vStorage Hyper-converged, at least 3 additional SATA disks are required for the Open vStorage Backend.
+    -   ESXi or KVM compatible hardware with
+    -   1 SATA disk for the OS and optionally at least 3 additional SATA disks for the Open vStorage Backend (hyperconverged).
+    -   1 SSD or PCIe flash card  for the cache (min. 100GB).
     -   Gigabit ethernet
     -   In case you want to use the Open vStorage Backend
         - The switch must support IGMP (igmp snooping and igmp snooping querying must be enabled).
