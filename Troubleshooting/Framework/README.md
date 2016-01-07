@@ -174,13 +174,3 @@ Cluster status of node rabbit@ctl01 ...
  {partitions,[]}]
 ...done.
 ```
-
-
-`
-root@ctl01:~# rabbitmqctl cluster_status
-Cluster status of node rabbit@ctl01 ...
-[{nodes,[{disc,[rabbit@ctl01,rabbit@ctl02,rabbit@ctl03]}]},
- {running_nodes,[rabbit@ctl01]},
- {partitions,[{rabbit@ctl01,[rabbit@ctl02,rabbit@ctl03]}]}]
-...done.
-`
