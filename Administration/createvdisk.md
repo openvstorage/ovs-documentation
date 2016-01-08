@@ -21,7 +21,7 @@ Currently the QEMU interface only supports a single vPool.
 **Prerequisites**
 
 * The QEMU interface is built on top of the Shared Memory Server inside the Volume Driver. This Shared Memory Server is only supported as of Volume Driver 5.4. By default the Shared memory Server is disabled. To enable it, update the vPool json (`/opt/OpenvStorage/config/storagedriver/storagedriver/<vpool_name>.json`) and add under `filesystem` an entry  `"fs_enable_shm_interface": true,`. After adding the entry, restart the Volume Driver for the vPool (`restart ovs-volumedriver_<vpool_name>`).
-* QEMU needs to be built from the source. You can download the source here.
+* QEMU needs to be built from the source. You can download the source [here](https://github.com/openvstorage/qemu).
 
 There are 2 ways to create a QEMU vDisk:
 ```
