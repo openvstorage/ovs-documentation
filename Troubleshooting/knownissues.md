@@ -19,7 +19,7 @@ The current release of Open vStorage supports only one single vPool on ESXi.
 When the NFS mount was inaccessible for a while (f.e. due to a reboot of
 the Storage Router) and is remounted, afterwards all Virtual Machines
 which are powered off remain in inaccessible state. The solution to this
-is to restart the management agents
+is to restart the management agents.
 
 Login via ssh to the ESXi hypervisor:
 
@@ -36,7 +36,7 @@ The issue should be resolved in [VMware ESXi 5.1 Update
 In case the Storage Router freezes but the ESXi is still running, mark
 the Storage Router offline in the Storage Router detail page and
 shutdown the ESXi. Move the vMachine to another ESXi host and restart
-the original ESXi and GSR. Mark the GSR as online and migrate the
+the original ESXi and GSR. Mark the Storage Router as online and migrate the
 vMachines back to ESXi.
 
 #### vStorage Driver
@@ -69,7 +69,7 @@ start ovs-volumedriver_<name of the vPool>
 Executing the above commands on a running vPool will delete all
 vMachines on that vPool!
 
-### -flat.vmdk files have metadata timestamps set to 0
+##### -flat.vmdk files have metadata timestamps set to 0
 
 The metadata timestamps (ctime (creation time), atime (access time) and
 mtime (modification time)) are not supported for volume files at the
@@ -85,8 +85,7 @@ Some scenarios can result in objects on the Storage Backend namespace
 (filesystem / S3 / ...) for a particular volume, which are not
 referenced/needed anymore by that volume. These object can be considered
 garbage, but the vStorage Driver currently does not have a automated or
-manual garbage collection policy to remove these objects. Hence this can
-be considered as a storage leak.
+manual garbage collection policy to remove these objects.
 
 In normal operation the vStorage Driver will not leave garbage on the
 backend. Storage leaks can occur if
@@ -98,7 +97,11 @@ backend. Storage leaks can occur if
     -   power loss of the node on which the scrubber is running
 -   an aborted rollback action of teh volume (e.g. due to power loss)
 
-### Rename of a volume is not supported
+##### System time resets / ntp time adjustments
+The vStorage Driver might fail in case large time adjustments occur to the system time. It is advised to perform small changes all the time instead of doing a big time jump.
+
+#### Volumes
+##### Rename of a volume is not supported
 
 The NFS storage offered by Open vStorage is currently not POSIX
 compliant. Due to performance reasons the renaming of a volume is not
@@ -137,10 +140,6 @@ Currently vDisks bigger than 2TB are not supported. This is both a
 limitation of the vStorage Driver and the NFS implementation used by
 VMware.
 
-##### System time resets / ntp time adjustments
-The vStorage Driver might fail in case large time adjustments occur to the system time. It is advised to perform small changes all the time instead of doing a big time jump.
-
-
 #### Snapshots
 
 Open vStorage will automatically take a snapshot of each vDisks every 15
@@ -155,7 +154,7 @@ remove any vDisks of the vTemplate. Making any changes to the vDisks
 will break the clone functionality of the vTemplate. You are allowed to
 change the non-vDisk info such as CPU and memory.
 
-##### No protection against deleting a vTemplate
+##### No protection against deleting a vTemplate in ESXi
 
 Currently there is no protection against a vTemplate being removed
 through the vSphere GUI. In case there are clones based upon this
@@ -164,12 +163,12 @@ removed in the vSphere GUI, execute the following.
 
 -   Create a new Virtual Machine and attach the vTemplate disks (which
     are not removed) to this VM.
--   Set the Virtual Machine as vTemplate in the Open vStorage GUI
+-   Set the Virtual Machine as vTemplate in the Open vStorage GUI.
 
 ##### Creating multiple clones at once from a vTemplate
 
 In case you deploy multiple Virtual Machines at once from a vTemplate
-with data on its disks, some of the clone actions will fail due to
+with data on its disks, some of the clone actions might fail due to
 timeouts.
 
 #### vPools
@@ -184,13 +183,11 @@ timeouts.
 
 ##### Removing a vPool
 
--   Removing a vPool only works in case all Storage Routers are online. You will be able to start the remove action in the GUI but the will fail.
+-   Removing a vPool only works in case all Storage Routers are online. You will be able to start the remove action in the GUI but the remove will fail.
 
 ##### Re-adding a vPool on OpenStack Cinder fails for Juno and Kilo.
 
 Due to a [bug](https://bugs.launchpad.net/cinder/+bug/1478929) in Cinder it is not possible to add a vPool with the name of a vPool which was previously deleted. The issue only occurs on Juno and Kilo but not on Liberty.
-
-
 
 ##### Re-adding a vPool on OpenStack Cinder fails in case the manual changes were not undone.
 
@@ -214,3 +211,6 @@ In case an SSD of a host fails, there might be some consequences based upon the 
 * Read role: performance loss can be expected.
 * DB, write role: shutdown the node and move all VMs from the host. The host will need to be replaced and once repaired added again.
 * Scrub: no impact on running VMs.
+
+#### Assigning roles in parallel
+Assigning roles to a Storage Router sometimes fails in case multiple roles are set at the same time.
