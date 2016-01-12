@@ -16,7 +16,7 @@ Execute the next steps in the shell of all Compute nodes:
 #### Ubuntu
 -   Add the repo to your sources
 ```
-echo "deb http://apt.openvstorage.org eugene main" > /etc/apt/sources.list.d/ovsaptrepo.list
+echo "deb http://apt.openvstorage.org eugene-updates main" > /etc/apt/sources.list.d/ovsaptrepo.list
 ```
 -  Install the Open vStorage HyperConverged or not:
   *   Install Open vStorage HyperConverged
@@ -35,7 +35,7 @@ apt-get update; apt-get install  openvstorage
 ```
 echo '[openvstorage]
 name=OVS repo
-baseurl=http://yum.openvstorage.org/CentOS/7/x86_64/dists/eugene
+baseurl=http://yum.openvstorage.org/CentOS/7/x86_64/dists/eugene-updates
 enabled=1
 gpgcheck=0' > /etc/yum.repos.d/ovs.repo
 ```

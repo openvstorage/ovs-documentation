@@ -41,7 +41,7 @@ echo "vm.dirty_background_bytes = 134217728" >> /etc/sysctl.conf
 -   Install the Open vStorage software (Open vStorage core and backend
     packages) on all KVM nodes:
 ```
-echo "deb http://apt.openvstorage.org chicago-community main" > /etc/apt/sources.list.d/ovsaptrepo.list
+echo "deb http://apt.openvstorage.org eugene-updates main" > /etc/apt/sources.list.d/ovsaptrepo.list
 apt-get update; apt-get install openvstorage-hc
 ```
 -   Next execute following command in the shell of the first KVM and
@@ -94,7 +94,7 @@ The quick install guide for ESXi:
 -   Install the Open vStorage software (Open vStorage core and backend
     packages) inside each Storage Router.
 ```
-echo "deb http://apt.openvstorage.org chicago-community main" > /etc/apt/sources.list.d/ovsaptrepo.list
+echo "deb http://apt.openvstorage.org eugene-updates main" > /etc/apt/sources.list.d/ovsaptrepo.list
 apt-get update; apt-get install openvstorage-hc
 ```
 
