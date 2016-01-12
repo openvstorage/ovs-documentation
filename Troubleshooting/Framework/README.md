@@ -174,3 +174,9 @@ Cluster status of node rabbit@ctl01 ...
  {partitions,[]}]
 ...done.
 ```
+
+#### The node ID isn't showing up on the Support page of the GUI.
+In case the node ID isn't showing up on the Support page (Administration > Support) of the GUI, restart the workers on the node from which the node ID isn't showing up.
+```
+restart ovs-workers
+```
