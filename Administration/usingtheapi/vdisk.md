@@ -248,7 +248,12 @@ Main actions:
 
 | Action |  Action/Link | Type | Input | Response |
 |--------|--------------|------|-------|----------|
-| Rollback a vDisk | rollback | POST | {"timestamp": \<timestamp\>} | GUID of a Celery task |
-| Update the parameters of a vDisk | set_config_params | POST | {"set_config_params" : {"dtl_mode": str in [sync, a_sync, no_sync],"sco_size": int in [4, 8, 16, 32, 64, 128],"dtl_target": str, ip,"dedupe_mode": str in [dedupe, non_dedupe],"write_buffer": int, min 128, max 10240,"cache_strategy": str in [none, on_read, on_write],"readcache_limit": int, min 1, max 10240, optional}} | GUID of a Celery task |
-
-
+| Rollback a vDisk | rollback | POST | `{"timestamp": int, timestamp to rollback to}` | GUID of a Celery task |
+| Update the parameters of a vDisk | set_config_params | POST | `{"set_config_params" : {"dtl_mode": str in [sync, a_sync, no_sync],"sco_size": int in [4, 8, 16, 32, 64, 128],"dtl_target": str, ip,"dedupe_mode": str in [dedupe, non_dedupe],"write_buffer": int, min 128, max 10240,"cache_strategy": str in [none, on_read, on_write],"readcache_limit": int, min 1, max 10240, optional}}` | GUID of a Celery task |
+| Get the parameters of a vDisk | get_config_params | GET |  | JSON containing the config parameters |
+| Clone vDisk | clone | POST | `{"name": str, Name for the clone, "storagerouter_guid" : str , GUID of the Storage Router to clone to, "snapshot_id" : str, ID of the snapshot to clone from, optional  }` | GUID of a Celery task |
+| Create snapshot | create_snapshot | POST | `{"name": str, Name for the snapshot, "timestamp" : int ,  timestamp of the snapshot, "consistent": True|False, label the snapshot as consistent, optional, "automatic" : True|False, label the snapshot as automatic, optional, "sticky": True|False, label the snapshot as sticky, optional,  "snapshot_id" : str, id of the snapshot, optional  }` | GUID of a Celery task |
+| Remove snapshot | remove_snapshot | POST | `{"snapshot_id" : str, ID of the snapshot to remove }` | GUID of a Celery task |
+| Set as template | set_as_template | POST |  | GUID of a Celery task |
+| Create from template | create_from_template | POST | `{"devicename" : str, name of the new disk, "pachineguid": str,  GUID of pMachine to create new vDisk on, "machineguid": str,  GUID of the vMachine to assign disk to ,optional }` | GUID of a Celery task |
+| Delete | delete | POST |  | GUID of a Celery task |
