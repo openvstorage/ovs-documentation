@@ -21,6 +21,8 @@
         * [Administration](Administration/usingthegui/administration.md)
     * [Using the API](Administration/usingtheapi/README.md)
         * [vDisk](Administration/usingtheapi/vdisk.md)
+        * [vMachine](Administration/usingtheapi/vmachine.md)
+        * [vPool](Administration/usingtheapi/vpool.md)
         * [Api examples](Administration/usingtheapi/apiexamples.md)
     * [Using the CLI](Administration/usingthecli/README.md)
         * [alba](Administration/usingthecli/alba.md)
