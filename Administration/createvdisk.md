@@ -19,7 +19,10 @@ Open vStorage supports QEMU without libvirt. With this implementation IO bypasse
 Currently the QEMU interface only supports a single vPool.
 
 **Prerequisites**
-
+* Download the voldrv-dev packages
+```
+sudo apt-get install voldrv-dev
+```
 * The QEMU interface is built on top of the Shared Memory Server inside the Volume Driver. This Shared Memory Server is only supported as of Volume Driver 5.4. By default the Shared memory Server is disabled. To enable it, update the vPool json (`/opt/OpenvStorage/config/storagedriver/storagedriver/<vpool_name>.json`) and add under `filesystem` an entry  `"fs_enable_shm_interface": true,`. After adding the entry, restart the Volume Driver for the vPool (`restart ovs-volumedriver_<vpool_name>`).
 * QEMU needs to be built from the source. You can download the source [here](https://github.com/openvstorage/qemu).
 
@@ -33,12 +36,12 @@ sudo make install
 
 There are 2 ways to create a QEMU vDisk:
 ```
-qemu-image create openvstorage://volume 10G
+qemu-image create openvstorage:volume 10G
 ```
 Alternatively create the disk in FUSE and start a VM by using the Open vStorage block driver.
 ```
 truncate -s 10G /mnt/<vpool_name>/volume
-qemu -drive file=openvstorage://volume,if=virtio,cache=none,format=raw ﻿...
+qemu -drive file=openvstorage:volume,if=virtio,cache=none,format=raw ﻿...
 ```
 
 #### <a name="block"></a>Block device
