@@ -20,6 +20,8 @@
         * [Backends](Administration/usingthegui/backends.md)
         * [Administration](Administration/usingthegui/administration.md)
     * [Using the API](Administration/usingtheapi/README.md)
+        * [tasks](Administration/usingtheapi/tasks.md)
+        * [users](Administration/usingtheapi/users.md)
         * [vDisk](Administration/usingtheapi/vdisk.md)
         * [vMachine](Administration/usingtheapi/vmachine.md)
         * [vPool](Administration/usingtheapi/vpool.md)
