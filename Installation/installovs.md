@@ -43,6 +43,12 @@ gpgcheck=0' > /etc/yum.repos.d/ovs.repo
 ```
 yum install --nogpgcheck --enablerepo=fc22 librbd1 librados2 gcc volumedriver-server -y
 ```
+-   Add the necessary external repos
+```
+wget -O /etc/yum.repos.d/CentOS-Base.repo http://mirrors.aliyun.com/repo/Centos-7.repo
+wget -O /etc/yum.repos.d/epel.repo http://mirrors.aliyun.com/repo/epel-7.repo
+wget -P /etc/yum.repos.d/ http://packages.efficios.com/repo.files/EfficiOS-RHEL7-x86-64.repo
+```
 -   Install the Open vStorage packages
 ```
 yum install --nogpgcheck openvstorage -y
