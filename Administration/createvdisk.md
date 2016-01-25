@@ -75,7 +75,7 @@ sudo apt-get install blktap-openvstorage-utils
 ```
 * Load the kernel module by executing `sudo modprobe blktap`.
 
-Install Flocker, see (the Flocker website](https://docs.clusterhq.com/en/1.9.0/install/index.html).
+Install Flocker, see [the Flocker website](https://docs.clusterhq.com/en/1.9.0/install/index.html).
 
 Install the Flocker Plugin:
 
