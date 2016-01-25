@@ -60,7 +60,7 @@ sudo apt-get install blktap-dkms
 * Create the block device by executing `tap-ctl create -a openvstorage:<volume_name>`. Almost instantly a new device will pop up under `/dev`.
 
 #### <a name="docker"></a>Docker containers
-Open vStorage supports Docker contaiers as vDisks through [Flocker](https://clusterhq.com/flocker/introduction/) and [Blktap](http://wiki.xenproject.org/wiki/Blktap). Currently our Flocker Plugin only supports a single vPool.
+Open vStorage supports Docker containers as vDisks through [Flocker](https://clusterhq.com/flocker/introduction/) and [Blktap](http://wiki.xenproject.org/wiki/Blktap). Currently our Flocker Plugin only supports a single vPool.
 
 **Prerequisites**
 * The Flocker Plugin is only supported as of Volume Driver 5.4.
@@ -71,11 +71,9 @@ Install Blktap:
 ```
 sudo apt-get install blktap-dkms
 ```
-* Load the kernel module by executing `sudo modprobe blktap`
+* Load the kernel module by executing `sudo modprobe blktap`.
 
 Install Flocker, see (the Flocker website](https://docs.clusterhq.com/en/1.9.0/install/index.html).
-
-
 
 Install the Flocker Plugin:
 
@@ -103,3 +101,45 @@ Configure the Flocker Plugin:
 ```
 
 Create the Docker containers as usual. That's it!
+
+#### <a name="iscsi"></a>iSCSI
+Open vStorage supports exposing vDisks as iSCSI disks through [TGT](http://stgt.sourceforge.net/).
+
+**Prerequisites**
+* iSCSI vDisks are only supported as of Volume Driver 5.4.
+* The iSCSI integration is built on top of the Shared Memory Server inside the Volume Driver. By default the Shared memory Server is disabled. To enable it, update the vPool json (`/opt/OpenvStorage/config/storagedriver/storagedriver/<vpool_name>.json`) and add under `filesystem` an entry  `"fs_enable_shm_interface": true,`. After adding the entry, restart the Volume Driver for the vPool (`restart ovs-volumedriver_<vpool_name>`).
+
+Install the Open vStorage TGT package. For ubuntu
+```
+sudo apt-get install tgt
+```
+
+Create a new target device
+```
+tgtadm --lld iscsi --mode target --op new --tid=1 --targetname iqn.2016-01.com.openvstorage:for.all
+```
+
+Add a logical unit (LUN)
+```
+tgtadm --lld iscsi --op new --bstype openvstorage --mode logicalunit --tid 1 --lun 1 -b volumeName
+```
+
+Enable the target to accept initiators:
+* Add IP wildcard to allow all initiators
+```
+tgtadm --lld iscsi --mode target --op bind --tid 1 -I ALL
+```
+
+* IP-based restrictions
+    * If you've previously configured a target to accept ALL initiators, you need to remove that first.
+```
+tgtadm --lld iscsi --mode target --op unbind --tid 1 -I ALL
+```
+    * Now, restrict access to a specific IP …
+```
+tgtadm --lld iscsi --mode target --op bind --tid 1 -I 1.2.3.4
+```
+    * or restrict access to a specific IP subnet  …
+```
+tgtadm --lld iscsi --mode target --op bind --tid 1 -I 1.2.3.0/24
+```
