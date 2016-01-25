@@ -78,7 +78,9 @@ Install Flocker, see (the Flocker website](https://docs.clusterhq.com/en/1.9.0/i
 
 
 Install the Flocker Plugin:
+
 * Install using python
+**Be sure to use /opt/flocker/bin/python as this will install the driver into the right python environment.**
 ```
 git clone https://github.com/openvstorage/openvstorage-flocker-driver
 cd openvstorage-flocker-driver/
@@ -97,7 +99,7 @@ Configure the Flocker Plugin:
 ```
 "dataset":
     "backend": "openvstorage_flocker_plugin"
-    "vpool_conf_file": "opt/OpenvStorage/config/storagedriver/storagedriver/<vpool_name>.json"
+    "vpool_conf_file": "/opt/OpenvStorage/config/storagedriver/storagedriver/<vpool_name>.json"
 ```
 
 Create the Docker containers as usual. That's it!
