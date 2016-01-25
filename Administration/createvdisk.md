@@ -55,6 +55,7 @@ To create a block device:
 * Download and install the kernel module and userspace utils for Fedora 22 or CentOS respectively. For Ubuntu, the kernel module can be installed:
 ```
 sudo apt-get install blktap-dkms
+sudo apt-get install blktap-openvstorage-utils
 ```
 * Load the kernel module by executing `sudo modprobe blktap`
 * Create the block device by executing `tap-ctl create -a openvstorage:<volume_name>`. Almost instantly a new device will pop up under `/dev`.
@@ -70,6 +71,7 @@ Install Blktap:
 * Download and install the kernel module and userspace utils for Fedora 22 or CentOS respectively. For Ubuntu, the kernel module can be installed:
 ```
 sudo apt-get install blktap-dkms
+sudo apt-get install blktap-openvstorage-utils
 ```
 * Load the kernel module by executing `sudo modprobe blktap`.
 
