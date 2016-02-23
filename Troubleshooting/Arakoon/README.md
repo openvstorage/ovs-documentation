@@ -6,7 +6,7 @@ If for whatever reason a node dies, it can just be restarted. In normal situatio
 #### Corrupt Database
 If a database is corrupt, one can delete the .db and .db.wal files from the nodes home directory. Afterwards, the node must be restarted. It will fill the database from the TLogs, and resume its normal tasks.
 
-If the database is corrupt, the arakoon node refuses to start. In the log file you see the following log message:
+If the database is corrupt, the Arakoon node refuses to start. In the log file you see the following log message:
 ```
 Dec 29 08:09:04: fatal: going down: Failure("invalid meta data")
 ```
@@ -35,3 +35,76 @@ Arakoon has a built-in mechanism that truncates the last incomplete (or corrupt)
 arakoon --truncate-tlog <FULL_PATH_TO_THE_TLOG>
 ```
 After this you need to delete the database files as there will be entries in the db that don’t have a corresponding tlog entry. Follow the same steps as described in the section “Store ahead of tlogs” to delete the database files.
+
+#### Unable to start Arakoon service
+In some exceptional cases (f.e. when it suspects that data might get corrupted) Arakoon is unable to start after powering off the server.
+
+First check the Arakoon log file under `/var/log/ovs/arakoon.log`
+
+```
+Feb 15 09:53:28 8491: (main|info): Unlinking "/mnt/ssd1/arakoon/klone02-bknd-02-nsm_0/db/touch-21390"
+Feb 15 09:53:28 8493: (main|info): Unlink of "/mnt/ssd1/arakoon/klone02-bknd-02-nsm_0/db/touch-21390" failed with ENOENT
+Feb 15 09:53:28 8520: (main|info): Unlinking "/mnt/ssd1/arakoon/klone02-bknd-02-nsm_0/db/touch-21390"
+Feb 15 09:53:28 8523: (main|info): Unlinking "/mnt/ssd1/arakoon/klone02-bknd-02-nsm_0/tlogs/touch-21390"
+Feb 15 09:53:28 8524: (main|info): Unlink of "/mnt/ssd1/arakoon/klone02-bknd-02-nsm_0/tlogs/touch-21390" failed with ENOENT
+Feb 15 09:53:28 8536: (main|info): Unlinking "/mnt/ssd1/arakoon/klone02-bknd-02-nsm_0/tlogs/touch-21390"
+Feb 15 09:53:28 8538: (main|info): Unlinking "/mnt/ssd1/arakoon/klone02-bknd-02-nsm_0/tlogs/touch-21390"
+Feb 15 09:53:28 8540: (main|info): Unlink of "/mnt/ssd1/arakoon/klone02-bknd-02-nsm_0/tlogs/touch-21390" failed with ENOENT
+Feb 15 09:53:28 8553: (main|info): Unlinking "/mnt/ssd1/arakoon/klone02-bknd-02-nsm_0/tlogs/touch-21390"
+Feb 15 09:53:28 8556: (main|info): Unlinking "/mnt/ssd1/arakoon/klone02-bknd-02-nsm_0/tlogs/touch-21390"
+Feb 15 09:53:28 8558: (main|info): Unlink of "/mnt/ssd1/arakoon/klone02-bknd-02-nsm_0/tlogs/touch-21390" failed with ENOENT
+Feb 15 09:53:28 8570: (main|info): Unlinking "/mnt/ssd1/arakoon/klone02-bknd-02-nsm_0/tlogs/touch-21390"
+Feb 15 09:53:28 8573: (main|info): File at /mnt/ssd1/arakoon/klone02-bknd-02-nsm_0/tlogs/head.db does not exist
+Feb 15 09:53:28 8612: (main|fatal): AUTOFIX: can't autofix this: Tlogcommon.TLogSabotage
+Feb 15 09:53:28 8613: (main|fatal): [rc=50] Somebody has been messing with the available tlogs
+```
+
+Remove the recent tlogs after the server was unreachable.
+
+```
+root@ctl01:/mnt/ssd1/arakoon/klone02-bknd-02-nsm_0/tlogs# ls -alh
+total 1.4M
+drwxr-xr-x 2 ovs  ovs  4.0K Feb 15 09:53 .
+drwxr-xr-x 4 root root 4.0K Feb 11 13:45 ..
+-rw-r--r-- 1 ovs  ovs   71K Feb 11 17:12 000.tlx
+-rw-r--r-- 1 ovs  ovs   58K Feb 11 20:37 001.tlx
+-rw-r--r-- 1 ovs  ovs   57K Feb 12 00:02 002.tlx
+-rw-r--r-- 1 ovs  ovs   57K Feb 12 03:27 003.tlx
+-rw-r--r-- 1 ovs  ovs   57K Feb 12 06:53 004.tlx
+-rw-r--r-- 1 ovs  ovs   57K Feb 12 10:18 005.tlx
+-rw-r--r-- 1 ovs  ovs   57K Feb 15 09:11 006.tlx
+-rw-r--r-- 1 ovs  ovs   57K Feb 15 09:11 007.tlx
+-rw-r--r-- 1 ovs  ovs   57K Feb 15 09:11 008.tlx
+-rw-r--r-- 1 ovs  ovs   57K Feb 15 09:11 009.tlx
+-rw-r--r-- 1 ovs  ovs   57K Feb 15 09:11 010.tlx
+-rw-r--r-- 1 ovs  ovs   57K Feb 15 09:11 011.tlx
+-rw-r--r-- 1 ovs  ovs   57K Feb 15 09:11 012.tlx
+-rw-r--r-- 1 ovs  ovs   57K Feb 15 09:11 013.tlx
+-rw-r--r-- 1 ovs  ovs   57K Feb 15 09:11 014.tlx
+-rw-r--r-- 1 ovs  ovs   57K Feb 15 09:11 015.tlx
+-rw-r--r-- 1 ovs  ovs   57K Feb 15 09:11 016.tlx
+-rw-r--r-- 1 ovs  ovs   57K Feb 15 09:11 017.tlx
+-rw-r--r-- 1 ovs  ovs   57K Feb 15 09:11 018.tlx
+-rw-r--r-- 1 ovs  ovs   57K Feb 15 09:11 019.tlx
+-rw-r--r-- 1 ovs  ovs   57K Feb 15 09:11 020.tlx
+-rw-r--r-- 1 ovs  ovs   57K Feb 15 09:11 021.tlx
+-rw-r--r-- 1 ovs  ovs   57K Feb 15 09:11 022.tlx
+-rw-r--r-- 1 ovs  ovs     0 Feb 15 09:11 023.tlog
+```
+
+Uncompress the tlog
+```
+root@ctl01:/mnt/ssd1/arakoon/klone02-bknd-02-nsm_0/tlogs# arakoon --uncompress-tlog 004.tlx
+root@ctl01:/mnt/ssd1/arakoon/klone02-bknd-02-nsm_0/tlogs# chown ovs:ovs 004.tlog
+root@ctl01:/mnt/ssd1/arakoon/klone02-bknd-02-nsm_0/tlogs# ls -alh
+total 464K
+drwxr-xr-x 2 ovs  ovs  4.0K Feb 15 13:26 .
+drwxr-xr-x 4 root root 4.0K Feb 11 13:45 ..
+-rw-r--r-- 1 ovs  ovs   71K Feb 11 17:12 000.tlx
+-rw-r--r-- 1 ovs  ovs   58K Feb 11 20:37 001.tlx
+-rw-r--r-- 1 ovs  ovs   57K Feb 12 00:02 002.tlx
+-rw-r--r-- 1 ovs  ovs   57K Feb 12 03:27 003.tlx
+-rw-r--r-- 1 ovs  ovs  203K Feb 15 13:26 004.tlog
+```
+
+Start the Arakoon services by executing `start ovs-arakoon-<name of the Arakoon database>`
