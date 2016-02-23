@@ -197,7 +197,7 @@ manually edit /etc/nova/nova.conf and remove the instances\_path. Next
 restart the Nova services and follow the normal steps to add the vPool.
 
 #### OpenStack Evacuate
-Due to a bug in OpenStack, the call to Evacuate a host when it is down goes to the host whihc is down. There is a manual work around which needs to be executed for every volume you want to evacuate.
+Due to a bug in OpenStack, the call to Evacuate a host when it is down goes to the host which is down. There is a manual work around which needs to be executed for every volume you want to evacuate.
 
 Before clicking Evacuate host update the cinder DB:
 ```
