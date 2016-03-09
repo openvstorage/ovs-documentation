@@ -26,7 +26,8 @@ git clone -b release1.0 https://github.com/openvstorage/dev_ops.git
 mkdir /usr/lib/ansible
 cp dev_ops/Ansible/openvstorage_module_project/openvstorage.py /usr/lib/ansible
 ```
-* Edit the Ansible config file (`/etc/ansible/ansible.cfg`) describing the library. Uncomment it and change it to `/usr/lib/ansible`.
+* Edit the Ansible config file `/etc/ansible/ansible.cfg` describing the library. Uncomment it and change it to `/usr/lib/ansible`.
+
 ```
 vim /etc/ansible/ansible.cfg
 
