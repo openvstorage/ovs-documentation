@@ -6,8 +6,8 @@ To prevent errors and cut-down the deployment time, it is possible to automate t
 ### Architecture
 * The Ansible script will deploy a cluster with 3 types of nodes: controllers, compute and storage nodes.
     * Controllers:  dedicated nodes to run the master services and hold the distributed DBs.
-    * Compute: These nodes run the extra services, are configured with vPools and run the VMs.
-    * Storage: The storage servers for the Backend storage.
+    * Compute nodes: These nodes run the extra services, are configured with vPools and run the VMs.
+    * Storage nodes: The storage servers for the Backend storage.
 
 ### Deploy the cluster
 * Install Ubuntu 14.04 on all servers of the cluster. Username and password should be the same on all servers.
@@ -26,7 +26,7 @@ git clone -b release1.0 https://github.com/openvstorage/dev_ops.git
 mkdir /usr/lib/ansible
 cp dev_ops/Ansible/openvstorage_module_project/openvstorage.py /usr/lib/ansible
 ```
-* Edit the Ansible config file (`/etc/ansible/ansible.cfg`) describing the library. Uncomment it and change it to `/usr/lib/ansible`
+* Edit the Ansible config file (`/etc/ansible/ansible.cfg`) describing the library. Uncomment it and change it to `/usr/lib/ansible`.
 ```
 vim /etc/ansible/ansible.cfg
 
