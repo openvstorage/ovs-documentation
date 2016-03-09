@@ -4,6 +4,7 @@
 * [Installation](Installation/README.md)
     * [Essentials](Installation/essentials.md)
     * [Quick Install Guide](Installation/quickinstall.md)
+    * [Deploy Open vStorage with Ansible](Installation/ansible.md)
     * [KVM](Installation/kvm.md)
     * [OpenStack](Installation/openstack.md)
         * [Unconfigure Cinder](Installation/unconfigure.md)
