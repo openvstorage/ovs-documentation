@@ -14,3 +14,4 @@ The Open vStorage Documentation is divided into following sections:
 * [Open vStorage Internals](Internals/README.md)
 * [Troubleshooting](Troubleshooting/README.md)
 
+You can consult this GitBook online by visiting [https://openvstorage.gitbooks.io/openvstorage](https://openvstorage.gitbooks.io/openvstorage).
