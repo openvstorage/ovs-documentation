@@ -8,10 +8,6 @@ might occur. It contains recommended/supported hardware configurations
 and supported Storage Backends.
 
 
-### 1 or 3+ nodes
-Open vStorage can be setup on a single Node or 3+ Nodes. It is not
-advised to have a 2 Node setup as it can lead to split brain situations.
-
 ### Hardware requirements
 -   Minimal requirements
     -   ESXi or KVM compatible hardware with
