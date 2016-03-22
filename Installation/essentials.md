@@ -7,6 +7,9 @@ vStorage may not function, or may not function as desired and data loss
 might occur. It contains recommended/supported hardware configurations
 and supported Storage Backends.
 
+### 1 or 3+ nodes
+Open vStorage can be setup on a single Node or 3+ Nodes. It is not advised to have a 2 node setup as
+the cluster will become unavailable when 1 of the 2 nodes goes down.
 
 ### Hardware requirements
 -   Minimal requirements
