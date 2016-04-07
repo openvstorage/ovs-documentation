@@ -1,4 +1,4 @@
-## Ansible
+## Deploy an Open vStorage cluster with Ansible
 
 ### Introduction
 To prevent errors and cut-down the deployment time, it is possible to automate the deployment of Open vStorage through [Ansible](https://www.ansible.com/). Automating Open vStorage can of course also be achieved in a similar fashion with other tools like [Puppet](https://puppetlabs.com/) or [Chef](https://www.chef.io/chef/).
@@ -77,6 +77,3 @@ cd /opt/openvstorage/dev_ops/Ansible/hyperscale_project/
 ansible-playbook openvstorage_hyperscale_setup.yml -k -vvvv
 ```
 The above playbook will install the necessary packages and run `ovs setup` on the controllers, compute and storage nodes. Next steps are assigning roles to the SSDs and PCIe flash cards, create the backend and create the first vPool.
-
-
-
