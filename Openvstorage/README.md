@@ -3,7 +3,7 @@
 
 Open vStorage is an open-source, scale-out, reliable, high performance, software based storage platform which offers a block & file interface on top of ethernet drives (Seagate Kinetic), object storage or a pool of traditional SATA drives.
 
-Open vStorage is licensed under the [Modified Apache License](https://www.openvstorage.org/license/).
+Open vStorage is licensed under the [Modified Apache 2.0 License](https://www.openvstorage.org/license/).
 
 Open vStorage is a GeoScale Store Platform. We fundamentally disrupt the way data is stored by converging virtual machines and container technology directly with their local filesystem and directing storage workloads to virtual block devices. The possibilities are endless.
 
