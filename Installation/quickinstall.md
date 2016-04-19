@@ -40,8 +40,14 @@ echo "vm.dirty_background_bytes = 134217728" >> /etc/sysctl.conf
 ```
 -   Install the Open vStorage software (Open vStorage core and backend
     packages) on all KVM nodes:
+    - Latest stable version
 ```
 echo "deb http://apt.openvstorage.org eugene-updates main" > /etc/apt/sources.list.d/ovsaptrepo.list
+apt-get update; apt-get install openvstorage-hc
+```
+    - Latest unstable version
+```
+echo "deb http://apt.openvstorage.org unstable main" > /etc/apt/sources.list.d/ovsaptrepo.list
 apt-get update; apt-get install openvstorage-hc
 ```
 -   Next execute following command in the shell of the first KVM and
