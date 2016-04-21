@@ -11,6 +11,7 @@
     * [ESXi](Installation/esxi.md)
     * [HyperScale](Installation/hyperscale.md)
     * [GeoScale](Installation/geoscale.md)
+        * [Getting Started](Installation/geoscalegettingstarted.md)
 * [Administration](Administration/README.md)
     * [Using the GUI](Administration/usingthegui/README.md)
         * [Storage Routers](Administration/usingthegui/storagerouters.md)
