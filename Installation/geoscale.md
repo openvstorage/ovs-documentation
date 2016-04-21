@@ -9,9 +9,10 @@ In these type of setups the storage servers are located in different datacenters
 ### Requirements
 * The compute hosts should be equipped with enough SSD capacity to contain most of the active dataset.
 * A layer 3 network between the different datacenters.
+* An [Etcd cluster](geoscalegettingstarted.md#etcd-cluster) is required and 0 to many [Arakoon clusters](geoscalegettingstarted.md#arakoon-cluster).
 
 ### Compute nodes
-*  Install Open vStorage (apt-get install openvstorage-hc) as explained in the [KVM](kvm.md),[OpenStack](openstack.md) or [ESXi](esxi.md) section on the compute nodes and let all join the cluster.()
+*  Install Open vStorage (apt-get install openvstorage-hc) as explained in the [KVM](kvm.md),[OpenStack](openstack.md) or [ESXi](esxi.md) section on the compute nodes and let all join the cluster.
 
 
 ## Storage server:
