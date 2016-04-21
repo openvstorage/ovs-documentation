@@ -1,7 +1,7 @@
 # Getting Started
 
 To be able to get started with GeoScale, an [Etcd cluster](#etcd-cluster) is required and 0 to many [Arakoon clusters](#arakoon-cluster).
-In this document we'll show you how to set up both
+In this document we'll show you how to set up both.
 
 ### Before starting
 
