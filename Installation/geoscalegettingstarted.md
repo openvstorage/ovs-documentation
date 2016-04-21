@@ -1,6 +1,3 @@
-{% include "installovs.md" %}
-{% include "createbackend.md" %}
-
 # Getting Started
 
 To be able to get started with GeoScale, an [Etcd cluster](#etcd-cluster) is required and 0 to many [Arakoon clusters](#arakoon-cluster).
@@ -226,7 +223,7 @@ To verify the Etcd proxy has been removed properly, you can do the following on 
 
 #### Prerequisites
 
-In order to be able to set up an Arakoon cluster, the [openvstorage-core package must be installed](#installovs)
+In order to be able to set up an Arakoon cluster, the [openvstorage-core package must be installed](KVM.md#installovs)
 
 Always execute the code on the node you wish to create / extend the cluster on
 Eg: I want Arakoon clusters on node1, node2, node3
@@ -254,7 +251,7 @@ OVS supports 4 types of Arakoon clusters
 
 ###### ABM
 * Amount: Equal to amount of ALBA backends
-* Usage: [ALBA backend](#createbackend)
+* Usage: [ALBA backend](KVM.md#createbackend)
 * Limitation: If not provided, OVS will create 1 per ALBA backend
 
 ###### NSM
