@@ -89,12 +89,32 @@ The above playbook will install the necessary packages and run `ovs setup` on th
 
 Next steps are assigning roles to the SSDs and PCIe flash cards, create the backend and create the first vPool.
 
+#### How fast is the playbook? (3 controller nodes & 1 compute node on 1Gbit network)
+
+```
+Friday 22 April 2016  17:35:26 +0200 (0:00:12.733)       0:11:35.012 ********** 
+=============================================================================== 
+TASK: install controllers packages ------------------------------------ 176.44s
+TASK: install compute packages ---------------------------------------- 168.71s
+TASK: installing the open vstorage controllers ------------------------ 120.92s
+TASK: installing the open vstorage compute nodes ----------------------- 43.94s
+TASK: install required packages ---------------------------------------- 19.26s
+TASK: finalizing setup ------------------------------------------------- 12.73s
+TASK: check hosts their availability ----------------------------------- 12.57s
+TASK: add performance settings to cluster ------------------------------- 0.27s
+TASK: add openvstorage apt-repo ----------------------------------------- 0.20s
+
+real    11m37.835s
+user    0m55.560s
+sys     0m29.860s
+```
+
 ### HyperScale / GeoScale 
 
 #### Short info
 
 * **HyperScale:** Seperated compute and storage (on 1 location)
-* **GeoScale:** Seperated compute and storage, with alba excellerated alba (over multiple datacenters)
+* **GeoScale:** Seperated compute and storage, with alba excellerated alba (over multiple datacenters with layer 3 connection available)
 
 #### Architecture
 * The Ansible script will deploy a cluster with 3 types of nodes: controllers, compute and storage nodes.
@@ -149,3 +169,30 @@ ansible-playbook openvstorage_hyperscale_setup.yml -u root -k -vvvv
 The above playbook will install the necessary packages and run `ovs setup` on the controllers and compute nodes. It will also add the storage nodes to the Open vStorage framework database (`ovsdb`) through the `asd-manager setup`.
 
 Next steps are assigning roles to the SSDs and PCIe flash cards, create the backend and create the first vPool.
+
+#### How fast is the playbook? (3 controller nodes, 1 compute node & 3 storage nodes on 1Gbit network)
+
+```
+Friday 22 April 2016  17:12:52 +0200 (0:00:00.530)       0:13:48.209 ********** 
+=============================================================================== 
+TASK: install controllers packages ------------------------------------ 170.95s
+TASK: install compute packages ---------------------------------------- 169.11s
+TASK: installing the open vstorage controllers ------------------------ 139.04s
+TASK: install required packages ---------------------------------------- 76.79s
+TASK: installing the open vstorage compute nodes ----------------------- 42.06s
+TASK: install storage packages ----------------------------------------- 36.17s
+TASK: fetch all etcd endpoints from controllers ------------------------ 14.07s
+TASK: finalizing setup ------------------------------------------------- 12.81s
+TASK: check hosts their availability ----------------------------------- 12.58s
+TASK: create etcd proxy on storage nodes -------------------------------- 2.04s
+TASK: installing the open vstorage storage nodes ------------------------ 0.53s
+TASK: add openvstorage apt-repo ----------------------------------------- 0.40s
+TASK: add performance settings to cluster ------------------------------- 0.39s
+TASK: start etcd proxy on storage nodes --------------------------------- 0.26s
+TASK: create required directories for alba on storage nodes ------------- 0.19s
+TASK: parse etcd endpoints to a list ------------------------------------ 0.03s
+
+real    13m51.644s
+user    1m8.280s
+sys     0m36.608s
+```
