@@ -3,7 +3,7 @@
 ### Introduction
 To prevent errors and cut-down the deployment time, it is possible to automate the deployment of Open vStorage through [Ansible](https://www.ansible.com/). Automating Open vStorage can of course also be achieved in a similar fashion with other tools like [Puppet](https://puppetlabs.com/) or [Chef](https://www.chef.io/chef/).
 
-For starters we have 2 types of setups: HyperConverged and HyperScale / GeoScale 
+For starters we have 2 types of setups: **HyperConverged** and **HyperScale / GeoScale**
 
 #### Prepare your control machine
 
@@ -81,7 +81,7 @@ install_master_ip=10.100.198.1
 
 * Execute the Open vStorage HyperConverged playbook. *(It is advised to execute the playbook in debug mode* `-vvvv`*)*
 ```
-cd dev_ops/Ansible/hyperconverged_project/
+cd ~/dev_ops/Ansible/hyperconverged_project/
 ansible-playbook openvstorage_hyperconverged_setup.yml -u root -k -vvvv
 ```
 
@@ -142,7 +142,7 @@ install_master_ip=10.100.198.1
 
 * Execute the Open vStorage GeoScale / HyperScale playbook. *(It is advised to execute the playbook in debug mode* `-vvvv`*)*
 ```
-cd ~/dev_ops/Ansible/hyperscale_project/
+cd ~/dev_ops/Ansible/hyperscale_geoscale_project/
 ansible-playbook openvstorage_hyperscale_setup.yml -u root -k -vvvv
 ```
 
