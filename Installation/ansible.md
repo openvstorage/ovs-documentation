@@ -230,7 +230,7 @@ If you want to install packages faster you can uncomment & edit the `forks` para
 forks          = 200
 ```
 
-* If you want to know how long the installation last, you can enable the Ansible `profile_tasks` in `/etc/ansible/ansible.cfg`:
+If you want to know how long the installation last, you can enable the Ansible `profile_tasks` in `/etc/ansible/ansible.cfg`:
 ``` 
 callback_whitelist = profile_tasks 
 ```
