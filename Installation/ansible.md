@@ -7,7 +7,21 @@ For starters we have 2 types of setups: **HyperConverged** and **HyperScale / Ge
 
 #### Prepare your control machine
 
-* Install Ansible on a pc or server you can use as Control Machine. The Control Machine is used to send instructions to all hosts in the Open vStorage cluster. Note that the Control Machine should not be part of the cluster so it can later also be used for troubleshooting the Open vStorage cluster.
+* To orchestrate the setup we are going to use a Control Machine. The Control Machine is used to send instructions to all hosts in the Open vStorage cluster. Note that the Control Machine should not be part of the cluster so it can later also be used for troubleshooting the Open vStorage cluster.
+
+```
+Linux control-machine 3.19.0-56-generic #62~14.04.1-Ubuntu SMP Fri Apr 27 10:03:15 UTC 2016 x86_64 x86_64 x86_64 GNU/Linux
+
+ansible:
+  Installed: 2.0.2.0-1ppa~trusty
+  Candidate: 2.0.2.0-1ppa~trusty
+  Version table:
+ *** 2.0.2.0-1ppa~trusty 0
+        500 http://ppa.launchpad.net/ansible/ansible/ubuntu/ trusty/main amd64 Packages
+        100 /var/lib/dpkg/status
+```
+
+* Install Ansible on a pc or server you can use as Control Machine.
 
 ```
 sudo apt-get install software-properties-common
