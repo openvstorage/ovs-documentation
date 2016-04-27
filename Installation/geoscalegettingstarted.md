@@ -12,7 +12,7 @@ Additional steps are required if the Etcd cluster should be on the same nodes as
 
 ##### <a name="steps"></a>Required Steps
 Etcd cluster nodes apart from Ovs nodes (**Recommended**)
-1. [Create the Etcd cluster](#markdown-header-cluster-create)
+1. [Create the Etcd cluster](#etcd-cluster-create)
 1. [Extend the Etcd cluster](#etcd-cluster-extend) (Repeatable)
 1. **Create** Arakoon cluster on node which is part of the Etcd cluster?
     * Yes:
@@ -58,7 +58,7 @@ Etcd cluster nodes mixed with Ovs nodes (**Not recommended**)
 
 #### Installation
 
-##### Creating cluster
+##### <a name="etcd-cluster-create"></a>Creating cluster
 
 Execute this code on the node which should be running the Etcd instance
 
@@ -243,25 +243,25 @@ OVS supports 4 types of Arakoon clusters
 * Amount: 1
 * Usage: StorageDriver
 * Limitation: If not provided, OVS will create it
-* [Etcd configuration](https://github.com/openvstorage/framework/blob/master/docs/etcd.md#sd)
+* [Etcd configuration](https://github.com/openvstorage/framework/blob/master/docs/etcd.md#arakoon)
 
 ###### FWK
 * Amount: 1
 * Usage: Framework
 * Limitation: If not provided, OVS will create it
-* [Etcd configuration](https://github.com/openvstorage/framework/blob/master/docs/etcd.md#fwk)
+* [Etcd configuration](https://github.com/openvstorage/framework/blob/master/docs/etcd.md#arakoon)
 
 ###### ABM
 * Amount: Equal to amount of ALBA backends
 * Usage: [ALBA backend](createbackend.md)
 * Limitation: If not provided, OVS will create 1 per ALBA backend
-* [Etcd configuration](https://github.com/openvstorage/framework/blob/master/docs/etcd.md#abm)
+* [Etcd configuration](https://github.com/openvstorage/framework/blob/master/docs/etcd.md#arakoon)
 
 ###### NSM
 * Amount: Equal to or higher than amount of ALBA backends
 * Usage: [ALBA backend](createbackend.md)
 * Limitation: If not provided, OVS will create 1 per ALBA backend to start with and can create additional clusters based on load
-* [Etcd configuration](https://github.com/openvstorage/framework/blob/master/docs/etcd.md#nsm)
+* [Etcd configuration](https://github.com/openvstorage/framework/blob/master/docs/etcd.md#arakoon)
 
 #### Installation
 
