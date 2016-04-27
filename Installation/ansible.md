@@ -251,8 +251,8 @@ callback_whitelist = profile_tasks
 ### For more information:
 
 #### Full overview
-For a full overview of the seperate repo to install Open vStorage through Ansible: https://github.com/openvstorage/dev_ops/tree/fargo-release3
+For a full overview of the seperate repo to install Open vStorage through Ansible, click [here](https://github.com/openvstorage/dev_ops/tree/fargo-release3).
 
 #### Older versions:
 * For a full overview of the seperate releases, click [here](https://github.com/openvstorage/dev_ops/releases).
-* To install a `eugene-updates` just follow the instrunctions on the `release02` branch, click [here](https://github.com/openvstorage/dev_ops/tree/release2.0)
+* To install a `eugene-updates` just follow the instrunctions on the `release02` branch, click [here](https://github.com/openvstorage/dev_ops/tree/release2.0).
