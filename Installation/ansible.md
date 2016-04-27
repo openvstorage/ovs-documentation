@@ -1,7 +1,7 @@
 ## Deploy an Open vStorage cluster with Ansible
 
 ### Introduction
-To prevent errors and cut-down the deployment time, it is possible to automate the deployment of Open vStorage through [Ansible](https://www.ansible.com/). Automating Open vStorage can of course also be achieved in a similar fashion with other tools like [Puppet](https://puppetlabs.com/) or [Chef](https://www.chef.io/chef/).
+To prevent errors and cut-down the deployment time, it is possible to automate the deployment of [Open vStorage](https://www.openvstorage.org/) through [Ansible](https://www.ansible.com/). Automating Open vStorage can of course also be achieved in a similar fashion with other tools like [Puppet](https://puppetlabs.com/) or [Chef](https://www.chef.io/chef/).
 
 For starters we have 2 types of setups: **HyperConverged** and **HyperScale / GeoScale**
 
@@ -227,8 +227,8 @@ host_key_checking = False
   
 ### Performance issue's
 If the installation is on a large scale, you will probably experience a slow installation.
-This is because Ansible only performance 5 parallel connections by default.
-If you want to install packages faster you can uncomment & edit the `forks` parameter in `/etc/ansible/ansible.cfg`:
+This is because Ansible only perform 5 parallel connections by default.
+If you want to install packages faster, you can uncomment & edit the `forks` parameter in `/etc/ansible/ansible.cfg`:
 
 * By default: 
 
@@ -254,5 +254,5 @@ callback_whitelist = profile_tasks
 For a full overview of the seperate repo to install Open vStorage through Ansible: https://github.com/openvstorage/dev_ops/tree/fargo-release3
 
 #### Older versions:
-* For a full overview of the seperate releases: https://github.com/openvstorage/dev_ops/releases
-* To install a `eugene-updates` just follow the instrunctions on the `release02` branch: https://github.com/openvstorage/dev_ops/tree/release2.0
+* For a full overview of the seperate releases, click [here](https://github.com/openvstorage/dev_ops/releases).
+* To install a `eugene-updates` just follow the instrunctions on the `release02` branch, click [here](https://github.com/openvstorage/dev_ops/tree/release2.0)
