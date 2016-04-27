@@ -17,6 +17,7 @@ sudo apt-get install ansible
 ```
 
 * Create `/usr/lib/ansible`, download the Open vStorage module to the Control Machine and put the module in `/usr/lib/ansible`.
+
 ```
 sudo apt-get install git
 cd ~; sudo git clone -b fargo-release3 https://github.com/openvstorage/dev_ops.git
@@ -24,6 +25,7 @@ sudo mkdir /usr/lib/ansible; sudo cp ~/dev_ops/Ansible/openvstorage_module_proje
 ```
 
 * Edit the Ansible config file `/etc/ansible/ansible.cfg` describing the library. Uncomment it and change it to `/usr/lib/ansible`.
+
 ```
 vim /etc/ansible/ansible.cfg
 
@@ -52,6 +54,7 @@ Converged compute and storage
 * Install `Ubuntu 14.04` on all servers of the cluster. Username (default usage is `root`) and password should be the same on all servers.
 
 * Edit the Ansible inventory file (`/etc/ansible/hosts`) and add the controller, compute and storage nodes to describe the cluster according to the below example:
+
 ```
 #
 # This is the default ansible 'hosts' file.
@@ -80,6 +83,7 @@ install_master_ip=10.100.198.1
 ```
 
 * Execute the Open vStorage HyperConverged playbook. *(It is advised to execute the playbook in debug mode* `-vvvv`*)*
+
 ```
 cd ~/dev_ops/Ansible/hyperconverged_project/
 ansible-playbook openvstorage_hyperconverged_setup.yml -u root -k -vvvv
@@ -127,6 +131,7 @@ sys     0m29.860s
 * Install `Ubuntu 14.04` on all servers of the cluster. Username (default usage is `root`) and password should be the same on all servers.
 
 * Edit the Ansible inventory file (`/etc/ansible/hosts`) and add the controller, compute and storage nodes to describe the cluster according to the below example:
+
 ```
 #
 # This is the default ansible 'hosts' file.
@@ -161,6 +166,7 @@ install_master_ip=10.100.198.1
 ```
 
 * Execute the Open vStorage GeoScale / HyperScale playbook. *(It is advised to execute the playbook in debug mode* `-vvvv`*)*
+
 ```
 cd ~/dev_ops/Ansible/hyperscale_geoscale_project/
 ansible-playbook openvstorage_hyperscale_setup.yml -u root -k -vvvv
@@ -206,16 +212,18 @@ sys     0m36.608s
   **WARNING:** This script wipes all the disks / partitions that are not in use by the operating system. Also it wipes the content of `/root/.ssh/`.
   
   If you need a one liner to execute the wiper from your Ansible configuration master:
-  ```
-  ansible cluster -m shell -a "wget https://raw.githubusercontent.com/openvstorage/dev_ops/fargo-release3/Bash/OpenvSwiper.sh -O /root/wiper.sh; bash /root/wiper.sh; bash /root/wiper.sh" -u root -k`
-  ```
+
+```
+ansible cluster -m shell -a "wget https://raw.githubusercontent.com/openvstorage/dev_ops/fargo-release3/Bash/OpenvSwiper.sh -O /root/wiper.sh; bash /root/wiper.sh; bash /root/wiper.sh" -u root -k`
+```
 
 * **Ansible** `host_key_checking`: 
   If you get host key checking errors when you start the script, change this in `/etc/ansible/ansible.cfg`:
-  ```
-  # uncomment this to disable SSH key host checking
-  host_key_checking = False
-  ```
+
+```
+# uncomment this to disable SSH key host checking
+host_key_checking = False
+```
   
 ### Performance issue's
 If the installation is on a large scale, you will probably experience a slow installation.
@@ -223,16 +231,19 @@ This is because Ansible only performance 5 parallel connections by default.
 If you want to install packages faster you can uncomment & edit the `forks` parameter in `/etc/ansible/ansible.cfg`:
 
 * By default: 
+
 ```
 #forks          = 5
 ```
 
 * Change to: 
+
 ```
 forks          = 200
 ```
 
 If you want to know how long the installation last, you can enable the Ansible `profile_tasks` in `/etc/ansible/ansible.cfg`:
+
 ``` 
 callback_whitelist = profile_tasks 
 ```
