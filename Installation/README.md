@@ -4,7 +4,7 @@
 Currently Open vStorage supports VMware and KVM as hypervisors. A complete and detailed installation guide can be found below for each supported hypervisor.
 For OpenStack specif install instructions are added to correctly integrated Open vStorage through the [Open vStorage Cinder Plugin](https://github.com/openvstorage/framework-cinder-plugin).
 
-Open vStorage is licensed under the [Apache 2.0 License](http://www.apache.org/licenses/LICENSE-2.0).
+Open vStorage is licensed under the [AGPLv3 License](http://www.gnu.org/licenses/agpl.html).
 
 ### Installation Guides
 * [Essentials](essentials.md): don't start an installation without going through this page.
