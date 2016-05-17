@@ -50,7 +50,7 @@ Etcd cluster nodes mixed with Ovs nodes (**Not recommended**)
 
 #### Prerequisites
 
-1. In order to be able to set up an Etcd cluster, the [openvstorage-core package must be installed](#installovs)
+1. In order to be able to set up an Etcd cluster, the [openvstorage-core package must be installed](installovs.md)
 1. Always execute the code on the node you wish to create / extend the cluster on. Eg: I want an Etcd cluster on node1, node2, node3
     1. Node1: On this node execute **create** cluster code
     1. Node2: On this node execute **extend** cluster code
@@ -223,7 +223,7 @@ To verify the Etcd proxy has been removed properly, you can do the following on 
 
 #### Prerequisites
 
-In order to be able to set up an Arakoon cluster, the [openvstorage-core package must be installed](KVM.md#installovs)
+In order to be able to set up an Arakoon cluster, the [openvstorage-core package must be installed](installovs.md)
 
 Always execute the code on the node you wish to create / extend the cluster on
 Eg: I want Arakoon clusters on node1, node2, node3
@@ -243,21 +243,25 @@ OVS supports 4 types of Arakoon clusters
 * Amount: 1
 * Usage: StorageDriver
 * Limitation: If not provided, OVS will create it
+* [Etcd configuration](https://github.com/openvstorage/framework/blob/master/docs/etcd.md#arakoon)
 
 ###### FWK
 * Amount: 1
 * Usage: Framework
 * Limitation: If not provided, OVS will create it
+* [Etcd configuration](https://github.com/openvstorage/framework/blob/master/docs/etcd.md#arakoon)
 
 ###### ABM
 * Amount: Equal to amount of ALBA backends
-* Usage: [ALBA backend](KVM.md#createbackend)
+* Usage: [ALBA backend](createbackend.md)
 * Limitation: If not provided, OVS will create 1 per ALBA backend
+* [Etcd configuration](https://github.com/openvstorage/framework/blob/master/docs/etcd.md#arakoon)
 
 ###### NSM
 * Amount: Equal to or higher than amount of ALBA backends
-* Usage: [ALBA backend](#createbackend)
+* Usage: [ALBA backend](createbackend.md)
 * Limitation: If not provided, OVS will create 1 per ALBA backend to start with and can create additional clusters based on load
+* [Etcd configuration](https://github.com/openvstorage/framework/blob/master/docs/etcd.md#arakoon)
 
 #### Installation
 
