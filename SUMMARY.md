@@ -35,6 +35,7 @@
         * [ganesha-cf](Administration/usingthecli/ganesha-cf.md)
         * [ovs](Administration/usingthecli/ovs.md)
         * [volumedriver_fs](Administration/usingthecli/volumedriver_fs.md)
+        * [etcd](Administration/usingthecli/etcd.md)
     * [Configuration files](Administration/Configs/README.md)
         * [alba](Administration/Configs/alba.md)
         * [alba-asdmanager](Administration/Configs/alba-asdmanager.md)
