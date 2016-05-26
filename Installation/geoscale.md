@@ -39,8 +39,8 @@ Repeat the above steps for each datacenter and every storage server.
 * In the Backend details page of the freshly created Backend, click the `Discover` button. Wait until the storage server pops up and click on the + icon to add it. When asked for credentials use root as login (root) and the password retrieved above.
 * Next follow the standard procedure to claim the disks of the storage server and add them to the Backend.
 
-### Configure the Failure Domain
-* Under Administration > Failure Domains, create a Failure Domain per datacenter where compute nodes are running.
+### Configure the Domain
+* Under Administration > Domains, create a Failure Domain per datacenter where compute nodes are running.
 * On the Storage Router detail page, assign the Storage Router to the correct Failure domain by clicking the `Edit/Save` action.
 * For the backup Failure Domain there are 2 options:
     * Leave it empty: in this case the DTL and a slave Metadataserver will be created in the same Failure Domain.

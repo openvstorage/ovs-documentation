@@ -39,12 +39,11 @@ Click the Mgmt. Center value to edit and select the correct HMC from the
 list. **Hosts highlighted in red are not covered for automated
 fail-over.**
 
-#### <a name="failuredomains"></a>Failure Domains
-The Failure Domains functionality allows to group Storage Routers together and allows to configure the DTL and MDS (MetaDataServer) based upon this grouping. This allows to make sure that when there is a site disaster, the data in the DTL is safeguarded to prevent dataloss.
+#### <a name="domains"></a>Domains
+The Domains functionality allows to group Storage Routers together and allows to configure the DTL and MDS (MetaDataServer) based upon this grouping. This allows to make sure that when there is a site disaster, the data in the DTL is safeguarded to prevent dataloss.
 
-To add a new Failure Domain, enter a name, address, city and country and click the **Save** button.
-
-To assign a Storage Router to a failure domain, see the [Storage Router detail page](storagerouters.md).
+To add a new domain or assign a Backend to a domain, see the [Backend overview page](backends.md).
+To add a new domain or assign a Storage Router to a domain, see the [Storage Router overview page](storagerouters.md).
 
 #### User Management
 

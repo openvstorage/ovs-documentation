@@ -61,7 +61,7 @@ The details for a Storage Router are:
 #### Storage Router Actions
 
 ##### Edit Storage Router properties
-Click the edit button to update the Failure Domain and Backup Failure Domain. Open vStorage will always run a slave MetaDataServer in the same Failure Domain as configured for the Storage Router. In case a Backup Failure Domain is configured, an additional slave MetaDataServer will be configured in the backup Failure Domain.
+Click the edit button to update the Domain and Failure Domain. Open vStorage will always run a slave MetaDataServer in the same Domain as configured for the Storage Router. In case a Failure Domain is configured, an additional slave MetaDataServer will be configured in the Failure Domain.
 
 ##### Refresh the Storage Router properties
 The refresh button will refresh the Storage Router properties.
