@@ -17,7 +17,7 @@ The quick install guide for KVM:
     on the server. Install the Open SSH server and the Virtual Machine
     Host.
 -   Install the KVM packages (see below instructions) or install
-    OpenStack Juno or Kilo (See [OpenStack
+    OpenStack Juno or above (See [OpenStack
     documentation](http://docs.openstack.org))
     on all nodes.
 ```
@@ -59,9 +59,7 @@ ovs setup
     default administrator credentials username:admin, password:admin.
 -   Go to the Storage Router detail page and select the Physical Disk Management tab. Assign a DB and scrub role to at least one SSD disk. Assign read and write roles to SSDs you want to use as cache.
 -   In case you want to run Open vStorage hyperconverged, create an Open
-    vStorage Backend in the Backend section. Note that running Open
-    vStorage as hyperconverged solution will require you to get a free
-    license (Administration > Licenses).
+    vStorage Backend in the Backend section.
 -   To add more nodes execute in the KVM shell of every node (concurrent installations of multiple nodes isn't supported):
 ```
 ovs setup
