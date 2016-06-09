@@ -100,9 +100,17 @@ The quick install guide for ESXi:
     Network.
 -   Install the Open vStorage software (Open vStorage core and backend
     packages) inside each Storage Router.
+   - Latest stable version
 ```
 echo "deb http://apt.openvstorage.org eugene-updates main" > /etc/apt/sources.list.d/ovsaptrepo.list
 apt-get update
+apt-get install openvstorage-hc
+```
+    - Latest unstable version
+```
+echo "deb http://apt.openvstorage.org unstable main" > /etc/apt/sources.list.d/ovsaptrepo.list
+apt-get update
+apt-get install volumedriver-no-dedup-server
 apt-get install openvstorage-hc
 ```
 
