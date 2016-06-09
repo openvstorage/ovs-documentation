@@ -26,11 +26,15 @@ echo "deb http://apt.openvstorage.org unstable main" > /etc/apt/sources.list.d/o
 -  Install the Open vStorage HyperConverged or not:
   *   Install Open vStorage HyperConverged
 ```
-apt-get update; apt-get install openvstorage-hc
+apt-get update
+apt-get install volumedriver-no-dedup-server
+apt-get install openvstorage-hc
 ```
   *   Install the Open vStorage packages *without* the Open vStorage Backend packages
 ```
-apt-get update; apt-get install  openvstorage
+apt-get update
+apt-get install volumedriver-no-dedup-server
+apt-get install openvstorage
 ```
 -   You can now [initialize the first Storage Router](#initialize).
 

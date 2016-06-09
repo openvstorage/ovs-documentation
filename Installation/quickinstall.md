@@ -43,12 +43,15 @@ echo "vm.dirty_background_bytes = 134217728" >> /etc/sysctl.conf
     - Latest stable version
 ```
 echo "deb http://apt.openvstorage.org eugene-updates main" > /etc/apt/sources.list.d/ovsaptrepo.list
-apt-get update; apt-get install openvstorage-hc
+apt-get update
+apt-get install openvstorage-hc
 ```
     - Latest unstable version
 ```
 echo "deb http://apt.openvstorage.org unstable main" > /etc/apt/sources.list.d/ovsaptrepo.list
-apt-get update; apt-get install openvstorage-hc
+apt-get update
+apt-get install volumedriver-no-dedup-server
+apt-get install openvstorage-hc
 ```
 -   Next execute following command in the shell of the first KVM and
     answer the configuration questions.
@@ -99,7 +102,8 @@ The quick install guide for ESXi:
     packages) inside each Storage Router.
 ```
 echo "deb http://apt.openvstorage.org eugene-updates main" > /etc/apt/sources.list.d/ovsaptrepo.list
-apt-get update; apt-get install openvstorage-hc
+apt-get update
+apt-get install openvstorage-hc
 ```
 
 -   Next execute following command in the shell of the first Storage
