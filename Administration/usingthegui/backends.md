@@ -6,6 +6,7 @@ The Open vStorage Backends page allows to configure Open vStorage as Hyperconver
 installation steps. It is possible to unlock the Open vStorage Backend functionality at any given time by installing the necessary additional packages on every Storage Router. To install the packages execute:
 
 ```
+apt-get install volumedriver-no-dedup-server
 apt-get install openvstorage-hc
 ```
 
