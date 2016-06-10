@@ -18,20 +18,35 @@ Execute the next steps in the shell of all Compute nodes:
     - Latest stable version
 ```
 echo "deb http://apt.openvstorage.org eugene-updates main" > /etc/apt/sources.list.d/ovsaptrepo.list
+apt-get update
+apt-get install openvstorage-hc
 ```
     - Latest experimental version
 ```
 echo "deb http://apt.openvstorage.org unstable main" > /etc/apt/sources.list.d/ovsaptrepo.list
+apt-get update
 ```
+
+-  Install the Open vStorage VolumeDriver with or without deduplication:
+  *   Install the VolumeDriver without deduplication (better performance, smaller metadata footprint).
+```
+apt-get install volumedriver-no-dedup-server
+```
+  *   Install the VolumeDriver with deduplication (higher metadatafootprint).
+```
+apt-get install volumedriver-server
+```
+
 -  Install the Open vStorage HyperConverged or not:
   *   Install Open vStorage HyperConverged
 ```
-apt-get update; apt-get install openvstorage-hc
+apt-get install openvstorage-hc
 ```
   *   Install the Open vStorage packages *without* the Open vStorage Backend packages
 ```
-apt-get update; apt-get install  openvstorage
+apt-get install openvstorage
 ```
+
 -   You can now [initialize the first Storage Router](#initialize).
 
 

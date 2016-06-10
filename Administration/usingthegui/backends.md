@@ -99,7 +99,7 @@ highlighted with a specific color explaining its status:
 There are 2 actions possible available on a node level
 
 -   Initialize all disks: This action will initialize all disks of the
-    nide which can be used as Backend disks.
+    node which can be used as Backend disks.
 -   Claim all disks: This action will claim all disks which are
     available and will assign them to the Backend.
 
@@ -132,9 +132,4 @@ In case you want to use erasure coding instead of replication, select the advanc
 
 
 
-#### Licensing
 
-Under Licensing you will find the active license for the backend. To use
-an Open vStorage Backend, a licence is required. You can request a free
-license the license section under Administration. Without a valid
-license you can not add any physical disks to the backend.
