@@ -5,7 +5,6 @@ This section of the documentation describes how to use and manage an Open vStora
 - [Using the API](usingtheapi/README.md)
 - [Using the CLI](usingthecli/README.md)
 
-To configure Open vStorage in detail, have a look at the different [config files](Configs/README.md).
 
 Under [services](Services/README.md) you get an overview of the different services which are running in an Open vStorage cluster.
 
