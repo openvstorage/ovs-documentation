@@ -27,14 +27,12 @@ For each vMachine following info is displayed:
 -   vDisks: The amount of vDisks of the vMachine.
 -   Stored Data: Total size of the current data and the Snapshots
     without the overhead imposed by the Backend redundancy.
--   Cache : The current amount of Cache Hits on the vPool by the
-    vMachine.
 -   IOPS: The current amount of IOPS delivered by the vPool to the
     vMachine.
 -   Read: The current read speed of all vDisks of the vMachine together.
 -   Write: The current write speed of all vDisks of the vMachine
     together.
--   DTM: Status of the Distributed Transaction Log, a copy of the write cache of each
+-   DTL: Status of the Distributed Transaction Log, a copy of the write buffer of each
     vDisk of the vMachine, on another Storage Router to prevent data loss. The
     status can be healthy of degraded.
 
@@ -57,7 +55,6 @@ page:
 -   vDisks: The amount of vDisks of the vMachine.
 -   DTL: Status of the Distributed Transaction Log, a copy of the write cache of each
     vDisk of the vMachine.
--   Cache : The current amount of Cache Hits for the vMachine.
 -   IOPS: The current amount of IOPS consumed by the vMachine.
 -   Read Speed: The current read speed for all vDisks of the vMachine.
 -   Write Speed: The current write speed for all vDisks of the vMachine.
@@ -96,5 +93,4 @@ of a vDisk, click its name.
 
 #### Snapshots
 
-The second tab of the vMachine detail page, all snapshots of the
-vMachine are listed.
+The second tab of the vMachine detail page, all snapshots of the vMachine are listed.
