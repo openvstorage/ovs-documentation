@@ -2,11 +2,10 @@
 
 #### Introduction
 
-A vPool is a Virtual Storage Pool, a Filesystem, used to deploy
-vMachines. A vPool can span multiple VSAs and connects to a single
+A vPool is a Virtual Storage Pool, a single namespace  used to deploy
+vDisks. A vPool can span multiple Storage Routers and connects to a single
 Storage Backend. The vPools overview lists all the vPools in the Open
-vStorage Cluster. Note that a vPool can not be added or updated through
-the Open vStorage GUI for the moment.
+vStorage Cluster.
 
 #### vPool Overview
 
@@ -21,7 +20,6 @@ For each vPool following info is displayed:
     see [more details](#details) and execute actions.
 -   Stored Data: Total size of the current data and the Snapshots
     without the overhead imposed by the Backend redundancy.
--   Cache : The current amount of Cache Hits on the vPool.
 -   IOPS: The current amount of IOPS delivered by the vPool to all
     vDisks.
 -   Type: Type of the Storage Backend. Possible values are Local FS
@@ -29,6 +27,7 @@ For each vPool following info is displayed:
 -   Connection: The Connection (IP, URL, Domainname, Zone, ...) for the
     Storage Backend.
 -   Login: Login/Username used to connect to the Storage Backend.
+-   Status: status of the vPool.
 
 
 ### <a name="details"></a>vPool Details
@@ -36,19 +35,13 @@ For each vPool following info is displayed:
 The vPool Details page displays the detailed performance statistics of a
 single vPool. There are 2 types of statistics: Frontend and Backend
 statistics. The Frontend statistics are the performance metrics as seen
-by the vDisks. The Backend statistics are informative. A write to the
-Storage Backend only happens when data is evicted from the write cache
-and a read only happens when the data is not in the cache of the vPool.
-Low values on Backend performance are not necessary giving low
-performance values, as seen by vDisks, on the Frontend as all data might
-reside in cache. A lot of cache misses and low values for the Backend
-performance on the other hand will result in a slow vDisk.
+by the vDisks. The Backend statistics are based on the data exchanged with the backend.
+
 
 The Frontend details for a vPool are:
-
+-   Status: status of the vPool.
 -   Stored Data: Total size of the current data and the Snapshots
     without the overhead imposed by the Backend redundancy.
--   Cache : The current amount of Cache Hits on the vPool.
 -   IOPS: The current amount of IOPS delivered by the vPool to all
     vDisks.
 -   Read Speed: The current read speed for all vDisks on the vPool
@@ -59,28 +52,28 @@ The Frontend details for a vPool are:
 -   vDisks: The amount of vDisks on the vPool.
 
 The Backend details for a vPool are
-
+-   Write Speed: The current write speed to the Storage Backend.
+-   Read Speed: The current read speed from the Storage Backend.
 -   Type: Type of the Storage Backend.
+-   Login: Login/Username used to connect to the Storage Backend.
 -   Connection: The Connection (IP, URL, Domainname, Zone, ...) for the
     Storage Backend.
--   Login: Login/Username used to connect to the Storage Backend.
--   Read Speed: The current read speed from the Storage Backend.
--   Write Speed: The current write speed to the Storage Backend.
 
 The Configuration details for a vPool are
 
 -   Cache Strategy: Cache on Read or Cache on Write
 -   Deduped mode: Deduped or Non-Deduped. When set to deduped all vDisks will be using a deduped read cache per Storage Router. On the individual vDisk page you can change the setting so the volumes becomes non-deduped and has its own cache. When the vPool setting is set to Non-Deduped all vDisks will have their own cache location. In this case it will not be possible to overrule this setting on the vDisk detail page.
 -   SCO Size: The size of the Storage Conatiner Objects (a collection of writes) which gets stored on the Backend.
+-   Cluster Size: The block size used by the vDisks on the vPool.
 -   Write Buffer: The amount of data that can be in the DTL but not available in the Backend.
--   DTL mode: The way new writes are stored in the Distributed Transaction Log (DTL). The DTL is making sure that you don't have data loss when a host goes down. The DTL of a volume is configured on another host as where the volume is running and contains the outstanding writes (writes which are not yet on the backend). Every write to the write buffer (local SSDs) of a volume also gets transferred to the DTL on another host. This transfer can be disabled (no DTL), synchronously or asynchronously.
+-   DTL mode: The way new writes are stored in the Distributed Transaction Log (DTL). The DTL is making sure that you don't have data loss when a host goes down. The DTL of a volume is configured on another host as where the volume is running and contains the outstanding writes (writes which are not yet on the backend). Every write to the write buffer (local SSDs) of a volume also gets transferred to the DTL on another host. This transfer can be disabled (no DTL), synchronously (sync every 4K write) or asynchronously (sync on fsync from the VM).
 -   DTL Transport: Displays whether the vPool is using RDMA or standard TCP to transfer the DTL data.
 
-These setting will be by default applied to all vDisks. The settings can be changed on the individual vDisk Detail pages.
+These setting will be by default applied to all vDisks. The settings (except for the cluster size) can be changed on the individual vDisk Detail pages.
 
 #### vPool Actions
 
-### <a name="addvpool"></a>Create the vPool
+##### <a name="addvpool"></a>Create the vPool
 
 -   In case the GUI isn't open yet, open the [Open vStorage
     GUI](Administration/usingthegui.md) on the public IP of the Storage Router and
@@ -108,20 +101,26 @@ These setting will be by default applied to all vDisks. The settings can be chan
     -   In case Open vStorage Backend is selected, you can select one of
         previously created local [Backends](backends.md). Leave the **Use
         local Open vStorage Backend** checked and press **Next** to load
-        the available Backends. Use this option in case you want to run
-        Open vStorage hyperconverged (using the SATA disk inside the
-        Storage Router as Tier 2 storage). Select a Preset from  the dropdown. This Preset defines how data is stored on the backend (e.f. 3-way replication). You can add more Presets in the detail page of a [Backend](backends.md#presets). **Once the vPool is created the Preset can't be changed.**
+        the available Backends. Use this option in case you want Open vStorage to manage the SATA drives and SSDs.
+        Select a Preset from  the dropdown. This Preset defines how data is stored on the backend (e.f. 3-way replication). You can add more Presets in the detail page of a [Backend](backends.md#presets). **Once the vPool is created the Preset can't be changed.**
 -   Select the Storage Router as Initial Storage Router. Click **Next** to continue.
 
+
 -   On the second tab
-    -   Specify the Read and write Cache size to be assigned for the vPool on the Storage Router.
-    -   Select the Storage IP. Use 127.0.0.1 in case of KVM or the IP in Storage Network for ESXi.
+    -   Specify the fragment cache method
+        - Select No Caching in case you have an all flash backend.
+        - Select Read, Write or Read/Write depending on your application.
+    -   Select the location of the fragment cache
+        - Select **Place Fragment Cache on disk** in case you want cache data on SSDs of the Storage Router with the read role. Typically you should select this option in case you are not using an ALBA backend with an SSD performance layer.
+        - Select **Use another ALBA Backend as Fragment Cache** to use an (all SSD) ALBA backend as cache layer to be used in front of the SATA backend.
 
 -   On the third tab
-    -   Define the Distributed Transaction Log mode: Currently you can set the DTL to on or off.
+    -   Define the Distributed Transaction Log mode: Currently the DTL can be disabled (no DTL), synchronously (sync every 4K write) or asynchronously (sync on fsync from the VM).
+    -   Transport mode: TCP or RDMA (if available).
     -   Select the default Caching method for vDisks.
-    -   Select the default deduped/non-deduped policy for vDisks. In case the value is set to deduped, the value can be overwritten on the vDisk detail page.
+    -   Select the default deduped/non-deduped policy for vDisks. In case the value is set to deduped, the value can be overwritten on the vDisk detail page. **Only select deduped in case you installed the volume driver package with deduplication functionality.**
     -   Select the SCO size (a collection of writes which gets stored on the Backend).
+    -   Select the Cluster Size, the block size used by the vDisks on the vPool.
     -   Select the Write Buffer (the amount of data that can be in the DTL but not available in the Backend).
 
 -   On the fourth tab
@@ -158,8 +157,7 @@ details of a vDisk, click its name.
 ##### Storage Routers serving this vPool
 
 All the Storage Routers which are currently serving this vPool are
-indicated with a marked checkbox. In case the vPool isn't a local file
-system it can be extended across multiple Storage Routers. To add a Storage Router select the
+indicated with a marked checkbox.  To add a Storage Router select the
 checkbox next to the Storage Router name. To remove the vPool from a Storage Router unselect
 the checkbox next to the Storage Router name. Removing a vPool from being served by
 a Storage Router is only possible in case there aren't any vDisks being served by

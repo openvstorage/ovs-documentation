@@ -2,7 +2,7 @@
 
 #### Introduction
 
-The Open vStorage Backends page allows to configure Open vStorage as Hyperconverged solution by using the disks inside the Storage Router as location for the Tier 2 Storage. You could say that a backend is a group of physical SATA disks which are grouped together. This page is available in case you also installed the backend package during the
+The Open vStorage Backends page allows to manage physical devices (SATA, SSD, NVMe) as storage backend . This page is available in case you also installed the backend package during the
 installation steps. It is possible to unlock the Open vStorage Backend functionality at any given time by installing the necessary additional packages on every Storage Router. To install the packages execute:
 
 ```
@@ -20,6 +20,7 @@ For each Backend following details are available:
 -   Name: friendly name of the Backend.
 -   Type: Type of the Backend. Currently the only supported type as Backend is Open
     vStorage Backend.
+-   Domain: The domain to which the backend belongs (f.e. datacenter in case of local backend).
 -   Status: Status of the Backend. This is indicated by a color.
     -   Green: Everything is ok.
     -   Orange: Issues have been reported which require your attention.
@@ -33,29 +34,32 @@ For each Backend following details are available:
     Backend** button.
 -   Give the Backend a name. Only the letters a-z, numbers and dashes
     (not as first or last character) are allowed. A minimum of 3 and a
-    maximum of 50 characters has to be maintained. Click *Finish* to
-    create the Backend.
+    maximum of 50 characters has to be maintained.
+-   Select whether it a Local or Global backend. A local backend needs to be selected when the disks belong to the same datacenter. A Global backend allows to combine multiple local backends into a single backend which is spread across multiple datacenters.
+-   Click *Finish* to create the Backend.
 
-After creating the Backend, assign some disks to the Backend to store
-the actual VM data.
+After creating the Backend, assign some disks or local backends to the Backend to store
+the actual vDisk data.
 
 #### Backend Details
 
-The Backend Details page displays the details of a single Backend and
-allows to add or remove SATA disks of the Host to the Backend.
+The Backend Details page displays the details of a single backend and
+allows to add or remove SATA disks and local backends the Backend.
 
 Following details are displayed for a Backend:
 
 -   Type: Type of the Backend. Currently the only supported type is Open
     vStorage Backend.
+-   Scaling: Local or Global. A local backend groups the drives within a datacenter. A Global backend allows to combine multiple local backends into a single backend which is spread across multiple datacenters.
 -   Status: Status of the Backend. This is indicated by a color.
     -   Green: Everything is ok.
     -   Orange: Issues have been reported which require your attention.
     -   Red: Possible dataloss.
--   Devices: The amount of disks for each state assigned to the Backend.
-    -   Green: The disk is in use by the Backend.
-    -   Orange: The disk is in warning state.
-    -   Red: The disk is in error.
+-   Health: The amount of disks/backends for each state assigned to the Backend.
+    -   Green: The disk/backend is in use by the Backend.
+    -   Orange: The disk/backend is in warning state.
+    -   Red: The disk/backend is in error.
+-   Domain: The domain to which the backend belongs (f.e. datacenter in case of local backend).
 -   Puts/s: Average amount of puts/s to the Backend over the last 5
     seconds.
 -   Gets/s: Average amount of gets/s from the Backend over the last 5
@@ -65,6 +69,9 @@ On the right side you can find a pie-chart which displays the storage
 Backend consumption per vPool using the Backend.
 
 #### Backend Actions
+
+##### Edit Backend
+Edit the domain to which the backend belongs.
 
 ##### Delete Backend
 Delete a backend in case it is no longer in use. Deleting a backend when there are still ASDs attached is not allowed. Remove all ASDs by selecting each ASDk and clicking the *Remove* button on the ASD detail panel.
@@ -105,7 +112,7 @@ There are 2 actions possible available on a node level
 
 ##### ASD Details and Actions
 
-Each disk (ASD) can be managed individually. Select the dropdown box to
+Each disk can hold many ASDs (ALBA Storage Daemons) which can be managed individually. Select the dropdown box to
 see the ASD details and possible actions. 
 
 ![](../../Images/asd_details.png)
@@ -126,7 +133,7 @@ A backend has a list of presets assigned to it. A preset consists out of a set o
 
 To add a new preset for a backend, click the **+ Add Preset** button. Give the new preset a name. By default you can select the replication factor of fragments stored on the backend. Selecting 1 means that a single broken disk will lead to data loss.
 
-In case you want to use erasure coding instead of replication, select the advanced settings. Select the checkbox to indicate you understand the risk of adding new policies and the select compression algorithm to use. You will need to add at least one policy. You can also sort the policies according to which policy is more preferred. In case the policy can be met, the top policy will be selected. In case the policy can not be met, the second one from the list gets selected and so forth.
+In case you want to use erasure coding instead of replication, select the advanced settings. Select the checkbox to indicate you understand the risk of adding new policies, select whether you want to encrypt the backend and select the compression algorithm to use. You will need to add at least one policy. You can also sort the policies according to which policy is more preferred. In case the policy can be met, the top policy will be selected. In case the policy can not be met, the second one from the list gets selected and so forth.
 
 ![](../../Images/addpreset.png)
 

@@ -39,29 +39,16 @@ performance and status of the Cluster. unsupported
 Following panels, from left to right and top to bottom, can be found on
 the Dashboard:
 
--   Storage Routers: The Storage Routers panel list all the Storage Routers
-    registered in the Open vStorage Cluster. For each Storage Router the status,
-    name, IP address and amount of vDisks is displayed.
--   Open vStorage Backends (Optional): The Open vStorage Backend panel displays all registered Open vStorage Backends and their status. This panel is only displayed in case the hyper-converged version is installed.
--   Cache Hit Ratio: The Cache Hit Ratio panel contains the percentage
-    of the cache hits to the total amount of cache lookups for all
-    vDisks. Below the current amount of IOPS is displayed for the whole
-    Cluster. The panel gets updated every 5 seconds.
--   vMachines: The vMachine panels lists the top vMachines according to
-    IOPS and Stored Data. You can use the drop-down list to select the
-    property to filter on. Click the number next to the vMachines title
-    to go directly to the list of vMachines.
+-   vPools: The vPool panel list all the vPools crated in the Open vStorage Cluster. For each vPool a summary of the Storage Routers serving the vPool displayed.
+-   Open vStorage Backends (Optional): The Open vStorage Backend panel displays all registered Open vStorage Backends and their status. This panel is only displayed in case the necessary ALBA backend packages are installed.
 -   vDisk Statistics: The vDisk Statistics panels lists the average on
     IOPS, Read and Write Speed and Cache Hits over 5 seconds summarized
     for all vDisks in the Custer. The values are updated automatically
     every 5 seconds.
--   vPools: The vPools panels lists the top vPools according to Stored
-    Data and Bandwidth. Use the drop-down list to select the property to
-    filter on.
 
 At the bottom of the page a panel is displayed with the amount of cache
 hits, the total amount of data (including meta-data) written to the
-Storage Backend, the data read from the Storage Backend and the bandwith
+Storage Backend and the bandwidth
 saved by Cache Hits. A read is served from the cache when it is found in
 the read or write cache and no request is needed to fetch the data from
 the Backend. The total amount of data written to the Storage Backend is
@@ -87,6 +74,6 @@ The top navigation lists following sections:
 -   [vDisks](vdisks.md): the virtual disks served by Open vStorage.
 -   [vTemplates](vtemplates.md): the blueprints for a new vMachines.
 -   [Backends](backends.md): the Open vStorage Backends (only applicable
-    when running hyperconverged).
+    when the ALBA backend packages are installed).
 -   [Administration](administration.md): the administration section.
 
