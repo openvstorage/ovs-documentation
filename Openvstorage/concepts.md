@@ -46,4 +46,4 @@ RDMA can be enabled or disabled for the complete cluster, so if RDMA is enabled,
 properly installed and configured RDMA capable hardware.
 
 ## vPool
-A vPool is a Virtual Storage Pool used to deploy vMachines. a vPool can span multiple Storage Routers and connects to a single storage backend. This backend can be an S3 compatible object storage or in case the data needs to be split across multiple datacenters a global ALBA backend.
+A vPool is a Virtual Storage Pool used to deploy vDisks. a vPool can span multiple Storage Routers and connects to a single storage backend. This backend can be an S3 compatible object storage or in case the data needs to be split across multiple datacenters a global ALBA backend.
