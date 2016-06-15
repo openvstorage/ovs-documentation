@@ -17,4 +17,5 @@ Open vStorage is licensed under the [AGPLv3 License](http://www.gnu.org/licenses
 ## On the same page
 In order to fully understand the open vStorage documentation, it is essential that some items are explained in detail so everyone is on the same page.
 * [Concepts](concepts.md): Important Open vStorage concepts.
-* [Architecture](architecture.md): The architecture of an Open vStorage.
+* [Cluster Topology](topology.md): The topology of an Open vStorage cluster across datacenters.
+* [Architecture](architecture.md): The architecture of Open vStorage.
