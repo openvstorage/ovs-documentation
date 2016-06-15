@@ -42,6 +42,7 @@ The cluster consist out of multiple ALBA backends:
 
 The cluster has 1 vPool which is spread across the 3 datacenters. This means that VMs can be moved and started in any of the 3 datacenters. The vPool will consist out of 6 Storage Routers, one on each performance node (4 in Roubaix, 1 in Gravelines and 1 in Strasbourg).
 Due to the high latency between the sites, the DTL for volumes in the Roubaix datacenter are configured to be in the Roubaix datacenters. Since the Gravelines and Strasbourg datacenter only have a singe performance node, the DTL for volumes in these datacenters is hosted in Roubaix.
+The compute nodes run the Edge client which connect over the network with the the performance nodes.
 
 Each of the datacenters has a management node running the GUI, the API and the distributed database. In the Roubaix datacenter an additional management node is installed which hosts the monitoring components (statistics-InfluxDB/Grafana, logs-ELK/Kibana) and check_MK for events and alerting.
 

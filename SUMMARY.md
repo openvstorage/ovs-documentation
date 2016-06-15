@@ -3,6 +3,7 @@
 * [Open vStorage](Openvstorage/README.md)
     * [Concepts](Openvstorage/concepts.md)
     * [Architecture](Openvstorage/architecture.md)
+    * [Cluster Topology](Openvstorage/topology.md)
 * [Installation](Installation/README.md)
     * [Essentials](Installation/essentials.md)
     * [Quick Install Guide](Installation/quickinstall.md)
