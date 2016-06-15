@@ -31,7 +31,7 @@ the cluster will become unavailable when 1 of the 2 nodes goes down.
     -   1 * Intel DC P3600 400GB PCIe Flash
     -   2 * Intel DC S3500 800GB SSD
     -   6 * 4TB SATA disks
-    -   Dual 10GbE
+    -   Dual 10GbE (RoCE)
 
 ### Supported Hypervisors
 -   VMware ESXi 5.1 P01 (experimental, single vPool only)
@@ -129,6 +129,8 @@ of the vPool\>.json
 ### Hostnames
 Open vStorage currently works IP based. When browsing to the Open vStorage GUI, please use the ip address instead of the hostname.
 
+### RDMA
+Open vStorage only supports RDMA in clusters where each node of the cluster has RDMA capable hardware.
 
 ### Installation remarks
 
