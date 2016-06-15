@@ -3,6 +3,17 @@
 ### Introduction
 It is possible to install Open vStorage across multiple datacenters. Open vStorage supports to stretch the vPool and the storage backend across multiple locations in case there is a low-latency link between the datacenters and enough bandwidth is available.
 
+### RDMA
+
+Open vStorage supports RDMA. If using RDMA hardware, it is important to enable RDMA during setup when asked so.
+ 
+RDMA can be enabled or disabled for the complete cluster, so if RDMA is enabled, one needs to be sure that all nodes have
+properly installed and configured RDMA capable hardware.
+
+Once RDMA is enabled, it is important that when the system asks to specify the Storage IP (both during the setup 
+of the ASD Manager as in the wizard to add a vPool), the ip address selected is configured on the RDMA enabled NIC. If
+an ip address is selected which is configued on to a conventional NIC, services will be unable to start.
+
 ### Compute nodes
 * Install Open vStorage (apt-get install openvstorage-hc) as explained in the [KVM](kvm.md),[OpenStack](openstack.md) or [ESXi](esxi.md) section.
 
@@ -22,8 +33,6 @@ cat /opt/alba-asdmanager/config/config.json
 "password": "u9Q4pQ76e0VJVgxm6hasdfasdfdd",
 ...
 ```
-
-
 
 ### Add the ASD nodes to a backend
 * Login into the Open vStorage GUI and go to Backends.
