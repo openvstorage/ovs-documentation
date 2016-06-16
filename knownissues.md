@@ -8,7 +8,7 @@ bug](https://www.openvstorage.org/contribute/) for these issues in the [GitHub b
 tracker](https://github.com/openvstorage/openvstorage/issues).
 
 Feel free to solve any of these issues. You can find more information on
-how to contribute to Open vStorage [here](Contribute).
+how to contribute to Open vStorage [here](https://www.openvstorage.com/contribute/).
 
 ## VMware ESXi
 ### Single vPool only
