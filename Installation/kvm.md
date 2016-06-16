@@ -12,7 +12,7 @@ Forum](https://groups.google.com/forum/#!forum/open-vstorage). **Only
 ### What do you need to install Open vStorage on multiple nodes?
 -   At least 3 KVM compliant servers. For performance reasons at least 1
     SSD or PCI-flash card (min. 100GB) is required.
--   In case you want to install Open vStorage Hyper-converged, at least 3 additional SATA disks are required for the Open vStorage Backend.
+-   In case you want to install Open vStorage with the native Open vStorage ALBA backend, at least 3 additional SATA disks are required for the Open vStorage Backend.
 -   Per GB read cache on SSD/PCI-e flash, you will need to reserve 10 MB RAM of the Host for Open vStorage.
 
 ### Prerequisites before starting this guide:
@@ -82,14 +82,14 @@ The initialization script will ask a couple of questions:
     these clusters.*.
 -   Enter a name for the Open vStorage Cluster.
 -   Select the Public IP address of the KVM Node.
+-   Select whether to use an external ETCD cluster for the configuration files.
 -   Select KVM as hypervisor. In case VMware is used as hypervisor, use
     the [ESXi install documentation](esxi.md).
 -   Select the public IP address of the Storage Router.
 -   Enter the root password of the Storage Router to exchange the necessary SSH
     keys.
 
-When the install is completed a message will be displayed and you can
-start using Open vStorage.
+When the install is completed a message will be displayed.
 
 ```
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
@@ -97,6 +97,19 @@ start using Open vStorage.
 +++ Point your browser to http://<IP of the Storage Router> to start using Open vStorage +++
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 ```
+In case the ALBA backend packages are installed (by means of openvstorage-hc) the ASD manager setup will start:
+-   Select the public IP address to use for the ASDs.
+-   Select the start port to be used by the ASDs
+
+When the ASD manager setup is completed a message will be displayed and you can
+start using Open vStorage.
+
+```
++++++++++++++++++++++++++++++++++++++
++++  ASD Manager setup completed  +++
++++++++++++++++++++++++++++++++++++++
+```
+
 
 {% include "registration.md" %}
 

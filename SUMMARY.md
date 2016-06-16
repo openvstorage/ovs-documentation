@@ -43,4 +43,5 @@
     * [Remove a Storage Router](Administration/removenode.md)
     * [Shutdown and restart a cluster](Administration/shutdownrestart.md)
     * [Upgrades](Administration/upgrade.md)
+* [Known Issues](knownissues.md)
 * [Older Releases](olderreleases.md)

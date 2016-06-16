@@ -49,14 +49,14 @@ The initialization script will ask a couple of questions:
     these clusters.*.
 -   Enter a name for the Open vStorage Cluster.
 -   Select the Public IP address of the KVM Node.
+-   Select whether to use an external ETCD cluster for the configuration files.
 -   Select KVM as hypervisor. In case VMware is used as hypervisor, use
     the [ESXi install documentation](esxi.md).
 -   Select the public IP address of the Storage Router.
 -   Enter the root password of the Storage Router to exchange the necessary SSH
     keys.
 
-When the install is completed a message will be displayed and you can
-start using Open vStorage.
+When the install is completed a message will be displayed.
 
 ```
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
@@ -64,6 +64,17 @@ start using Open vStorage.
 +++ Point your browser to http://<IP of the Storage Router> to start using Open vStorage +++
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 ```
+In case the ALBA backend packages are installed (by means of openvstorage-hc) the ASD manager setup will start:
+-   Select the public IP address to use for the ASDs.
+-   Select the start port to be used by the ASDs
+
+When the ASD manager setup is completed a message will be displayed and you can
+start using Open vStorage.
+
+```
++++++++++++++++++++++++++++++++++++++
++++  ASD Manager setup completed  +++
++++++++++++++++++++++++++++++++++++++
 
 {% include "registration.md" %}
 
