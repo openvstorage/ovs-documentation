@@ -221,7 +221,7 @@ sys     0m36.608s
 
 * **Open vSwiper:**
   If something goes wrong you can run the dev_ops Open vStorage wiper to redo the installation. 
-  Just go to: `dev_ops/Bash/` and run on the nodes: `bash OpenvSwiper.sh`
+  Just go to : [dev_ops/Bash/](https://github.com/openvstorage/dev_ops) and run on the nodes: `bash OpenvSwiper.sh`
 
   **WARNING:** This script wipes all the disks / partitions that are not in use by the operating system. Also it wipes the content of `/root/.ssh/`.
   
@@ -241,7 +241,7 @@ host_key_checking = False
   
 ### Performance issue's
 If the installation is on a large scale, you will probably experience a slow installation.
-This is because Ansible only perform 5 parallel connections by default.
+This is because Ansible only performs 5 parallel connections by default.
 If you want to install packages faster, you can uncomment & edit the `forks` parameter in `/etc/ansible/ansible.cfg`:
 
 * By default: 
