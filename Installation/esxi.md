@@ -19,7 +19,7 @@ in the public [Open vStorage Forum](https://groups.google.com/forum/#!forum/open
     [deployOvs.py](https://github.com/openvstorage/openvstorage/blob/master/scripts/deployment/deployOvs.py)
     script (browse to openvstorage / scripts / deployment /) from
     [GitHub](https://github.com/openvstorage/openvstorage/).
--   In case you want to install Open vStorage Hyper-converged, at least 3 additional SATA disks are required for the Open vStorage Backend.
+-   In case you want to install Open vStorage with the native Open vStorage Backend, at least 3 additional SATA disks are required for the Open vStorage Backend.
 -   Per GB read cache on SSD/PCI-e flash, you will need to reserve 10 MB RAM in the Open vStorage Storage Router.
 
 ### Prerequisites before starting this guide:
@@ -362,6 +362,7 @@ The initialization script will ask a couple of questions:
     these clusters.**.
 -   Enter a name for the Open vStorage Cluster.
 -   Select the Public IP address of the Storage Router.
+-   Select whether to use an external ETCD cluster for the configuration files.
 -   Select VMware as hypervisor. In case KVM is used as hypervisor, use
     the [KVM install documentation](kvm.md).
 -   Enter the hostname of the host on which the Storage Router is
