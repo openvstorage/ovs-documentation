@@ -38,7 +38,7 @@ The below picture explains the topology or our example cluster:
 The cluster consist out of multiple ALBA backends:
 * A local performance backend using the SSDs of the Performance nodes. Each datacenter has its own local performance backend. All SSDs in a single datacenter are grouped to form a single, global cache. In the Roubaix datacenter a 9+3 policy is used so a loss of a performance node can be survived without losing the complete cache. The backend is configured as ALBA cache for the global backend.
 * A local capacity backend using the SATA disks of the Capacity nodes.  Recovery from a disk failure should be possible without the need to fetch data from other datacenters so a 6+3 policy is used.
-* A global backend which consists out of the 3 local capacity backends. A ^policy of 2+1 used in this case to protect against a datacenter failure.
+* A global backend which consists out of the 3 local capacity backends. A policy of 2+1 used in this case to protect against a datacenter failure.
 
 The cluster has 1 vPool which is spread across the 3 datacenters. This means that VMs can be moved and started in any of the 3 datacenters. The vPool will consist out of 6 Storage Routers, one on each performance node (4 in Roubaix, 1 in Gravelines and 1 in Strasbourg).
 Due to the high latency between the sites, the DTL for volumes in the Roubaix datacenter are configured to be in the Roubaix datacenters. Since the Gravelines and Strasbourg datacenter only have a singe performance node, the DTL for volumes in these datacenters is hosted in Roubaix.
