@@ -14,10 +14,10 @@ Storage Backend (Swift, Ceph, GlusterFS, ...).
 Execute the next steps in the shell of all Compute nodes:
 
 #### Ubuntu
--   Add the repo to your sources
-    - Latest stable version
+-   Add the repo to your sources. For older versions please check [here](../olderreleases.md).
+    - Latest  Fargo version
 ```
-echo "deb http://apt.openvstorage.org eugene-updates main" > /etc/apt/sources.list.d/ovsaptrepo.list
+echo "deb http://apt.openvstorage.org fargo main" > /etc/apt/sources.list.d/ovsaptrepo.list
 apt-get update
 apt-get install openvstorage-hc
 ```
@@ -57,7 +57,7 @@ apt-get install openvstorage
 ```
 echo '[openvstorage]
 name=OVS repo
-baseurl=http://yum.openvstorage.org/CentOS/7/x86_64/dists/eugene-updates
+baseurl=http://yum.openvstorage.org/CentOS/7/x86_64/dists/fargo
 enabled=1
 gpgcheck=0' > /etc/yum.repos.d/ovs.repo
 ```
