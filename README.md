@@ -17,3 +17,4 @@ You can consult this GitBook online by visiting [https://openvstorage.gitbooks.i
 The documentation of individual Open vStorage components can be found in their respective GitBook:
 * [Framework](https://www.gitbook.com/book/openvstorage/framework/details)
 * [Volume Driver](https://www.gitbook.com/book/openvstorage/volumedriver/details)
+* [DevOps](https://www.gitbook.com/book/openvstorage/devops/details): automation, ansible cookbooks, scripts
