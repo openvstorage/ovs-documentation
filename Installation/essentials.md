@@ -33,6 +33,15 @@ the cluster will become unavailable when 1 of the 2 nodes goes down.
     -   6 * 4TB SATA disks
     -   Dual 10GbE (RoCE)
 
+### Installation remarks
+
+-   All Storage Routers or KVM Hosts should have the same OS and be
+    configured with the same timezone.
+-   Installing a third Node when the first or second Node is offline
+    doesn't work.
+-   Starting the Open vStorage configuration step of a Node when the
+    previous Node is not completely configured is not supported.
+
 ### Supported Hypervisors
 -   VMware ESXi 5.1 P01 (experimental, single vPool only)
 -   VMware ESXi 5.5 (experimental, single vPool only)
@@ -125,22 +134,11 @@ of the vPool\>.json
     -   The Storage Backend must support both object and bucket methods.
     -   Ceph, Swift, ...
 
-
 ### Hostnames
 Open vStorage currently works IP based. When browsing to the Open vStorage GUI, please use the ip address instead of the hostname.
 
 ### RDMA
 Open vStorage only supports RDMA in clusters where each node of the cluster has RDMA capable hardware.
-
-### Installation remarks
-
--   All Storage Routers or KVM Hosts should have the same OS and be
-    configured with the same timezone.
--   Installing a third Node when the first or second Node is offline
-    doesn't work.
--   Starting the Open vStorage configuration step of a Node when the
-    previous Node is not completely configured is not supported.
-
 
 ### Getting Help
 

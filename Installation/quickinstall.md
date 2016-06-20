@@ -40,10 +40,11 @@ echo "vm.dirty_background_bytes = 134217728" >> /etc/sysctl.conf
 ```
 -   Install the Open vStorage software (Open vStorage core and backend
     packages) on all KVM nodes:
-    - Latest stable version
+    - Latest Fargo version (For older versions please check [here](../olderreleases.md))
 ```
-echo "deb http://apt.openvstorage.org eugene-updates main" > /etc/apt/sources.list.d/ovsaptrepo.list
+echo "deb http://apt.openvstorage.org fargo main" > /etc/apt/sources.list.d/ovsaptrepo.list
 apt-get update
+apt-get install volumedriver-no-dedup-server
 apt-get install openvstorage-hc
 ```
     - Latest unstable version
@@ -100,10 +101,11 @@ The quick install guide for ESXi:
     Network.
 -   Install the Open vStorage software (Open vStorage core and backend
     packages) inside each Storage Router.
-   - Latest stable version
+   - Latest Fargo version (For older versions please check [here](../olderreleases.md))
 ```
-echo "deb http://apt.openvstorage.org eugene-updates main" > /etc/apt/sources.list.d/ovsaptrepo.list
+echo "deb http://apt.openvstorage.org fargo main" > /etc/apt/sources.list.d/ovsaptrepo.list
 apt-get update
+apt-get install volumedriver-no-dedup-server
 apt-get install openvstorage-hc
 ```
     - Latest unstable version
@@ -119,7 +121,7 @@ apt-get install openvstorage-hc
 ```
 ovs setup
 ```
--   Open the GUI on the IP address of the KVM node and login with the
+-   Open the GUI on the IP address of the Storage Router and login with the
     default administrator credentials username:admin, password:admin.
 -   Go to the Storage Router detail page and select the Physical Disk Management tab. Assign a DB and scrub role to at least one SSD disk. Assign read and write roles to SSDs you want to use as cache.
 -   In case you want to run Open vStorage hyperconverged, create an Open
