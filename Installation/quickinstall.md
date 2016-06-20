@@ -42,8 +42,9 @@ echo "vm.dirty_background_bytes = 134217728" >> /etc/sysctl.conf
     packages) on all KVM nodes:
     - Latest Fargo version (For older versions please check [here](../olderreleases.md))
 ```
-echo "deb http://apt.openvstorage.org eugene-updates main" > /etc/apt/sources.list.d/ovsaptrepo.list
+echo "deb http://apt.openvstorage.org fargo main" > /etc/apt/sources.list.d/ovsaptrepo.list
 apt-get update
+apt-get install volumedriver-no-dedup-server
 apt-get install openvstorage-hc
 ```
     - Latest unstable version
@@ -102,8 +103,9 @@ The quick install guide for ESXi:
     packages) inside each Storage Router.
    - Latest Fargo version (For older versions please check [here](../olderreleases.md))
 ```
-echo "deb http://apt.openvstorage.org eugene-updates main" > /etc/apt/sources.list.d/ovsaptrepo.list
+echo "deb http://apt.openvstorage.org fargo main" > /etc/apt/sources.list.d/ovsaptrepo.list
 apt-get update
+apt-get install volumedriver-no-dedup-server
 apt-get install openvstorage-hc
 ```
     - Latest unstable version
