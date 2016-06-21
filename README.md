@@ -15,6 +15,8 @@ The Open vStorage Documentation is divided into following sections:
 You can consult this GitBook online by visiting [https://openvstorage.gitbooks.io/openvstorage](https://openvstorage.gitbooks.io/openvstorage). Documentation for older releases can be found [here](olderreleases.md).
 
 The documentation of individual Open vStorage components can be found in their respective GitBook:
-* [Framework](https://www.gitbook.com/book/openvstorage/framework/details)
-* [Volume Driver](https://www.gitbook.com/book/openvstorage/volumedriver/details)
-* [DevOps](https://www.gitbook.com/book/openvstorage/devops/details): automation, ansible cookbooks, scripts
+* [Framework](https://openvstorage.gitbooks.io/framework/)
+* [Volume Driver](https://openvstorage.gitbooks.io/volumedriver/)
+* [ALBA](https://openvstorage.gitbooks.io/alba/)
+* [DevOps](https://openvstorage.gitbooks.io/devops/): automation, ansible cookbooks, scripts
+* [Open vStorage Monitoring](https://openvstorage.gitbooks.io/ovs-monitoring/): logs and statistics monitoring
