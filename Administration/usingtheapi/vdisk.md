@@ -145,7 +145,7 @@
 -   parent_vdisk_guid: GUID of the parent of the vDisk. Null if no
     parent exists.
 -   child_vdisks_guids: List of child vDisk GUIDs.
--   secondary_failure_domain_guid: GUID of the Backup Failure Domain if configured.
+-   domains_dtl: Domains used for DTL if configured.
 
 
 ### Example data
