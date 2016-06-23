@@ -40,13 +40,13 @@ Repeat the above steps for each datacenter and every storage server.
 * Next follow the standard procedure to claim the disks of the storage server and add them to the Backend.
 
 ### Configure the Domain
-* Under Administration > Domains, create a Failure Domain per datacenter where compute nodes are running.
-* On the Storage Router detail page, assign the Storage Router to the correct Failure domain by clicking the `Edit/Save` action.
-* For the backup Failure Domain there are 2 options:
-    * Leave it empty: in this case the DTL and a slave Metadataserver will be created in the same Failure Domain.
-    * Assign a Backup Failure Domain: in this case there will be a local slave Metadataserver and a slave in the backup Failure Domain. The DTL will also be located in the backup Failure Domain.
+* Under Administration > Domains, create a Domain per datacenter where compute nodes are running.
+* On the Storage Router detail page, assign the Storage Router to the correct domain by clicking the `Edit/Save` action.
+* For the Recovery Domain there are 2 options:
+    * Leave it empty: in this case the DTL and a slave Metadataserver will be created in the same Domain.
+    * Assign a Recovery Domain: in this case there will be a local slave Metadataserver and a slave in the Recovery Domain. The DTL will also be located in the Recovery Domain.
 
 ![](../Images/setfailuredomain.png)
 
-A Failure Domain can only be used as a backup Failure Domain entry in case ut has been used on a Storage Router as primary Failure Domain. The benefit of a backup Failure Domain is that there is no data loss in case the primary datacenter goes offline.
-It is advised to configure the hypervisor or the hypervisor management center so the Virtual Machines served by the Storage Router are started on a hypervisor in the Backup Failure Domain in case of a disaster.
+A Domain can only be used as a Recovery Domain entry in case ut has been used on a Storage Router as primary  Domain. The benefit of a Recovery Domain is that there is no data loss in case the primary datacenter goes offline.
+It is advised to configure the hypervisor or the hypervisor management center so the Virtual Machines served by the Storage Router are started on a hypervisor in the Recovery Domain in case of a disaster.
