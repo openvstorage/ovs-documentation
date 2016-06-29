@@ -363,6 +363,7 @@ The initialization script will ask a couple of questions:
 -   Enter a name for the Open vStorage Cluster.
 -   Select the Public IP address of the Storage Router.
 -   Select whether to use an external ETCD cluster for the configuration files.
+-   Indicate if the cluster is RDMA capable. All nodes in the cluster must have RDMA capable hardware in order to have a working setup.
 -   Select VMware as hypervisor. In case KVM is used as hypervisor, use
     the [KVM install documentation](kvm.md).
 -   Enter the hostname of the host on which the Storage Router is
