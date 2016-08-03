@@ -6,9 +6,12 @@ Open vStorage consist out of different components which all are essential and ha
 From a 1000-feet perspective Open vStorage consist out of 5 big components
 
 The setup consists of the following components:
-*The Open vStorage Edge: a light weight block driver which can be installed on Linux hosts.
+* The Open vStorage Edge: a light weight block driver which can be installed on Linux hosts.
 * The Volume Driver: the core of Open VStorage which converts the block storage into object storage. The Volume Driver keeps track of the volume metadata and implements a log structured write buffer on SSD or in RAM.
 * The ALBA performance Tier: an all flash performance tier based upon the Open vStorage backend, ALBA.
+* The ALBA capacity Tier: an all HDD tier which stores data safely  across multiple datacenters.
+* The Framework: the management framework which servers the GUI and API and manages the scheduled tasks.
+* The Distributed Metadata servers: the metadata of the volumes and ALBA backends.
 
 ![](../Images/architecture.png)
 
