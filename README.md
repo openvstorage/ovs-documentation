@@ -14,9 +14,14 @@ The Open vStorage Documentation is divided into following sections:
 
 You can consult this GitBook online by visiting [https://openvstorage.gitbooks.io/openvstorage](https://openvstorage.gitbooks.io/openvstorage). Documentation for older releases can be found [here](olderreleases.md).
 
-The documentation of individual Open vStorage components can be found in their respective GitBook:
-* [Framework](https://openvstorage.gitbooks.io/framework/)
-* [Volume Driver](https://openvstorage.gitbooks.io/volumedriver/)
-* [ALBA](https://openvstorage.gitbooks.io/alba/)
+The documentation of individual Open vStorage components is split into different [GitBooks](https://www.gitbook.com/@openvstorage):
+* [Framework](https://openvstorage.gitbooks.io/framework/): the Framework
+* [Framework ALBA Plugin](https://openvstorage.gitbooks.io/framework-alba-plugin/): the ALBA plugin for the Framework
+* [Volume Driver](https://openvstorage.gitbooks.io/volumedriver/): the Volume Driver
+* [ALBA](https://openvstorage.gitbooks.io/alba/): the ALBA Backend
+* [Arakoon](https://openvstorage.gitbooks.io/arakoon/): the distributed Key/Value database
+* [Cinder](https://openvstorage.gitbooks.io/cinder/): the OpenStack Cinder Plugin for Open vStorage
+* [TGT](https://openvstorage.gitbooks.io/tgt/): the iSCSI TGT target
 * [DevOps](https://openvstorage.gitbooks.io/devops/): automation, ansible cookbooks, scripts
+* [Open vStorage Monitoring](https://openvstorage.gitbooks.io/ovs-monitoring/): logs and statistics monitoring
 * [Open vStorage Monitoring](https://openvstorage.gitbooks.io/ovs-monitoring/): logs and statistics monitoring
