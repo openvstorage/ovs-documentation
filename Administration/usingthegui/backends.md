@@ -124,7 +124,8 @@ try to fix the issue by pressing the **Restart** button in the ASD details
 section of that disk. In case the disk is broken and labeled as Faulted,
 you can remove the disk from the Backend by clicking the **Remove** button
 in the ASD details section. This will remove the disk from the Backend.
-You can now safely add a new disk. The new disk will be labeled as
+In case a disk broken, the maintenance will kick in after 15 minutes and start regenerating the data on the broken disk on the remaining disks. This 15 minutes time-out can be configured in the [ALBA config](https://openvstorage.gitbooks.io/alba).
+Once the broken disk is removed you can safely add a new disk. The new disk will be labeled as
 Unitialized (White). The next step is to initialize the disk and once it
 becomes available claim the disk.
 
