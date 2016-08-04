@@ -66,7 +66,7 @@ rabbitmqctl list_queues
         * In case the RabbitMQ service isn't started, start the service on all nodes at the same time using `service rabbitmq-server start` (or similar on CentOS).
     * Next, address issues with the Arakoon databases by checking the log. A typical issue is the lack of a master.
     ```
-    arakoon --who-master -config /opt/OpenvStorage/config/arakoon/<db_name>/<db_name>.cfg
+    arakoon --who-master -config etcd://127.0.0.1:2379/ovs/arakoon/<DB_name>/config
     ```
     * In case there is an issue with Celery, go to the support page in the GUI and check if the node ID is displayed. If needed, restart the workers.
     ```
@@ -78,4 +78,4 @@ truncate -s 10G /mnt/<vpool_name>/test.raw
 touch /mnt/<vpool_name>/myvm.xml
 ```
 * In case there are issues, check the Volume Driver logs under `/var/log/ovs/volumedriver`, `/var/log/upstart/ovs-volumedriver_*` and `/var/log/upstart/ovs-volumerouter-consumer*`.
-* In case you can't solve the issue based upon the log, please create a [bug](https://github.com/openvstorage/openvstorage/issues) and attach the error.
+* In case you can't solve the issue based upon the log, please create a [bug](https://github.com/openvstorage/home/issues) and attach the error.
