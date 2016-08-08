@@ -10,7 +10,7 @@ Forum](https://groups.google.com/forum/#!forum/open-vstorage).
 * Each datacenter should be equipped with enough SSD capacity to contain most of the active dataset of the volumes running in the datacenter.
 * A layer 3 network between the different datacenters.
 * An [Etcd cluster](geoscalegettingstarted.md#etcd-cluster) is required.
-* Each server has the latest version of  [Ubuntu server 14.04 64 bit ISO](http://releases.ubuntu.com/14.04.3/ubuntu-14.04.2-server-amd64.iso) installed.
+* Each server has the latest version of  [Ubuntu server 14.04 64 bit ISO](http://releases.ubuntu.com/14.04.3/ubuntu-14.04.3-server-amd64.iso) installed.
 
 ### Cluster Topology
 This guide provides a step by step approach to install a GeoScale cluster across multiple datacenters. The cluster consists out of  4 types of nodes:
@@ -20,6 +20,23 @@ This guide provides a step by step approach to install a GeoScale cluster across
 * Management (Controller) nodes: these nodes run the master services, the GUI, the API, distributed databases, the scrubbing process and the monitoring.
 
 More info on the topology can be found [here](../OpenvStorage/topology.md)
+
+### OS changes
+-   Update the root password to allow direct root login via ssh.
+```
+sudo su -
+passwd
+```
+-   Decrease the swapiness of the OS:
+```
+echo 1 > /proc/sys/vm/swappiness
+echo "vm.swappiness=1" >> /etc/sysctl.conf
+```
+-   Update the VM dirty_background_bytes:
+```
+echo "134217728" > /proc/sys/vm/dirty_background_bytes
+echo "vm.dirty_background_bytes = 134217728" >> /etc/sysctl.conf
+```
 
 ### Installing the packages
 
