@@ -41,6 +41,7 @@ the cluster will become unavailable when 1 of the 2 nodes goes down.
     doesn't work.
 -   Starting the Open vStorage configuration step of a Node when the
     previous Node is not completely configured is not supported.
+-   All nodes must have the same version of Open vStorage installed.
 
 ### Supported Hypervisors
 -   VMware ESXi 5.1 P01 (experimental, single vPool only)
