@@ -3,8 +3,7 @@
 
 #### Introduction
 
-A vDisks is a virtual disk served by Open vStorage. vDisks can be part
-of a vMachine or stand-alone. By default all vDisks are snapshotted once
+A vDisks is a virtual disk served by Open vStorage.  By default all vDisks are snapshotted once
 per hour. This snapshot schedule can not be changed for the moment.
 
 #### vDisk Overview
@@ -18,7 +17,6 @@ For each vDisk following info is displayed:
 
 -   Name: Name of the vDisk. You can click on the name of a vDisk to see
     [more details](#vdisk_details) and execute actions.
--   vMachine: The vMachine to which the vDisk is attached.
 -   vPool: The vPool the vDisks is stored on.
 -   Storage Router: The  Storage Router to which the vDisk connects
     to access its storage.
@@ -41,7 +39,6 @@ single vDisk.
 Following information about the vMachine is displayed on the detail
 page:
 
--   vMachine: The vMachine to which the vDisk is attached.
 -   vPool: The vPool the vDisks is stored on.
 -   Storage Router: The Storage Router to which the vDisk connects to
     access its storage.

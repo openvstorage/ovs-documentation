@@ -2,19 +2,16 @@
 
 #### Introduction
 
-A vTemplate is a blueprint for a new vMachine in the Open vStorage
-Cluster. It contains the amount of RAM, CPU and information about the
-vDisk(s). Whenever a vMachine is created from a vTemplate, the
-vTemplate's Operating System (OS), applications, data and settings are
-cloned to a new vMachine.
+A vTemplate is a blueprint for a new vDisk in the Open vStorage
+Cluster.
 
 #### vTemplate Actions
 
 ##### <a name="createfromvtemplate"</a>
 Create from vTemplate
 
-Create from vTemplate allows to create one or more vMachine at once by
-cloning the vDisks of a vTemplate. The new vMachine will have the same
+Create from vTemplate allows to create one or more vDisks at once by
+cloning the vDisk. The new vMachine will have the same
 amount of RAM and VPU as the original vMachine. You can give a name, a
 description for the new vMachine, the amount of vMachines to create at
 once and the start sequence number. In case more than 1 vMachine is

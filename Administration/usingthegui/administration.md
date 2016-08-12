@@ -7,37 +7,6 @@ configure your Open vStorage Cluster.
 
 Following actions are available for logged in users of the GUI:
 
-#### <a name="hmc"></a>Hypervisor Management
-
-The Hypervisor Management allows to register Hypervirsor Management
-Centers (HMC) such as VMware vCenter or an OpenStack Controller Node. To
-add a HMC, click the **Add new Center** button and provide a friendly
-name, type, administrator username, password and IP address.
-
-Once a HMC is added following details will be displayed:
-
--   Name: friendly name used in the GUI.
--   IP: IP address the HMC is listening on. For vCenter this is the IP of the vCenter server. For OpenStack this is the Virtual IP of the Controller nodes.
--   Port: Port the HMC is listening on.
--   Type: Type of the Hypervisor Management Center. Currently only OpenStack and vCenter are supported.
--   Username: Administrator username of the HMC.
--   OVS Hosts/Total: The amount of Hosts known by the Open vStorage
-    framework versus the total amount of Hosts registered in the HMC.
--   Actions: Delete the HMC.
-
-Below the Hosts known by the Open vStorage framework are listed. For
-each Host following info is displayed:
-
--   Name: Name of the Host.
--   IP: IP address of the Host.
--   Type: Hypervisor of the Host.
--   Mgtm. Center: The Hypervisor Management Center managing the Host.
-
-In case a Hosts is highlighted in red, it means the Host is known by the
-Open vStorage framework but not linked to the HMC managing this Host.
-Click the Mgmt. Center value to edit and select the correct HMC from the
-list. **Hosts highlighted in red are not covered for automated
-fail-over.**
 
 #### <a name="domains"></a>Domains
 The Domains functionality allows to group Storage Routers together and allows to configure the DTL and MDS (MetaDataServer) based upon this grouping. This allows to make sure that when there is a site disaster, the data in the DTL is safeguarded to prevent dataloss.

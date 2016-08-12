@@ -48,7 +48,6 @@ The Frontend details for a vPool are:
     together.
 -   Write Speed: The current write speed for all vDisks on the vPool
     together.
--   vMachines: The amount of vDisks on the vMachines.
 -   vDisks: The amount of vDisks on the vPool.
 
 The Backend details for a vPool are
@@ -124,28 +123,11 @@ These setting will be by default applied to all vDisks. The settings (except for
     -   Select the Write Buffer (the amount of data that can be in the DTL but not available in the Backend).
 
 -   On the fourth tab
-    -   In case you have a [Hypervisor Management Center](administration.md#hmc) (vCenter, OpenStack) configured, you can automatically configure the vPool on the hypervisor.
-    -   In case you don't have a Hypervisor Management Center configured, you will not be able to check the checkbox. Some manual actions might have to be taken to correctly configure the host to use the vPool.
-
--   On the fifth tab
     -   Validate the values and click **Finish** to complete.
 
 Additional vPools can be added to the Storage Router by executing the
 same steps again.
 
-##### Sync
-
-
-Syncs the status in the Open vStorage model
-with the actual status on the Hypervisor of all vMachines using the
-vPool. It is highly unlikely that the stored model and the reality get
-out of sync but it is possible due to f.e. when the task scheduler or
-message queue crashes.
-
-#### vMachines
-
-Under vMachines all vMachines served by the vPool are listed. To see
-more details of a vMachine, click its name.
 
 #### vDisks
 
@@ -157,8 +139,7 @@ details of a vDisk, click its name.
 ##### Storage Routers serving this vPool
 
 All the Storage Routers which are currently serving this vPool are
-indicated with a marked checkbox.  To add a Storage Router select the
-checkbox next to the Storage Router name. To remove the vPool from a Storage Router unselect
-the checkbox next to the Storage Router name. Removing a vPool from being served by
+indicated with a marked checkbox.  To add a Storage Router Click the **+** button next to the Storage Router name.
+To remove the vPool from a Storage Router click the trash can next to the Storage Router name. Removing a vPool from being served by
 a Storage Router is only possible in case there aren't any vDisks being served by
-the vPool on that Storage Router. Press **Save changes** to confirm.
+the vPool on that Storage Router.
