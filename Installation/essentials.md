@@ -42,6 +42,7 @@ the cluster will become unavailable when 1 of the 2 nodes goes down.
 -   Starting the Open vStorage configuration step of a Node when the
     previous Node is not completely configured is not supported.
 -   All nodes must have the same version of Open vStorage installed.
+-   When installing the Open vStorage software, an `ovs` user is created. Remove previously created `ovs` users before starting the installation.
 
 ### Supported Hypervisors
 -   VMware ESXi 5.1 P01 (experimental, single vPool only)
