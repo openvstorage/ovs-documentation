@@ -200,6 +200,12 @@ apt-get install kvm libvirt0 python-libvirt virtinst
 apt-get install qemu
 ```
 
+- The libvirt-qemu user need to be member of the ovs group on all nodes:
+```
+usermod -a -G ovs libvirt-qemu
+```
+
+
 ### Configuring the cluster
 -   Open the [Open vStorage GUI](Administration/usingthegui/) on the public IP `https://<Ip of the Controller node>` of
     one of the Controller nodes and enter with the default login and password:
