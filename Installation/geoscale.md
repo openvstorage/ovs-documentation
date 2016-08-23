@@ -182,6 +182,7 @@ mkdir /opt/asd-manager/db/etcd/config/data
 chown -r alba:alba /opt/asd-manager/db/etcd/config/data
 ```
 - Create an init script for etcd _/etc/init/sdm-etcd-config.conf_.
+
 ```
 description "Etcd (proxy) upstart for cluster config"
 
@@ -205,6 +206,7 @@ end script
 
 exec etcd -proxy on -data-dir /opt/asd-manager/db/etcd/config/data -listen-client-urls http://127.0.0.1:2379 -initial-cluster <cluster config (check etcd init config on ovs node and copy the initial-cluster)>
 ```
+
 **NOTE:** The etcd cluster config consists out of a comma separated list of each controller node's Open vStorage id  (`cat /etc/openvstorage_id`), the public IP and 2380. You can find an example below
 ```
 xPAN0JTcz07GHPtZ=http://172.25.20.1:2380,Op7suaZJSpl5mGEC=http://172.25.20.101:2380,XBN5zjfocWi1Qo9A=http://172.25.20.201:2380
