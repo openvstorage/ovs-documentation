@@ -171,10 +171,8 @@ apt-get install openvstorage-sdm
 - Install an etcd proxy via the Open vStorage repository:
 ```
 apt-get install etcd
-
 ```
 - Install the python etcd plugin via PIP.
-
 ```
 pip install python-etcd
 ```
