@@ -168,7 +168,53 @@ apt-get update
 ```
 apt-get install openvstorage-sdm
 ```
-- Install an [ETCD proxy](geoscalegettingstarted.md#etcd-proxy-create)
+- Install an etcd proxy via the Open vStorage repository:
+```
+apt-get install etcd
+
+```
+- Install the python etcd plugin via PIP.
+
+```
+pip install python-etcd
+```
+- Create the necessary folders
+```
+mkdir /opt/asd-manager/db/etcd/config/data
+chown -r alba:alba /opt/asd-manager/db/etcd/config/data
+```
+- Create an init script for etcd _/etc/init/sdm-etcd-config.conf_.
+```
+description "Etcd (proxy) upstart for cluster config"
+
+start on (local-filesystems and started networking)
+stop on runlevel [016]
+
+kill timeout 60
+respawn
+respawn limit 10 5
+console log
+setuid root
+setgid root
+
+pre-start script
+    if [ ! -d /opt/etcd-proxy/run ]
+    then
+        mkdir /opt/etcd-proxy/run
+    fi
+    echo `etcd --version | grep etcd | awk '{print $3}'` > /opt/etcd-proxy/run/etcd-config.version
+end script
+
+exec etcd -proxy on -data-dir /opt/asd-manager/db/etcd/config/data -listen-client-urls http://127.0.0.1:2379 -initial-cluster <cluster config (check etcd init config on ovs node and copy the initial-cluster)>
+```
+**NOTE:** The etcd cluster config consists out of a comma separated list of each controller node's Open vStorage id  (`cat /etc/openvstorage_id`), the public IP and 2380. You can find an example below
+```
+xPAN0JTcz07GHPtZ=http://172.25.20.1:2380,Op7suaZJSpl5mGEC=http://172.25.20.101:2380,XBN5zjfocWi1Qo9A=http://172.25.20.201:2380
+```
+- Start the etcd proxy
+```
+sdm-etcd-config start
+```
 - Run the ASD Manager Setup:
 ```
 asd-manager setup
