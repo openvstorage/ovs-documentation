@@ -168,15 +168,19 @@ apt-get update
 ```
 apt-get install openvstorage-sdm
 ```
-
-- Retrieve the automatically generated password from the config:
+- Install an [ETCD proxy](geoscalegettingstarted.md#etcd-proxy-create)
+- Run the ASD Manager Setup:
 ```
-cat /opt/alba-asdmanager/config/config.json
-...
-"password": "u9Q4pQ76e0VJVgxm6hasdfasdfdd",
-...
+asd-manager setup
 ```
-
+-   Select the public IP address to use for the ASDs.
+-   Select the start port to be used by the ASDs.
+- When the ASD manager setup is completed a message will be displayed:
+```
++++++++++++++++++++++++++++++++++++++
++++  ASD Manager setup completed  +++
++++++++++++++++++++++++++++++++++++++
+```
 - Repeat the above steps for each capacity node.
 
 #### Compute Nodes
