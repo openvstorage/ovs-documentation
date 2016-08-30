@@ -371,5 +371,3 @@ Some remarks:
 * vPool port: to get the port of the vPool, open the Storage Router detail page and check the Edge port for the vPool listed under **Management actions**.
 * vDisk name: name of the vDisks in the Open vStorage GUI.
 
-### Setup the monitoring server
-Optionally setup a server to monitor the Open vStorage cluster by following [these steps](https://openvstorage.gitbooks.io/ovs-monitoring/content/docs/deploy_with_ansible.html).
