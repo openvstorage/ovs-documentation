@@ -12,6 +12,8 @@ For convenience reasons the Open vStorage team has created a couple of ansible s
 
 For both of these setup types there is an ansible script. After running the ansible install script, you will still need to [configure the cluster](configurecluster.md) (setup roles, create backends and vPools, ...). For detailed documentation on how to use ansible scripts, please visit the [dev_ops GitBook](https://openvstorage.gitbooks.io/devops/).
 
+**NOTE:** The ansible scripts are part of the commercial Open vStorage license. [Contact us](http://www.openvstorage.com/contact_us/) for more information.
+
 #### Manual installation
 For administrators that prefer a manual approach and want to setup the cluster manually there is a step by step manual to install [a GeoScale cluster on KVM/QEMU](geoscale.md).
 

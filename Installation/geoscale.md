@@ -373,3 +373,4 @@ Some remarks:
 
 ### Setup the monitoring server
 Optionally setup a server to monitor the Open vStorage cluster by following [these steps](https://openvstorage.gitbooks.io/ovs-monitoring/content/docs/deploy_with_ansible.html).
+**NOTE:** The monitoring is part of the commercial Open vStorage license. [Contact us](http://www.openvstorage.com/contact_us/) for more information.
