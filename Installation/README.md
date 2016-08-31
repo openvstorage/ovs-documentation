@@ -6,9 +6,14 @@ This of course means that setting up Open vStorage isn't as easy as pressing a b
 
 Before starting the installation of your Open vStorage cluster, please go through our [Essentials](essentials.md) checklist.
 
+For convenience reasons the Open vStorage team has created a couple of ansible scripts which [deploy Open vStorage with Ansible](https://openvstorage.gitbooks.io/devops/content/Docs/ansible.html). There are 2 fundamental ways to setup Open vStorage:
+* [Hyper-converged](https://openvstorage.gitbooks.io/devops/content/Docs/hyperconverged.html): Compute and Storage are configured on the same server.
+* [GeoScale](https://openvstorage.gitbooks.io/devops/content/Docs/geoscale.html): The compute, performance and capacity functionality is configured on separate servers.
+
+For both of these setup types there is an ansible script. After running the ansible install script, you will still need to [configure the cluster](configurecluster.md) (setup roles, create backends and vPools, ...). For detailed documentation on how to use ansible scripts, please visit the [dev_ops GitBook](https://openvstorage.gitbooks.io/devops/).
 
 #### Manual installation
-To setup the cluster manually there is a step by step manual to install [a GeoScale cluster on KVM/QEMU](geoscale.md).
+For administrators that prefer a manual approach and want to setup the cluster manually there is a step by step manual to install [a GeoScale cluster on KVM/QEMU](geoscale.md).
 
 #### Final Notes
 * Open vStorage is licensed under the [AGPLv3 License](http://www.gnu.org/licenses/agpl.html).
