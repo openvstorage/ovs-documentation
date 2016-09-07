@@ -14,7 +14,7 @@ The vDisk overview lists all the vDisks in the Open vStorage Cluster.
 
 
 For each vDisk following info is displayed:
-
+-   Edge connection: Whether the disk is connected through the Edge.
 -   Name: Name of the vDisk. You can click on the name of a vDisk to see
     [more details](#vdisk_details) and execute actions.
 -   vPool: The vPool the vDisks is stored on.
@@ -58,8 +58,17 @@ page:
 #### vDisk Actions
 
 ##### Create a vDisk
--   Click the *Add new vDisk* button on the vDisk overview page.
--   Give the new vDisks a name, enter a size, select the vPool in which the vDisk should be hosted and select a Storage Router from that vPool. Click *Finish* to create the vDisks.
+-   Click the **Add new vDisk** button on the vDisk overview page.
+-   Give the new vDisks a name, enter a size, select the vPool in which the vDisk should be hosted and select a Storage Router from that vPool. Click **Finish** to create the vDisks.
+
+##### Snapshots
+
+At the bottom of the vDisk Details page all snapshots of the vDisk are
+listed.
+
+##### Set as vTtemplate
+Set the vDisk as a Template. A vTemplate allows to create one or more vDisks at once by
+cloning a snapshot of the vDisk.
 
 ##### Rollback
 
@@ -71,10 +80,20 @@ rollback can not be undone.
 
 Cloning a vDisks creates a new vDisk based upon a snapshot of the selected vDisk. Only new data written to the cloned vDisks will be stored on the backend.
 
-##### Snapshots
+#### Snapshots
+The Snapshot tab displays a list of all the snapshots of the vDisk. Per snapshot following properties are displayed:
+-   Description: Name or Description of the snapshot.
+-   Date/Time: Date and time when the snapshot was created.
+-   Stored data: Amount of data in the snapshot which is stored on the Backend.
+-   Type: Automatic or Manual snapshot.
+-   Consistent: Whether the snapshot is labeled as consistent or not.
+-   Sticky: Sticky snapshots can only be manually removed and are not considered to be deleted when out of retention.
 
-At the bottom of the vDisk Details page all snapshots of the vDisk are
-listed.
+Individual Snapshots can be deleted by clicking the delete button.
+
+
+#### Edge Clients
+The Edge Client tab gives an overview of all Edge clients connected to the vDisk. For each client the IP address and client port are provided.
 
 #### Management actions
 Under Management actions you can define the settings for the VDisk:

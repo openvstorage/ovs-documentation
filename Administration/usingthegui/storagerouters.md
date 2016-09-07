@@ -82,3 +82,17 @@ To assign a role to disk, click the gear icon and select the appropriate roles f
 The read and write role can only be removed in case no vPool is using them. The DB and Scrub role can not be removed once assigned to a disk.
 
 ![](../../Images/physicaldiskmanagement.png)
+
+#### vDisks
+The vDisk tab lists all the vDisks being served by the Storage Router. For each vDisk following properties are displayed:
+-   Name: Name of the vDisk.
+-   Size: Size of the vDisk.
+-   Stored Data: Total size of the current data and the Snapshots
+    without the overhead imposed by the Backend redundancy.
+-   IOPS: The current amount of IOPS delivered by the vPool to the
+    vDisk.
+-   Read: The current read speed of the vDisk.
+-   Write: The current write speed of the vDisk.
+-   DTL: Status of the Distributed Transaction Log, a copy of the write buffer of the
+    vDisk, on another Storage Router to prevent dataloss. The status can be healthy
+    of degraded.
