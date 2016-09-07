@@ -16,16 +16,24 @@ To add a new domain or assign a Storage Router to a domain, see the [Storage Rou
 
 #### User Management
 
-Under User Management you can add new users or delete existing users.
-There are 2 groups of users: Viewers and Administrators. Viewers can
-only see the dashboard and the detail pages but can not launch any
-actions. Administrators can view all pages and launch actions. To edit a
-password of a user, select the key-icon next to the username.
+Under User Mgmt. you get can overview of all the registered users and
+OAuth 2 Clients that have access to the Open vStorage environment.
+
+Under Users you get an overview of all the users. To add a new user, add
+a name in the textbox, select the group and press the check mark to
+confirm. There are 2 groups: Administrators and Viewers. Viewers can not
+make any changes and have no access to the Administration section.
+Administrators can make changes to the Open vStorage environment (f.e.
+create new users and vPools) and have access to the Administration
+section. It is also possible to limited the access of a user or administrator to a specific backend.
+To edit a password of a user, select the key-icon next to the username.
+
 
 Under the OAuth 2 Clients section, you can see an overview of all
 configured OAuth clients for the selected user. By default no OAuth2
-client is generated. To add an OAuth2 client for a user, simply add a
-name and select all appropriate roles.
+client is generated. To add a new client, add a name in the textbox, select the role
+and press the check mark. The Client ID and secret token will
+automatically be generated.
 
 All user actions and all actions executed by the Open vStorage core are
 logged for 30 days. To list all logged actions open an interactive
@@ -62,24 +70,6 @@ The result for a single entry will look like:
     "metadata": null
 }
 ```
-
-#### User Mgmt.
-
-Under User Mgmt. you get can overview of all the registered users and
-OAuth 2 Clients that have access to the Open vStorage environment.
-
-Under Users you get an overview of all the users. To add a new user, add
-a name in the textbox, select the group and press the check mark to
-confirm. There are 2 groups: Administrators and Viewers. Viewers can not
-make any changes and have no access to the Administration section.
-Administrators can make changes to the Open vStorage environment (f.e.
-create new users and vPools) and have access to the Administration
-section. It is also possible to limited the access of a user or administrator to a specific backend.
-
-Under OAuth 2 Clients you get an overview of all the registered OAuth 2
-Clients. To add a new client, add a name in the textbox, select the role
-and press the check mark. The Client ID and secret token will
-automatically be generated.
 
 #### Statistics
 
