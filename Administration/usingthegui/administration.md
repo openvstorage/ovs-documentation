@@ -74,7 +74,7 @@ confirm. There are 2 groups: Administrators and Viewers. Viewers can not
 make any changes and have no access to the Administration section.
 Administrators can make changes to the Open vStorage environment (f.e.
 create new users and vPools) and have access to the Administration
-section.
+section. It is also possible to limited the access of a user or administrator to a specific backend.
 
 Under OAuth 2 Clients you get an overview of all the registered OAuth 2
 Clients. To add a new client, add a name in the textbox, select the role

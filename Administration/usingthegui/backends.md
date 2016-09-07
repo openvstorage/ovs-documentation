@@ -74,7 +74,7 @@ Backend consumption per vPool using the Backend.
 Edit the domain to which the backend belongs.
 
 ##### Delete Backend
-Delete a backend in case it is no longer in use. Deleting a backend when there are still ASDs attached is not allowed. Remove all ASDs by selecting each ASDk and clicking the *Remove* button on the ASD detail panel.
+Delete a backend in case it is no longer in use. Deleting a backend when there are still ASDs attached is not allowed. Remove all ASDs by selecting each ASD and clicking the **Remove** button on the ASD detail panel.
 
 #### ASD nodes
 
@@ -129,7 +129,7 @@ Once the broken disk is removed you can safely add a new disk. The new disk will
 Unitialized (White). The next step is to initialize the disk and once it
 becomes available claim the disk.
 
-#### <a name="presets"></a> Presets
+#### Presets
 A backend has a list of presets assigned to it. A preset consists out of a set of policies and a compression method (optional). A policy defines how the VM data is stored across the ASDs. The easiest way is replication. In that case you only need to set the replication factor. A more advanced policy allows to define the amount of fragments an object is split in, the amount of parity fragments, the minimal amounts of fragments before a write is executed and the maximal amount of fragments per ASD node. Active policies, meaning that objects are using this policy will have a green font color. Available policies which can be used but currently have no object being stored with this policy will be shown in black. In case a policy can not be met, e.g. because there are not enough ASDs or nodes, the policy will be disabled (grey). In case no policy can be met, the backend will be read-only.
 
 To add a new preset for a backend, click the **+ Add Preset** button. Give the new preset a name. By default you can select the replication factor of fragments stored on the backend. Selecting 1 means that a single broken disk will lead to data loss.
@@ -139,5 +139,5 @@ In case you want to use erasure coding instead of replication, select the advanc
 ![](../../Images/addpreset.png)
 
 
-
-
+#### Access Rights
+It is possible to limit the access to a Backend per user or OAuth2 client. By default users which are part of the Administrator have access to all backend but access can be explicitly denied. All other users need to be explicitly granted access to the Backend by clicking the **Edit** button.
