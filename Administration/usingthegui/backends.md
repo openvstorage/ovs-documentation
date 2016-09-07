@@ -13,7 +13,7 @@ apt-get install openvstorage-hc
 #### Backends Overview
 
 The Backend Overview page displays the different Open vStorage Backends
-which are registered in the environment.
+to which the logged in user has access.
 
 For each Backend following details are available:
 
