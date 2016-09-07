@@ -39,6 +39,13 @@ echo "vm.swappiness=1" >> /etc/sysctl.conf
 echo "134217728" > /proc/sys/vm/dirty_background_bytes
 echo "vm.dirty_background_bytes = 134217728" >> /etc/sysctl.conf
 ```
+- Optionally, configure your OS to keep more than one crash dump per application by updating `/etc/sysctl.conf` with the following lines:
+```
+kernel.core_pattern=/mnt/sandboxtmp/coredumps/core-%e-%p-%t
+kernel.core_uses_pid=1
+```
+Execute `sysctl -p` afterwards to load the settings.
+
 
 ### Installing the packages
 
