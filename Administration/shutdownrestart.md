@@ -78,4 +78,5 @@ truncate -s 10G /mnt/<vpool_name>/test.raw
 touch /mnt/<vpool_name>/myvm.xml
 ```
 * In case there are issues, check the Volume Driver logs under `/var/log/ovs/volumedriver`, `/var/log/upstart/ovs-volumedriver_*` and `/var/log/upstart/ovs-volumerouter-consumer*`.
+** NOTE:** It might take a couple of minutes before the Volume Driver is up a nd running after a reboot.
 * In case you can't solve the issue based upon the log, please create a [bug](https://github.com/openvstorage/home/issues) and attach the error.
