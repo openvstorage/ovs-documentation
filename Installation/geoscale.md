@@ -12,6 +12,7 @@ Forum](https://groups.google.com/forum/#!forum/open-vstorage).
 * An [Etcd cluster](geoscalegettingstarted.md#etcd-cluster) is required.
 * Each server has the latest version of  [Ubuntu server 14.04 64 bit ISO](http://releases.ubuntu.com/14.04.3/ubuntu-14.04.3-server-amd64.iso) installed.
 * In case a node has 2 or more IPs, ssh must be enabled for all the IPs.
+* Make sure the `ovs` user and group are deleted before starting the Open vStorage installation.
 
 ### Cluster Topology
 This guide provides a step by step approach to install a GeoScale cluster across multiple datacenters. The cluster consists out of  4 types of nodes:
