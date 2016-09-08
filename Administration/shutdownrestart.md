@@ -66,7 +66,7 @@ rabbitmqctl list_queues
         * In case the RabbitMQ service isn't started, start the service on all nodes at the same time using `service rabbitmq-server start` (or similar on CentOS).
     * Next, address issues with the Arakoon databases by checking the log. A typical issue is the lack of a master.
     ```
-    arakoon --who-master -config etcd://127.0.0.1:2379/ovs/arakoon/<DB_name>/config
+    arakoon --who-master -config arakoon://config/ovs/arakoon/<DB name>/config?ini=%2Fopt%2FOpenvStorage%2Fconfig%2Farakoon_cacc.ini
     ```
     * In case there is an issue with Celery, go to the support page in the GUI and check if the node ID is displayed. If needed, restart the workers.
     ```
