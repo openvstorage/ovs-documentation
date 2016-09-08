@@ -22,7 +22,6 @@
         * [storagerouter](Administration/usingtheapi/storagerouter.md)
         * [tasks](Administration/usingtheapi/task.md)
         * [user](Administration/usingtheapi/user.md)
-        * [vDisk](Administration/usingtheapi/vdisk.md)
         * [vMachine](Administration/usingtheapi/vmachine.md)
         * [vPool](Administration/usingtheapi/vpool.md)
         * [Api examples](Administration/usingtheapi/apiexamples.md)
