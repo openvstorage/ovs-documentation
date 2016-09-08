@@ -85,7 +85,7 @@ ovs setup
     these clusters.*.
     -   Enter a name for the Open vStorage Cluster.
     -   Select the Public IP address node.
-    -   Select the configuration management system. Note that Arakoon is the preferred and advised configuration and management system and is the only supported system in the commercial Open vStorage license.
+    -   Select the configuration management system. Note that Arakoon is the preferred and advised configuration management system and is the only supported system in the commercial Open vStorage license.
     -   Select whether to use an external configuration cluster for the configuration files or if Open vStorage should setup a cluster (only possible if Arakoon is selected).
     -   Indicate if the cluster is RDMA capable. All nodes in the cluster must have RDMA capable hardware in order to have a working setup..
 
@@ -145,8 +145,6 @@ ovs setup
     -   Select the public IP address to use for the ASDs.
     -   Select the start port to be used by the ASDs.
     -   Select the configuration management system. Note that Arakoon is the preferred and advised configuration and management system.
-**NOTE:** When Arakoon is selected copy the Arakoon config file from `/opt/OpenvStorage/config/arakoon_cacc.ini` to `/opt/asd-manager/config/arakoon_cacc.ini`.
-
 - When the ASD manager setup is completed a message will be displayed:
 
 ```

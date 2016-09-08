@@ -31,7 +31,7 @@
         * [ganesha-cf](Administration/usingthecli/ganesha-cf.md)
         * [ovs](Administration/usingthecli/ovs.md)
         * [volumedriver_fs](Administration/usingthecli/volumedriver_fs.md)
-        * [etcd](Administration/usingthecli/etcd.md)
+        * [configuration management](Administration/usingthecli/configmgmt.md)
     * [Create a vDisk on a vPool](Administration/createvdisk.md)
     * [Remove a Storage Router](Administration/removenode.md)
     * [Shutdown and restart a cluster](Administration/shutdownrestart.md)
