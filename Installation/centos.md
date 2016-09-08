@@ -1,6 +1,9 @@
 #### Open vStorage on CentOS
 
+Next to Ubunu, Open vStorage should work also work on CentOS7. When you encounter issues or are stuck somewhere, do not hesitate to ask for help in the public [Open vStorage
+Forum](https://groups.google.com/forum/#!forum/open-vstorage).
 
+The below section only provides how to setup Open vStorage on CentOS. Please refer to the [general documentation](geoscale.md) for the complete setup instructions.
 
 -   Install CentOS7
 -   Install wget
@@ -15,8 +18,6 @@ baseurl=https://download.fedoraproject.org/pub/fedora/linux/releases/22/Everythi
 enabled=0' > /etc/yum.repos.d/fc22.repo
 rpm --import 'https://pgp.mit.edu/pks/lookup?op=get&search=0x11ADC0948E1431D5'
 ```
-
-Repeat the above steps for all nodes in the Open vStorage Cluster.
 -   Add the Open vStorage RPM repo
     - Latest stable version
 ```
@@ -52,5 +53,5 @@ yum install --nogpgcheck openvstorage -y
 ```
 setenforce 0
 ```
--   You can now [initialize the first Storage Router](#initialize).
+-   Run the `ovs setup` command as explained in the [general documentation](geoscale.md).
 

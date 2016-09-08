@@ -9,6 +9,7 @@
     * [Quick Install Guide](Installation/quickinstall.md)
     * [Install a cluster](Installation/geoscale.md)
         * [Getting Started](Installation/geoscalegettingstarted.md)
+        * [CentOS](Installation/centos.md)
 * [Administration](Administration/README.md)
     * [Using the GUI](Administration/usingthegui/README.md)
         * [Storage Routers](Administration/usingthegui/storagerouters.md)

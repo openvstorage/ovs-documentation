@@ -48,11 +48,14 @@ Execute `sysctl -p` afterwards to load the settings.
 
 
 ### Installing the packages
+The below instructions are for Ubuntu. For CentOS please check following [instructions](centos.md).
+The latest version of Open vStorage will be installed. For instructions to install an older version, please check [here](../olderreleases.md).
+
 
 #### Controller nodes
 Execute the next steps in the shell of all Controller nodes:
 
--   Add the repo to your sources. For older versions please check [here](../olderreleases.md).
+-   Add the repo to your sources.
     - Latest  Fargo version
 ```
 echo "deb http://apt.openvstorage.org fargo main" > /etc/apt/sources.list.d/ovsaptrepo.list
