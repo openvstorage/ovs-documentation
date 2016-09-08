@@ -9,7 +9,6 @@ Forum](https://groups.google.com/forum/#!forum/open-vstorage).
 ### Requirements
 * Each datacenter should be equipped with enough SSD capacity to contain most of the active dataset of the volumes running in the datacenter.
 * A layer 3 network between the different datacenters.
-* An [Etcd cluster](geoscalegettingstarted.md#etcd-cluster) is required.
 * Each server has the latest version of  [Ubuntu server 14.04 64 bit ISO](http://releases.ubuntu.com/14.04.3/ubuntu-14.04.3-server-amd64.iso) installed.
 * In case a node has 2 or more IPs, ssh must be enabled for all the IPs.
 * Make sure the `ovs` user and group are deleted before starting the Open vStorage installation.
@@ -72,9 +71,6 @@ apt-get update
 apt-get install volumedriver-no-dedup-server
 apt-get install openvstorage-backend
 ```
-
-**NOTE:** The above steps will install the Volume Driver without deduplication (better performance, smaller metadata footprint). To install the Volume Driver with deduplication functionality use `apt-get install volumedriver-server`.
-
 -   Initialize the Open vStorage software on each controller by executing in the shell:
 ```
 ovs setup
@@ -88,8 +84,9 @@ ovs setup
     In case it has found a Cluster, select the option *Don't join any of
     these clusters.*.
     -   Enter a name for the Open vStorage Cluster.
-    -   Select the Public IP address of the KVM Node.
-    -   Select whether to use an external ETCD cluster for the configuration files.
+    -   Select the Public IP address node.
+    -   Select the configuration management system. Note that Arakoon is the preferred and advised configuration and management system and is the only supported system in the commercial Open vStorage license.
+    -   Select whether to use an external configuration cluster for the configuration files or if Open vStorage should setup a cluster (only possible if Arakoon is selected).
     -   Indicate if the cluster is RDMA capable. All nodes in the cluster must have RDMA capable hardware in order to have a working setup..
 
 - When the install is completed a message will be displayed.
@@ -121,9 +118,6 @@ apt-get update
 apt-get install volumedriver-no-dedup-server
 apt-get install openvstorage-hc
 ```
-
-**NOTE:** The above steps will install the Volume Driver without deduplication (better performance, smaller metadata footprint). To install the Volume Driver with deduplication functionality use `apt-get install volumedriver-server`.
-
 -   Initialize the Open vStorage software on each controller by executing in the shell:
 ```
 ovs setup
@@ -133,12 +127,9 @@ ovs setup
 
 - The initialization script will ask a couple of questions:
     -   Enter the root credentials for the host.
-    -   It will search for existing Open vStorage Clusters in the network.
-    In case it has found a Cluster, select the option *Don't join any of
-    these clusters.*.
+    -   It will search for existing Open vStorage Clusters in the network. Join the cluster created in the previous step.
     -   Enter a name for the Open vStorage Cluster.
     -   Select the Public IP address of the KVM Node.
-    -   Select whether to use an external ETCD cluster for the configuration files.
     -   Indicate if the cluster is RDMA capable. All nodes in the cluster must have RDMA capable hardware in order to have a working setup..
 
 - When the install is completed a message will be displayed.
@@ -153,6 +144,8 @@ ovs setup
 - Next configure the ASD manager on each node:
     -   Select the public IP address to use for the ASDs.
     -   Select the start port to be used by the ASDs.
+    -   Select the configuration management system. Note that Arakoon is the preferred and advised configuration and management system.
+**NOTE:** When Arakoon is selected copy the Arakoon config file from `/opt/OpenvStorage/config/arakoon_cacc.ini` to `/opt/asd-manager/config/arakoon_cacc.ini`.
 
 - When the ASD manager setup is completed a message will be displayed:
 
@@ -180,59 +173,17 @@ apt-get update
 ```
 apt-get install openvstorage-sdm
 ```
-- Install an etcd proxy via the Open vStorage repository:
-```
-apt-get install etcd
-```
-- Install the python etcd plugin via PIP.
-```
-pip install python-etcd
-```
-- Create the necessary folders
-```
-mkdir /opt/asd-manager/db/etcd/config/data
-chown -r alba:alba /opt/asd-manager/db/etcd/config/data
-```
-- Create an init script for etcd _/etc/init/sdm-etcd-config.conf_.
-
-```
-description "Etcd (proxy) upstart for cluster config"
-
-start on (local-filesystems and started networking)
-stop on runlevel [016]
-
-kill timeout 60
-respawn
-respawn limit 10 5
-console log
-setuid root
-setgid root
-
-pre-start script
-    if [ ! -d /opt/etcd-proxy/run ]
-    then
-        mkdir /opt/etcd-proxy/run
-    fi
-    echo `etcd --version | grep etcd | awk '{print $3}'` > /opt/etcd-proxy/run/etcd-config.version
-end script
-
-exec etcd -proxy on -data-dir /opt/asd-manager/db/etcd/config/data -listen-client-urls http://127.0.0.1:2379 -initial-cluster <cluster config (check etcd init config on ovs node and copy the initial-cluster)>
-```
-
-**NOTE:** The etcd cluster config consists out of a comma separated list of each controller node's Open vStorage id  (`cat /etc/openvstorage_id`), the public IP and 2380. You can find an example below
-```
-xPAN0JTcz07GHPtZ=http://172.25.20.1:2380,Op7suaZJSpl5mGEC=http://172.25.20.101:2380,XBN5zjfocWi1Qo9A=http://172.25.20.201:2380
-```
-- Start the etcd proxy
-```
-sdm-etcd-config start
-```
+- In case ETCD was selected as configuration management system, install an ETCD proxy.
 - Run the ASD Manager Setup:
 ```
 asd-manager setup
 ```
 -   Select the public IP address to use for the ASDs.
 -   Select the start port to be used by the ASDs.
+-   Select the configuration management system. Note that Arakoon is the preferred and advised configuration and management system.
+
+**NOTE:** When Arakoon is selected copy the Arakoon config file from one of other nodes (`/opt/OpenvStorage/config/arakoon_cacc.ini`) to `/opt/asd-manager/config/arakoon_cacc.ini`.
+
 - When the ASD manager setup is completed a message will be displayed:
 ```
 +++++++++++++++++++++++++++++++++++++
