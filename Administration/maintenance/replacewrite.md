@@ -13,7 +13,7 @@ As a result the VolumeDriver has stopped serving vDisks from this node.
 #### Stop the VolumeDriver and remove the broken SSD
 
 
-* Stop the VolumeDriver and teh vPool service: `stop ovs-volumedriver_<vpoolname>`.
+* Stop the VolumeDriver and the vPool service: `stop ovs-volumedriver_<vpoolname>`.
 * Remove the broken disk, and replace it.
 
 #### Replacing the SSD
