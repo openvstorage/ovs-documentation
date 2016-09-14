@@ -11,6 +11,8 @@ The Open vStorage Documentation is divided into following sections:
 * [Open vStorage](Openvstorage/README.md)
 * [Installation](Installation/README.md)
 * [Administration](Administration/README.md)
+* [Known Issues](knownissues.md)
+* [Older Releases](olderreleases.md)
 
 You can consult this GitBook online by visiting [https://openvstorage.gitbooks.io/openvstorage](https://openvstorage.gitbooks.io/openvstorage). Documentation for older releases can be found [here](olderreleases.md).
 
@@ -24,4 +26,4 @@ The documentation of individual Open vStorage components is split into different
 * [TGT](https://openvstorage.gitbooks.io/tgt/): the iSCSI TGT target
 * [DevOps](https://openvstorage.gitbooks.io/devops/): automation, ansible cookbooks, scripts
 * [Open vStorage Monitoring](https://openvstorage.gitbooks.io/ovs-monitoring/): logs and statistics monitoring
-* [Open vStorage Monitoring](https://openvstorage.gitbooks.io/ovs-monitoring/): logs and statistics monitoring
+
