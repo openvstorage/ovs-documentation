@@ -207,7 +207,7 @@ apt-get update
 
 - Install KVM and the Open vStorage QEMU package:
 ```
-apt-get install kvm libvirt0 python-libvirt virtinst
+apt-get install ntp kvm libvirt0 python-libvirt virtinst
 apt-get install qemu
 ```
 
