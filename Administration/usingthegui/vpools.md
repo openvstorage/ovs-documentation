@@ -15,7 +15,7 @@ The vPool overview lists all the vPools in the Open vStorage Cluster.
 
 
 For each vPool following info is displayed:
-
+-   Status: status of the vPool.
 -   Name : Name of the vPool. You can click on the name of a vPool to
     see [more details](#details) and execute actions.
 -   Stored Data: Total size of the current data and the Snapshots
@@ -27,7 +27,7 @@ For each vPool following info is displayed:
 -   Connection: The Connection (IP, URL, Domainname, Zone, ...) for the
     Storage Backend.
 -   Login: Login/Username used to connect to the Storage Backend.
--   Status: status of the vPool.
+
 
 
 ### <a name="details"></a>vPool Details
@@ -79,7 +79,7 @@ These setting will be by default applied to all vDisks. The settings (except for
     enter with the default login and password: admin/admin.
 -   Select from the menu **vPools** and click the **Add new vPool** button.
 
-![](../Images/addnewvpool.png)
+![](../../Images/addnewvpool.png)
 
 
 -   Enter a name for the vPool and select the type of Storage Backend:
