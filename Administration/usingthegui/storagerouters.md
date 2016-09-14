@@ -30,7 +30,7 @@ For each Storage Router following info is displayed:
 -   Recovery Domains: The domain in which the recovery services (DTL, Slave Metadata Server, ...) are hosted.
 
 
-### <a name="details"></a>Storage Router Details
+### Storage Router Details
 
 The Storage Router Details page displays the detailed performance statistics of a
 single Storage Router, the actions and allows to configure vPools.
@@ -67,10 +67,8 @@ The refresh button will refresh the Storage Router properties.
 #### Storage Router Administration
 
 ##### vPools served by the Storage Router
-
 See which vPools are served by the Storage Router and the ports being used.
 
-<a name="physicaldiskmgmt"></a>
 #### Physical Disk Management
 The Physical Disk Management tab will list all the physical disks (PCIe flash cards, SSDs and SATA drives) of the Storage Router. A physical disks can be assigned different roles:
 -   DB: The DB role stores the distributed database and metadata of the volumes. The DB role must be assigned to an SSD. This will reserve 10% of the SSD for the distributed database. Each Storage Router should have one disk with a DB role. Note that this role can't be removed once set.
@@ -82,6 +80,8 @@ To assign a role to disk, click the gear icon and select the appropriate roles f
 The read and write role can only be removed in case no vPool is using them. The DB and Scrub role can not be removed once assigned to a disk.
 
 ![](../../Images/physicaldiskmanagement.png)
+
+**NOTE:** To replace a disk of a Storage Router follow the necessary steps as outlined [here](../maintenance/replacewrite.md).
 
 #### vDisks
 The vDisk tab lists all the vDisks being served by the Storage Router. For each vDisk following properties are displayed:
