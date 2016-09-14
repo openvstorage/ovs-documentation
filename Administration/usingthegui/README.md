@@ -40,7 +40,7 @@ Following panels, from left to right and top to bottom, can be found on
 the Dashboard:
 
 -   vPools: The vPool panel list all the vPools crated in the Open vStorage Cluster. For each vPool a summary of the Storage Routers serving the vPool displayed.
--   Open vStorage Backends (Optional): The Open vStorage Backend panel displays all registered Open vStorage Backends and their status.
+-   Open vStorage Backends: The Open vStorage Backend panel displays all registered Open vStorage Backends and their status. By default only the Global backends will be shown.
 -   vDisk Statistics: The vDisk Statistics panels lists the average on
     IOPS, Read and Write Speed and Cache Hits over 5 seconds summarized
     for all vDisks in the Custer. The values are updated automatically

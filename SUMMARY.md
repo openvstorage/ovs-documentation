@@ -29,7 +29,6 @@
     * [Using the CLI](Administration/usingthecli/README.md)
         * [alba](Administration/usingthecli/alba.md)
         * [arakoon](Administration/usingthecli/arakoon.md)
-        * [ganesha-cf](Administration/usingthecli/ganesha-cf.md)
         * [ovs](Administration/usingthecli/ovs.md)
         * [volumedriver_fs](Administration/usingthecli/volumedriver_fs.md)
         * [configuration management](Administration/usingthecli/configmgmt.md)
