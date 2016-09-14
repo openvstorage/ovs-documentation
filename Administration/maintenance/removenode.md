@@ -1,6 +1,7 @@
 ### Remove a Storage Router
 
-It is possible to remove a Storage Router from the Open vStorage cluster.
+It is possible to remove a Storage Router from the Open vStorage cluster. This action can be executed on online nodes but also in case the node is offline. In the later case it is advised to make sure the node remains offline or is reformatted before it rejoins the cluster.
+
 
 Removing a Storage Router is only possible through CLI. To remove a Storage Router execute:
 ```
