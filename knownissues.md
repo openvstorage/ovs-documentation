@@ -134,9 +134,9 @@ Executing df -h on the Storage Router will return incorrect values for
 the size, free and used space of a vPool mountpoint. For each vPool the
 used space will be 0% and the free space and total size will be 64TB.
 
-### vDisks bigger than 2TB are not supported
+### vDisks bigger than 64TB are not supported
 
-Currently vDisks bigger than 2TB are not supported. This is both a
+Currently vDisks bigger than64TB are not supported. This is both a
 limitation of the vStorage Driver and the NFS implementation used by
 VMware.
 
@@ -149,27 +149,9 @@ means of 3rd party applications (Veeam, ...) is not supported.
 
 ## vTemplate
 
-Once a vMachine is turned into a vTemplate, you can not add, change or
-remove any vDisks of the vTemplate. Making any changes to the vDisks
-will break the clone functionality of the vTemplate. You are allowed to
-change the non-vDisk info such as CPU and memory.
+Once a vDisk is turned into a vTemplate, you can not add, change it settings. Making any changes to the vDisks
+will break the clone functionality of the vTemplate. 
 
-### No protection against deleting a vTemplate in ESXi
-
-Currently there is no protection against a vTemplate being removed
-through the vSphere GUI. In case there are clones based upon this
-vTemplate and the vTemplate is deleted and accidentally the vTemplate is
-removed in the vSphere GUI, execute the following.
-
--   Create a new Virtual Machine and attach the vTemplate disks (which
-    are not removed) to this VM.
--   Set the Virtual Machine as vTemplate in the Open vStorage GUI.
-
-### Creating multiple clones at once from a vTemplate
-
-In case you deploy multiple Virtual Machines at once from a vTemplate
-with data on its disks, some of the clone actions might fail due to
-timeouts.
 
 ## vPools
 
@@ -193,13 +175,13 @@ Due to a [bug](https://bugs.launchpad.net/cinder/+bug/1478929) in Cinder it is n
 
 The issue is caused by entries which are manually added when setting up
 the vPool for use with Cinder the first time. Remove the Cinder vPool,
-manually edit /etc/nova/nova.conf and remove the instances\_path. Next
+manually edit `/etc/nova/nova.conf` and remove the instances path. Next
 restart the Nova services and follow the normal steps to add the vPool.
 
 ## OpenStack Evacuate
 Due to a bug in OpenStack, the call to Evacuate a host when it is down goes to the host which is down. There is a manual work around which needs to be executed for every volume you want to evacuate.
 
-Before clicking Evacuate host update the cinder DB:
+Before clicking Evacuate host update the Cinder DB:
 ```
 mysql -u root -p <password> -e "update volumes set host='<host you want to evacuate to>@<vpoolname>#<vpoolname>' where display_name='<volume you want to evacuate>';"
 ```
@@ -208,8 +190,9 @@ Running Evacuate after updating the Cinder DB is now successful as the call to c
 
 ## SSD failure
 In case an SSD of a host fails, there might be some consequences based upon the role of the failed SSD:
-* Read role: performance loss can be expected.
-* DB, write role: shutdown the node and move all VMs from the host. The host will need to be replaced and once repaired added again.
+* Read role: performance loss can be expected. Do note this role is no longer required if you use an accalerated ALBA with fragment cache.
+* DB: shutdown the node and move all VMs from the host. The host will need to be replaced and once repaired added again.
+* Write: follow the steps as defined [here](Administration/maintenance/replacewrite.md) to replace the disk.
 * Scrub: no impact on running VMs.
 
 ## Assigning roles in parallel
