@@ -137,6 +137,10 @@ In case you want to use erasure coding instead of replication, select the advanc
 
 ![](../../Images/addpreset.png)
 
+##### Edit a Preset
+Once a preset is created, it is possible to update the policies of the preset. It is not possible to update the name and encryption and compression settings.
+
+
 ##### k,m,c,x explained
 A policy consist out of 4 numbers labaled as k,m,c,x:
 * k: Each Storage Container Object (SCO) gets  split into k fragments, the data fragments. 
