@@ -151,7 +151,7 @@ A policy consist out of 4 numbers labaled as k,m,c,x:
 An example might explain everything a bit more. E.g. in case the SCO size is 16MB and (k,m,c,x ) is set to (16,4,18,4). This means 16 1MB fragments will be created as data fragments.
 Additionally 4 parity fragments will be created. If 18 out of the 20 (16+4) fragments are stored on the backend, the SCO is marked as safely stored on the backend.
 In order to use this policy, the cluster will need at least 5 nodes  (20/4) as the maximal amount of fragments on a node is 4. In case a nodes fails you lose maximul 4 fragments. 
-As the amount of paraity fragments (m) is set to 4 this means there will be no dataloss in that case. Another disk failure on top of the node failure might cause dataloss in this case.  
+As the amount of parity fragments (m) is set to 4 this means there will be no dataloss in that case. Another disk failure on top of the node failure might cause dataloss in this case.  
 
 
 #### Access Rights
