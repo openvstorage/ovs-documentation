@@ -11,16 +11,20 @@ ovs help
 ```
 
 #### The available ovs commands
-* setup: Launch Open vStorage setup and autodetect required node role (master/extra)
-    * setup master: Launch Open vStorage setup and install node as master node
-    * setup promote: Promote this node (extra -> master)
-    * setup demote: Demote this node (master -> extra)
+* setup: Launch Open vStorage setup and autodetect required node role (master/extra).
+    * `ovs setup master`: Launch Open vStorage setup and install node as master node.
+    * `ovs setup promote`: Promote this node (extra -> master).
+    * `ovs setup demote`: Demote this node (master -> extra).
 * update
-    * update framework: Update the OPen vStorage Framework on all nodes
-    * update volumedriver: Update the Volume Driver on all nodes
-* monitor services: Watch Open vStorage services
-* monitor heartbeat: Send an internal heartbeat
-* stop services: Try to stop all Open vStorage services
-* start services: Try to start all Open vStorage servces
-* collect logs: Collect all Open vStorage logs to a tarball for support purposes under /tmp.
-* ovs unittest filepath: Run the unittests in filepath
+    * `ovs update framework`: Update the OPen vStorage Framework on all nodes.
+    * `ovs update volumedriver`: Update the VolumeDriver on all nodes.
+* `ovs monitor services`: Watch Open vStorage services.
+* `ovs monitor heartbeat`: Send an internal heartbeat.
+* `ovs stop services`: Try to stop all Open vStorage services.
+* `ovs start services`: Try to start all Open vStorage servces.
+* `ovs collect logs`: Collect all Open vStorage logs to a tarball for support purposes under `/tmp`.
+* `ovs unittest filepath`: Run the unittests in filepath.
+* configuration management
+	* `ovs config edit some/key`: Edit that key in your $EDITOR. If it doesn't exist, the key is created.
+	* `ovs config list some`: List all keys with the given prefix
+	* `ovs config get some/key`: Print the contents of the given key.
