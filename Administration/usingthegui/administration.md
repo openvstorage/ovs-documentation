@@ -108,7 +108,7 @@ related websites such as:
 Under updates you can see if there are updates available for the different components of Open vStorage. Click the appropriate button to update the different components.
 The Framework can be updated without bringing the vDisks down. A VolumeDriver update requires the vDisks to be stopped or moved to another Storage Router.
 
-*NOTE:* Clicking the **Update Storage Driver** button will stop all vDisks and bring the whole cluster down at once for an update of all nodes. To update an individual node, check the [maintenance instructions](../maintenance/upgrade.md).
+**NOTE:** Clicking the **Update Storage Driver** button will stop all vDisks and bring the whole cluster down at once for an update of all nodes. To update an individual node, check the [maintenance instructions](../maintenance/upgrade.md).
 
 #### API
 
