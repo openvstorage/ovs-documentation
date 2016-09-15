@@ -102,9 +102,8 @@ These setting will be by default applied to all vDisks. The settings (except for
         local Open vStorage Backend** checked and press **Next** to load
         the available Backends. Use this option in case you want Open vStorage to manage the SATA drives and SSDs.
         Select a Preset from  the dropdown. This Preset defines how data is stored on the backend (e.f. 3-way replication). You can add more Presets in the detail page of a [Backend](backends.md#presets). **Once the vPool is created the Preset can't be changed.**
--   Select the Storage Router as Initial Storage Router. Click **Next** to continue.
-
-
+	-   Select the Storage Router as Initial Storage Router. Click **Next** to continue.
+	
 -   On the second tab
     -   Specify the fragment cache method
         - Select No Caching in case you have an all flash backend.
