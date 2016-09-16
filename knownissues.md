@@ -136,9 +136,10 @@ used space will be 0% and the free space and total size will be 64TB.
 
 ### vDisks bigger than 64TB are not supported
 
-Currently vDisks bigger than64TB are not supported. This is both a
-limitation of the vStorage Driver and the NFS implementation used by
-VMware.
+Currently vDisks bigger than 64TB are not supported.
+
+### DTL Status
+The DTL status of a vDisk will be labeled green/ok in case the vDisk is configured to have no vDisk.  
 
 ## Snapshots
 
@@ -163,9 +164,11 @@ will break the clone functionality of the vTemplate.
     environment, the other vPools, on the other environments, will
     become unavailable!
 
-### vPool creation
+### vPool creation/extension
 
-	
+-   The available space for the write buffer can be incorrect displayed in the wizard. When creating the vPool, the creation might fail with `Too much space requested for WRITE cache`.
+-   The mandotary DB role isn't checked in the wizard. In case there is no DB role on the Storage Router configured, the vPool creation/extension will fail.
+- 	The creation of a vPool fails in case the directory `/mnt/<vpool name>` already exists on the Storage Router.
 	
 ### Removing a vPool
 
@@ -183,9 +186,17 @@ In case an SSD of a host fails, there might be some consequences based upon the 
 ### Assigning roles in parallel
 Assigning roles to a Storage Router sometimes fails in case multiple roles are set at the same time.
 
+### Remove node takes liong time to complete
+Removing a node from a large cluster can take quite some time, even up to minutes.
+
 ## Backends
 ### Creating multiple backends
 Creating multiple backends at once fails and leaves the backends in a permanent Installing status.
+
+### Software raid
+md member devices can be used as a backend disk. Selecting it as backend disk will render the md device useless.
+
+
 
 ## OpenStack
 ### OpenStack Evacuate
