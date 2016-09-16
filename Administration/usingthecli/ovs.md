@@ -25,6 +25,6 @@ ovs help
 * `ovs collect logs`: Collect all Open vStorage logs to a tarball for support purposes under `/tmp`.
 * `ovs unittest filepath`: Run the unittests in filepath.
 * configuration management
-	* `ovs config edit some/key`: Edit that key in your $EDITOR. If it doesn't exist, the key is created.
-	* `ovs config list some`: List all keys with the given prefix
+	* `ovs config edit some/key`: Edit that key in your `$EDITOR`. If it doesn't exist, the key is created.
+	* `ovs config list some`: List all keys with the given prefix.
 	* `ovs config get some/key`: Print the content of the given key.
