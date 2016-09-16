@@ -163,22 +163,33 @@ will break the clone functionality of the vTemplate.
     environment, the other vPools, on the other environments, will
     become unavailable!
 
+### vPool creation
+
+	
+	
 ### Removing a vPool
 
 -   Removing a vPool only works in case all Storage Routers are online. You will be able to start the remove action in the GUI but the remove will fail.
 
-### Re-adding a vPool on OpenStack Cinder fails for Juno and Kilo.
 
-Due to a [bug](https://bugs.launchpad.net/cinder/+bug/1478929) in Cinder it is not possible to add a vPool with the name of a vPool which was previously deleted. The issue only occurs on Juno and Kilo but not on Liberty.
+## Storage Routers
+### SSD failure
+In case an SSD of a host fails, there might be some consequences based upon the role of the failed SSD:
+* Read role: performance loss can be expected. Do note this role is no longer required if you use an accalerated ALBA with fragment cache.
+* DB: shutdown the node and move all VMs from the host. The host will need to be replaced and once repaired added again.
+* Write: follow the steps as defined [here](Administration/maintenance/replacewrite.md) to replace the disk.
+* Scrub: no impact on running VMs.
 
-### Re-adding a vPool on OpenStack Cinder fails in case the manual changes were not undone.
+### Assigning roles in parallel
+Assigning roles to a Storage Router sometimes fails in case multiple roles are set at the same time.
 
-The issue is caused by entries which are manually added when setting up
-the vPool for use with Cinder the first time. Remove the Cinder vPool,
-manually edit `/etc/nova/nova.conf` and remove the instances path. Next
-restart the Nova services and follow the normal steps to add the vPool.
+## Backends
+### Creating multiple backends
+Creating multiple backends at once fails and leaves the backends in a permanent Installing status.
 
-## OpenStack Evacuate
+## OpenStack
+### OpenStack Evacuate
+
 Due to a bug in OpenStack, the call to Evacuate a host when it is down goes to the host which is down. There is a manual work around which needs to be executed for every volume you want to evacuate.
 
 Before clicking Evacuate host update the Cinder DB:
@@ -188,12 +199,18 @@ mysql -u root -p <password> -e "update volumes set host='<host you want to evacu
 
 Running Evacuate after updating the Cinder DB is now successful as the call to cinder-volume is routed to a host which is alive.
 
-## SSD failure
-In case an SSD of a host fails, there might be some consequences based upon the role of the failed SSD:
-* Read role: performance loss can be expected. Do note this role is no longer required if you use an accalerated ALBA with fragment cache.
-* DB: shutdown the node and move all VMs from the host. The host will need to be replaced and once repaired added again.
-* Write: follow the steps as defined [here](Administration/maintenance/replacewrite.md) to replace the disk.
-* Scrub: no impact on running VMs.
+### Re-adding a vPool on OpenStack Cinder fails for Juno and Kilo.
 
-## Assigning roles in parallel
-Assigning roles to a Storage Router sometimes fails in case multiple roles are set at the same time.
+Due to a [bug](https://bugs.launchpad.net/cinder/+bug/1478929) in Cinder it is not possible to add a vPool with the name of a vPool which was previously deleted. The issue only occurs on Juno and Kilo but not on Liberty.
+
+
+### Re-adding a vPool on OpenStack Cinder fails in case the manual changes were not undone.
+
+The issue is caused by entries which are manually added when setting up
+the vPool for use with Cinder the first time. Remove the Cinder vPool,
+manually edit `/etc/nova/nova.conf` and remove the instances path. Next
+restart the Nova services and follow the normal steps to add the vPool.
+
+## vDisk Migration
+### GUI hangs
+During the migration of a vDisks between hosts, the GUI may hang for a short period of time.
