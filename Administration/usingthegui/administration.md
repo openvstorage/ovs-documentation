@@ -76,11 +76,7 @@ The result for a single entry will look like:
 }
 ```
 
-#### Statistics
 
-Under Statistics you get an overview of the load on the framework. The Memcache section displays the
-current Memcache, the caching component of the API, activity, its size
-in memory and uptime.
 
 #### Support
 
