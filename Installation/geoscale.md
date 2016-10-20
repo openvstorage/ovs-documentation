@@ -9,7 +9,7 @@ Forum](https://groups.google.com/forum/#!forum/open-vstorage).
 ### Requirements
 * Each datacenter should be equipped with enough SSD capacity to contain most of the active dataset of the volumes running in the datacenter.
 * A layer 3 network between the different datacenters.
-* Each server has the latest version of  [Ubuntu server 14.04 64 bit ISO](http://releases.ubuntu.com/14.04.3/ubuntu-14.04.3-server-amd64.iso) installed.
+* Each server has the latest version of  [Ubuntu server 16.04 64 bit ISO](http://releases.ubuntu.com/16.04/ubuntu-16.04-server-amd64.iso) installed.
 * In case a node has 2 or more IPs, ssh must be enabled for all the IPs.
 * Make sure the `ovs` user and group are deleted before starting the Open vStorage installation.
 
@@ -57,12 +57,28 @@ Execute the next steps in the shell of all Controller nodes:
 -   Add the repo to your sources.
     - Latest  Fargo version
 ```
-echo "deb http://apt.openvstorage.org fargo main" > /etc/apt/sources.list.d/ovsaptrepo.list
+echo "deb http://apt.openvstorage.com fargo main" > /etc/apt/sources.list.d/ovsaptrepo.list
+apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 4EFFB1E7
+
+cat <<EOF > /etc/apt/preferences
+Package: *
+Pin: origin apt.openvstorage.com
+Pin-Priority: 1000
+EOF
+
 apt-get update
 ```
     - Latest experimental version
 ```
-echo "deb http://apt.openvstorage.org unstable main" > /etc/apt/sources.list.d/ovsaptrepo.list
+echo "deb http://apt.openvstorage.com unstable main" > /etc/apt/sources.list.d/ovsaptrepo.list
+apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 4EFFB1E7
+
+cat <<EOF > /etc/apt/preferences
+Package: *
+Pin: origin apt.openvstorage.com
+Pin-Priority: 1000
+EOF
+
 apt-get update
 ```
 
@@ -104,12 +120,28 @@ Execute the next steps in the shell of all Compute nodes:
 -   Add the repo to your sources. For older versions please check [here](../olderreleases.md).
     - Latest  Fargo version
 ```
-echo "deb http://apt.openvstorage.org fargo main" > /etc/apt/sources.list.d/ovsaptrepo.list
+echo "deb http://apt.openvstorage.com fargo main" > /etc/apt/sources.list.d/ovsaptrepo.list
+apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 4EFFB1E7
+
+cat <<EOF > /etc/apt/preferences
+Package: *
+Pin: origin apt.openvstorage.com
+Pin-Priority: 1000
+EOF
+
 apt-get update
 ```
     - Latest experimental version
 ```
-echo "deb http://apt.openvstorage.org unstable main" > /etc/apt/sources.list.d/ovsaptrepo.list
+echo "deb http://apt.openvstorage.com unstable main" > /etc/apt/sources.list.d/ovsaptrepo.list
+apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 4EFFB1E7
+
+cat <<EOF > /etc/apt/preferences
+Package: *
+Pin: origin apt.openvstorage.com
+Pin-Priority: 1000
+EOF
+
 apt-get update
 ```
 
@@ -158,12 +190,28 @@ ovs setup
 -   Add the repo to your sources. For older versions please check [here](../olderreleases.md).
     - Latest  Fargo version
 ```
-echo "deb http://apt.openvstorage.org fargo main" > /etc/apt/sources.list.d/ovsaptrepo.list
+echo "deb http://apt.openvstorage.com fargo main" > /etc/apt/sources.list.d/ovsaptrepo.list
+apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 4EFFB1E7
+
+cat <<EOF > /etc/apt/preferences
+Package: *
+Pin: origin apt.openvstorage.com
+Pin-Priority: 1000
+EOF
+
 apt-get update
 ```
     - Latest experimental version
 ```
-echo "deb http://apt.openvstorage.org unstable main" > /etc/apt/sources.list.d/ovsaptrepo.list
+echo "deb http://apt.openvstorage.com unstable main" > /etc/apt/sources.list.d/ovsaptrepo.list
+apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 4EFFB1E7
+
+cat <<EOF > /etc/apt/preferences
+Package: *
+Pin: origin apt.openvstorage.com
+Pin-Priority: 1000
+EOF
+
 apt-get update
 ```
 
@@ -196,12 +244,28 @@ For this installation procedure, KVM is assumed to be the hypervisor of choice.
 -   Add the repo to your sources. For older versions please check [here](../olderreleases.md).
     - Latest  Fargo version
 ```
-echo "deb http://apt.openvstorage.org fargo main" > /etc/apt/sources.list.d/ovsaptrepo.list
+echo "deb http://apt.openvstorage.com fargo main" > /etc/apt/sources.list.d/ovsaptrepo.list
+apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 4EFFB1E7
+
+cat <<EOF > /etc/apt/preferences
+Package: *
+Pin: origin apt.openvstorage.com
+Pin-Priority: 1000
+EOF
+
 apt-get update
 ```
     - Latest experimental version
 ```
-echo "deb http://apt.openvstorage.org unstable main" > /etc/apt/sources.list.d/ovsaptrepo.list
+echo "deb http://apt.openvstorage.com unstable main" > /etc/apt/sources.list.d/ovsaptrepo.list
+apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 4EFFB1E7
+
+cat <<EOF > /etc/apt/preferences
+Package: *
+Pin: origin apt.openvstorage.com
+Pin-Priority: 1000
+EOF
+
 apt-get update
 ```
 

@@ -1,2 +1,0 @@
-### Fill in the registration page
-Before you can start working with the Open vStorage GUI, you will be asked to enter some user information. Within 30 days you need to fill in name, company, email, phone details and accept the agreement. In case these details aren't provided within 30 days, the cluster will no longer be usable.
