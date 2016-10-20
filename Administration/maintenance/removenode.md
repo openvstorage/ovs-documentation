@@ -8,6 +8,8 @@ Removing a Storage Router is only possible through CLI. To remove a Storage Rout
 ovs remove nodes <comma separated list of ips of the node to remove>
 ```
 
+During the remove process you will be prompted to confirm the removal. You can also add the `--force-yes` option in scripts to bypass the confirmation.
+
 ### Promoting and demoting Storage Routers
 By default a cluster will have 3 Storage Routers running the master services. In case a master node is removed from the cluster, the next node that is added will automatically be configured as master.
 
