@@ -5,7 +5,7 @@ It is possible to remove a Storage Router from the Open vStorage cluster. This a
 
 Removing a Storage Router is only possible through CLI. To remove a Storage Router execute:
 ```
-ovs remove nodes <comma separated list of ips of the node to remove>
+ovs remove node <ip of the node to remove>
 ```
 
 During the remove process you will be prompted to confirm the removal. You can also add the `--force-yes` option in scripts to bypass the confirmation.
