@@ -22,3 +22,6 @@ It is possible remove the master roles by executing:
   ```
 ovs setup demote
 ```
+
+### Remove an ALBA node
+To remove an ALBA node execute `asd-manager remove` on the node with the ALBA SDM manager package.
