@@ -115,8 +115,6 @@ The Edge Client tab gives an overview of all Edge clients connected to the vDisk
 #### Management actions
 Under Management actions you can define the settings for the VDisk:
 -   Distributed Transaction Log mode: Currently the DTL can be disabled (no DTL), synchronously (sync every 4K write) or asynchronously (sync on fsync from the VM).
--   The Caching method: Cache on Read/Cache on Write or no cache (all-flash backend).
--   Deduped/non-deduped policy for vDisks. In case the setting is set to deduped it can be changed to non-deduped. Changing a vDisk from non-deduped to deduped isn't supported. It is advised to limit to the size the non-deduped vDisk can take in the read cache.
 -   The SCO size: a collection of writes which gets stored on the Backend.
 -   Size of the Write Buffer: the amount of data that can be in the DTL but not available in the Backend.
 
