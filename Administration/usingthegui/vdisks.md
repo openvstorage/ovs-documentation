@@ -31,6 +31,18 @@ For each vDisk following info is displayed:
     vDisk, on another Storage Router to prevent dataloss. The status can be healthy
     of degraded.
 
+#### vDisk Actions
+
+##### Create a vDisk
+-   Click the **Add new vDisk** button on the vDisk overview page.
+-   Give the new vDisks a name, enter a size, select the vPool in which the vDisk should be hosted and select a Storage Router from that vPool. Click **Finish** to create the vDisks.
+
+##### Snapshots
+
+At the bottom of the vDisk Details page all snapshots of the vDisk are
+listed.
+	
+	
 ### <a name="vdisk_details"></a>vDisk Details
 
 The vDisk Details page displays the detailed performance statistics of a
@@ -57,28 +69,33 @@ page:
 
 #### vDisk Actions
 
-##### Create a vDisk
--   Click the **Add new vDisk** button on the vDisk overview page.
--   Give the new vDisks a name, enter a size, select the vPool in which the vDisk should be hosted and select a Storage Router from that vPool. Click **Finish** to create the vDisks.
+##### Snapshot
 
-##### Snapshots
+Creates a snapshot of the vDisk. Optionally label the snapshot as consist or sticky. Sticky snapshots will not be automatically removed but must be removed manually. 
 
-At the bottom of the vDisk Details page all snapshots of the vDisk are
-listed.
-
-##### Set as vTtemplate
-Set the vDisk as a Template. A vTemplate allows to create one or more vDisks at once by
-cloning a snapshot of the vDisk.
 
 ##### Rollback
-
 Rollback the vDisk and to a previous
 snapshot. This action can only be executed on stopped vMachines and the
 rollback can not be undone.
 
 ##### Clone the vDisk
-
 Cloning a vDisks creates a new vDisk based upon a snapshot of the selected vDisk. Only new data written to the cloned vDisks will be stored on the backend.
+
+##### Move the vDisk
+Move the vDisk to another Storage Router of the vPool. This is handy in case you need to update or reboot the Storage Router the vDisks is currently running on.
+
+##### Scrub the vDiks
+The scrub action goes over all snapshots and removes data which is overwritten and out of the retention period. By default all vDisks are scrubbed daily but in case this task is disabled, you can manually call the scrub job for a certain vDisk.
+
+##### Set as vTtemplate
+Set the vDisk as a Template. A vTemplate allows to create one or more vDisks at once by
+cloning a snapshot of the vDisk.
+
+##### Delete the vDisks
+The delete button removed the vDisk and all of its snapshots from the cluster. Note that this action can not be undone.
+
+
 
 #### Snapshots
 The Snapshot tab displays a list of all the snapshots of the vDisk. Per snapshot following properties are displayed:
