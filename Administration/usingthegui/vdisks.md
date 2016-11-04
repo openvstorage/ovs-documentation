@@ -113,7 +113,7 @@ Individual Snapshots can be deleted by clicking the delete button.
 The Edge Client tab gives an overview of all Edge clients connected to the vDisk. For each client the IP address and client port are provided.
 
 #### Management actions
-Under Management actions you can define the settings for the VDisk:
+Under Management actions you can define the settings for the vDisk:
 -   Distributed Transaction Log mode: Currently the DTL can be disabled (no DTL), synchronously (sync every 4K write) or asynchronously (sync on fsync from the VM).
 -   The SCO size: a collection of writes which gets stored on the Backend.
 -   Size of the Write Buffer: the amount of data that can be in the DTL but not available in the Backend.
