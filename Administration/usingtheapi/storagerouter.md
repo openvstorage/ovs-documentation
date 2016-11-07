@@ -77,6 +77,6 @@ Main actions:
 | Adds a vPool | add_vpool | POST | {"call_parameters": {"vpool_name": str, vpool name, "type": str, vpool type, "connection_host": str, host, "connection_port": int, port, "connection_timeout": int, timeout, "connection_username": str, username, "connection_password": str, password, "mountpoint_temp": str, mountpoint, "mountpoint_bfs": str, mountpoint, "mountpoint_md": str, mountpoint, "mountpoint_readcache1": str, mountpoint, "mountpoint_readcache2": str, mountpoint, "mountpoint_writecache": str, mountpoint, "mountpoint_foc": str, mountpoint, "storage_ip": str, ip, "vrouter_port": int, port } } | GUID of a Celery task |
 
 | Update the Volume Driver on all Storage Routers | update_volumedriver | POST |  | GUID of a Celery task |
-| Configure a disk | configure_disk | POST | {"disk_guid":str, GUID of the disk, "offset": int, offset, "size": int, size in , "roles": str in [READ, WRITE, DB, SCRUB], role, "partition_guid": str, GUID of the partition, optional } | GUID of a Celery task |
+| Configure a disk | configure_disk | POST | {"disk_guid":str, GUID of the disk, "offset": int, offset, "size": int, size in , "roles": str in [WRITE, DB, SCRUB], role, "partition_guid": str, GUID of the partition, optional } | GUID of a Celery task |
 | Rescan disks | rescan_disks | POST |  | GUID of a Celery task |
 | Refresh all hardware parameters | refresh_hardware | POST |  | GUID of a Celery task |

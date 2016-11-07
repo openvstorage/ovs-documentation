@@ -2,8 +2,6 @@
 
 ### vPool object structure
 
--   backend_type: The Backend type. (ALBA, Amazon, Ceph, Distributed, Local, Swift)
--   backend_type_guid: The GUID of the Backend type.
 -   configuration: The vPool configuration known by the StorageDriver.
 -   connection: Connection (IP, URL, Domainname, Zone, ...) for the Storage Backend.
 -   description: Description of the vPool.
@@ -24,8 +22,6 @@
 -   stored_data: Total size in Bytes of the current data and the Snapshots without the overhead imposed by the Backend redundancy.
 -   vdisks: The vDisks served by this vPool.
 -   vdisks_guids: List of vDisk GUIDs served by this vPool.
--   vmachines: The vMachines served by this vPool.
--   vmachines_guids: List of vMachine GUIDs served by this vPool.
 
 ### Example data
 
@@ -33,7 +29,6 @@
 {
     "status": "RUNNING",
     "guid": "f4f0bce7-e14f-4272-bd27-9bde3d3e405e",
-    "backend_type_guid": "11e733a9-b215-44a7-95ee-c7f785be5c20",
     "name": "veepoel",
     "identifier": "f4f0bce7-e14f-4272-bd27-9bde3d3e405e_9b353f51-466d-4912-b305-6c4428d53242",
     "size": 35800154112,
@@ -76,9 +71,6 @@
                         2
                     ]
                 ],
-                "nsm_partition_guids": [
-                    "549a2043-5263-433f-96cf-bb2aa1283701"
-                ],
                 "fragment_cache_on_read": true
             },
             "connection": {
@@ -98,9 +90,7 @@
     "configuration": {
         "write_buffer": 128.0,
         "sco_size": 4,
-        "cache_strategy": "on_read",
         "dtl_transport": "tcp",
-        "dedupe_mode": "non_dedupe",
         "cluster_size": 4,
         "tlog_multiplier": 16,
         "dtl_mode": "a_sync",
