@@ -84,7 +84,6 @@ apt-get update
 
 -  Install the Open vStorage software:
 ```
-apt-get install volumedriver-no-dedup-server
 apt-get install openvstorage-backend
 ```
 -   Initialize the Open vStorage software on each controller by executing in the shell:
@@ -147,7 +146,6 @@ apt-get update
 
 -  Install the Open vStorage software:
 ```
-apt-get install volumedriver-no-dedup-server
 apt-get install openvstorage-hc
 ```
 -   Initialize the Open vStorage software on each controller by executing in the shell:
