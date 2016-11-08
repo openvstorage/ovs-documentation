@@ -47,7 +47,6 @@ Pin-Priority: 1000
 EOF
 
 apt-get update
-
 apt-get install openvstorage-hc
 apt-get install qemu
 ```
@@ -61,9 +60,8 @@ Package: *
 Pin: origin apt.openvstorage.com
 Pin-Priority: 1000
 EOF
+
 apt-get update
-
-
 apt-get install openvstorage-hc
 apt-get install qemu
 ```
