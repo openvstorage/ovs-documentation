@@ -48,7 +48,6 @@ EOF
 
 apt-get update
 
-apt-get install volumedriver-no-dedup-server
 apt-get install openvstorage-hc
 apt-get install qemu
 ```
@@ -64,7 +63,7 @@ Pin-Priority: 1000
 EOF
 apt-get update
 
-apt-get install volumedriver-no-dedup-server
+
 apt-get install openvstorage-hc
 apt-get install qemu
 ```
