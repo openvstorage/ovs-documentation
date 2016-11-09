@@ -76,40 +76,10 @@ Following ports are used by the different Open vStorage components
 -  multicast group 239.1.2.3 port 8123
 
 
-### ISO files
-Currently it is strongly advised not to store ISO files on the vPool.
-Performance might be severely impacted when storing large non-volume
-files on the vPool.
-
-#### VMware
-#### Unsupported VMware functionality
-Currently not all functionality as offered by the VMware hypervisor is supported. Following features are not supported:
-
--   Snapshots taken through the VMware interface
--   Distributed Power Management
--   Storage Replication Adapter
--   VMware storage policy
-
-#### Swap files
-ESXi creates by the default the vMachine memory swap file within the
-vMachine directory \<vPool Datastore\>/\<VM Name\>. This means this big
-swapfile ends up on the distributed filesystem mountpoint which is being
-synchronised between the different GSR's. For the swap file this is not
-required. All functionality is still available when relocating this type
-of files to a Datastore which is local to your hypervisor node (f.e.
-Datastore1).
-
-How to change this default behavior can be seen in the screenshots below
-for the vSphere Client and the vSphere Web Client.
-
-![](../Images/swapfile_vsphere_client.png)
-![](../Images/swapfile_vsphere_web.png)
-
-
 ### OS for the VM Storage Router
-The Storage Router has been tested with Ubuntu 16.04 64 bit as
-Operating System. Other Linux OS (linux-image >= 3.15) might also work. The Open vStorage
-software is not installable on a 32 bit OS.
+The Storage Router has been tested and is officially supported only on Ubuntu 16.04 64 bit as Operating System. 
+Other Linux OS (linux-image >= 3.15) might also work. In case it doesn't work, please create [a bug](https://github.com/openvstorage/framework/issues) mentioning the OS and error message. 
+The Open vStorage software is not installable on a 32 bit OS.
 
 ### Limit to the amount of vDisks/Storage Router
 #### RAM Limitation
@@ -150,15 +120,6 @@ the scocache\_mount\_points) can be found for each vPool in the [distributed con
     "backoff_gap": "2GB"
   },
 ```
-
-
-### Supported Storage Backends
-
--   Open vStorage Backend (ALBA)
--   (Distributed) Filesystems
--   Amazon S3 compatible object stores:
-    -   The Storage Backend must support both object and bucket methods.
-    -   Ceph, Swift, ...
 
 ### Hostnames
 Open vStorage currently works IP based. When browsing to the Open vStorage GUI, please use the ip address instead of the hostname.

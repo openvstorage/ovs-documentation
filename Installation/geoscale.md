@@ -296,14 +296,12 @@ usermod -a -G ovs libvirt-qemu
 A Domain can only be used as a Recovery Domain entry in case ut has been used on a Storage Router as primary  Domain. The benefit of a Recovery Domain is that there is no data loss in case the primary datacenter goes offline.
 
 #### Adding Roles to the Storage Routers
-For each Storage Router select roles (read, write, DB, scrub) for the physical disks:
+For each Storage Router select roles (write, DB, scrub) for the physical disks:
 -   Select from the menu **Storage Routers** and select the Storage Router from the list.
 -   Select the Physical Disk Management tab. On this tab you can assign roles to the different detected physical disks. To assign a role to a disk click the gear icon and select the role from the dropdown.
 -   Assign a DB role to one of the SSDs. This will reserve 10% of the SSD for the database. Each Storage Router should have one disk with a DB role. Note that this role can't be removed once set.
 -   Assign write role to the SSDs or PCIe flash cards you want to use as write buffer for the vPools. A Storage Router must have at least one disk with the write role assigned. The write role can only be removed in case no vPool is using them.
 -   Optionally assign a scrub role to one of the disks. The scrubber is the application which does the garbage collection of snapshot data which is out of the retention. This will reserve 300 GB of space. In a cluster there must be at least 1 Storage Router with one disk with the scrubbing role. Note that this role can't be removed once set.
-
-**NOTE:** Since this cluster will be using an Accelerated ALBA on all flash as distributed cache in each datacenter, the read role isn't set as it will not be used (no local caching by the Storage Router).
 
 #### Create the Backends
 Since this is a complex setup across multiple datacenters, the Arakoon clusters for the backends will need to be created manually.
@@ -355,9 +353,7 @@ Once the Backends are correctly setup, it is time to create the first vPool.
 
 - On the first tab
     -   Enter a name for the vPool.
-    -   Select **Open vStorage Backend** as Backend.
-    - Leave the **Use local Open vStorage Backend** checked and press **Reload** to load
-        the available Backends. Select the GeoScale backend previously created and a Preset from the dropdown. This Preset defines how data is stored on the backend (e.f. 3-way replication). You can add more Presets in the detail page of a [Backend](Administration/usingthegui/backends.md#presets). **Once the vPool is created the Preset can't be changed.**
+    -   Select the GeoScale backend previously created and a Preset from the dropdown. This Preset defines how data is stored on the backend (e.f. 3-way replication). You can add more Presets in the detail page of a [Backend](Administration/usingthegui/backends.md#presets). **Once the vPool is created the Preset can't be changed.**
     -   Select the Storage Router as Initial Storage Router. Click **Next** to continue.
 
 -   On the second tab
@@ -367,7 +363,6 @@ Once the Backends are correctly setup, it is time to create the first vPool.
 
 -   On the third tab
     -   Define the Distributed Transaction Log mode and Transport mode: Currently you can set the DTL to Disabled, Asynchronous and synchronous. The transport mode can be TCP or RDMA.
-    -   Select the default Caching method for vDisks. Set to **No Cache** as the vPool uses a distributed cache instead of local caching on the Storage Router.
     -   Define how much space to reserve for the write buffer for this vPool.
     -   Select the SCO size (a collection of writes which gets stored on the Backend).
     -   Select the cluster size (blocksize of the vDisks). This setting can't be overruled.

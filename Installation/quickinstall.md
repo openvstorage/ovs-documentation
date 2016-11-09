@@ -72,7 +72,7 @@ ovs setup
 ```
 -   Open the GUI on the IP address of the KVM node and login with the
     default administrator credentials username:admin, password:admin.
--   Go to the Storage Router detail page and select the Physical Disk Management tab. Assign a DB and scrub role to at least one SSD disk. Assign read and write roles to SSDs you want to use as cache.
+-   Go to the Storage Router detail page and select the Physical Disk Management tab. Assign a DB and scrub role to at least one SSD disk. Assign a write role to at least one SSD you want to use as write buffer.
 -   Create an Open vStorage Backend in the Backend section.
 -   To add more nodes execute in the KVM shell of every node (concurrent installation of multiple nodes isn't supported):
 ```
