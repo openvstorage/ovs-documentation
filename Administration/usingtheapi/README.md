@@ -229,15 +229,13 @@ The current API provides access to following resources:
 -   roles: All different roles/scopes available to groups, clients and
     tokens.
 -   storagedrivers: All Storage Driver instances.
--   storagerouters: All Storage Routers of the Cluster, either running
-    virtually (e.g. on VMWare) or physical (e.g. on KVM).
+-   storagerouters: All Storage Routers of the Cluster.
 -   tasks: The celery tasks which are active, scheduled, reserved or
     revoked. These tasks are the results of actions performed on the
     Open vStorage Cluster.
 -   users: The users which are registered in the Open vStorage Cluster.
 -   vdisks: Virtual disk served by Open vStorage. vDisks can be part of
     a vMachine or stand-alone.
--   vmachines: The Virtual Machines in the Cluster.
 -   vpools: The vPools which can be used to deploy vMachines.
 
 It also provides two "special" resources:
