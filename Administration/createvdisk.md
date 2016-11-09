@@ -1,10 +1,6 @@
 ### Create a vDisk on a vPool
 Open vStorage supports multiple ways to create vDisks.
 
-#### <a name="esxi"></a>ESXi
-You can create a vMachine with multiple vDisks straight from the vCenter or ESXi GUI. For more details, check the [VMware documentation](https://pubs.vmware.com/vsphere-51/index.jsp#com.vmware.vsphere.vm_admin.doc/GUID-7834894B-DD17-4D59-A9BF-A33D02478521.html). When selecting a Datastore for the disks of the VM, select the exposed vPool (NFS) as Datastore.
-Currently only a single vPool is supported
-
 
 #### <a name="kvm"></a>KVM
 To create a vDisk you can use with KVM/libvirt based upon an existing qcow2 file execute following:
@@ -145,3 +141,5 @@ tgtadm --lld iscsi --mode target --op bind --tid 1 -I 1.2.3.4
 ```
 tgtadm --lld iscsi --mode target --op bind --tid 1 -I 1.2.3.0/24
 ```
+
+**NOTE:** The maximum size of a vDisk is 64TB.
