@@ -107,7 +107,7 @@ for the vSphere Client and the vSphere Web Client.
 
 
 ### OS for the VM Storage Router
-The Storage Router has been tested with Ubuntu 14.04 64 bit as
+The Storage Router has been tested with Ubuntu 16.04 64 bit as
 Operating System. Other Linux OS (linux-image >= 3.15) might also work. The Open vStorage
 software is not installable on a 32 bit OS.
 

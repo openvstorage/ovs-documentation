@@ -10,8 +10,8 @@ The quick install guide for KVM:
 -   Read through the [Essentials](essentials.md) to understand what is
     supported and what not.
 -   Remove all partitions and remaining data on the physical disks.
--   Install [Ubuntu server 14.04 64 bit
-    ISO]http://releases.ubuntu.com/14.04.3/ubuntu-14.04.3-server-amd64.iso)
+-   Install [Ubuntu server 16.04 64 bit
+    ISO](http://releases.ubuntu.com/16.04/ubuntu-16.04-server-amd64.iso)
     on the server. Install the Open SSH server and the Virtual Machine
     Host.
 -   Install the KVM packages.
@@ -37,17 +37,31 @@ echo "vm.dirty_background_bytes = 134217728" >> /etc/sysctl.conf
     packages) on all KVM nodes:
     - Latest Fargo version (For older versions please check [here](../olderreleases.md))
 ```
-echo "deb http://apt.openvstorage.org fargo main" > /etc/apt/sources.list.d/ovsaptrepo.list
+echo "deb http://apt.openvstorage.com fargo main" > /etc/apt/sources.list.d/ovsaptrepo.list
+apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 4EFFB1E7
+
+cat <<EOF > /etc/apt/preferences
+Package: *
+Pin: origin apt.openvstorage.com
+Pin-Priority: 1000
+EOF
+
 apt-get update
-apt-get install volumedriver-no-dedup-server
 apt-get install openvstorage-hc
 apt-get install qemu
 ```
     - Latest unstable version
 ```
-echo "deb http://apt.openvstorage.org unstable main" > /etc/apt/sources.list.d/ovsaptrepo.list
+echo "deb http://apt.openvstorage.com unstable main" > /etc/apt/sources.list.d/ovsaptrepo.list
+apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 4EFFB1E7
+
+cat <<EOF > /etc/apt/preferences
+Package: *
+Pin: origin apt.openvstorage.com
+Pin-Priority: 1000
+EOF
+
 apt-get update
-apt-get install volumedriver-no-dedup-server
 apt-get install openvstorage-hc
 apt-get install qemu
 ```
