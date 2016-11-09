@@ -29,9 +29,9 @@ Go to the console of node `10.100.199.152 - ovs-node02` and type: `ovs remove no
 
 * Result:
 ```
-root@ovs-node2:~# ovs remove nodes 10.100.199.151
+root@ovs-node2:~# ovs remove node 10.100.199.151
 
-+++ Remove nodes started +++
++++ Remove node started +++
 
 
 WARNING: Some of these steps may take a very long time, please check the logs for more logging information
