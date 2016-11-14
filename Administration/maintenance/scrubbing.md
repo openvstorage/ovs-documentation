@@ -1,5 +1,4 @@
 ### Scrubbing
-This explanation is mainly written for debugging purposes and trying to allow anyone to understand how scrubbing work is divided
 
 ##### General information
 1. Automated process

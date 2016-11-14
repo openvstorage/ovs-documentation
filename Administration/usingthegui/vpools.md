@@ -18,17 +18,11 @@ For each vPool following info is displayed:
 -   Status: status of the vPool.
 -   Name : Name of the vPool. You can click on the name of a vPool to
     see [more details](#details) and execute actions.
+-   Backend (Preset): ALBA Backend and uset Preset of the Backend.
 -   Stored Data: Total size of the current data and the Snapshots
     without the overhead imposed by the Backend redundancy.
 -   IOPS: The current amount of IOPS delivered by the vPool to all
     vDisks.
--   Type: Type of the Storage Backend. Possible values are Local FS
-    (Local File Sytem), S3 compatible, Ceph S3, ...
--   Connection: The Connection (IP, URL, Domainname, Zone, ...) for the
-    Storage Backend.
--   Login: Login/Username used to connect to the Storage Backend.
-
-
 
 ### <a name="details"></a>vPool Details
 
@@ -36,7 +30,6 @@ The vPool Details page displays the detailed performance statistics of a
 single vPool. There are 2 types of statistics: Frontend and Backend
 statistics. The Frontend statistics are the performance metrics as seen
 by the vDisks. The Backend statistics are based on the data exchanged with the backend.
-
 
 The Frontend details for a vPool are:
 -   Status: status of the vPool.
@@ -60,8 +53,6 @@ The Backend details for a vPool are
 
 The Configuration details for a vPool are
 
--   Cache Strategy: Cache on Read or Cache on Write
--   Deduped mode: Deduped or Non-Deduped. When set to deduped all vDisks will be using a deduped read cache per Storage Router. On the individual vDisk page you can change the setting so the volumes becomes non-deduped and has its own cache. When the vPool setting is set to Non-Deduped all vDisks will have their own cache location. In this case it will not be possible to overrule this setting on the vDisk detail page.
 -   SCO Size: The size of the Storage Conatiner Objects (a collection of writes) which gets stored on the Backend.
 -   Cluster Size: The block size used by the vDisks on the vPool.
 -   Write Buffer: The amount of data that can be in the DTL but not available in the Backend.
@@ -82,28 +73,11 @@ These setting will be by default applied to all vDisks. The settings (except for
 ![](../../Images/addnewvpool.png)
 
 
--   Enter a name for the vPool and select the type of Storage Backend:
-    -   In case **S3 compatible** is selected you will need to provide an
-        access key, a secret key and connection (url or IP) and port to
-        access the S3 compatible Storage Backend.
-    -   In case **Ceph S3** is selected you will need to provide an access
-        key, a secret key and connection (url or IP) and port to access
-        the Ceph Storage Backend.
-    -   In case **SWIFT S3** is selected you will need to provide an
-        access key, a secret key and connection (url or IP) and port to
-        access the Swift Storage Backend.
-    -   In case **Distributed FS** (distributed filesystem) is selected,
-        no additional info is required. Select this option in case you
-        want to use an external NFS share or a distributed file system.
-        Please note that the file system or share must be mounted on
-        each node.
-    -   In case Open vStorage Backend is selected, you can select one of
-        previously created local [Backends](backends.md). Leave the **Use
-        local Open vStorage Backend** checked and press **Next** to load
-        the available Backends. Use this option in case you want Open vStorage to manage the SATA drives and SSDs.
+-   On the first tab
+	-   Enter a name for the vPool.
+    -   Select one of local [Backends](backends.md) or an external Backend. 
         Select a Preset from  the dropdown. This Preset defines how data is stored on the backend (e.f. 3-way replication). You can add more Presets in the detail page of a [Backend](backends.md#presets). **Once the vPool is created the Preset can't be changed.**
 	-   Select the Storage Router as Initial Storage Router. Click **Next** to continue.
-	
 -   On the second tab
     -   Specify the fragment cache method
         - Select No Caching in case you have an all flash backend.
@@ -111,12 +85,9 @@ These setting will be by default applied to all vDisks. The settings (except for
     -   Select the location of the fragment cache
         - Select **Place Fragment Cache on disk** in case you want cache data on SSDs of the Storage Router with the read role. Typically you should select this option in case you are not using an ALBA backend with an SSD performance layer.
         - Select **Use another ALBA Backend as Fragment Cache** to use an (all SSD) ALBA backend as cache layer to be used in front of the SATA backend.
-
 -   On the third tab
     -   Define the Distributed Transaction Log mode: Currently the DTL can be disabled (no DTL), synchronously (sync every 4K write) or asynchronously (sync on fsync from the VM).
     -   Transport mode: TCP or RDMA (if available).
-    -   Select the default Caching method for vDisks.
-    -   Select the default deduped/non-deduped policy for vDisks. In case the value is set to deduped, the value can be overwritten on the vDisk detail page. **Only select deduped in case you installed the volume driver package with deduplication functionality.**
     -   Select the SCO size (a collection of writes which gets stored on the Backend).
     -   Select the Cluster Size, the block size used by the vDisks on the vPool.
     -   Select the Write Buffer (the amount of data that can be in the DTL but not available in the Backend).

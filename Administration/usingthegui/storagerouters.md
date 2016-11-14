@@ -73,7 +73,6 @@ See which vPools are served by the Storage Router and the ports being used.
 The Physical Disk Management tab will list all the physical disks (PCIe flash cards, SSDs and SATA drives) of the Storage Router. A physical disks can be assigned different roles:
 -   DB: The DB role stores the distributed database and metadata of the volumes. The DB role must be assigned to an SSD. This will reserve 10% of the SSD for the distributed database. Each Storage Router should have one disk with a DB role. Note that this role can't be removed once set.
 -   Scrub: The scrubber is the application which does the garbage collection of snapshot data which is out of the retention. This will reserve 300 GB of space. This role is optional but each environment should have at least 1 Storage Router with the Scrub role. Only set the this role on Storage Routers where you want the scrub process to run.
--   Read: This will allow to use the disk as read cache (only required in case the Storage Router is not part of an all flash array or no accelerated ALBA cache layer is used).
 -   Write: This will allow to use the disk as write cache.
 
 To assign a role to disk, click the gear icon and select the appropriate roles from the dropdown.

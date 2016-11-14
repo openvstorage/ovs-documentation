@@ -1,6 +1,6 @@
 ### Open vStorage Cluster Maintenance
 
-This section explains how to maintain your cluster by explaining how to restart a cluster or replace failed nodes.
+This section explains how to maintain your cluster, restart a cluster or replace failed nodes.
 
 The different maintenance actions explained:
 * [Shutdown and Restart a cluster](shutdownrestart.md)
