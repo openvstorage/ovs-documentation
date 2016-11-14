@@ -36,6 +36,7 @@ echo "vm.dirty_background_bytes = 134217728" >> /etc/sysctl.conf
 -   Install the Open vStorage software (Open vStorage core and backend
     packages) on all KVM nodes:
     - Latest Fargo version (For older versions please check [here](../olderreleases.md))
+
 ```
 echo "deb http://apt.openvstorage.com fargo main" > /etc/apt/sources.list.d/ovsaptrepo.list
 apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 4EFFB1E7
@@ -50,8 +51,10 @@ apt-get update
 apt-get install openvstorage-hc
 apt-get install qemu
 ```
+
     - Latest unstable version
-```
+
+	```
 echo "deb http://apt.openvstorage.com unstable main" > /etc/apt/sources.list.d/ovsaptrepo.list
 apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 4EFFB1E7
 
