@@ -50,11 +50,12 @@ EOF
 apt-get update
 apt-get install openvstorage-hc
 apt-get install qemu
+
 ```
 
     - Latest unstable version
 
-	```
+```
 echo "deb http://apt.openvstorage.com unstable main" > /etc/apt/sources.list.d/ovsaptrepo.list
 apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 4EFFB1E7
 
