@@ -41,27 +41,18 @@ echo "vm.dirty_background_bytes = 134217728" >> /etc/sysctl.conf
 echo "deb http://apt.openvstorage.com fargo main" > /etc/apt/sources.list.d/ovsaptrepo.list
 apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 4EFFB1E7
 
-cat <<EOF > /etc/apt/preferences
-Package: *
-Pin: origin apt.openvstorage.com
-Pin-Priority: 1000
-EOF
+printf 'Package: *\nPin: origin apt.openvstorage.com\nPin-Priority: 1000\n' > /etc/apt/preferences
 
 apt-get update
 apt-get install openvstorage-hc
 apt-get install qemu
 ```
     - Latest unstable version
-
 ```
 echo "deb http://apt.openvstorage.com unstable main" > /etc/apt/sources.list.d/ovsaptrepo.list
 apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 4EFFB1E7
 
-cat <<EOF > /etc/apt/preferences
-Package: *
-Pin: origin apt.openvstorage.com
-Pin-Priority: 1000
-EOF
+printf 'Package: *\nPin: origin apt.openvstorage.com\nPin-Priority: 1000\n' > /etc/apt/preferences
 
 apt-get update
 apt-get install openvstorage-hc

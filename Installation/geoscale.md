@@ -56,15 +56,12 @@ Execute the next steps in the shell of all Controller nodes:
 
 -   Add the repo to your sources.
     - Latest  Fargo version
+	
 ```
 echo "deb http://apt.openvstorage.com fargo main" > /etc/apt/sources.list.d/ovsaptrepo.list
 apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 4EFFB1E7
 
-cat <<EOF > /etc/apt/preferences
-Package: *
-Pin: origin apt.openvstorage.com
-Pin-Priority: 1000
-EOF
+printf 'Package: *\nPin: origin apt.openvstorage.com\nPin-Priority: 1000\n' > /etc/apt/preferences
 
 apt-get update
 ```
@@ -73,11 +70,7 @@ apt-get update
 echo "deb http://apt.openvstorage.com unstable main" > /etc/apt/sources.list.d/ovsaptrepo.list
 apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 4EFFB1E7
 
-cat <<EOF > /etc/apt/preferences
-Package: *
-Pin: origin apt.openvstorage.com
-Pin-Priority: 1000
-EOF
+printf 'Package: *\nPin: origin apt.openvstorage.com\nPin-Priority: 1000\n' > /etc/apt/preferences
 
 apt-get update
 ```
