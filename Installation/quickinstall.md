@@ -51,7 +51,6 @@ apt-get update
 apt-get install openvstorage-hc
 apt-get install qemu
 
-```
 
     - Latest unstable version
 
