@@ -111,15 +111,12 @@ Execute the next steps in the shell of all Compute nodes:
 
 -   Add the repo to your sources. For older versions please check [here](../olderreleases.md).
     - Latest  Fargo version
+	
 ```
 echo "deb http://apt.openvstorage.com fargo main" > /etc/apt/sources.list.d/ovsaptrepo.list
 apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 4EFFB1E7
 
-cat <<EOF > /etc/apt/preferences
-Package: *
-Pin: origin apt.openvstorage.com
-Pin-Priority: 1000
-EOF
+printf 'Package: *\nPin: origin apt.openvstorage.com\nPin-Priority: 1000\n' > /etc/apt/preferences
 
 apt-get update
 ```
@@ -128,11 +125,7 @@ apt-get update
 echo "deb http://apt.openvstorage.com unstable main" > /etc/apt/sources.list.d/ovsaptrepo.list
 apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 4EFFB1E7
 
-cat <<EOF > /etc/apt/preferences
-Package: *
-Pin: origin apt.openvstorage.com
-Pin-Priority: 1000
-EOF
+printf 'Package: *\nPin: origin apt.openvstorage.com\nPin-Priority: 1000\n' > /etc/apt/preferences
 
 apt-get update
 ```
@@ -180,15 +173,12 @@ ovs setup
 
 -   Add the repo to your sources. For older versions please check [here](../olderreleases.md).
     - Latest  Fargo version
+	
 ```
 echo "deb http://apt.openvstorage.com fargo main" > /etc/apt/sources.list.d/ovsaptrepo.list
 apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 4EFFB1E7
 
-cat <<EOF > /etc/apt/preferences
-Package: *
-Pin: origin apt.openvstorage.com
-Pin-Priority: 1000
-EOF
+printf 'Package: *\nPin: origin apt.openvstorage.com\nPin-Priority: 1000\n' > /etc/apt/preferences
 
 apt-get update
 ```
@@ -197,11 +187,7 @@ apt-get update
 echo "deb http://apt.openvstorage.com unstable main" > /etc/apt/sources.list.d/ovsaptrepo.list
 apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 4EFFB1E7
 
-cat <<EOF > /etc/apt/preferences
-Package: *
-Pin: origin apt.openvstorage.com
-Pin-Priority: 1000
-EOF
+printf 'Package: *\nPin: origin apt.openvstorage.com\nPin-Priority: 1000\n' > /etc/apt/preferences
 
 apt-get update
 ```
@@ -234,15 +220,12 @@ For this installation procedure, KVM is assumed to be the hypervisor of choice.
 
 -   Add the repo to your sources. For older versions please check [here](../olderreleases.md).
     - Latest  Fargo version
+	
 ```
 echo "deb http://apt.openvstorage.com fargo main" > /etc/apt/sources.list.d/ovsaptrepo.list
 apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 4EFFB1E7
 
-cat <<EOF > /etc/apt/preferences
-Package: *
-Pin: origin apt.openvstorage.com
-Pin-Priority: 1000
-EOF
+printf 'Package: *\nPin: origin apt.openvstorage.com\nPin-Priority: 1000\n' > /etc/apt/preferences
 
 apt-get update
 ```
@@ -251,11 +234,7 @@ apt-get update
 echo "deb http://apt.openvstorage.com unstable main" > /etc/apt/sources.list.d/ovsaptrepo.list
 apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 4EFFB1E7
 
-cat <<EOF > /etc/apt/preferences
-Package: *
-Pin: origin apt.openvstorage.com
-Pin-Priority: 1000
-EOF
+printf 'Package: *\nPin: origin apt.openvstorage.com\nPin-Priority: 1000\n' > /etc/apt/preferences
 
 apt-get update
 ```
