@@ -76,7 +76,7 @@ The Physical Disk Management tab will list all the physical disks (PCIe flash ca
 -   Write: This will allow to use the disk as write cache.
 
 To assign a role to disk, click the gear icon and select the appropriate roles from the dropdown.
-The read and write role can only be removed in case no vPool is using them. The DB and Scrub role can not be removed once assigned to a disk.
+The write role can only be removed in case no vPool is using them. The DB and Scrub role can not be removed once assigned to a disk.
 
 ![](../../Images/physicaldiskmanagement.png)
 
