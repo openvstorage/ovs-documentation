@@ -41,12 +41,6 @@ the cluster will become unavailable when 1 of the 2 nodes goes down.
 -   All nodes must have the same version of Open vStorage installed.
 -   When installing the Open vStorage software, an `ovs` user is created. Remove previously created `ovs` users before starting the installation.
 
-### Supported Hypervisors
--   VMware ESXi 5.1 P01 (experimental, single vPool only)
--   VMware ESXi 5.5 (experimental, single vPool only)
--   VMWare ESXi 6 (experimental, single vPool only)
--   KVM (raw disks only)
-
 ### Ports used by Open vstorage
 Following ports are used by the different Open vStorage components
 
