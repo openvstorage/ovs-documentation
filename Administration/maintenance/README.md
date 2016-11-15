@@ -7,6 +7,7 @@ The different maintenance actions explained:
 * [Upgrade a cluster](upgrade.md)
 * [Remove a node](removenode.md)
 * [Scrub vDisks](scrubbing.md)
+
 Failure scenarios:
 * [Replace an Open vStorage node](replacenode.md)
 * [Replace a compute node](replacecpu.md)
