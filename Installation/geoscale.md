@@ -325,7 +325,7 @@ Once the Backends are correctly setup, it is time to create the first vPool.
 
 - On the first tab
     -   Enter a name for the vPool.
-    -   Select the GeoScale backend previously created and a Preset from the dropdown. This Preset defines how data is stored on the backend (e.f. 3-way replication). You can add more Presets in the detail page of a [Backend](Administration/usingthegui/backends.md#presets). **Once the vPool is created the Preset can't be changed.**
+    -   Select the GeoScale backend previously created and a Preset from the dropdown. This Preset defines how data is stored on the backend (e.f. 3-way replication). You can add more Presets in the detail page of a [Backend](Administration/usingthegui/backends.md#presets). **Once the vPool is created, you can not select a different Preset. The policy of the Preset can be updated.**
     -   Select the Storage Router as Initial Storage Router. Click **Next** to continue.
 
 -   On the second tab

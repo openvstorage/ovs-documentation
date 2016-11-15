@@ -16,13 +16,10 @@ The vPool overview lists all the vPools in the Open vStorage Cluster.
 
 For each vPool following info is displayed:
 -   Status: status of the vPool.
--   Name : Name of the vPool. You can click on the name of a vPool to
-    see [more details](#details) and execute actions.
--   Backend (Preset): ALBA Backend and uset Preset of the Backend.
--   Stored Data: Total size of the current data and the Snapshots
-    without the overhead imposed by the Backend redundancy.
--   IOPS: The current amount of IOPS delivered by the vPool to all
-    vDisks.
+-   Name : Name of the vPool. You can click on the name of a vPool to see [more details](#details) and execute actions.
+-   Backend (Preset): ALBA Backend and used Preset of the Backend.
+-   Stored Data: Total size of the current data and the Snapshots without the overhead imposed by the Backend redundancy.
+-   IOPS: The current amount of IOPS delivered by the vPool to all vDisks.
 
 ### <a name="details"></a>vPool Details
 
@@ -46,10 +43,7 @@ The Frontend details for a vPool are:
 The Backend details for a vPool are
 -   Write Speed: The current write speed to the Storage Backend.
 -   Read Speed: The current read speed from the Storage Backend.
--   Type: Type of the Storage Backend.
--   Login: Login/Username used to connect to the Storage Backend.
--   Connection: The Connection (IP, URL, Domainname, Zone, ...) for the
-    Storage Backend.
+-   Backend (Preset): ALBA Backend and used Preset of the Backend.
 
 The Configuration details for a vPool are
 
@@ -76,7 +70,7 @@ These setting will be by default applied to all vDisks. The settings (except for
 -   On the first tab
 	-   Enter a name for the vPool.
     -   Select one of local [Backends](backends.md) or an external Backend. 
-        Select a Preset from  the dropdown. This Preset defines how data is stored on the backend (e.f. 3-way replication). You can add more Presets in the detail page of a [Backend](backends.md#presets). **Once the vPool is created the Preset can't be changed.**
+        Select a Preset from  the dropdown. This Preset defines how data is stored on the backend (e.f. 3-way replication). You can add more Presets in the detail page of a [Backend](backends.md#presets). **Once the vPool is created, you can not select a different Preset. The policy of the Preset can be updated.**
 	-   Select the Storage Router as Initial Storage Router. Click **Next** to continue.
 -   On the second tab
     -   Specify the fragment cache method
