@@ -15,7 +15,7 @@ For both of these setup types there is an ansible script. After running the ansi
 **NOTE:** The ansible scripts are part of the commercial Open vStorage license. [Contact us](http://www.openvstorage.com/contact_us/) for more information.
 
 #### Manual installation
-For administrators that prefer a manual approach and want to setup the cluster manually there is a step by step manual to install [a GeoScale cluster on KVM/QEMU](geoscale.md).
+For administrators that prefer a manual approach and want to setup the cluster manually there is a step by step guide to install [a GeoScale cluster on KVM/QEMU](geoscale.md).
 
 #### Final Notes
-* Open vStorage is licensed under the [AGPLv3 License](http://www.gnu.org/licenses/agpl.html).
+* The Open vStorage core functionality is licensed under the [AGPLv3 License](http://www.gnu.org/licenses/agpl.html). See the respective repositories for the license of individual components.
