@@ -9,7 +9,10 @@ Following actions are available for logged in users of the GUI:
 
 
 #### Domains
-The Domains functionality allows to group Storage Routers together and allows to configure the DTL and MDS (MetaDataServer) based upon this grouping. This allows to make sure that when there is a site disaster, the data in the DTL is safeguarded to prevent dataloss.
+The Domains functionality allows to group Storage Routers together and allows to configure the DTL and MDS (MetaDataServer) based upon this grouping.
+The Domains are used to identify failure zones. For example Storage Routers in the same datacenter should receive the same domain tag.
+On [Storage Router Detail page](storagerouters.md) you can configure a Recovery Domain. This will configure the DTL and MDS on a Storage Router which is labaled with the Recovery Domain tag. 
+This allows to make sure that when there is a site disaster, the data in the DTL is safeguarded in another datacenter to prevent any dataloss.
 
 To add a new Domain, add the name in the textbox and click the save icon.
 
@@ -17,6 +20,8 @@ To add a new Domain, add the name in the textbox and click the save icon.
 
 To assign a Backend to a domain, see the [Backend detail page](backends.md).
 To assign a Storage Router to a domain, see the [Storage Router overview page](storagerouters.md).
+
+**NOTE:** The latency between Storage Routers in the primary Domain and the Recovery Domain might impact the performance. A a sub millisecond latency is advised.
 
 #### User Management
 

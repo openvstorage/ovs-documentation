@@ -26,7 +26,7 @@ For each Storage Router following info is displayed:
 -   IOPS: The current amount of IOPS of all vDisks served by the Storage Router.
 -   Read: The aggregated read speed of all vDisks served by the Storage Router.
 -   Write: The aggregated write speed of all vDisks served by the Storage Router.
--   Domains: The domains (datacenter, rack, ...) the Storage Router belongs.
+-   Domains: The domains (datacenter, rack, ...) the Storage Router belongs to.
 -   Recovery Domains: The domain in which the recovery services (DTL, Slave Metadata Server, ...) are hosted.
 
 
@@ -56,7 +56,16 @@ The details for a Storage Router are:
 #### Storage Router Actions
 
 ##### Edit Storage Router properties
-Click the edit button to update the Domain and Recovery Domain. Open vStorage will always run a slave MetaDataServer in the same Domain as configured for the Storage Router. In case a Recovery Domain is configured, an additional slave MetaDataServer will be configured in the Recovery Domain.
+Click the edit button to update the Domain and Recovery Domain. 
+
+**NOTE: Domains & Storage Routers in Detail ...* 
+The Domains functionality allows to group Storage Routers together and allows to configure the DTL and MDS (MetaDataServer) based upon this grouping.
+The Domains can be compared to failure zones. For example Storage Routers in the same datacenter should receive the same domain tag. Some important remarks when assigning domains:
+* MDS: Open vStorage will always run a slave MDS in the same Domain as configured for the Storage Router. In case a Recovery Domain is configured, an additional slave MDS will be configured in the Recovery Domain.
+* DTL: In case no domain is configured a random Storage Router will be selected. In case a domain is configured but no recovery domain, the DTL will be configured in the same (primary) domain. If a recovery domains is configured, the DTL will be configured on a Storage Router with the recovery domain tag assigned.
+
+To create or remove a domain, see the [Administation section](administration.md).
+
 
 ##### Mark a Storage Router offline
 When a Storage Router is offline, you can mark it offline so it is no longer used. Setting a Storage Router offline is required in order to be able to steal the volumes owned by the Storage Router. Please make sure the Storage Router is actually down and unavailable before marking the Storage Router as offline. Marking the Storage Router as offline while it is still available might lead to data corruption.
