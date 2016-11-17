@@ -45,5 +45,8 @@ Open vStorage supports remote direct memory access (RDMA), a low latency network
 RDMA can be enabled or disabled for the complete cluster, so if RDMA is enabled, one needs to be sure that all nodes have
 properly installed and configured RDMA capable hardware.
 
+## vDisk
+A vDisks is a virtual disk served by Open vStorage.  
+
 ## vPool
 A vPool is a Virtual Storage Pool used to deploy vDisks. a vPool can span multiple Storage Routers and connects to a single storage backend. This backend can be an S3 compatible object storage or in case the data needs to be split across multiple datacenters a global ALBA backend.
