@@ -16,7 +16,7 @@ ALBA Storage Deamon. A process which turns a storage device (SATA, SSD, NVMe, ..
 The ASD manager is the software component which takes care of creating, starting and stopping the ASD processes.
 
 ## Backend
-A backend is the location where data get stored. Open vStorage can use multiple types of backend (S3 compatible object stores, ALBA, ...).
+A backend is the location (physical device or a group of physical devices) where data get stored. Open vStorage can uses ALBA, an in-house developed object storage solution, to store and spread data across the devices.
 
 For an ALBA backend you need to define a preset (policy, encryption, compression). The policy defines the resilience against failures.
 
