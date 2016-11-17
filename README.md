@@ -16,6 +16,11 @@ The Open vStorage Documentation is divided into following sections:
 
 You can consult this GitBook online by visiting [https://openvstorage.gitbooks.io/openvstorage](https://openvstorage.gitbooks.io/openvstorage). Documentation for older releases can be found [here](olderreleases.md).
 
+
+### Introduction video
+{% youtube %}https://www.youtube.com/watch?v=wo0oGECTN0I{% endyoutube %}
+
+
 The documentation of individual Open vStorage components is split into different [GitBooks](https://www.gitbook.com/@openvstorage):
 * [Framework](https://openvstorage.gitbooks.io/framework/): the Framework
 * [Framework ALBA Plugin](https://openvstorage.gitbooks.io/framework-alba-plugin/): the ALBA plugin for the Framework
