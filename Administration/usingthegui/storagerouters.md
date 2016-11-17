@@ -76,7 +76,7 @@ The refresh button will refresh the Storage Router properties.
 #### Storage Router Administration
 
 ##### vPools served by the Storage Router
-See which vPools are served by the Storage Router and the ports being used.
+See which vPools are served by the Storage Router, the accelerated ALBA backend and the ports being used.
 
 #### Physical Disk Management
 The Physical Disk Management tab will list all the physical disks (PCIe flash cards, SSDs and SATA drives) of the Storage Router. A physical disks can be assigned different roles:
