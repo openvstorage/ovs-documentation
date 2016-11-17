@@ -10,74 +10,8 @@ tracker](https://github.com/openvstorage/openvstorage/issues).
 Feel free to solve any of these issues. You can find more information on
 how to contribute to Open vStorage [here](https://www.openvstorage.com/contribute/).
 
-## VMware ESXi
-### Single vPool only
-The current release of Open vStorage supports only one single vPool on ESXi.
-
-### NFS mount issues
-
-When the NFS mount was inaccessible for a while (f.e. due to a reboot of
-the Storage Router) and is remounted, afterwards all Virtual Machines
-which are powered off remain in inaccessible state. The solution to this
-is to restart the management agents.
-
-Login via ssh to the ESXi hypervisor:
-
-```
-/etc/init.d/hostd restart
-/etc/init.d/vpxa restart
-```
-
-The issue should be resolved in [VMware ESXi 5.1 Update
-1](https://www.vmware.com/support/vsphere5/doc/vsphere-esxi-51u1-release-notes.html).
-
-### Storage Router freeze
-
-In case the Storage Router freezes but the ESXi is still running, mark
-the Storage Router offline in the Storage Router detail page and
-shutdown the ESXi. Move the vMachine to another ESXi host and restart
-the original ESXi and GSR. Mark the Storage Router as online and migrate the
-vMachines back to ESXi.
 
 ## vStorage Driver
-
-### After a clean boot the vStorage Driver will not start in case the ESXi Node is protected by HA
-
-In case an ESXi Node is part of an HA Cluster and it is (re-)booted, the
-vStorage Driver will fail to start as the vPool mountpoint isn't empty.
-The VMware HA agent writes a folder .vSphere-HA in the directory of the
-vPool while it isn't started yet. This prevents the vStorage Driver to
-start.
-
-*Work around:*
-
--   After booting the ESXI Node, execute for every vPool:
-
-```
-mount -l | grep /mnt/<name of the vPool>
-```
-
--   Execute the following for each vPool which is *NOT* running. (The
-    above command will give no output/result when the vPool isn't
-    running.)
-
-```
-rm -rf /mnt/<name of the vPool> /* Note that this can take quite some time
-start ovs-volumedriver_<name of the vPool>
-```
-
-Executing the above commands on a running vPool will delete all
-vMachines on that vPool!
-
-### -flat.vmdk files have metadata timestamps set to 0
-
-The metadata timestamps (ctime (creation time), atime (access time) and
-mtime (modification time)) are not supported for volume files at the
-moment. An example:
-
-```
--rw------- 0 root root 34359738368 Jan  1  1970 Hard disk 1-flat.vmdk
-```
 
 ### The vStorage Driver may leak backend storage in non-happy path scenario's
 
@@ -102,12 +36,10 @@ The vStorage Driver might fail in case large time adjustments occur to the syste
 
 ## Volumes
 ### Rename of a volume is not supported
-
-The NFS storage offered by Open vStorage is currently not POSIX
-compliant. Due to performance reasons the renaming of a volume is not
+Due to performance reasons the renaming of a volume is not
 supported.
 
-Other unsupported file operations on volumes files (-flat.vmdk files)
+Other unsupported file operations on volumes files (.raw files)
 include (sym)link, chown and extending the file attributes.
 
 ### Volume migration might lead to IO timeouts
@@ -141,12 +73,6 @@ Currently vDisks bigger than 64TB are not supported.
 ### DTL Status
 The DTL status of a vDisk will be labeled green/ok in case the vDisk is configured to have no vDisk.  
 
-## Snapshots
-
-Open vStorage will automatically take a snapshot of each vDisks every 15
-minutes. Taking additional snapshot through the OpenStack GUI is
-supported. Taking snapshots through the VMware GUI (ESXi, vSphere) or by
-means of 3rd party applications (Veeam, ...) is not supported.
 
 ## vTemplate
 
@@ -168,7 +94,7 @@ will break the clone functionality of the vTemplate.
 
 -   The available space for the write buffer can be incorrect displayed in the wizard. When creating the vPool, the creation might fail with `Too much space requested for WRITE cache`.
 -   The mandotary DB role isn't checked in the wizard. In case there is no DB role on the Storage Router configured, the vPool creation/extension will fail.
-- 	The creation of a vPool fails in case the directory `/mnt/<vpool name>` already exists on the Storage Router.
+
 	
 ### Removing a vPool
 
@@ -178,7 +104,6 @@ will break the clone functionality of the vTemplate.
 ## Storage Routers
 ### SSD failure
 In case an SSD of a host fails, there might be some consequences based upon the role of the failed SSD:
-* Read role: performance loss can be expected. Do note this role is no longer required if you use an accalerated ALBA with fragment cache.
 * DB: shutdown the node and move all VMs from the host. The host will need to be replaced and once repaired added again.
 * Write: follow the steps as defined [here](Administration/maintenance/replacewrite.md) to replace the disk.
 * Scrub: no impact on running VMs.
@@ -186,17 +111,13 @@ In case an SSD of a host fails, there might be some consequences based upon the 
 ### Assigning roles in parallel
 Assigning roles to a Storage Router sometimes fails in case multiple roles are set at the same time.
 
-### Remove node takes liong time to complete
-Removing a node from a large cluster can take quite some time, even up to minutes.
 
 ## Backends
 ### Creating multiple backends
 Creating multiple backends at once fails and leaves the backends in a permanent Installing status.
 
 ### Software raid
-md member devices can be used as a backend disk. Selecting it as backend disk will render the md device useless.
-
-
+Md member devices can be used as a backend disk. Selecting it as backend disk will render the md device useless.
 
 ## OpenStack
 ### OpenStack Evacuate
