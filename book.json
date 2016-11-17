@@ -1,5 +1,5 @@
 {
-    "plugins": ["youtubex", "callouts"]
+    "plugins": ["youtubex", "callouts"],
 	"pluginsConfig":
     {
         "callouts":
