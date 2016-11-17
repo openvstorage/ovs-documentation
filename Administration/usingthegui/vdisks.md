@@ -4,7 +4,7 @@
 #### Introduction
 
 A vDisks is a virtual disk served by Open vStorage.  By default all vDisks are snapshotted once
-per hour. This snapshot schedule can not be changed for the moment.
+per hour. This snapshot schedule can not be changed by [updating the scheduled task](https://openvstorage.gitbooks.io/framework/content/docs/scheduledtasks.html).
 
 #### vDisk Overview
 
