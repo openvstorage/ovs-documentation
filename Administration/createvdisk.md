@@ -1,6 +1,12 @@
 ### Create a vDisk on a vPool
-Open vStorage supports multiple ways to create vDisks.
+A vDisks is a virtual disk served by Open vStorage. Open vStorage supports multiple ways to create vDisks:
+* [KVM](#kvm)
+* [QEMU](#qemu)
+* [Block Device (Blktap)](#block)
+* [Docker](#docker)
+* [iSCSI](#iscsi)
 
+**NOTE:** The maximum size of a vDisk is 64TB.
 
 #### <a name="kvm"></a>KVM
 To create a vDisk you can use with KVM/libvirt based upon an existing qcow2 file execute following:
@@ -142,4 +148,3 @@ tgtadm --lld iscsi --mode target --op bind --tid 1 -I 1.2.3.4
 tgtadm --lld iscsi --mode target --op bind --tid 1 -I 1.2.3.0/24
 ```
 
-**NOTE:** The maximum size of a vDisk is 64TB.
