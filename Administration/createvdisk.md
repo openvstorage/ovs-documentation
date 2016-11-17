@@ -6,7 +6,10 @@ A vDisks is a virtual disk served by Open vStorage. Open vStorage supports multi
 * [Docker](#docker)
 * [iSCSI](#iscsi)
 
-**NOTE:** The maximum size of a vDisk is 64TB.
+> #### Info::Maximum vDisk size
+>
+> Currently the size of a vDisk is limited to 64TB.
+
 
 #### <a name="kvm"></a>KVM
 To create a vDisk you can use with KVM/libvirt based upon an existing qcow2 file execute following:

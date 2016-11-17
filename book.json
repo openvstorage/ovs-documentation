@@ -1,3 +1,10 @@
 {
-    "plugins": ["youtubex"]
+    "plugins": ["youtubex", "callouts"]
+	"pluginsConfig":
+    {
+        "callouts":
+        {
+            "showTypeInHeader": false
+        }
+    }
 }
