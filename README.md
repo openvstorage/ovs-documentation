@@ -18,7 +18,9 @@ You can consult this GitBook online by visiting [https://openvstorage.gitbooks.i
 
 
 ### Introduction video
-{% youtube %}https://www.youtube.com/watch?v=wo0oGECTN0I{% endyoutube %}
+{% youtube %}
+https://www.youtube.com/watch?v=wo0oGECTN0I
+{% endyoutube %}
 
 
 The documentation of individual Open vStorage components is split into different [GitBooks](https://www.gitbook.com/@openvstorage):
