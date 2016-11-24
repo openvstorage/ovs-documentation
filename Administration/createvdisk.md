@@ -2,7 +2,7 @@
 A vDisks is a virtual disk served by Open vStorage. Open vStorage supports multiple ways to create vDisks:
 * [KVM](#kvm)
 * [QEMU](#qemu)
-* [Block Device (Blktap)](#block)
+* [Block Device (Blktap)](#block-device)
 * [Docker](#docker)
 * [iSCSI](#iscsi)
 
