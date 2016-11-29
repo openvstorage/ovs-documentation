@@ -19,8 +19,7 @@ ovs help
 * remove node	
 	* `ovs remove node <IP>`: Removes the node from cluster.
 * update
-    * `ovs update framework`: Update the OPen vStorage Framework on all nodes.
-    * `ovs update volumedriver`: Update the VolumeDriver on all nodes.
+    * `ovs update <components>`: Update the specified components on all nodes (comma-separated list)
 * monitor
 	* `ovs monitor services`: Watch Open vStorage services.
 	* `ovs monitor heartbeat`: Send an internal heartbeat.
