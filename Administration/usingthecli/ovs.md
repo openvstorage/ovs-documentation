@@ -19,7 +19,7 @@ ovs help
 * remove node	
 	* `ovs remove node <IP>`: Removes the node from cluster.
 * update
-    * `ovs update <components>`: Update the specified components on all nodes (comma-separated list)
+    * `ovs update <components>`: Update the specified components on all nodes (comma-separated list) Possible values: 'framework','storagedriver','alba'
 * monitor
 	* `ovs monitor services`: Watch Open vStorage services.
 	* `ovs monitor heartbeat`: Send an internal heartbeat.
