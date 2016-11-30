@@ -32,14 +32,17 @@ the cluster will become unavailable when 1 of the 2 nodes goes down.
 
 ### Installation remarks
 
--   All nodes should have the same OS and be
-    configured with the same timezone.
+-   All nodes should have the same OS and be configured with the same timezone.
 -   Installing a third node when the first or second node is offline
     doesn't work.
 -   Starting the Open vStorage configuration step of a node when the
     previous node is not completely configured is not supported.
 -   All nodes must have the same version of Open vStorage installed.
 -   When installing the Open vStorage software, an `ovs` user is created. Remove previously created `ovs` users before starting the installation.
+
+> #### Warning:: Existing systems
+Please make sure all data of existing disks is removed and mounts are removed.
+
 
 ### Ports used by Open vstorage
 Following ports are used by the different Open vStorage components
