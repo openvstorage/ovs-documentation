@@ -93,7 +93,8 @@ will break the clone functionality of the vTemplate.
 ### vPool creation/extension
 
 -   The available space for the write buffer can be incorrect displayed in the wizard. When creating the vPool, the creation might fail with `Too much space requested for WRITE cache`.
--   The mandotary DB role isn't checked in the wizard. In case there is no DB role on the Storage Router configured, the vPool creation/extension will fail.
+-   The mandotary DB role isn't checked in the wizard. In case there is no DB role on the Storage Router configured, the vPool creation/extension will fail. 
+-   The vPool creation/extension can sometimes fail due to an issue passing the variables (write_cache size is incorrectly set to 0) from the GUI to the API. Delete the vPool from the Storage Router and retry adding the vPool.
 
 	
 ### Removing a vPool
