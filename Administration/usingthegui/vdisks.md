@@ -40,8 +40,11 @@ For each vDisk following info is displayed:
 ##### Snapshots
 
 At the bottom of the vDisk Details page all snapshots of the vDisk are
-listed.
+listed. A snapshot is the state of a vDisk at a particular point in time. Note that in case there is a clone based upon the snapshot, the snapshot can not be removed.
 	
+> #### Info::Clone depth limitation
+>
+> Currently there is a limitation to the clone depth of 255 clones. There is no limit to the amount of snapshots or the amount of clones of snapshot. The limitation is on the parent-child relation of vDisks.	
 	
 ### <a name="vdisk_details"></a>vDisk Details
 
@@ -79,6 +82,10 @@ Rollback the vDisk and to a previous
 snapshot. This action can only be executed on stopped vMachines and the
 rollback can not be undone.
 
+> #### Warning::Rollback of a vDisks removes snapshots
+>
+> In case a vDisks is rolled back, all snapshots taken after the snapshot to which is rolled back will be removed. Let's say a vDisks has 2 snapshots, snapshot1 and snapshot2. If the vDisks is rolleded back to snapshot1, snapshot2 will be removed during the rollback process.
+
 ##### Clone the vDisk
 Cloning a vDisks creates a new vDisk based upon a snapshot of the selected vDisk. Only new data written to the cloned vDisks will be stored on the backend.
 
@@ -93,8 +100,11 @@ Set the vDisk as a Template. A vTemplate allows to create one or more vDisks at 
 cloning a snapshot of the vDisk.
 
 ##### Delete the vDisks
-The delete button removed the vDisk and all of its snapshots from the cluster. Note that this action can not be undone.
+The delete button removes the vDisk and all of its snapshots from the cluster. Note that this action can not be undone.
 
+> ==== Warning::Deleting a vDisk
+> 
+> Deleting a vDisk can not be undone.
 
 
 #### Snapshots
@@ -104,9 +114,11 @@ The Snapshot tab displays a list of all the snapshots of the vDisk. Per snapshot
 -   Stored data: Amount of data in the snapshot which is stored on the Backend.
 -   Type: Automatic or Manual snapshot.
 -   Consistent: Whether the snapshot is labeled as consistent or not.
--   Sticky: Sticky snapshots can only be manually removed and are not considered to be deleted when out of retention.
+-   Sticky: Sticky snapshots can only be manually removed through the GUI or API and are not considered to be automatically deleted when out of retention.
 
-Individual Snapshots can be deleted by clicking the delete button.
+> ==== Info::Removing snapshots
+> 
+> Individual Snapshots can be deleted by clicking the delete button.
 
 
 #### Edge Clients
