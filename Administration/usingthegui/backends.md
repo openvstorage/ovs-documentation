@@ -38,7 +38,9 @@ For each Backend following details are available:
 After creating the Backend, assign some disks or local backends (in case of a global backend) to the Backend to store
 the actual vDisk data.
 
-**NOTE:** Don't forget to [add a custom preset](#Presets) to the backend. The default preset might not be suited for your cluster and might cause dataloss.
+> #### Note::Default preset
+>
+> Don't forget to [add a custom preset](#Presets) to the backend. The default preset might not be suited for your cluster and might cause dataloss.
 
 #### Backend Details
 
@@ -134,6 +136,10 @@ A backend has a list of presets assigned to it. A preset consists out of a set o
 To add a new preset for a backend, click the **+ Add Preset** button. Give the new preset a name. By default you can select the replication factor of fragments stored on the backend. Selecting 1 means that a single broken disk will lead to data loss.
 
 In case you want to use erasure coding instead of replication, select the advanced settings. Select the checkbox to indicate you understand the risk of adding new policies, select whether you want to encrypt the backend and select the compression algorithm to use. You will need to add at least one policy. You can also sort the policies according to which policy is more preferred. In case the policy can be met, the top policy will be selected. In case the policy can not be met, the second one from the list gets selected and so forth.
+
+> #### Note::Presetname
+>
+> Supported characters for the presetname are a-zA-Z0-9, - and _. Special characters - and _ can't be the first character of the presetname.
 
 ![](../../Images/addpreset.png)
 
