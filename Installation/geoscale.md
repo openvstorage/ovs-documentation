@@ -88,11 +88,11 @@ ovs setup
 
 - The initialization script will ask a couple of questions:
     -   Enter the root credentials for the host.
+	-   Select the Public IP address of the node.
     -   It will search for existing Open vStorage Clusters in the network.
     In case it has found a Cluster, select the option *Don't join any of
     these clusters.*.
     -   Enter a name for the Open vStorage Cluster.
-    -   Select the Public IP address node.
     -   Select the configuration management system. Note that Arakoon is the preferred and advised configuration management system and is the only supported system in the commercial Open vStorage license.
     -   Select whether to use an external configuration cluster for the configuration files or if Open vStorage should setup a cluster (only possible if Arakoon is selected).
     -   Indicate if the cluster is RDMA capable. All nodes in the cluster must have RDMA capable hardware in order to have a working setup..
@@ -143,9 +143,9 @@ ovs setup
 
 - The initialization script will ask a couple of questions:
     -   Enter the root credentials for the host.
+    -   Select the Public IP address of the Node.
     -   It will search for existing Open vStorage Clusters in the network. Join the cluster created in the previous step.
     -   Enter a name for the Open vStorage Cluster.
-    -   Select the Public IP address of the KVM Node.
     -   Indicate if the cluster is RDMA capable. All nodes in the cluster must have RDMA capable hardware in order to have a working setup..
 
 - When the install is completed a message will be displayed.
