@@ -56,14 +56,13 @@ Following ports are used by the different Open vStorage components
 -  443 (API , GUI)
 -  5672 (Rabbitmq)
 -  6379 (Redis)
--  2379 (ETCD, optional)
+
 
 ##### Extra nodes
 -  22 (SSH)
 -  443 (API)
 -  5672 (Rabbitmq)
 -  6379 (Redis)
--  2379 (ETCD, optional)
 
 #### Volume Driver
 -  26200-26299 (Storagedriver, ALBA proxy)
@@ -86,9 +85,11 @@ The Open vStorage software is not installable on a 32 bit OS.
 
 The amount of RAM assigned to a Storage Router limits the amount of
 vDisks which can be served by the Storage Router. The framework and
-vStorage Driver need between 4 and 6GB to function. Each additional
-vDisks requires 100MB. This means that on a Storage Router with 16GB RAM
-assigned, 100 vDisks can be served.
+Volume Driver need between 4 and 6GB to function. Each additional
+vDisks requires at least 100MB. On top of the 100MB, the metadata of the  vDisks 
+also needs to be stored in RAM. The amount of RAM required per vDisks depends on the size of the vDisk.
+It is advised to monitor the RAM as in case not enough RAM is available the Volume Driver
+might get killed by the OOM killer. This results in all vDisks being served by that Volume Driver to stop serving IO.
 
 
 #### Space Limitation
