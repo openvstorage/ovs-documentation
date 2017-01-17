@@ -50,7 +50,7 @@ OVS supports 4 types of Arakoon clusters
 
 #### Installation
 
-##### <a name="arakoon-cluster-create"></a>Creating cluster FWK (Optional)
+##### <a name="arakoon-cluster-create"></a>Creating cluster FWK 
 
 Open the OVS ipython shell, by typing `ovs` on commandline.
 Replace the required parameters below and execute the code
@@ -68,7 +68,7 @@ check_output("""etcdctl set /ovs/framework/arakoon_clusters '{{"ovsdb": "{0}"'}}
 check_output('service ovs-arakoon-{0} start'.format(cluster_name), shell=True)
 ```
 
-##### <a name="arakoon-cluster-extend"></a>Extending cluster FWK (Optional)
+##### <a name="arakoon-cluster-extend"></a>Extending cluster FWK 
 
 Open the OVS ipython shell, by typing `ovs` on commandline.
 Replace the required parameters below and execute the code
@@ -86,7 +86,7 @@ ArakoonInstaller.extend_cluster(master_ip, new_ip, cluster_name, base_dir, locke
 ArakoonInstaller.restart_cluster_add(cluster_name, current_ips, new_ip)
 ```
 
-##### Creating cluster SD (Optional)
+##### Creating cluster SD 
 
 Open the OVS ipython shell, by typing `ovs` on commandline.
 Replace the required parameters below and execute the code
@@ -103,7 +103,7 @@ ArakoonInstaller.create_cluster(cluster_name, 'SD', ip, base_dir, locked=False, 
 check_output('service ovs-arakoon-{0} start'.format(cluster_name), shell=True)
 ```
 
-##### Extending cluster SD (Optional)
+##### Extending cluster SD 
 
 Open the OVS ipython shell, by typing `ovs` on commandline.
 Replace the required parameters below and execute the code
