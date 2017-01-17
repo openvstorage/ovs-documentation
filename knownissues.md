@@ -77,7 +77,8 @@ The DTL status of a vDisk will be labeled green/ok in case the vDisk is configur
 ## vTemplate
 
 Once a vDisk is turned into a vTemplate, you can not add, change it settings. Making any changes to the vDisks
-will break the clone functionality of the vTemplate. 
+will break the clone functionality of the vTemplate. A clone of a vDisk can noty be set as vTemplate.
+
 
 
 ## vPools
