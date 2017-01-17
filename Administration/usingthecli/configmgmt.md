@@ -1,8 +1,6 @@
 ### Configuration Management
 The [Open vStorage Framework](https://openvstorage.gitbooks.io/framework/) uses a distributed configuration management system.
-There are 2 option as configuration management system:
-* Arakoon, the preferred and advised system.
-* ETCD
+This configuration management system is implemented using Arakoon, our own distributed, always consistent DB.
 
 #### Set, get and list configuration keys
 The [OVS commandline](ovs.md) allows to easily list and change the configuration parameters of the cluster:
@@ -16,7 +14,12 @@ When needed the different components of Open vStorage create the necessary key i
 * [VolumeDriver](https://openvstorage.gitbooks.io/volumedriver/content/docs/config.html) 
 * [ALBA](https://openvstorage.gitbooks.io/framework-alba-plugin/content/docs/configmgmt.html)
 
-#### Arakoon
+#### Interact directly with Arakoon for config management
+> ==== Warning::The OVS CLI is advised
+> 
+> The easiest, safest and advised way to update a key in the configuration management system is by using the OVS CLI (see above). Incorrect usage of the below comments can lead to a corrupt cluster.
+
+
 To retrieve a configuration key from Arakoon
 
 ```
@@ -28,27 +31,3 @@ To set a configuration key in Arakoon
 ```
 arakoon -config /opt/OpenvStorage/config/arakoon_cacc.ini --set key value
 ```
-
-#### ETCD
-To retrieve or list a specific config run
-
-```
-etcdctl <command>
-```
-
-To get an overview of all possible commands run
-```
-etcdctl
-```
-
-##### The available etcdctl commands
-* ls: retrieve a directory (ovs configuration starts at /ovs)
-    * `/ovs/alba`: List alba configurations
-    * `/ovs/arakoon`: List arakoon configurations
-    * `/ovs/framework`: List framework configurations
-    * `/ovs/vpools/<GUID>/hosts/<VPOOL_NAME><GUID>/config`: List vpool configurations
-
-* get: retrieve a specific configuration file
-    * `etcdctl get /ovs/arakoon/ovsdb/config`: Shows configuration file for ovsdb arakoon
-    * `etcdctl get /ovs/arakoon/ovsdb/metadata`: Shows metadata configuration file for ovsdb arakoon
-    * `etcdctl get /ovs/vpools/<GUID>/hosts/<VPOOL_NAME><GUID>/config/content_addressed_cache`
