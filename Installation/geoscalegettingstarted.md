@@ -64,7 +64,10 @@ ip = <local_public_ip_of_this_node>
 base_dir = <absolute_path_where_db_should_be_stored>
 
 ArakoonInstaller.create_cluster(cluster_name, 'FWK', ip, base_dir, locked=False, internal=False)
-check_output("""etcdctl set /ovs/framework/arakoon_clusters '{{"ovsdb": "{0}"'}}""".format(cluster_name), shell=True)
+
+from ovs.extensions.generic.configuration import Configuration
+Configuration.set('/ovs/framework/arakoon_clusters|ovsdb', <cluster_name>)
+
 check_output('service ovs-arakoon-{0} start'.format(cluster_name), shell=True)
 ```
 
