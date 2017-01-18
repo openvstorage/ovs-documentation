@@ -5,13 +5,13 @@ Setting up a large Open vStorage cluster across multiple datacenters can be quit
 ### The hardware
 As a reference this example uses 3 datacenters (Roubaix, Gravelines, Strasbourg). Inside each of the datacenters there are 4 types of nodes
 * Compute hosts: these hosts run the Virtual Machines.
-* Performance nodes: these hosts run the Storage Routers. They are equipped with SSDs which act as local cache layer within the datacenter.
+* Storage Driver nodes: these hosts run the Storage Routers. They are equipped with SSDs which act as local cache layer within the datacenter.
 * Capacity nodes: these hosts, across all the datacenters, form the capacity tier. They are equipped with SATA drives.
 * Management (Controller) nodes: these nodes run the master services, the GUI, the API, distributed databases, the scrubbing process and the monitoring.
 
 As an example configs based on the offering of [OVH](https://www.ovh.com/fr/) can be found below:
 * Compute nodes (HOST-128H): D-1540(x1), 128GB,	10 GbE, Intel S3K 480GB(x2)
-* Performance (BHG-1): E5-2660v3(x2), 512GB, 10 GbE, LSI SAS 9271, Intel S3K 480GB(x12)
+* Storage Driver (BHG-1): E5-2660v3(x2), 512GB, 10 GbE, LSI SAS 9271, Intel S3K 480GB(x12)
 * Capacity (FS-48T): E5-2620v3(6c/12t))(x1), 64GB, 10 GbE, 12 x 4TB
 * Management nodes (mHG): E5-2630v3(x1), 64GB, 10 GbE, Intel S3K 800GB(x2)
 
@@ -19,21 +19,33 @@ As an example configs based on the offering of [OVH](https://www.ovh.com/fr/) ca
 The below picture explains the topology or our example cluster:
 * In the Roubaix datacenter (the main datacenter)
     * 2 Management node (1 for the distributed DB, 1 for [monitoring](https://github.com/openvstorage/openvstorage-monitoring))
-    * 8 Compute node
-    * 4 Performance node
+    * 8 Compute nodes
+    * 4 Storage Driver nodes
     * 3 Capacity nodes
 * In the Gravelines datacenter
-    * 1 Management node
+    * 1 Management nodes
     * 1 Compute node
-    * 1 Performance node
+    * 1 Storage Driver node
     * 3 Capacity nodes
 * In the Strasbourg datacenter
     * 1 Management node
     * 1 Compute node
-    * 1 Performance node
+    * 1 Storage Router node
     * 3 Capacity nodes
 
 ![](../Images/cluster-topology.png)
+
+Next to the different node types, there are also different roles in Open vStorage. Each node has one ore more roles assigned.
+* Edge role: runs the edge role, a lightweight block device.
+* Volume Driver role: runs the volume driver and Write Buffer component.
+* Controller role: runs the API, GUI, memcache, RabbitMQ and Framework DBs. This role can only be assigned to nodes which already have Volumed Driver role assigned. 
+* Storage role: runs the ASD manager. the disks of these nodes can be use as ASD in a backend.
+
+In the example cluster the roles are distributed as followed:
+* One management node in each datacenter has the controller role assigned. 
+* The compute nodes, which are running the KVM hypervisor, have the edge role assigned.
+* The Storage Driver nodes have the Volume Driver and storage role assigned.
+* The capacity nodes have only the storage role assigned.
 
 The cluster consist out of multiple ALBA backends:
 * A *local performance backend* using the SSDs of the Performance nodes. Each datacenter has its own local performance backend. All SSDs in a single datacenter are grouped to form a single, global cache. In the Roubaix datacenter a 9+3 policy is used so a loss of a performance node can be survived without losing the complete cache. The backend is configured as ALBA cache for the global backend.
