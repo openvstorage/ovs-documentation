@@ -36,17 +36,19 @@ NC-ECC (Network and Clustered Error Correction Codes) is the algorithm used by O
 ## Preset & Policy
 ALBA backends require you to define a preset for the backend. A preset defines whether data on the backend and encrypted and compressed on the backend and how it protected, the policy. The policy is actually a hierarchy of policies.  When you create a new policy, you can  define the amount of fragments an object is split in, the amount of parity fragments, the minimal amounts of fragments before a write is executed and the maximal amount of fragments per node. In case the top policy of the hierarchy can't be met f.e. as there are not enough ASDs left, new data will be written with a lower policy. Once enough ASDs are available again the data which was written sub-optimal will be rewritten with the optimal policy.
 
-## Storage Router
-A Storage Router is the term given to a host which runs the core Open vStorage software (the Volume Driver).
-
 ## RDMA
 Open vStorage supports remote direct memory access (RDMA), a low latency network protocol. If using RDMA hardware, it is important to enable RDMA during setup when asked so.
 
 RDMA can be enabled or disabled for the complete cluster, so if RDMA is enabled, one needs to be sure that all nodes have
 properly installed and configured RDMA capable hardware.
 
+## Storage Router
+A Storage Router is the term given to a host which runs the Open vStorage software/framework.
+
 ## vDisk
 A vDisks is a virtual disk served by Open vStorage.  
 
 ## vPool
-A vPool is a Virtual Storage Pool used to deploy vDisks. a vPool can span multiple Storage Routers and connects to a single storage backend. This backend can be an S3 compatible object storage or in case the data needs to be split across multiple datacenters a global ALBA backend.
+A vPool is a Virtual Storage Pool used to deploy vDisks. It it a confgiraruin template for the vDisks and defines the policy of the vDisk. It defines on what type of media the vDisk is stored (fast, slow), the protection, the blocksize, the cache parameters and many more configuration parameters.
+
+A vPool can span multiple Storage Routers and connects to a single storage backend. This backend can be an S3 compatible object storage or in case the data needs to be split across multiple datacenters a global ALBA backend.
