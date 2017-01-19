@@ -56,7 +56,14 @@ On KVM, it is possible to use [QEMU](http://wiki.qemu.org/Main_Page) to deliver 
 The Open vStorage Framework takes care of the communication between the different hosts in the Open vStorage cluster and the storage backends. The Framework allows to manage Open vStorage through an intuitive GUI and a complete REST API. It uses various components such as [Celery](https://github.com/celery/celery), [Django](https://github.com/django/django), [RabbitMQ](https://github.com/celery/librabbitmq), [Memcached](https://github.com/memcached/memcached) and many more. More info on Framework can be found [here](../Framework/README.md).
 
 ### Arakoon
-Arakoon is the distributed key-value store used in Open vStorage. More info on Arakoon can be found [here](../Arakoon/README.md).
+Arakoon is the distributed key-value store used in Open vStorage. More info on Arakoon can be found [here](https://openvstorage.gitbooks.io/arakoon/content/).
+
+#### Where is Arakoon used in Open vStorage?
+Arakoon is as database for various components of the Open vStorage cluster.
+* The cluster config: Open vStorage uses a distributed configuration management system. The config values are stored in Arakoon (`arakoon_cacc`).
+* The [Framework](https://github.com/openvstorage/framework) model is stored in the DB named **ovsdb**. It stores the details or Storage Routers, vDisks, vMachine, vPools.
+* The [Volume Driver](https://github.com/openvstorage/volumedriver) model is stored in the DB named **voldrv**. It stores the Volume Driver cluster config, the metadata of the File System (mapping from /path/to/file -> object ID (volumedriver or filedriver object) exposed by the Volume Driver, the Object Registry - the location of objects in the cluster (which VolumeDriver in the cluster runs "owns" the file/volume), the family tree of a volume (clone-parent relation), replication , distributed locking and scrub management.
+* The metadata of the [ALBA backend](https://github.com/openvstorage/alba) are stored in a ABM DB and multiple NSM DBs. The NSM DBs (NameSpace Manager DBs) contain the meta of each stored fragment (ASD, manifest). A single NSM DB can contain data for different namespaces (volumes). The ABM DB (ALBA Manager) contains which NSM DB contains the metadata for which namespace/volume.
 
 
 ### vDisks, vMachines, vPools and Backends

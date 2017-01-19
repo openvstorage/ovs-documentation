@@ -3,6 +3,8 @@
 ## Introduction
 This section of explains some terminology and concepts used when talking about Open vStorage.
 
+
+
 ## ALBA
 [Alba](https://github.com/openvstorage/alba) is the native backend in Open vStorage.  It is an object storage solution which is designed and optimized to be used with Open vStorage. A typical Open vStorage cluster will have multiple open vstorage backends defined:
 * One or more local capacity ALBA backends in each datacenter which consists of the SATA drives located in the datacenter.
@@ -10,6 +12,9 @@ This section of explains some terminology and concepts used when talking about O
 * One or more global backends which combine local backends from different datacenters into a backend spread across multipke datacenters.
 
 It is possible to use ALBA as an all flash backend. It is actually a special case of the local capacity backend where SSDs are used instead of SATA drives. ALBA uses ASDs as location to effectively store data. In order to use ALBA as backend it is required that the `openvstorage-hc` package is installed.
+
+## Arakoon
+[Arakoon](http://arakoon.org/) is an open source, distributed, always consistent key-value database. It was developed and is maintained by the Open vStorage team.
 
 ## ASD
 ALBA Storage Deamon. A process which turns a storage device (SATA, SSD, NVMe, ...) into a disk you can use in an ALBA backend. It is possible to have multiple ASDs, hence multiple processes, which expose the same device. Each process exposes (part of ) the disk over an IP and port.
