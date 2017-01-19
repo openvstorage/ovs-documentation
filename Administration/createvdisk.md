@@ -28,7 +28,7 @@ Currently the QEMU interface only supports a single vPool.
 ```
 sudo apt-get install volumedriver-dev
 ```
-* The QEMU interface is built on top of the Shared Memory Server inside the Volume Driver. This Shared Memory Server is only supported as of Volume Driver 5.4. By default the Shared memory Server is disabled. To enable it, update the vPool json (`/opt/OpenvStorage/config/storagedriver/storagedriver/<vpool_name>.json`) and add under `filesystem` an entry  `"fs_enable_shm_interface": true,`. After adding the entry, restart the Volume Driver for the vPool (`restart ovs-volumedriver_<vpool_name>`).
+* The QEMU interface is built on top of the Shared Memory Server inside the Volume Driver. This Shared Memory Server is only supported as of Volume Driver 5.4. By default the Shared memory Server is disabled. To enable it, update the vPool json (`ovs config edit ovs/vpools/<vpool guid>/hosts/<vrouter id>/config`) and add under `filesystem` an entry  `"fs_enable_shm_interface": true,`. After adding the entry, restart the Volume Driver for the vPool (`restart ovs-volumedriver_<vpool_name>`).
 * QEMU needs to be built from the source. You can download the source [here](https://github.com/openvstorage/qemu).
 
 ```
@@ -54,7 +54,7 @@ Open vStorage supports block devices as vDisks through [Blktap](http://wiki.xenp
 
 **Prerequisites**
 * Blktap is only supported as of Volume Driver 5.4.
-* The Block Device interface is built on top of the Shared Memory Server inside the Volume Driver. By default the Shared memory Server is disabled. To enable it, update the vPool json (`/opt/OpenvStorage/config/storagedriver/storagedriver/<vpool_name>.json`) and add under `filesystem` an entry  `"fs_enable_shm_interface": true,`. After adding the entry, restart the Volume Driver for the vPool (`restart ovs-volumedriver_<vpool_name>`).
+* The Block Device interface is built on top of the Shared Memory Server inside the Volume Driver. By default the Shared memory Server is disabled. To enable it, update the vPool json (`ovs config edit ovs/vpools/<vpool guid>/hosts/<vrouter id>/config`) and add under `filesystem` an entry  `"fs_enable_shm_interface": true,`. After adding the entry, restart the Volume Driver for the vPool (`restart ovs-volumedriver_<vpool_name>`).
 
 To create a block device:
 * Download and install the kernel module and userspace utils for Fedora 22 or CentOS respectively. For Ubuntu, the kernel module can be installed:
@@ -70,7 +70,7 @@ Open vStorage supports Docker containers as vDisks through [Flocker](https://clu
 
 **Prerequisites**
 * The Flocker Plugin is only supported as of Volume Driver 5.4.
-* The Flocker integration is built on top of the Shared Memory Server inside the Volume Driver. By default the Shared memory Server is disabled. To enable it, update the vPool json (`/opt/OpenvStorage/config/storagedriver/storagedriver/<vpool_name>.json`) and add under `filesystem` an entry  `"fs_enable_shm_interface": true,`. After adding the entry, restart the Volume Driver for the vPool (`restart ovs-volumedriver_<vpool_name>`).
+* The Flocker integration is built on top of the Shared Memory Server inside the Volume Driver. By default the Shared memory Server is disabled. To enable it, update the vPool json (`ovs config edit ovs/vpools/<vpool guid>/hosts/<vrouter id>/config`) and add under `filesystem` an entry  `"fs_enable_shm_interface": true,`. After adding the entry, restart the Volume Driver for the vPool (`restart ovs-volumedriver_<vpool_name>`).
 
 Install Blktap:
 * Download and install the kernel module and userspace utils for Fedora 22 or CentOS respectively. For Ubuntu, the kernel module can be installed:
@@ -104,7 +104,7 @@ Configure the Flocker Plugin:
 ```
 "dataset":
     "backend": "openvstorage_flocker_plugin"
-    "vpool_conf_file": "/opt/OpenvStorage/config/storagedriver/storagedriver/<vpool_name>.json"
+    "vpool_conf_file": "arakoon://config/ovs/vpools/<vpool guid>/hosts/<vrouter id>/config?ini=%2Fopt%2FOpenvStorage%2Fconfig%2Farakoon_cacc.ini"
 ```
 
 Create the Docker containers as usual. That's it!
@@ -114,7 +114,7 @@ Open vStorage supports exposing vDisks as iSCSI disks through [TGT](http://stgt.
 
 **Prerequisites**
 * iSCSI vDisks are only supported as of Volume Driver 5.4.
-* The iSCSI integration is built on top of the Shared Memory Server inside the Volume Driver. By default the Shared memory Server is disabled. To enable it, update the vPool json (`/opt/OpenvStorage/config/storagedriver/storagedriver/<vpool_name>.json`) and add under `filesystem` an entry  `"fs_enable_shm_interface": true,`. After adding the entry, restart the Volume Driver for the vPool (`restart ovs-volumedriver_<vpool_name>`).
+* The iSCSI integration is built on top of the Shared Memory Server inside the Volume Driver. By default the Shared memory Server is disabled. To enable it, update the vPool json (`ovs config edit ovs/vpools/<vpool guid>/hosts/<vrouter id>/config`) and add under `filesystem` an entry  `"fs_enable_shm_interface": true,`. After adding the entry, restart the Volume Driver for the vPool (`restart ovs-volumedriver_<vpool_name>`).
 
 Install the Open vStorage TGT package. For ubuntu
 ```
@@ -151,3 +151,7 @@ tgtadm --lld iscsi --mode target --op bind --tid 1 -I 1.2.3.4
 tgtadm --lld iscsi --mode target --op bind --tid 1 -I 1.2.3.0/24
 ```
 
+
+> ==== Info::Retrieveing the vPool guid & vrouter id
+> 
+> To retrieve the vPool guid you can use `ovs config list ovs/vpools` and to retrieve the vrouter id use `ovs config list ovs/vpools/<vpool guid>/hosts/`.
