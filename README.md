@@ -30,6 +30,6 @@ The documentation of individual Open vStorage components is split into different
 * [Arakoon](https://openvstorage.gitbooks.io/arakoon/): the distributed Key/Value database
 * [Cinder](https://openvstorage.gitbooks.io/cinder/): the OpenStack Cinder Plugin for Open vStorage
 * [TGT](https://openvstorage.gitbooks.io/tgt/): the iSCSI TGT target
-* [DevOps](https://openvstorage.gitbooks.io/devops/): automation, ansible cookbooks, scripts
-* [Open vStorage Monitoring](https://openvstorage.gitbooks.io/ovs-monitoring/): logs and statistics monitoring
+* [DevOps](https://openvstorage.gitbooks.io/devops/): automation, ansible cookbooks, scripts (Commercial license required)
+* [Open vStorage Monitoring](https://openvstorage.gitbooks.io/ovs-monitoring/): logs and statistics monitoring (Commercial license required)
 
