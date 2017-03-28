@@ -41,11 +41,13 @@ the cluster will become unavailable when 1 of the 2 nodes goes down.
 -   When installing the Open vStorage software, an `ovs` user is created. Remove previously created `ovs` users before starting the installation.
 
 > #### Warning:: Existing systems
-Please make sure all data of existing disks is removed and mounts are removed.
+>
+> Please make sure all data of existing disks is removed and mounts are removed.
 
 > #### Warning:: Block devices should have a unique ID
-Please make sure all block devices have a unique ID. It appears that some SSDs or PCIe devices have no ID or share the same ID. 
-When multiple block devices have the same idea, there will be issues when claiming them as ASDs of an ALBA backend. 
+>
+> Please make sure all block devices have a unique ID. It appears that some SSDs or PCIe devices have no ID or share the same ID. 
+> When multiple block devices have the same idea, there will be issues when claiming them as ASDs of an ALBA backend. 
 
 ### Ports used by Open vstorage
 Following ports are used by the different Open vStorage components
