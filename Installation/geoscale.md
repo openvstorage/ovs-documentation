@@ -6,7 +6,7 @@ It is possible to install Open vStorage across multiple datacenters. Open vStora
 When you encounter issues or are stuck somewhere, do not hesitate to ask for help in the public [Open vStorage
 Forum](https://groups.google.com/forum/#!forum/open-vstorage).
 
-### Requirements
+### Prerequisites
 * Each datacenter should be equipped with enough SSD capacity to contain most of the active dataset of the volumes running in the datacenter.
 * A layer 3 network between the different datacenters.
 * Each server has the latest version of  [Ubuntu server 16.04 64 bit ISO](http://releases.ubuntu.com/16.04/ubuntu-16.04-server-amd64.iso) installed.
@@ -18,7 +18,7 @@ This guide provides a step by step approach to install a GeoScale cluster across
 * Compute hosts: these hosts run the Virtual Machines.
 * Performance nodes: these hosts run the Storage Routers. They are equipped with SSDs which act as local cache layer within the datacenter.
 * Capacity nodes: these hosts, across all the datacenters, form the capacity tier. They are equipped with SATA drives.
-* Management (Controller) nodes: these nodes run the master services, the GUI, the API, distributed databases, the scrubbing process and the monitoring.
+* Management (Controller) nodes: these nodes run the master services, the GUI, the API, distributed databases, the scrubbing process and the monitoring. There is one of these in each of the 3 datacenters.
 
 More info on the topology can be found [here](../OpenvStorage/topology.md)
 
@@ -47,12 +47,11 @@ Execute `sysctl -p` afterwards to load the settings.
 
 
 ### Installing the packages
-The below instructions are for Ubuntu. For CentOS please check following [instructions](centos.md).
 The latest version of Open vStorage will be installed. For instructions to install an older version, please check [here](../olderreleases.md).
 
 
 #### Controller nodes
-Execute the next steps in the shell of all Controller nodes:
+The GeoScale cluster is spread across 3 datacenters. As a first step setup a controller node in each datacenter by execute the next steps in the shell of the controller nodes:
 
 -   Add the repo to your sources.
     - Latest  Fargo version
@@ -84,7 +83,9 @@ apt-get install openvstorage-backend
 ovs setup
 ```
 
-**NOTE:** Do not run the `ovs setup` on different nodes at the same time. Wait until the setup has finished before starting the setup on another node.
+> #### Note::Concurrent installs are not supported
+>
+> Do not run the `ovs setup` on different nodes at the same time. Wait until the setup has finished before starting the setup on another node.
 
 - The initialization script will ask a couple of questions:
     -   Enter the root credentials for the host.
@@ -93,8 +94,7 @@ ovs setup
     In case it has found a Cluster, select the option *Don't join any of
     these clusters.*.
     -   Enter a name for the Open vStorage Cluster.
-    -   Select the configuration management system. Note that Arakoon is the preferred and advised configuration management system and is the only supported system in the commercial Open vStorage license.
-    -   Select whether to use an external configuration cluster for the configuration files or if Open vStorage should setup a cluster (only possible if Arakoon is selected).
+    -   Select whether to use an external configuration cluster for the configuration files or if Open vStorage should setup a cluster.
     -   Indicate if the cluster is RDMA capable. All nodes in the cluster must have RDMA capable hardware in order to have a working setup..
 
 - When the install is completed a message will be displayed.
@@ -106,8 +106,13 @@ ovs setup
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 ```
 
+> #### Note::Install the Controller nodes first
+>
+> Install the 3 controller nodes, one in each datacenter, before continuing with the installation of the performance nodes.
+
+
 #### Performance nodes
-Execute the next steps in the shell of all Compute nodes:
+Execute the next steps in the shell of all Performance nodes:
 
 -   Add the repo to your sources. For older versions please check [here](../olderreleases.md).
     - Latest  Fargo version
@@ -139,14 +144,16 @@ apt-get install openvstorage-hc
 ovs setup
 ```
 
-**NOTE:** Do not run the `ovs setup` on different nodes at the same time. Wait until the setup has finished before starting the setup on another node.
+> #### Note::Concurrent installs are not supported
+>
+> Do not run the `ovs setup` on different nodes at the same time. Wait until the setup has finished before starting the setup on another node.
 
 - The initialization script will ask a couple of questions:
     -   Enter the root credentials for the host.
     -   Select the Public IP address of the Node.
     -   It will search for existing Open vStorage Clusters in the network. Join the cluster created in the previous step.
     -   Enter a name for the Open vStorage Cluster.
-    -   Indicate if the cluster is RDMA capable. All nodes in the cluster must have RDMA capable hardware in order to have a working setup..
+    -   Indicate if the cluster is RDMA capable. All nodes in the cluster must have RDMA capable hardware in order to have a working setup.
 
 - When the install is completed a message will be displayed.
 
@@ -160,7 +167,6 @@ ovs setup
 - Next configure the ASD manager on each node:
     -   Select the public IP address to use for the ASDs.
     -   Select the start port to be used by the ASDs.
-    -   Select the configuration management system. Note that Arakoon is the preferred and advised configuration and management system.
 - When the ASD manager setup is completed a message will be displayed:
 
 ```
@@ -196,16 +202,16 @@ apt-get update
 ```
 apt-get install openvstorage-sdm
 ```
-- In case ETCD was selected as configuration management system, install an ETCD proxy.
 - Run the ASD Manager Setup:
 ```
 asd-manager setup
 ```
 -   Select the public IP address to use for the ASDs.
 -   Select the start port to be used by the ASDs.
--   Select the configuration management system. Note that Arakoon is the preferred and advised configuration and management system.
 
-**NOTE:** When Arakoon is selected copy the Arakoon config file from one of other nodes (`/opt/OpenvStorage/config/arakoon_cacc.ini`) to `/opt/asd-manager/config/arakoon_cacc.ini`.
+> #### Note::Arakoon config file
+>
+> Copy the Arakoon config file from one of other nodes (`/opt/OpenvStorage/config/arakoon_cacc.ini`) to `/opt/asd-manager/config/arakoon_cacc.ini`.
 
 - When the ASD manager setup is completed a message will be displayed:
 ```
@@ -276,14 +282,10 @@ For each Storage Router select roles (write, DB, scrub) for the physical disks:
 -   Optionally assign a scrub role to one of the disks. The scrubber is the application which does the garbage collection of snapshot data which is out of the retention. This will reserve 300 GB of space. In a cluster there must be at least 1 Storage Router with one disk with the scrubbing role. Note that this role can't be removed once set.
 
 #### Create the Backends
-Since this is a complex setup across multiple datacenters, the Arakoon clusters for the backends will need to be created manually.
-
 Per datacenter an all flash backend using the disks of the Performance nodes will be created and an all HDD backend will be created using the HDDs of the capcity nodes. On top a geoscale backend is created which uses the HDD backends in each datacenter to store the data.
 
 Per datacenter execute the following:
-- To create the all flash backend, open the shell of one of the performance nodes in the datacenter and [create an ABM Arakoon cluster](geoscalegettingstarted.md#creating-cluster-abm-optional) and extend it to 2 more performance nodes in the same data center.
-- [Create an NSM Arakoon cluster](geoscalegettingstarted.md#creating-cluster-nsm-optional) and extend it to 2 more performance nodes in the same data center.
-- Open the Backends page in the the Open vStorage GUI
+- To create the all flash backend, open the Backends page in the the Open vStorage GUI.
 - Click **+ Add Backend**
     - Give the Backend a name
     - Select **Open vStorage Backend** as Backend type
@@ -291,9 +293,7 @@ Per datacenter execute the following:
 - Once the Backend is created and the Backend Detail page is available, locate the performance nodes of the datacenter and click the "Initialize all disks"-icon and once all SSD disk are initialized click the "Claim all disks"-icon.
 - Edit the Backend to add the Domain tag of the datacenter.
 
-- To create the HDD capacity backend, open the shell of one of the performance nodes in the datacenter and [create an ABM Arakoon cluster](geoscalegettingstarted.md#creating-cluster-abm-optional) and extend it to 2 more performance nodes in the same data center.
-- [Create an NSM Arakoon cluster](geoscalegettingstarted.md#creating-cluster-nsm-optional) and extend it to 2 more performance nodes in the same data center.
-- Open the Backends page in the the Open vStorage GUI
+- To create the HDD capacity backend, open the Backends page in the the Open vStorage GUI.
 - Click **+ Add Backend**
     - Give the Backend a name
     - Select **Open vStorage Backend** as Backend type
@@ -303,9 +303,7 @@ Per datacenter execute the following:
 - The default policy for a Backend has compression turned on and features a (5,4,8,3) and (2,2,3,4) policy. Additional presets can be added on the Preset tab.
 
 Next, create GeoScale Backend by taking following actions:
-- To create the geoscale backend, open the shell of one of the Controller nodes  and [create an ABM Arakoon cluster](geoscalegettingstarted.md#creating-cluster-abm-optional) and extend it to 2 more performance nodes in the same data center.
-- [Create an NSM Arakoon cluster](geoscalegettingstarted.md#creating-cluster-nsm-optional) and extend it to the other Controller nodes.
-- Open the Backends page in the the Open vStorage GUI
+- To create the geoscale backend, open the Backends page in the the Open vStorage GUI.
 - Click **+ Add Backend**
     - Give the Backend a name
     - Select **Open vStorage** Backend as Backend type
@@ -314,7 +312,9 @@ Next, create GeoScale Backend by taking following actions:
 - Edit the Backend to add the 3 datacenter tags.
 - Click **Presets** tab and select **+ Add preset**. Enter a name, select whether data needs to be encrypted or/and compressed. Add at least the preset (2,1,2,1) which spread data across 3 datacenters (2 data, 1 parity) and acknowledges the write as soon as 2 datacenters are written.
 
-**NOTE:** More info on Backends can be found [here](../Administration/usingthegui/backends.md).
+> #### Note:: Backends
+>
+> More info on Backends can be found [here](../Administration/usingthegui/backends.md).
 
 
 #### Create the first vPool
@@ -329,6 +329,7 @@ Once the Backends are correctly setup, it is time to create the first vPool.
     -   Select the Storage Router as Initial Storage Router. Click **Next** to continue.
 
 -   On the second tab
+    - Select the amount of ALBA Proxies per node. The default is 2. 
     - Select the mode you want the distributed read cache, the fragment cache, to be setup.
     - Select **Use another ALBA Backend as Fragment Cache**,  press **Reload** to load
         the available Backends. Select the all flash backend  which is located in the same datacenter  as the Initial Storage Router.
@@ -346,7 +347,9 @@ Once the Backends are correctly setup, it is time to create the first vPool.
 Additional vPools can be added to the Storage Router by executing the
 same steps again.
 
-**NOTE:** More info on vPools can be found [here](../Administration/usingthegui/vpools.md).
+> #### Note:: vPools
+>
+> More info on vPools can be found [here](../Administration/usingthegui/vpools.md).
 
 
 ### Create the first vDisk
@@ -354,6 +357,8 @@ To create the first vDisks, log in into one of the compute hosts and execute:
 ```
 qemu-img convert  <disk to import>.qcow2 openvstorage+<protocol>:<ip of the performance node>:<vPool port>/<vDisk name>
 ```
+
+More ways (iSCSI, Blktap, ...) to create a vDisk can be found [here](../Administration/createvdisk.md).
 
 Some remarks:
 * Protocol can be tcp or rdma.
@@ -363,4 +368,7 @@ Some remarks:
 
 ### Setup the monitoring server
 Optionally setup a server to monitor the Open vStorage cluster by following [these steps](https://openvstorage.gitbooks.io/ovs-monitoring/content/docs/deploy_with_ansible.html).
-**NOTE:** The monitoring is part of the commercial Open vStorage license. [Contact us](http://www.openvstorage.com/contact_us/) for more information.
+
+> #### Note:: Monitoring
+>
+> The monitoring is part of the commercial Open vStorage license. [Contact us](http://www.openvstorage.com/contact_us/) for more information.

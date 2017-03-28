@@ -77,7 +77,7 @@ ovs setup
 ```
 qemu-img convert  <image name>.qcow2 openvstorage+tcp:/<vdisk name>
 ```
--   Feel free to [contribute](https://www.openvstorage.org/contribute/) to the Open vStorage code or
+-   Feel free to [contribute](https://github.com/openvstorage/home/blob/master/CONTRIBUTING.md) to the Open vStorage code or
     [get help from the Open vStorage
     community](https://groups.google.com/forum/#!forum/open-vstorage).
     Keep in mind that only .raw disks are supported on KVM with Open
