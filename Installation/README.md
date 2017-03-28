@@ -6,16 +6,7 @@ This of course means that setting up Open vStorage isn't as easy as pressing a b
 
 Before starting the installation of your Open vStorage cluster, please go through our [Essentials](essentials.md) checklist.
 
-For convenience reasons the Open vStorage team has created a couple of ansible scripts which [deploy Open vStorage with Ansible](https://openvstorage.gitbooks.io/devops/content/Docs/ansible.html). There are 2 fundamental ways to setup Open vStorage:
-* [Hyper-converged](https://openvstorage.gitbooks.io/devops/content/Docs/hyperconverged.html): Compute and Storage are configured on the same server.
-* [GeoScale](https://openvstorage.gitbooks.io/devops/content/Docs/geoscale.html): The compute, performance and capacity functionality is configured on separate servers.
+For convenience reasons the Open vStorage team has created a couple of ansible scripts which [deploy Open vStorage with Ansible](https://openvstorage.gitbooks.io/devops/content/Docs/ansible.html).  The ansible scripts are part of the commercial Open vStorage license. [Contact us](http://www.openvstorage.com/contact_us/) for more information.
 
-For both of these setup types there is an ansible script. After running the ansible install script, you will still need to [configure the cluster](configurecluster.md) (setup roles, create backends and vPools, ...). For detailed documentation on how to use ansible scripts, please visit the [dev_ops GitBook](https://openvstorage.gitbooks.io/devops/).
+For administrators there is a step by step guide to install [a GeoScale cluster on KVM/QEMU](geoscale.md).
 
-**NOTE:** The ansible scripts are part of the commercial Open vStorage license. [Contact us](http://www.openvstorage.com/contact_us/) for more information.
-
-#### Manual installation
-For administrators that prefer a manual approach and want to setup the cluster manually there is a step by step guide to install [a GeoScale cluster on KVM/QEMU](geoscale.md).
-
-#### Final Notes
-* The Open vStorage core functionality is licensed under the [AGPLv3 License](http://www.gnu.org/licenses/agpl.html). See the respective repositories for the license of individual components.
