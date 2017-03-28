@@ -3,12 +3,12 @@
 
 The Known Issues lists the most common and general issues with the Open
 vStorage software which are known but not yet addressed in the current
-release. As they are known, there is no need to [create a
-bug](https://www.openvstorage.org/contribute/) for these issues in the [GitHub bug
+release. As they are known, there is no need to create a
+bug for these issues in the [GitHub bug
 tracker](https://github.com/openvstorage/openvstorage/issues).
 
 Feel free to solve any of these issues. You can find more information on
-how to contribute to Open vStorage [here](https://www.openvstorage.com/contribute/).
+how to contribute to Open vStorage [here](https://github.com/openvstorage/home/blob/master/CONTRIBUTING.md).
 
 
 ## vStorage Driver
@@ -29,7 +29,7 @@ backend. Storage leaks can occur if
     -   not enough free space available to proceed with the scrub
     -   unavailability of the storage backend
     -   power loss of the node on which the scrubber is running
--   an aborted rollback action of teh volume (e.g. due to power loss)
+-   an aborted rollback action of the volume (e.g. due to power loss)
 
 ### System time resets / ntp time adjustments
 The vStorage Driver might fail in case large time adjustments occur to the system time. It is advised to perform small changes all the time instead of doing a big time jump.
@@ -71,15 +71,13 @@ used space will be 0% and the free space and total size will be 64TB.
 Currently vDisks bigger than 64TB are not supported.
 
 ### DTL Status
-The DTL status of a vDisk will be labeled green/ok in case the vDisk is configured to have no vDisk.  
+The DTL status of a vDisk will be labeled green/ok in case the vDisk is configured to have no DTL.  
 
 
 ## vTemplate
 
-Once a vDisk is turned into a vTemplate, you can not add, change it settings. Making any changes to the vDisks
-will break the clone functionality of the vTemplate. A clone of a vDisk can noty be set as vTemplate.
-
-
+Once a vDisk is turned into a vTemplate, you can not add or change its settings. Making any changes to the vDisks
+will break the clone functionality of the vTemplate. A cloned vDisk can not be set as vTemplate.
 
 ## vPools
 
@@ -89,7 +87,7 @@ will break the clone functionality of the vTemplate. A clone of a vDisk can noty
 -   Do not store on a storage backend vPools from different environments
     with the same vPool name. When deleting the vPool on one
     environment, the other vPools, on the other environments, will
-    become unavailable!
+    become unavailable.
 
 ### vPool creation/extension
 
@@ -100,7 +98,7 @@ will break the clone functionality of the vTemplate. A clone of a vDisk can noty
 	
 ### Removing a vPool
 
--   Removing a vPool only works in case all Storage Routers are online. You will be able to start the remove action in the GUI but the remove will fail.
+-   Removing a vPool only works in case all Storage Routers are online. You will be able to start the remove action in the GUI but the remove will fail. One option is to first remove any node which is down from the cluster before removing the vPool.
 
 
 ## Storage Routers
@@ -137,13 +135,6 @@ Running Evacuate after updating the Cinder DB is now successful as the call to c
 
 Due to a [bug](https://bugs.launchpad.net/cinder/+bug/1478929) in Cinder it is not possible to add a vPool with the name of a vPool which was previously deleted. The issue only occurs on Juno and Kilo but not on Liberty.
 
-
-### Re-adding a vPool on OpenStack Cinder fails in case the manual changes were not undone.
-
-The issue is caused by entries which are manually added when setting up
-the vPool for use with Cinder the first time. Remove the Cinder vPool,
-manually edit `/etc/nova/nova.conf` and remove the instances path. Next
-restart the Nova services and follow the normal steps to add the vPool.
 
 ## vDisk Migration
 ### GUI hangs
