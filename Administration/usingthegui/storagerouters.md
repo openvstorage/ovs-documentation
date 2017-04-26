@@ -21,9 +21,9 @@ For each Storage Router following info is displayed:
     [more details](#details) and execute actions.
 -   IP: IP address in the Public network of the Storage Router.
 -   vDisks: Amount of vDisks served by the Storage Router.
+-   IOPS: The current amount of IOPS of all vDisks served by the Storage Router.
 -   Stored Data: The total amount of Stored Data of all vDisks served by
     the Storage Router.
--   IOPS: The current amount of IOPS of all vDisks served by the Storage Router.
 -   Read: The aggregated read speed of all vDisks served by the Storage Router.
 -   Write: The aggregated write speed of all vDisks served by the Storage Router.
 -   Domains: The domains (datacenter, rack, ...) the Storage Router belongs to.
@@ -38,15 +38,12 @@ single Storage Router, the actions and allows to configure vPools.
 The details for a Storage Router are:
 
 -   IP: IP address in the Public network of the Storage Router.
--   Host: Hostname of the server on which hosts the  Storage Router.
--   Host IP: The Public IP address of the Host.
--   Type: Type of Hypervisor.
 -   RDMA Capable: Whether the Storage Router uses RDMA or not for its network communication.
 -   SCRUB Capable: Whether the SCRUB role is assigned to the Storage Router.
 -   Domains: The domains (datacenter, rack, ...) the Storage Router belongs.
 -   Recovery Domains: The domain in which the recovery services (DTL, Slave Metadata Server, ...) are hosted.
--   vPools: Amount of vPools served by the Storage Router.
--   vDisks: Amount of vDisks served by the Storage Router.
+-   # vPools: Amount of vPools served by the Storage Router.
+-   # vDisks: Amount of vDisks served by the Storage Router.
 -   Stored Data: Total size of the current data and the Snapshots
     without the overhead imposed by the Backend redundancy.
 -   IOPS: The current amount of IOPS of all vDisks served by the Storage Router.
@@ -76,7 +73,7 @@ The refresh button will refresh the Storage Router properties.
 #### Storage Router Administration
 
 ##### vPools served by the Storage Router
-See which vPools are served by the Storage Router, the accelerated ALBA backend and the ports being used.
+See which vPools are served by the Storage Router, the accelerated ALBA backend, the ports being used and the Storage IP of the Storage Router for the vPool.
 
 #### Physical Disk Management
 The Physical Disk Management tab will list all the physical disks (PCIe flash cards, SSDs and SATA drives) of the Storage Router. A physical disks can be assigned different roles:
