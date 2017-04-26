@@ -75,7 +75,7 @@ The refresh button will refresh the Storage Router properties.
 ##### vPools served by the Storage Router
 See which vPools are served by the Storage Router, the accelerated ALBA backend, the ports being used and the Storage IP of the Storage Router for the vPool.
 
-#### Physical Disk Management
+##### Physical Disk Management
 The Physical Disk Management tab will list all the physical disks (PCIe flash cards, SSDs and SATA drives) of the Storage Router. A physical disks can be assigned different roles:
 -   DB: The DB role stores the distributed database and metadata of the volumes. The DB role must be assigned to an SSD. This will reserve 10% of the SSD for the distributed database. Each Storage Router should have one disk with a DB role. Note that this role can't be removed once set.
 -   Scrub: The scrubber is the application which does the garbage collection of snapshot data which is out of the retention. This will reserve 300 GB of space. This role is optional but each environment should have at least 1 Storage Router with the Scrub role. Only set the this role on Storage Routers where you want the scrub process to run.
@@ -88,7 +88,7 @@ The write role can only be removed in case no vPool is using them. The DB and Sc
 
 **NOTE:** To replace a disk of a Storage Router follow the necessary steps as outlined [here](../maintenance/replacewrite.md).
 
-#### vDisks
+##### vDisks
 The vDisk tab lists all the vDisks being served by the Storage Router. For each vDisk following properties are displayed:
 -   Name: Name of the vDisk.
 -   Size: Size of the vDisk.
