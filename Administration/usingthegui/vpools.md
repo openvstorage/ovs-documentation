@@ -83,8 +83,8 @@ The Backend details for a vPool are:
 
 -   Name: Name of the ALBA backend which is used to store the data.
 -   Preset: USed ALBA Backend preset.
-- 	Login: Proxy id.
--   Connections: Proxy IP and port.
+- 	Login: Login for the Backend API.
+-   Connections: Backend API Location.
 -   Write Speed: The current write speed to the Storage Backend.
 -   Read Speed: The current read speed from the Storage Backend.
 
