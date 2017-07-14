@@ -130,6 +130,9 @@ Open vStorage currently works IP based. When browsing to the Open vStorage GUI, 
 ### RDMA
 Open vStorage only supports RDMA in clusters where each node of the cluster has RDMA capable hardware.
 
+### Backends
+It is a best practice to not have more than 100 to 125 physical disks in a single backend. Once you reach that (soft) limit it is advised to create a new backend.
+
 ### Getting Help
 
 Open vStorage has a large community which is more than happy to provide
