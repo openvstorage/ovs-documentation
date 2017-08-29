@@ -57,7 +57,7 @@ The GeoScale cluster is spread across 3 datacenters. As a first step setup a con
     - Latest  Fargo version
 	
 ```
-echo "deb http://apt.openvstorage.com fargo main" > /etc/apt/sources.list.d/ovsaptrepo.list
+echo "deb http://apt.openvstorage.com fargo-updates-1 main" > /etc/apt/sources.list.d/ovsaptrepo.list
 apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 4EFFB1E7
 
 printf 'Package: *\nPin: origin apt.openvstorage.com\nPin-Priority: 1000\n' > /etc/apt/preferences
@@ -118,7 +118,7 @@ Execute the next steps in the shell of all Performance nodes:
     - Latest  Fargo version
 	
 ```
-echo "deb http://apt.openvstorage.com fargo main" > /etc/apt/sources.list.d/ovsaptrepo.list
+echo "deb http://apt.openvstorage.com fargo-updates-1 main" > /etc/apt/sources.list.d/ovsaptrepo.list
 apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 4EFFB1E7
 
 printf 'Package: *\nPin: origin apt.openvstorage.com\nPin-Priority: 1000\n' > /etc/apt/preferences
@@ -181,7 +181,7 @@ ovs setup
     - Latest  Fargo version
 	
 ```
-echo "deb http://apt.openvstorage.com fargo main" > /etc/apt/sources.list.d/ovsaptrepo.list
+echo "deb http://apt.openvstorage.com fargo-updates-1 main" > /etc/apt/sources.list.d/ovsaptrepo.list
 apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 4EFFB1E7
 
 printf 'Package: *\nPin: origin apt.openvstorage.com\nPin-Priority: 1000\n' > /etc/apt/preferences
@@ -228,7 +228,7 @@ For this installation procedure, KVM is assumed to be the hypervisor of choice.
     - Latest  Fargo version
 	
 ```
-echo "deb http://apt.openvstorage.com fargo main" > /etc/apt/sources.list.d/ovsaptrepo.list
+echo "deb http://apt.openvstorage.com fargo-updates-1 main" > /etc/apt/sources.list.d/ovsaptrepo.list
 apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 4EFFB1E7
 
 printf 'Package: *\nPin: origin apt.openvstorage.com\nPin-Priority: 1000\n' > /etc/apt/preferences

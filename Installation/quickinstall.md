@@ -38,7 +38,7 @@ echo "vm.dirty_background_bytes = 134217728" >> /etc/sysctl.conf
     - Latest Fargo version (For older versions please check [here](../olderreleases.md))
 
 ```
-echo "deb http://apt.openvstorage.com fargo main" > /etc/apt/sources.list.d/ovsaptrepo.list
+echo "deb http://apt.openvstorage.com fargo-updates-1 main" > /etc/apt/sources.list.d/ovsaptrepo.list
 apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 4EFFB1E7
 
 printf 'Package: *\nPin: origin apt.openvstorage.com\nPin-Priority: 1000\n' > /etc/apt/preferences
