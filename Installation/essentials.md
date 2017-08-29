@@ -83,6 +83,8 @@ Other Linux OS (linux-image >= 3.15) might also work. In case it doesn't work, p
 The Open vStorage software is not installable on a 32 bit OS.
 
 ### Limit to the amount of vDisks/Storage Router
+First of all, it is advised not to exceed 500 vDisks per Storage Router. On top, the amount of vDisks might be limited even more due to other factors.
+
 #### RAM Limitation
 
 The amount of RAM assigned to a Storage Router limits the amount of
