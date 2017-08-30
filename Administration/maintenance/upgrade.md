@@ -22,21 +22,21 @@ The manual procedure consists out of 5 steps:
 To stop all services execute
 * For the Framework
 ```
-stop ovs-watcher-framework
-stop memcached
-stop arakoon-ovsdb
+service ovs-watcher-framework stop
+service memcached stop
+service arakoon-ovsdb stop
 ```
 * For the Volume Driver
 ```
-stop ovs-volumedriver_vpoolname
-stop ovs-dtl_vpoolname
+service ovs-volumedriver_vpoolname stop
+service ovs-dtl_vpoolname stop
 ```
 * For ALBA
 ```
-stop ovs-albaproxy_vpoolname
-stop alba-asd-*
-stop ovs-alba-maintenance*
-stop ovs-alba-rebalancer*
+service ovs-albaproxy_vpoolname stop
+service alba-asd-* stop
+service ovs-alba-maintenance* stop
+service ovs-alba-rebalancer* stop
 ```
 
 ##### Upgrade ALBA
@@ -44,15 +44,15 @@ stop ovs-alba-rebalancer*
 * If you have less than 3 master nodes, make sure all volumes are stopped
 * On all nodes, install the new alba package through apt or yum.
 * On all nodes, restart each ASD
-    * Find them with ls -al /etc/init/alba-asd-*
+    * Find them with `ls -al /etc/init/alba-asd-*`
 * On all nodes, restart all proxies by sending a kill signal kill <pid>
-    * Find them with ls -al /etc/init/ovs-albaproxy* and for each entry status ovs-albaproxy_<vpool name>
+    * Find them with `ls -al /etc/init/ovs-albaproxy*` and for each entry `service ovs-albaproxy_<vpool name> status`
 * On all nodes where applicable, restart the alba arakoon clusters, foreach backend
-    * Find them with ls -al /etc/init/ovs-arakoon-<backend name>*
+    * Find them with `ls -al /etc/init/ovs-arakoon-<backend name>*`
         * If < 3: Stop them all, and start them all up again
         * If >= 3: Restart them one by one, waiting a minute in between
 * On all nodes, restart the maintenance and rebalancer processes
-    * Find them with ls -al /etc/init/ovs-alba-maintenance* and ls -al /etc/init/ovs-alba-rebalancer*
+    * Find them with `ls -al /etc/init/ovs-alba-maintenance*` and `ls -al /etc/init/ovs-alba-rebalancer*`
 
 ##### Upgrade the Volume Driver
 * On all nodes, install new Volume Driver packages through apt or yum.
@@ -60,7 +60,7 @@ stop ovs-alba-rebalancer*
     * Find them with `ls -al /etc/ovs-volumedriver*`
 
 ##### Upgrade the Framework
-You simply can't upgrade this one without the GUI unless you manually touch /etc/ready_for_upgrade it will refuse to install.
+You simply can't upgrade this one without the GUI unless you manually touch `/etc/ready_for_upgrade` it will refuse to install.
 
 * Stop all relevant services if not done before (watcher-framework, memcache, arakoon-ovsdb)
 * Upgrade the packages through apt or yum.
@@ -78,7 +78,7 @@ Migrator.migrate()
 * Restart memcache on all master nodes
 * Start the watcher-framework again
 ```
-start ovs-watcher-framework
+service ovs-watcher-framework start
 ```
 
 **Do not forget to patch files you manually patched after the installation as they might have been overwritten by the package update.**
