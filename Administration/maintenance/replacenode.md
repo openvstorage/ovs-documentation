@@ -96,7 +96,6 @@ For more information in how to remove a node see the [remove node section](remov
 * Repair the hardware of the node or replace the node with new hardware
 * Reinstall the node with a new O/S
 * Start the node and install the OVS packages
-* Run the setup on the node: `ovs setup`
 * Re-add the node to the cluster through the `ovs setup`
 
 For more information on how to install Open vStorage see the [Installation section](../../Installation/README.md).
