@@ -70,7 +70,7 @@ rabbitmqctl list_queues
     ```
     * In case there is an issue with Celery, go to the support page in the GUI and check if the node ID is displayed. If needed, restart the workers.
     ```
-    restart ovs-workers
+    service ovs-workers restart
     ```
 * In case there isn't a service issue, move down the stack to verify if the vPool is functioning. To check execute:
 ```
