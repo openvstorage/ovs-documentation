@@ -13,7 +13,7 @@ During the remove process you will be prompted to confirm the removal. You can a
 ### Promoting and demoting Storage Routers
 By default a cluster will have 3 Storage Routers running the master services. In case a master node is removed from the cluster, the next node that is added will automatically be configured as master.
 
-It is possible to promote additional Storage Routers so they can also become a master. Execute following command on teh command line of the Storage Router:
+It is possible to promote additional Storage Routers so they can also become a master. Execute following command on the command line of the Storage Router:
 ```
 ovs setup promote
 ```
