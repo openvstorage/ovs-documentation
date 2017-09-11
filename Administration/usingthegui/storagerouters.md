@@ -42,8 +42,8 @@ The details for a Storage Router are:
 -   SCRUB Capable: Whether the SCRUB role is assigned to the Storage Router.
 -   Domains: The domains (datacenter, rack, ...) the Storage Router belongs.
 -   Recovery Domains: The domain in which the recovery services (DTL, Slave Metadata Server, ...) are hosted.
--   # vPools: Amount of vPools served by the Storage Router.
--   # vDisks: Amount of vDisks served by the Storage Router.
+-   &num; vPools: Amount of vPools served by the Storage Router.
+-   &num; vDisks: Amount of vDisks served by the Storage Router.
 -   Stored Data: Total size of the current data and the Snapshots
     without the overhead imposed by the Backend redundancy.
 -   IOPS: The current amount of IOPS of all vDisks served by the Storage Router.
