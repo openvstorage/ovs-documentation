@@ -44,6 +44,7 @@ the cluster will become unavailable when 1 of the 2 nodes goes down.
 >
 > Please make sure all data of existing disks is removed and mounts are removed.
 
+
 > #### Warning:: Block devices should have a unique ID
 >
 > Please make sure all block devices have a unique ID. It appears that some SSDs or PCIe devices have no ID or share the same ID. 
