@@ -41,12 +41,6 @@ NC-ECC (Network and Clustered Error Correction Codes) is the algorithm used by O
 ## Preset & Policy
 ALBA backends require you to define a preset for the backend. A preset defines whether data on the backend and encrypted and compressed on the backend and how it protected, the policy. The policy is actually a hierarchy of policies.  When you create a new policy, you can  define the amount of fragments an object is split in, the amount of parity fragments, the minimal amounts of fragments before a write is executed and the maximal amount of fragments per node. In case the top policy of the hierarchy can't be met f.e. as there are not enough ASDs left, new data will be written with a lower policy. Once enough ASDs are available again the data which was written sub-optimal will be rewritten with the optimal policy.
 
-## RDMA
-Open vStorage supports remote direct memory access (RDMA), a low latency network protocol. If using RDMA hardware, it is important to enable RDMA during setup when asked so.
-
-RDMA can be enabled or disabled for the complete cluster, so if RDMA is enabled, one needs to be sure that all nodes have
-properly installed and configured RDMA capable hardware.
-
 ## Storage Router
 A Storage Router is the term given to a host which runs the Open vStorage software/framework.
 
