@@ -114,3 +114,7 @@ To add a Storage Router Click the **+** button next to the Storage Router name.
 To remove the vPool from a Storage Router click the trash can next to the Storage Router name. Removing a vPool from being served by
 a Storage Router is only possible in case there aren't any vDisks being served by
 the vPool on that Storage Router.
+
+> ==== Info::Removing a vPool
+> 
+> To remove a vPool simply remove the vPool from all Storage Routers serving the vPool. Once the last Storage Router no longer serves the vPool, the vPool will automatically be deleted.
