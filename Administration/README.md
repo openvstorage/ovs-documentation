@@ -10,14 +10,14 @@ An Open vStorage Cluster can be managed through different interfaces:
 - [Using the CLI](usingthecli/README.md)
 
 To keep your cluster healthy, there is a [healthcheck](https://github.com/openvstorage/openvstorage-health-check) provided. Based upon this healthcheck it might be required to perform certain maintenance actions:
-* [Shutdown and Restart a cluster](shutdownrestart.md)
-* [Upgrade a cluster](upgrade.md)
-* [Remove a node](removenode.md)
+* [Shutdown and Restart a cluster](maintenance/shutdownrestart.md)
+* [Upgrade a cluster](maintenance/upgrade.md)
+* [Remove a node](maintenance/removenode.md)
 
 In case of (hardware) failure scenarios:
-* [Replace an Open vStorage node](replacenode.md)
-* [Replace a compute node](replacecpu.md)
-* [Replace an SSD with the write role](replacewrite.md)
+* [Replace an Open vStorage node](maintenance/replacenode.md)
+* [Replace a compute node](maintenance/replacecpu.md)
+* [Replace an SSD with the write role](maintenance/replacewrite.md)
 
 Under [services](Services/README.md) you get an overview of the different services which are running in an Open vStorage cluster.
 
