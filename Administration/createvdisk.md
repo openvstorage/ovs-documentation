@@ -112,44 +112,72 @@ Create the Docker containers as usual. That's it!
 #### <a name="iscsi"></a>iSCSI
 Open vStorage supports exposing vDisks as iSCSI disks through [TGT](http://stgt.sourceforge.net/).
 
-**Prerequisites**
-* iSCSI vDisks are only supported as of Volume Driver 5.4.
-* The iSCSI integration is built on top of the Shared Memory Server inside the Volume Driver. By default the Shared memory Server is disabled. To enable it, update the vPool json (`ovs config edit ovs/vpools/<vpool guid>/hosts/<vrouter id>/config`) and add under `filesystem` an entry  `"fs_enable_shm_interface": true,`. After adding the entry, restart the Volume Driver for the vPool (`restart ovs-volumedriver_<vpool_name>`).
+Install TGT and the Open vStorage TGT package. 
+´´´
+echo "deb http://apt.openvstorage.com unstable main" > /etc/apt/sources.list.d/ovsaptrepo.list
+apt-get update
+apt-get install tgt
+apt-get install tgt-openvstorage
+´´´
 
-Install the Open vStorage TGT package. For ubuntu
-```
-sudo apt-get install tgt
-```
+Create a new target device.
 
-Create a new target device
-```
-tgtadm --lld iscsi --mode target --op new --tid=1 --targetname iqn.2016-01.com.openvstorage:for.all
-```
+´´´tgtadm --lld iscsi --mode target --op new --tid=1 --targetname iqn.2016-01.com.openvstorage:for.all´´´
 
 Add a logical unit (LUN)
-```
-tgtadm --lld iscsi --op new --bstype openvstorage --mode logicalunit --tid 1 --lun 1 -b volumeName
-```
+´´´tgtadm --lld iscsi --op new --bstype openvstorage+tcp --mode logicalunit --tid 1 --lun 1 -b 10.100.188.31:26203/volumeName´´´
 
-Enable the target to accept initiators:
-* Add IP wildcard to allow all initiators
-```
-tgtadm --lld iscsi --mode target --op bind --tid 1 -I ALL
-```
+Replace 10.100.188.31 by the IP of the Storage Router on which the vPool is exposed containing the vDisk.
+Replace 26203 by the edge port of the vPool on that Storage Router (see Storage Router detail page).
+Replace volumeName by the name of the vDisk you want to expose. Note that the vDisk should already be createdas the Edge will not create the vDisk.
 
-* IP-based restrictions
-    * If you've previously configured a target to accept ALL initiators, you need to remove that first.
-```
-tgtadm --lld iscsi --mode target --op unbind --tid 1 -I ALL
-```
-    * Now, restrict access to a specific IP …
-```
-tgtadm --lld iscsi --mode target --op bind --tid 1 -I 1.2.3.4
-```
-    * or restrict access to a specific IP subnet  …
-```
-tgtadm --lld iscsi --mode target --op bind --tid 1 -I 1.2.3.0/24
-```
+Execute ´tgt-admin -s´ to see if the vDisk is exposed. The result should be something like:
+
+´´´root@PHY-3N-188-31:~# tgt-admin -s
+Target 1: iqn.2016-01.com.openvstorage:for.all
+    System information:
+        Driver: iscsi
+        State: ready
+    I_T nexus information:
+    LUN information:
+        LUN: 0
+            Type: controller
+            SCSI ID: IET     00010000
+            SCSI SN: beaf10
+            Size: 0 MB, Block size: 1
+            Online: Yes
+            Removable media: No
+            Prevent removal: No
+            Readonly: No
+            SWP: No
+            Thin-provisioning: No
+            Backing store type: null
+            Backing store path: None
+            Backing store flags:
+        LUN: 1
+            Type: disk
+            SCSI ID: IET     00010001
+            SCSI SN: beaf11
+            Size: 10737 MB, Block size: 512
+            Online: Yes
+            Removable media: No
+            Prevent removal: No
+            Readonly: No
+            SWP: No
+            Thin-provisioning: Yes
+            Backing store type: openvstorage+tcp
+            Backing store path: 10.100.188.31:26203/volumeName
+            Backing store flags:
+´´´
+
+
+
+
+
+
+
+
+
 
 
 > ==== Info::Retrieveing the vPool guid & vrouter id

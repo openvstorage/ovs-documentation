@@ -35,7 +35,7 @@ For each vPool following info is displayed:
 	-   Enter a name for the vPool.
     -   Select one of local [Backends](backends.md) or an external Backend. 
     -	Select a Preset from  the dropdown. This Preset defines how data is stored on the backend (e.f. 3-way replication). You can add more Presets in the detail page of a [Backend](backends.md#presets). **Once the vPool is created, you can not select a different Preset. The policy of the Preset can be updated.**
-	-	Select the Amount of Proxies. Default is 2. 
+	-	Select the Amount of Proxies. Default is 2 for HA. More proxies might provide more bandwidth to the backend but as trade-off will consume more memory.
 	-   Select the Storage Router as Initial Storage Router and Storage IP on which the vPool is exposed. Click **Next** to continue.
 -   On the second tab
     -   Specify the fragment cache method
