@@ -268,7 +268,7 @@ all resources.
         -   The 'type' indicates how the items supplied in 'items' should be chained
             -   Possible types are 'AND' and 'OR'   
         -   The 'filter' is a list defining a single expression:
-            - (FIELD, OPERATOR, VALUE [, <ignore_case>])
+            - (FIELD, OPERATOR, VALUE [, IGNORE CASE])
             - The field is any property you would also find on the given object. In case of properties, you can dot as far as you like.
             - The operator indicates what condition should apply
                 -   Possible operators are 
@@ -279,6 +279,7 @@ all resources.
                     -   'IN' (check if a value is in a list of values)
                     -   'CONTAINS' (check if a string value is a substring of the given value) 
             - The value is what value the FIELD should match to (for the given operator)
+            - The ignore case option is optional, this indicates if the query should operate case-sensitive for the given filter item (defaults to true)
         -   The 'items' are a list of one or more QUERY or FILTER items. This means the query structure is recursive and complex queries are possible
         -   Example simple query:
             ```
