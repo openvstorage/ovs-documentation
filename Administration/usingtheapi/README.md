@@ -264,14 +264,22 @@ all resources.
     -   Access-Control-Allow-Origin (CORS only)
 -   Query parameters:
     -   query (optional - no querying if omitted)
-        -   The 'query' JSON object with 'type' and 'items' ({'type' : <type>, 'items': <items>})
+        -   The 'query' JSON object with 'type' and 'items' ({'type' : TYPE, 'items': ITEMS})
         -   The 'type' indicates how the items supplied in 'items' should be chained
             -   Possible types are 'AND' and 'OR'   
         -   The 'filter' is a list defining a single expression:
-            - (<field>, <operator>, <value> [, <ignore_case>])
+            - (FIELD, OPERATOR, VALUE [, <ignore_case>])
             - The field is any property you would also find on the given object. In case of properties, you can dot as far as you like.
-            - Possible operators are 'EQUALS' (=), 'NOT_EQUALS' (!=), 'LT' (<), 'GT' (>), 'IN' (check if a value is in a list of values), 'CONTAINS' (check if a string value is a substring of the given value) 
-        -   The 'items' are a list of one or more <query> or <filter> items. This means the query structure is recursive and complex queries are possible
+            - The operator indicates what condition should apply
+                -   Possible operators are 
+                    -   'EQUALS' (=)
+                    -   'NOT_EQUALS' (!=)
+                    -   'LT' (<)
+                    -   'GT' (>)
+                    -   'IN' (check if a value is in a list of values)
+                    -   'CONTAINS' (check if a string value is a substring of the given value) 
+            - The value is what value the FIELD should match to (for the given operator)
+        -   The 'items' are a list of one or more QUERY or FILTER items. This means the query structure is recursive and complex queries are possible
         -   Example simple query:
             ```
             {
