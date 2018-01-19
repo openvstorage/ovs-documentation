@@ -11,6 +11,8 @@ and supported Storage Backends.
 Open vStorage can be setup on a single node or 3+ nodes. It is not advised to have a 2 node setup as
 the cluster will become unavailable when 1 of the 2 nodes goes down.
 
+For stability reasons it is advised to have at least 4 RabbitMQ nodes in the Open vStorage cluster.
+
 ### Hardware requirements
 -   Minimal requirements
     -   1 SATA disk for the OS and optionally at least 3 additional SATA disks for the Open vStorage Backend (hyperconverged).
@@ -135,6 +137,9 @@ Open vStorage only supports RDMA in clusters where each node of the cluster has 
 
 ### Backends
 It is a best practice to not have more than 100 to 125 physical disks in a single backend. Once you reach that (soft) limit it is advised to create a new backend.
+
+### FUSE File System
+The Volume Driver exposes a FUSE file system mountpoint per vPool. This mountpoint is located under `/mnt/vPool_name`. This mountpoint can only be used by the Open vStorage operations team. Usage of this mountpoint in an inappropriate manner, may lead to unexpected behaviour, service downtime or data corruption. 
 
 ### Getting Help
 
