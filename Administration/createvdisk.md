@@ -50,7 +50,8 @@ qemu -drive file=openvstorage:volume,if=virtio,cache=none,format=raw ﻿...
 ```
 
 #### <a name="block"></a>Block device
-Open vStorage supports block devices as vDisks through [Blktap](http://wiki.xenproject.org/wiki/Blktap). Currently the block device interface only supports a single vPool.
+Open vStorage supports block devices as vDisks through [Blktap](http://wiki.xenproject.org/wiki/Blktap). Each blktap device corresponds to a single vDisk.
+Do note: blktap is no longer the primary way to access a vDisk. Use our other interfaces wherever possible!
 
 **Prerequisites**
 * Blktap is only supported as of Volume Driver 5.4.
@@ -121,19 +122,21 @@ apt-get install tgt-openvstorage
 ´´´
 
 Create a new target device.
-
-´´´tgtadm --lld iscsi --mode target --op new --tid=1 --targetname iqn.2016-01.com.openvstorage:for.all´´´
+```
+tgtadm --lld iscsi --mode target --op new --tid=1 --targetname iqn.2016-01.com.openvstorage:for.all
+```
 
 Add a logical unit (LUN)
-´´´tgtadm --lld iscsi --op new --bstype openvstorage+tcp --mode logicalunit --tid 1 --lun 1 -b 10.100.188.31:26203/volumeName´´´
+`tgtadm --lld iscsi --op new --bstype openvstorage+tcp --mode logicalunit --tid 1 --lun 1 -b 10.100.188.31:26203/volumeName`
 
 Replace 10.100.188.31 by the IP of the Storage Router on which the vPool is exposed containing the vDisk.
 Replace 26203 by the edge port of the vPool on that Storage Router (see Storage Router detail page).
 Replace volumeName by the name of the vDisk you want to expose. Note that the vDisk should already be createdas the Edge will not create the vDisk.
 
-Execute ´tgt-admin -s´ to see if the vDisk is exposed. The result should be something like:
+Execute `tgt-admin -s` to see if the vDisk is exposed. The result should be something like:
 
-´´´root@PHY-3N-188-31:~# tgt-admin -s
+```
+root@PHY-3N-188-31:~# tgt-admin -s
 Target 1: iqn.2016-01.com.openvstorage:for.all
     System information:
         Driver: iscsi
@@ -168,7 +171,7 @@ Target 1: iqn.2016-01.com.openvstorage:for.all
             Backing store type: openvstorage+tcp
             Backing store path: 10.100.188.31:26203/volumeName
             Backing store flags:
-´´´
+```
 
 
 
