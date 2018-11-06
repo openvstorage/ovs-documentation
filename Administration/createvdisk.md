@@ -127,13 +127,19 @@ tgtadm --lld iscsi --mode target --op new --tid=1 --targetname iqn.2016-01.com.o
 ```
 
 Add a logical unit (LUN)
-`tgtadm --lld iscsi --op new --bstype openvstorage+tcp --mode logicalunit --tid 1 --lun 1 -b 10.100.188.31:26203/volumeName`
+```
+tgtadm --lld iscsi --op new --bstype openvstorage+tcp --mode logicalunit --tid 1 --lun 1 -b 10.100.188.31:26203/volumeName
+```
 
 Replace 10.100.188.31 by the IP of the Storage Router on which the vPool is exposed containing the vDisk.
 Replace 26203 by the edge port of the vPool on that Storage Router (see Storage Router detail page).
 Replace volumeName by the name of the vDisk you want to expose. Note that the vDisk should already be createdas the Edge will not create the vDisk.
 
-Execute `tgt-admin -s` to see if the vDisk is exposed. The result should be something like:
+Execute
+```
+tgt-admin -s
+```
+to see if the vDisk is exposed. The result should be something like:
 
 ```
 root@PHY-3N-188-31:~# tgt-admin -s
