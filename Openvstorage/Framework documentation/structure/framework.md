@@ -39,11 +39,38 @@ Hybrids are name after their, well, _hybrid_ nature.
 They contain 
 - properties: static, fixed attributes that shouldn't be reloaded, or at least not often.
 - dynamics: dynamic, changing attributes that should reflect state or other frequently changing parameters of an object. 
-Both can be accessed the same way however: 
-`DALObject.property` 
-- relations: These relations reflect junctions between 2 DAL objects that are not a one-to-one or one-to-many relationship:
-these junctions are the many-to-many relationships that are needed in every abstractionlayer of a DB.
 
+Now, get ready for some obscure magic.
+- relations: These relations reflect relations between 2 DAL objects that are a one-to-one or one-to-many relationship.
+
+But wait, there's more!
+
+- These relations only reflect one-to-one or one-to-many relationships. For many-to-many relationships, `junctions` were introduced. These files can be seen in the list of 
+the DAL hybrids as files named according to this format: `^j_.*`. 
+
+All these `properties`, `dynamics`, `relations` and `junctions` are manipulated into the DAL object upon creation with some metaprogramming in the `__init__` of the `DataObject` superclass.
+
+All these attributes can be accessed the same way however: 
+`DALObject.property` 
+
+
+#### Lists
+This is where the the comfortlayer on top of our sql DB becomes really handy. These lists contain logic to  gracefully implement SQL queries without having to worry about to much sql code.
+example:
+```
+backends =  DataList(Backend, {'type': DataList.where_operator.AND,
+                               'items': []})
+backends = # add some extra logic here: filtering on names, types, w/e
+return backends
+```
+
+#### Migration
+This section contains code that will be executed when upgrading the ovs framework. When changing from version `x` to `y`, some changes might need to be made on existing (DAL) objects themselves. These objects need to be 'migrated': they need to be manipulated so that they fit the new model. 
+Our migration code does this, and will be executed depending on which was the original version of the fwk, and what version one upgrades towards.
+This code is summoned from `ovs.lib.update` -> `ovs.lib.migration`
+
+#### Extensions
+OVS framework code that belongs nowhere specifically, but is closely related to the ovs core package
 ### Webapps
 Contains all GUI and api related code.
 
