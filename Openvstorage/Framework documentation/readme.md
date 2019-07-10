@@ -1,8 +1,5 @@
 ## Introduction
 
-As Jeffrey and I are leaving, these documentations will serve as a guide for aspiring developers to get a jumpstart in the framework as we left it.
-It contains some basic information to get you faster up to speed, some clarifications on why we (didn't) implement things a certain way, guidance on our branches system and other funfacts.
-
 ### Structure of the framework and its repos
 
 #### Framework
