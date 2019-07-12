@@ -2,8 +2,10 @@
 
 ### Packaging
 Previously redhat (deprecated), now debian is used as default ubuntu.
-This module contains all installfiles that are needed for packaging and pre-, post- and regular installing ovs
+Contains metadata for the Frameworkt-tools packager to work it's magic.
+The packaging folder exposes the different distros and their control files.
 
+The settings.json file contains metadata about the packaging process. The source_contents value is used for the tar command to compress the files.
 ### Scripts
 Contains everything that is a `.sh` file or as script that needs to be run once.
 
@@ -32,7 +34,7 @@ Usage is pretty straightforward.
 
 #### DAL
 
-Ah, the DAL. A wonderful piece of black magic, obfuscating it design flaws through its obscurity.
+Ah, the DAL. A wonderful piece of black magic, obfuscating it design flaws through itsobscurity.
 The DAL, in its essence, is a comfort (abstraction)layer on top of a db. 
 ##### Hybrids
 Hybrids are name after their, well, _hybrid_ nature.
@@ -53,9 +55,11 @@ All these `properties`, `dynamics`, `relations` and `junctions` are manipulated 
 All these attributes can be accessed the same way however: 
 `DALObject.property` 
 
+more information can be found [here](https://github.com/openvstorage/framework/blob/develop/docs/dal.md)
 
 #### Lists
-This is where the the comfortlayer on top of our sql DB becomes really handy. These lists contain logic to  gracefully implement SQL queries without having to worry about to much sql code.
+This is where the the comfortlayer on top of our sql DB becomes really handy. These
+ lists contain logic to  gracefully implement arakoon queries.
 example:
 ```
 backends =  DataList(Backend, {'type': DataList.where_operator.AND,
@@ -68,9 +72,13 @@ return backends
 This section contains code that will be executed when upgrading the ovs framework. When changing from version `x` to `y`, some changes might need to be made on existing (DAL) objects themselves. These objects need to be 'migrated': they need to be manipulated so that they fit the new model. 
 Our migration code does this, and will be executed depending on which was the original version of the fwk, and what version one upgrades towards.
 This code is summoned from `ovs.lib.update` -> `ovs.lib.migration`
+overall, 3 migration codepaths exist.
+- DAL migration
+- critical migration
+- Out-of-band migration
 
 #### Extensions
-OVS framework code that belongs nowhere specifically, but is closely related to the ovs core package
+Wraps around the ovs_extensions repository in 90% of the cases and implements the missing pieces of the puzzle of its abstract clients.
 ### Webapps
 Contains all GUI and api related code.
 
@@ -85,7 +93,7 @@ decorators:
  - `required_roles()`: verify that the apiclient has the correct role for executing this call.
           A list as parameter such as ` required_roles([role_a, role_b])` means that there is an `OR` relationship. Either of these listitem roles can execute this call.
  - `return_list()` or `return_object()` will wrap the return value of the api call in all imaginable metadata needed for pagination, sorting etc.
- - `load()` will make sure the return value will eventually be of given type. 
+ - `load()` The @load decorator will consume the primary key of the route and pass it onto the function as the loaded object. The name of the parameter that represent the object must always be the lowercase value of the classname.
           eg. `@load('VDisk')` will return an object of type VDisk
           
 #### Oath2 
@@ -99,6 +107,10 @@ All GUI logic
 #### App
 contains durandals and other JS models (`viewmodels`), HTML `views` and `widgets` such as dropdownboxes, lazylists used throughout the GUI
 #### Locales
-Internationalization strings obviously
+Internationalization strings 
 #### CSS
-Shouldn't be touched, as our design colors etc were fixed. Errorhandling css can obviously be implemented
+- bootstrap.css -> vendor
+- durandal.css -> vendor
+- ovs.css -> our own
+If modication are to be made, they must be made into ovs.css
+CSS is loaded by the `index.html`, which kicks in the whole application

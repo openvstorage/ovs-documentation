@@ -19,7 +19,8 @@ Framework extensions contain logic that
  - function as an interface and should be implemented by one of these managers
  
  #### Alba-asd and iSCSI manager
- These managers contain logic to function as a standalone nodes
+ These managers contain logic to function as a standalone microservice. Can run on different nodes, regardles of where the framework node is running. 
+ When running such a service on the same node as the framework, installation of a manager plugin enables accessing the managers in the GUI via HTTP API
  
  #### alba-plugin and iscsi-plugin
  The plugins will allow the managers to work alongside the regular framework and integrate them in the GUI
