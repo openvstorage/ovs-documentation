@@ -72,10 +72,34 @@ return backends
 This section contains code that will be executed when upgrading the ovs framework. When changing from version `x` to `y`, some changes might need to be made on existing (DAL) objects themselves. These objects need to be 'migrated': they need to be manipulated so that they fit the new model. 
 Our migration code does this, and will be executed depending on which was the original version of the fwk, and what version one upgrades towards.
 This code is summoned from `ovs.lib.update` -> `ovs.lib.migration`
-overall, 3 migration codepaths exist.
+overall, 3 migration codepaths are invoked.
 - DAL migration
-- critical migration
+    
+    `ovs.dal.<ovs|iscsi|alba>migration`
+    
+    Occurs on both manager and framework nodes. Will migrate DAL objects that currently live in the cluster from their old format to their new  format, if `old version < new version`
+    Everytime changes are made to the layout of existing dal objects or attributes, these changes have to be reflected in the migration code. This goes for all DAL objects, hence the migration code for managers as well.
+   
+
+- Critical migration
+
+    `ovs.extensions.migration.migration.ovsmigrator`
+    
+    `<iscsi-manager|asd-manager>.source.controller.update`
+    
+    Contains logic of migration code that is crucial for the migration to proceed. Will raise if anything fails. 
+    Executed before the out-of-band migrations in the managers.
+    
 - Out-of-band migration
+
+    `ovs.lib.migration`
+    
+    `<iscsi-manager|asd-manager>.source.controller.update`
+
+    Executes async migrations. It doesn't matter too much when they are executed, as long as they get eventually
+    executed. This code will typically contain:
+    - "dangerous" migration code (it needs certain running services)
+    - Migration code depending on a cluster-wide state
 
 #### Extensions
 Wraps around the ovs_extensions repository in 90% of the cases and implements the missing pieces of the puzzle of its abstract clients.
