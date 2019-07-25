@@ -263,6 +263,62 @@ all resources.
         -   text/html
     -   Access-Control-Allow-Origin (CORS only)
 -   Query parameters:
+    -   query (optional - no querying if omitted)
+        -   The 'query' JSON object with 'type' and 'items' ({'type' : TYPE, 'items': ITEMS})
+        -   The 'type' indicates how the items supplied in 'items' should be chained
+            -   Possible types are 'AND' and 'OR'   
+        -   The 'filter' is a list defining a single expression:
+            - (FIELD, OPERATOR, VALUE [, IGNORE CASE])
+            - The field is any property you would also find on the given object. In case of properties, you can dot as far as you like.
+            - The operator indicates what condition should apply
+                -   Possible operators are 
+                    -   'EQUALS' (=)
+                    -   'NOT_EQUALS' (!=)
+                    -   'LT' (<)
+                    -   'GT' (>)
+                    -   'IN' (check if a value is in a list of values)
+                    -   'CONTAINS' (check if a string value is a substring of the given value) 
+            - The value is what value the FIELD should match to (for the given operator)
+            - The ignore case option is optional, this indicates if the query should operate case-sensitive for the given filter item (defaults to true)
+        -   The 'items' are a list of one or more QUERY or FILTER items. This means the query structure is recursive and complex queries are possible
+        -   Example simple query:
+            ```
+            {
+                type: 'AND',
+                items: [
+                    ['is_vtemplate', 'EQUALS', false]
+                ]
+            }
+            ```
+            -   Query explained:
+                -   Check if the 'is_vtemplate' property is false
+        -   Example recursive query:
+            ```
+            {
+                type: 'AND',
+                items: [
+                    ['is_vtemplate', 'EQUALS', false],
+                    {
+                        type: 'OR',
+                        items: [
+                            ['size', 'LT', 100],
+                            ['size', 'EQUALS, 100],
+                            {
+                                type: 'AND'
+                                items: [
+                                    ['name', 'CONTAINS', 'openvstorage']
+                                ]
+                        ]
+                    }
+                ]
+            }
+            ```
+            -   Query explained:
+                -   Check if the 'is_vtemplate' property is false
+                -   Also check if either
+                    -   'size' is lesser than 100,
+                    -   'size' equals 100
+                    -   'name' is a substring of 'openvstorage'
     -   sort (optional - no sorting if omitted)
         -   A comma separated list of fields
         -   Prefix fields with a dash (-) for reverse sorting
